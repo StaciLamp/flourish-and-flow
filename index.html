@@ -800,6 +800,8 @@ var api = window.API_OVERRIDE || {
   members: async function(){ return ok(await sb.from('members').select('*').order('created_at')); },
   addMember: async function(email, name){ ok(await sb.from('members').insert({email: email, name: name || null})); },
   removeMember: async function(email){ ok(await sb.from('members').delete().eq('email', email)); },
+  guideUrl: async function(path){ return ok(await sb.storage.from('guides').createSignedUrl(path, 3600)).signedUrl; },
+  uploadGuide: async function(path, file){ ok(await sb.storage.from('guides').upload(path, file, {upsert: true, contentType: 'application/pdf'})); },
   notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); }
 };
 
@@ -847,7 +849,7 @@ function normalize(c, key){
   var n = {
     name: c.name || (p ? MONTH_NAMES[parseInt(p[1], 10) - 1] : ''),
     theme: c.theme || '', accent: c.accent || '#8ea185', intention: c.intention || '', rhythmLine: c.rhythmLine || '',
-    guidePdfUrl: c.guidePdfUrl || '',
+    guidePdfUrl: c.guidePdfUrl || '', guidePath: c.guidePath || '',
     breath: {name: (c.breath && c.breath.name) || '', line: (c.breath && c.breath.line) || '', counts: (c.breath && c.breath.counts) || []},
     moon: c.moon || [], mudra: {name: (c.mudra && c.mudra.name) || '', body: (c.mudra && c.mudra.body) || ''},
     creative: c.creative || {}, events: c.events || [], eventsNote: c.eventsNote || '', eventsUrl: c.eventsUrl || '',
@@ -1095,6 +1097,20 @@ function recCard(r, fallbackEyebrow){
 }
 function emptyCard(text){ var c = el('div', 'note-line', text); c.style.marginTop = '0'; return c; }
 
+function hasGuide(M){ return !!(M.guidePath || M.guidePdfUrl); }
+function guideButton(M, cls, label){
+  var b = el('button', cls, label);
+  b.onclick = async function(){
+    if (M.guidePdfUrl && !M.guidePath) { window.open(M.guidePdfUrl, '_blank', 'noopener'); return; }
+    var w = window.open('', '_blank');
+    b.disabled = true; var old = b.textContent; b.textContent = 'Opening\u2026';
+    try { var url = await api.guideUrl(M.guidePath); if (w) w.location.href = url; else location.href = url; b.textContent = old; }
+    catch(e) { if (w) w.close(); b.textContent = 'Try again'; setTimeout(function(){ b.textContent = old; }, 2500); }
+    finally { b.disabled = false; }
+  };
+  return b;
+}
+
 /* ── PRACTICE ── */
 function buildPractice(){
   var key = S.cur && S.cur.key, M = S.M;
@@ -1144,7 +1160,7 @@ function buildRhythm(){
   $('rh-int').textContent = M.rhythmLine || M.intention;
   $('gc-title').textContent = M.name + ' Guide';
   var ga = $('gc-action'); ga.innerHTML = '';
-  if (M.guidePdfUrl) { var a = el('a', 'pill-btn', 'Open →'); a.href = M.guidePdfUrl; a.target = '_blank'; a.rel = 'noopener'; ga.appendChild(a); }
+  if (hasGuide(M)) ga.appendChild(guideButton(M, 'pill-btn', 'Open \u2192'));
   else { var s = el('div', 'soon', 'In your email'); s.style.color = 'rgba(255,255,255,.6)'; s.style.borderColor = 'rgba(255,255,255,.3)'; ga.appendChild(s); }
   var bc = $('breath-card'); bc.innerHTML = '';
   bc.style.display = M.breath.name ? 'block' : 'none';
@@ -1198,7 +1214,7 @@ function buildLibrary(){
   months.forEach(function(m){
     var M = normalize(m.content, m.key);
     var recs = recsFor(m.key).filter(function(r){ return libFilter === 'all' || r.kind === libFilter; });
-    var showGuide = M.guidePdfUrl && (libFilter === 'all' || libFilter === 'guide');
+    var showGuide = hasGuide(M) && (libFilter === 'all' || libFilter === 'guide');
     if (libFilter !== 'all' && !recs.length && !showGuide) return;
     shown++;
     var box = el('div', 'lib-month');
@@ -1208,7 +1224,7 @@ function buildLibrary(){
     var t = el('div', 'lm-title', M.theme || M.name);
     if (m.key === curKey) { var now = el('span', 'lm-now', 'This month'); now.style.background = M.accent; t.appendChild(now); }
     hl.appendChild(t); head.appendChild(hl);
-    if (showGuide) { var ga = el('a', 'pill-btn outline small-btn', 'Guide'); ga.href = M.guidePdfUrl; ga.target = '_blank'; ga.rel = 'noopener'; head.appendChild(ga); }
+    if (showGuide) head.appendChild(guideButton(M, 'pill-btn outline small-btn', 'Guide'));
     box.appendChild(head);
     recs.forEach(function(r){
       var meta = KINDS[r.kind] || KINDS.other;
@@ -1220,7 +1236,8 @@ function buildLibrary(){
       top.appendChild(mediaButton(r.url, wrap, true));
       row.appendChild(top); row.appendChild(wrap); box.appendChild(row);
     });
-    if (!recs.length) box.appendChild(el('div', 'lm-empty', libFilter === 'guide' ? '' : 'Recordings from this month are being added.'));
+    if (!recs.length && libFilter !== 'guide') box.appendChild(el('div', 'lm-empty', 'Recordings from this month are being added.'));
+    if (libFilter === 'guide') head.style.paddingBottom = '15px';
     list.appendChild(box);
   });
   if (!shown) list.appendChild(el('div', 'feed-empty', 'Nothing here yet — it fills in month by month.'));
@@ -1468,7 +1485,26 @@ function studioMonthForm(p){
   var fAccent = fld(p, 'Accent colour', M.accent, {placeholder:'#996b4a', hint:'The month’s colour from your arc, as a hex code.'});
   var fInt = fld(p, 'Intention', M.intention, {area:true, rows:2});
   var fRL = fld(p, 'Rhythm page line', M.rhythmLine, {area:true, rows:2});
-  var fPdf = fld(p, 'Guide PDF link', M.guidePdfUrl, {type:'url', placeholder:'https://…', hint:'A share link to the month’s PDF (Google Drive, Dropbox, or your site). It also appears in the Library.'});
+  var gWrap = el('div', 'fld'); gWrap.appendChild(el('label', null, 'Rhythm guide (PDF)'));
+  var gNow = el('div', 'hint', M.guidePath ? 'Uploaded \u2713 \u2014 members can open it from Rhythm and the Library.' : 'No guide uploaded yet.');
+  var gFile = el('input'); gFile.type = 'file'; gFile.accept = 'application/pdf'; gFile.id = 'st-guide-file'; gFile.style.cssText = 'font-size:13px;margin:6px 0;max-width:100%;display:block;';
+  var gBtn = el('button', 'pill-btn small-btn', M.guidePath ? 'Replace guide' : 'Upload guide'); gBtn.id = 'st-guide-up';
+  gBtn.onclick = async function(){
+    var f = gFile.files && gFile.files[0];
+    if (!f) { gNow.textContent = 'Choose the PDF first.'; return; }
+    if (f.size > 45 * 1024 * 1024) { gNow.textContent = 'That file is over 45 MB \u2014 try exporting a smaller PDF.'; return; }
+    gBtn.disabled = true; gNow.textContent = 'Uploading\u2026';
+    try {
+      var path = m.key + '/rhythm-guide-' + m.key + '.pdf';
+      await api.uploadGuide(path, f);
+      var c = JSON.parse(JSON.stringify(stMonth().content || {})); c.guidePath = path;
+      await api.saveMonth(m.key, stMonth().published, c);
+      await reloadContent(); studioRender();
+    } catch(e) { gNow.textContent = 'Upload didn\u2019t work. ' + friendlyError(e); gBtn.disabled = false; }
+  };
+  gWrap.appendChild(gNow); gWrap.appendChild(gFile); gWrap.appendChild(gBtn);
+  if (M.guidePath) { var gv = guideButton(M, 'pill-btn outline small-btn', 'View'); gv.style.marginLeft = '8px'; gWrap.appendChild(gv); }
+  p.appendChild(gWrap);
 
   sec(p, 'Breath');
   var fBN = fld(p, 'Breath name', M.breath.name), fBL = fld(p, 'One-line invitation', M.breath.line, {area:true, rows:2});
@@ -1494,7 +1530,7 @@ function studioMonthForm(p){
 
   saveRow(p, 'Save month', async function(){
     var content = {
-      name: fName.value.trim(), theme: fTheme.value.trim(), accent: fAccent.value.trim() || '#8ea185', intention: fInt.value.trim(), rhythmLine: fRL.value.trim(), guidePdfUrl: fPdf.value.trim(),
+      name: fName.value.trim(), theme: fTheme.value.trim(), accent: fAccent.value.trim() || '#8ea185', intention: fInt.value.trim(), rhythmLine: fRL.value.trim(), guidePdfUrl: M.guidePdfUrl, guidePath: stMonth().content.guidePath || '',
       breath: {name: fBN.value.trim(), line: fBL.value.trim(), counts: pipes(fBC.value, 2)},
       moon: pipes(fMoon.value, 3).map(function(x){ return {type:x[0], date:x[1], note:x[2]}; }),
       mudra: {name: fMN.value.trim(), body: fMB.value.trim()},
