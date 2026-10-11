@@ -11,14 +11,13 @@
 <meta name="theme-color" content="#3a3d38">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <!--
-  FLOURISH & FLOW · MEMBER PORTAL · v8 BETA (fall 2026)
-  ─────────────────────────────────────────────────────
-  Monthly update = edit the MONTH block in the <script> at the bottom. Nothing else.
-  Shared Circle + beta notes = paste SUPABASE_URL and SUPABASE_ANON_KEY (see setup guide).
-  Until those are filled in, the app still works: the Circle shows the month's prompt
-  and beta notes fall back to email.
+  FLOURISH & FLOW · MEMBER APP · v9
+  All monthly content, recordings, the Living by Design lens and the member list
+  live in Supabase and are edited from the Studio inside the app (Staci only).
+  This file only changes when the app itself changes.
 -->
 <style>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --cream:#f6f4f0;--cream-dark:#ede9e3;--sage:#8ea185;--sage-light:#b8c9b3;
@@ -284,6 +283,81 @@ button{font-family:'Poppins',sans-serif;}
 .share-actions{display:flex;gap:8px;width:100%;max-width:340px;}
 .share-actions .pill-btn{flex:1;padding:13px;}
 .share-dismiss{margin-top:16px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;padding:8px;}
+
+/* ── v9 additions ── */
+.auth-card{background:var(--cream);width:100%;max-width:380px;padding:30px 28px;}
+.auth-h{font-family:'Abril Fatface',serif;font-size:22px;color:var(--dark);margin-bottom:6px;}
+.auth-p{font-size:13px;color:var(--mid);line-height:1.65;margin-bottom:22px;}
+.auth-p b{font-weight:500;color:var(--dark);}
+.code-input{letter-spacing:.4em;font-size:22px !important;text-align:center;}
+.link-btn{background:none;border:none;color:var(--deep);font-size:11px;text-decoration:underline;cursor:pointer;padding:6px 4px;}
+.auth-links{display:flex;justify-content:space-between;margin-top:12px;}
+.f-ok{font-size:12px;color:var(--deep);min-height:18px;margin-top:10px;text-align:center;}
+.ob-input{width:100%;border:none;border-bottom:.5px solid rgba(255,255,255,.2);background:transparent;padding:10px 0;font-family:'Poppins',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.9);outline:none;margin-bottom:20px;border-radius:0;}
+.ob-input::placeholder{color:rgba(255,255,255,.3);}
+.ob-err{font-size:12px;color:var(--accent-light);min-height:18px;text-align:center;margin-top:8px;}
+.loading{padding:40px 20px;text-align:center;font-style:italic;font-size:13px;color:var(--muted);animation:pulse 1.8s ease-in-out infinite;}
+.lib-link{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 20px 0;padding:15px 18px;background:var(--dark);color:#fff;cursor:pointer;border:none;width:calc(100% - 40px);text-align:left;}
+.lib-link .ll-t{font-family:'Abril Fatface',serif;font-size:16px;}
+.lib-link .ll-s{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;}
+.lib-link .ll-a{font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-light);white-space:nowrap;}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:14px 20px 4px;scrollbar-width:none;}
+.chips::-webkit-scrollbar{display:none;}
+.chip{flex-shrink:0;border:.5px solid var(--border);background:transparent;color:var(--mid);font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:8px 13px;border-radius:40px;cursor:pointer;}
+.chip.on{background:var(--dark);border-color:var(--dark);color:var(--cream);}
+.lib-month{margin:16px 20px 0;background:var(--cream-dark);}
+.lm-band{height:5px;}
+.lm-head{padding:15px 18px 10px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.lm-eye{font-size:8px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.lm-title{font-family:'Abril Fatface',serif;font-size:19px;color:var(--dark);}
+.lm-now{display:inline-block;font-size:7px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;}
+.lm-row{border-top:.5px solid var(--border-light);padding:12px 18px;}
+.lm-row-top{display:flex;align-items:center;gap:12px;}
+.lm-sym{width:22px;text-align:center;font-size:15px;flex-shrink:0;}
+.lm-info{flex:1;min-width:0;}
+.lm-k{font-size:8px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.lm-t{font-size:13px;font-weight:500;color:var(--dark);line-height:1.4;}
+.lm-m{font-size:11px;color:var(--muted);}
+.lm-empty{border-top:.5px solid var(--border-light);padding:12px 18px;font-size:12px;font-style:italic;color:var(--muted);}
+.small-btn{padding:7px 12px;font-size:8px;}
+/* Studio */
+.hint{font-size:12px;color:var(--muted);font-style:italic;line-height:1.6;}
+.st-bar{background:var(--dark);padding:14px 20px 16px;}
+.st-sel{width:100%;border:.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;padding:11px 12px;font-family:'Poppins',sans-serif;font-size:14px;border-radius:0;appearance:none;}
+.st-sel option{color:var(--dark);}
+.st-row{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;}
+.st-tabs{display:flex;background:var(--cream-dark);border-bottom:.5px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.st-tabs::-webkit-scrollbar{display:none;}
+.st-panel{padding:18px 20px 30px;}
+.fld{margin-bottom:16px;}
+.fld label{display:block;font-size:9px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.fld input[type=text],.fld input[type=url],.fld input[type=email],.fld input[type=month],.fld textarea,.fld select{width:100%;border:.5px solid var(--border);background:#fff;padding:10px 12px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:300;color:var(--dark);outline:none;border-radius:0;}
+.fld textarea{min-height:84px;resize:vertical;line-height:1.6;}
+.fld .hint{font-size:11px;color:var(--muted);font-style:italic;margin-top:5px;line-height:1.5;}
+.fld-2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;}
+.st-sec{font-family:'Abril Fatface',serif;font-size:16px;color:var(--dark);margin:26px 0 12px;padding-top:16px;border-top:.5px solid var(--border);}
+.st-sec:first-child{margin-top:0;padding-top:0;border-top:none;}
+.check{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--dark);margin-bottom:16px;cursor:pointer;}
+.check input{width:18px;height:18px;accent-color:var(--sage);}
+.save-row{position:sticky;bottom:0;background:var(--cream);padding:12px 0 4px;display:flex;align-items:center;gap:12px;border-top:.5px solid var(--border);margin-top:10px;}
+.save-msg{font-size:12px;font-style:italic;color:var(--deep);}
+.save-msg.err{color:var(--terra);}
+.item{background:var(--cream-dark);padding:13px 15px;margin-bottom:6px;display:flex;align-items:center;gap:12px;}
+.item .it-b{flex:1;min-width:0;}
+.item .it-t{font-size:13px;font-weight:500;color:var(--dark);overflow-wrap:anywhere;}
+.item .it-s{font-size:11px;color:var(--muted);overflow-wrap:anywhere;}
+.item .it-a{display:flex;gap:6px;flex-shrink:0;}
+.tag{display:inline-block;font-size:7px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:20px;border:.5px solid currentColor;margin-left:6px;vertical-align:middle;}
+.danger{background:transparent;color:var(--terra);border:1px solid var(--terra);}
+.danger.armed{background:var(--terra);color:#fff;}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.note-card{background:var(--cream-dark);padding:14px 16px;margin-bottom:8px;}
+.note-meta{font-size:10px;color:var(--muted);margin-bottom:6px;}
+.note-body{font-size:13px;color:var(--dark);line-height:1.7;white-space:pre-wrap;}
+.studio-btn{margin-top:14px;background:var(--sage);}
+.msg-tools{display:flex;gap:10px;margin-top:4px;}
+.msg-tools button{background:none;border:none;font-size:10px;color:var(--muted);text-decoration:underline;cursor:pointer;padding:2px 0;}
+.msg-hidden .msg-text{opacity:.45;}
 </style>
 </head>
 <body>
@@ -295,18 +369,32 @@ button{font-family:'Poppins',sans-serif;}
   <div class="sp-dot"></div>
 </div>
 
-<!-- LOGIN -->
-<div id="login-screen">
+<!-- SIGN IN -->
+<div id="login-screen" style="display:none">
   <div class="login-brand">flourish &amp; flow</div>
   <div class="login-tagline">a place you return to</div>
   <div class="beta-chip">Founding beta · Fall 2026</div>
-  <form class="login-card" onsubmit="doLogin(event)">
-    <div class="f-lbl">Your first name</div>
-    <input class="f-input" id="l-name" type="text" placeholder="First name" autocomplete="given-name" maxlength="30"/>
-    <div class="f-lbl">Beta access code</div>
-    <input class="f-input" id="l-code" type="password" placeholder="From your welcome note" autocomplete="off"/>
-    <button class="f-btn" type="submit">Come in</button>
-    <div class="f-err" id="l-err"></div>
+
+  <form class="auth-card" id="auth-email" onsubmit="authSendCode(event)">
+    <div class="auth-h">Welcome in.</div>
+    <div class="auth-p">Enter the email you gave Staci. We'll send you a short code — no password to remember.</div>
+    <div class="f-lbl">Your email</div>
+    <input class="f-input" id="a-email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required/>
+    <button class="f-btn" id="a-send" type="submit">Send my code</button>
+    <div class="f-err" id="a-err"></div>
+  </form>
+
+  <form class="auth-card" id="auth-code" style="display:none" onsubmit="authVerify(event)">
+    <div class="auth-h">Check your email.</div>
+    <div class="auth-p">We sent an email to <b id="a-sent-to"></b>. Tap the link inside, or type the code here. It can take a minute — peek in spam if it's shy.</div>
+    <div class="f-lbl">Your code</div>
+    <input class="f-input code-input" id="a-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="······"/>
+    <button class="f-btn" id="a-verify" type="submit">Come in</button>
+    <div class="f-err" id="a-err2"></div>
+    <div class="auth-links">
+      <button type="button" class="link-btn" onclick="authBack()">Use a different email</button>
+      <button type="button" class="link-btn" id="a-resend" onclick="authResend()">Send a new code</button>
+    </div>
   </form>
   <div class="login-note">Not in the beta yet? stacilamp.com</div>
 </div>
@@ -315,13 +403,16 @@ button{font-family:'Poppins',sans-serif;}
 <div id="onboarding-screen">
   <div class="ob-hero">
     <div class="ob-hero-eye">One-time · about two minutes</div>
-    <div class="ob-hero-title">Bring your design<br>with you.</div>
-    <div class="ob-hero-sub">A few details from your chart let this space speak to you a little more personally. A lens, not a test.</div>
+    <div class="ob-hero-title">Bring yourself<br>with you.</div>
+    <div class="ob-hero-sub">A few details let this space speak to you a little more personally. Human Design is a lens, not a test.</div>
   </div>
   <div class="ob-body">
-    <div class="ob-help">Don't have your chart handy? <a href="https://www.stacilamp.com/discover-your-design" target="_blank" rel="noopener">Get it free here</a>, or skip and add it later from the You tab.</div>
+    <div class="ob-sec">You</div>
+    <div class="ob-lbl">First name</div>
+    <input class="ob-input" id="ob-name" type="text" maxlength="30" placeholder="What should we call you?" autocomplete="given-name"/>
     <div class="ob-sec">Your design</div>
-    <div class="ob-lbl">Type</div>
+    <div class="ob-help">Don't have your chart handy? <a href="https://www.stacilamp.com/discover-your-design" target="_blank" rel="noopener">Get it free here</a>, or skip this part for now.</div>
+    <div class="ob-lbl" style="margin-top:14px;">Type</div>
     <select class="ob-select" id="ob-type">
       <option value="">Select your type</option>
       <option>Manifesting Generator</option><option>Generator</option>
@@ -345,8 +436,9 @@ button{font-family:'Poppins',sans-serif;}
         </select>
       </div>
     </div>
-    <button class="ob-btn" onclick="saveChart()">This is my design</button>
-    <button class="ob-skip" onclick="skipOnboarding()">Skip for now</button>
+    <button class="ob-btn" id="ob-save" onclick="saveOnboarding()">Come in</button>
+    <div class="ob-err" id="ob-err"></div>
+    <button class="ob-skip" id="ob-cancel" style="display:none" onclick="closeOnboarding()">Cancel</button>
   </div>
 </div>
 
@@ -393,7 +485,7 @@ button{font-family:'Poppins',sans-serif;}
         <div class="hero-quote" id="hero-quote"></div>
         <div class="hero-row">
           <div class="hero-pill"><span class="hp-lbl" id="hp-month"></span><span class="hp-word" id="hp-theme"></span></div>
-          <button class="share-btn" onclick="openShareCard()">Share today's words</button>
+          <button class="share-btn" id="share-open" onclick="openShareCard()">Share today's words</button>
         </div>
       </div>
       <div class="hd-teaser" onclick="goScreen('design')">
@@ -410,8 +502,12 @@ button{font-family:'Poppins',sans-serif;}
         <div><div class="ts-eye" id="ts-eye"></div><div class="ts-title" id="ts-title"></div><div class="ts-int" id="ts-int"></div></div>
         <div class="ts-btn">Open →</div>
       </div>
+      <button class="lib-link" onclick="goScreen('library')">
+        <div><div class="ll-t">The Library</div><div class="ll-s" id="lib-count">Every month, kept for you.</div></div>
+        <div class="ll-a">Explore →</div>
+      </button>
       <button class="circle-teaser" onclick="goScreen('circle')">
-        <div class="eye">◯ The Circle</div>
+        <div class="eye">○ The Circle</div>
         <div class="ct-q" id="ct-q"></div>
         <div class="ct-meta" id="ct-meta">Add your voice →</div>
       </button>
@@ -422,7 +518,7 @@ button{font-family:'Poppins',sans-serif;}
       <div class="spacer"></div>
     </div>
 
-    <!-- PRACTICE (The Return) -->
+    <!-- PRACTICE -->
     <div class="screen" id="screen-practice">
       <div class="screen-header">
         <div class="sh-eye">⟲ The Return</div>
@@ -432,11 +528,15 @@ button{font-family:'Poppins',sans-serif;}
       <div class="ptabs">
         <button class="ptab active" data-tab="pt-breathe">༄ Breathe</button>
         <button class="ptab" data-tab="pt-meditate">𑁍 Meditate</button>
-        <button class="ptab" data-tab="pt-gather">✺ Move in person</button>
+        <button class="ptab" data-tab="pt-gather">✺ Move</button>
       </div>
       <div class="psec active" id="pt-breathe"></div>
       <div class="psec" id="pt-meditate"></div>
       <div class="psec" id="pt-gather"></div>
+      <button class="lib-link" onclick="goScreen('library')" style="margin-bottom:28px;">
+        <div><div class="ll-t">Earlier practices</div><div class="ll-s">Every past month lives in the Library.</div></div>
+        <div class="ll-a">Library →</div>
+      </button>
     </div>
 
     <!-- RHYTHM -->
@@ -448,23 +548,26 @@ button{font-family:'Poppins',sans-serif;}
         <div class="rh-int" id="rh-int"></div>
       </div>
       <div class="guide-card">
-        <div><div class="gc-eye">◉ The Rhythm · your monthly guide</div><div class="gc-title" id="gc-title"></div><div class="gc-sub">14 pages · A5 · print or GoodNotes</div></div>
+        <div><div class="gc-eye">◉ The Rhythm · your monthly guide</div><div class="gc-title" id="gc-title"></div><div class="gc-sub">A5 · print or GoodNotes</div></div>
         <div id="gc-action"></div>
       </div>
       <div class="breath-card" id="breath-card"></div>
-      <div class="pad">
+      <div class="pad" id="moon-wrap">
         <div class="eye" id="moon-eye"></div>
         <div id="moon-list"></div>
       </div>
       <div class="pad">
         <div class="eye">✦ Living by Design</div>
-        <div class="content-card" style="margin-top:12px;" id="lbd-card"></div>
+        <div style="margin-top:12px;" id="lbd-card"></div>
       </div>
-      <div class="pad">
+      <div class="pad" id="mudra-wrap">
         <div class="eye">✺ Into the body</div>
         <div class="mudra" id="mudra-card"></div>
       </div>
-      <div class="spacer"></div>
+      <button class="lib-link" onclick="goScreen('library')" style="margin-bottom:28px;">
+        <div><div class="ll-t">Past months</div><div class="ll-s">Guides and recordings from every month so far.</div></div>
+        <div class="ll-a">Library →</div>
+      </button>
     </div>
 
     <!-- CREATE -->
@@ -474,12 +577,12 @@ button{font-family:'Poppins',sans-serif;}
         <div class="sh-title" id="cf-title"></div>
         <div class="sh-sub" id="cf-sub"></div>
       </div>
-      <div class="pad">
+      <div class="pad" id="cf-steps-wrap">
         <div class="eye">This month's art-journal page</div>
         <div id="cf-steps"></div>
         <div class="pull" id="cf-pull"></div>
       </div>
-      <div class="pad">
+      <div class="pad" id="cf-gather-wrap">
         <div class="eye">Seasonal gatherings</div>
         <div class="content-card" style="margin-top:12px;" id="cf-gather"></div>
       </div>
@@ -493,19 +596,26 @@ button{font-family:'Poppins',sans-serif;}
         <div class="sh-title">A space to be witnessed.</div>
         <div class="ch-q" id="circle-q"></div>
       </div>
-      <div id="circle-live">
-        <div class="circle-compose">
-          <textarea class="compose-ta" id="circle-ta" maxlength="1500" placeholder="Share what's true for you right now…"></textarea>
-          <div class="compose-foot">
-            <div class="compose-note">Only beta members see the Circle.</div>
-            <button class="pill-btn dark" id="circle-send" onclick="sendPost()">Share</button>
-          </div>
+      <div class="circle-compose">
+        <textarea class="compose-ta" id="circle-ta" maxlength="1500" placeholder="Share what's true for you right now…"></textarea>
+        <div class="compose-foot">
+          <div class="compose-note">Only members see the Circle.</div>
+          <button class="pill-btn dark" id="circle-send" onclick="sendPost()">Share</button>
         </div>
-        <div class="chat-feed" id="chat-feed"><div class="feed-empty">Gathering the Circle…</div></div>
       </div>
-      <div id="circle-offline" style="display:none;">
-        <div class="feed-offline">The shared Circle opens very soon. For now, sit with this month's question — in your journal, on a walk, or over tea. When the Circle opens, bring what you found.</div>
+      <div class="chat-feed" id="chat-feed"><div class="feed-empty">Gathering the Circle…</div></div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- LIBRARY -->
+    <div class="screen" id="screen-library">
+      <div class="screen-header">
+        <div class="sh-eye">◇ The Library</div>
+        <div class="sh-title">Every month, kept.</div>
+        <div class="sh-sub">Return to any practice, any month, any time.</div>
       </div>
+      <div class="chips" id="lib-chips"></div>
+      <div id="lib-list"></div>
       <div class="spacer"></div>
     </div>
 
@@ -513,8 +623,9 @@ button{font-family:'Poppins',sans-serif;}
     <div class="screen" id="screen-you">
       <div class="you-hero">
         <div class="yh-name" id="yh-name"></div>
-        <div class="yh-meta">Founding beta · Fall 2026</div>
+        <div class="yh-meta" id="yh-meta">Founding beta · Fall 2026</div>
         <div class="yh-streak" id="yh-streak"></div>
+        <button class="pill-btn studio-btn" id="studio-open" style="display:none" onclick="goScreen('studio')">Open Studio</button>
       </div>
       <div class="hd-summary">
         <div class="hds-lbl">✦ Your design</div>
@@ -527,31 +638,28 @@ button{font-family:'Poppins',sans-serif;}
           <div><div class="hdi-lbl">Not-Self</div><div class="hdi-val" id="hdi-ns">—</div></div>
         </div>
         <div class="hds-actions">
-          <button class="pill-btn" onclick="editDesign()">Edit my design</button>
+          <button class="pill-btn" onclick="editDesign()">Edit my details</button>
           <a class="pill-btn" href="https://www.stacilamp.com/discover-your-design" target="_blank" rel="noopener">Get my free chart</a>
         </div>
       </div>
-
       <div class="pad">
         <div class="eye">Beta notes for Staci</div>
         <div class="fb-box" style="margin-top:12px;">
           <select class="fb-sel" id="fb-screen">
             <option value="General">About… anything</option>
-            <option>Home</option><option>Practice</option><option>Rhythm</option>
+            <option>Home</option><option>Practice</option><option>Rhythm</option><option>Library</option>
             <option>Create</option><option>Circle</option><option>Living by Design</option>
             <option>Something's broken</option>
           </select>
           <textarea class="compose-ta" id="fb-text" maxlength="3000" placeholder="What did you notice? What did you love? What was confusing?"></textarea>
-          <div style="margin-top:9px;display:flex;justify-content:flex-end;"><button class="pill-btn" onclick="sendFeedback()">Send to Staci</button></div>
+          <div style="margin-top:9px;display:flex;justify-content:flex-end;"><button class="pill-btn" id="fb-send" onclick="sendFeedback()">Send to Staci</button></div>
           <div class="fb-status" id="fb-status"></div>
         </div>
       </div>
-
       <div class="pad">
         <div class="eye">✦ By Design sessions</div>
         <div style="margin-top:12px;" id="sessions"></div>
       </div>
-
       <div class="you-note"><div class="yn-text">Come back whenever you need to remember that there is more room than you think.</div></div>
       <button class="signout-btn" onclick="doSignout()">Sign out</button>
       <div class="spacer"></div>
@@ -570,10 +678,37 @@ button{font-family:'Poppins',sans-serif;}
         <div class="bd-badge"><span class="bd-badge-lbl">For</span><span class="bd-badge-topic" id="bd-for"></span></div>
         <div class="bd-title" id="bd-title"></div>
         <div class="bd-body" id="bd-body"></div>
-        <div class="bd-inv"><div class="bd-lbl">An invitation</div><div class="bd-inv-text" id="bd-inv"></div></div>
-        <div class="bd-ref"><div class="bd-lbl">Carry this with you</div><div class="bd-ref-q" id="bd-ref"></div></div>
-        <div class="bd-foot" id="bd-foot"></div>
+        <div class="bd-inv" id="bd-inv-wrap"><div class="bd-lbl">An invitation</div><div class="bd-inv-text" id="bd-inv"></div></div>
+        <div class="bd-ref" id="bd-ref-wrap"><div class="bd-lbl">Carry this with you</div><div class="bd-ref-q" id="bd-ref"></div></div>
+        <div class="bd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</div>
       </div>
+    </div>
+
+    <!-- STUDIO (Staci only) -->
+    <div class="screen" id="screen-studio">
+      <div class="screen-header">
+        <div class="sh-eye">Studio · only you can see this</div>
+        <div class="sh-title">Tend the space.</div>
+        <div class="sh-sub">Changes go live for members the moment you save.</div>
+      </div>
+      <div class="st-bar">
+        <select class="st-sel" id="st-month" onchange="studioPickMonth(this.value)"></select>
+        <div class="st-row">
+          <button class="pill-btn small-btn" onclick="studioToggleNew()">+ New month</button>
+          <div id="st-new" style="display:none;align-items:center;gap:8px;flex:1;">
+            <input type="month" id="st-new-key" style="flex:1;padding:8px;font-family:Poppins;border:none;min-width:0;"/>
+            <button class="pill-btn small-btn" onclick="studioCreateMonth()">Create</button>
+          </div>
+        </div>
+      </div>
+      <div class="st-tabs" id="st-tabs">
+        <button class="ptab active" data-p="month">Month</button>
+        <button class="ptab" data-p="recs">Recordings</button>
+        <button class="ptab" data-p="lens">Lens</button>
+        <button class="ptab" data-p="members">Members</button>
+        <button class="ptab" data-p="notes">Notes</button>
+      </div>
+      <div class="st-panel" id="st-panel"></div>
     </div>
 
   </div>
@@ -597,216 +732,247 @@ button{font-family:'Poppins',sans-serif;}
   </nav>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 /* ════════════════════════════════════════════════════════════
-   SETTINGS — fill these in once
+   SETTINGS
    ════════════════════════════════════════════════════════════ */
-var ACCESS_CODE = 'harvest2026';          // the code you give beta members (not case-sensitive)
-var SUPABASE_URL = 'https://bftjumojninejlxpksdm.supabase.co';                    // e.g. 'https://abcdxyz.supabase.co'
-var SUPABASE_ANON_KEY = 'sb_publishable_iUU4IPWIcXAmM4EWIJb3mg_eDM573pg';               // the "anon public" key from Supabase → Project Settings → API
-var FEEDBACK_EMAIL = 'staci-lamp@outlook.com'; // used only if Supabase isn't set up yet
+var SUPABASE_URL = 'https://bftjumojninejlxpksdm.supabase.co';
+var SUPABASE_KEY = 'sb_publishable_iUU4IPWIcXAmM4EWIJb3mg_eDM573pg'; // publishable key: safe in the browser
+var FEEDBACK_EMAIL = 'staci-lamp@outlook.com';
 var BOOKING_URL = 'https://calendar.app.google/wk1J132xUtwcjtGq6';
 
-/* ════════════════════════════════════════════════════════════
-   THIS MONTH — the only block to edit each month
-   Audio/video links: paste a Vimeo link (https://vimeo.com/123456789) or any
-   direct audio link. Leave '' and the button shows "Arriving soon".
-   ════════════════════════════════════════════════════════════ */
-var MONTH = {
-  key: '2026-10',
-  name: 'October',
-  theme: 'The Harvest',
-  accent: '#996b4a',
-  accentLight: '#d3a582',
-  intention: 'What grew this year — including what surprised you.',
-  rhythmLine: 'A softer way through the month: noticing what actually grew, and letting it count.',
-  guidePdfUrl: '',
-  breath: {
-    name: 'Alternate Nostril Breath',
-    line: 'Imagine one side holding what you’ve been tending, and the other holding permission to rest.',
-    counts: [['4','Inhale left'],['2','Pause'],['4','Exhale right']],
-    minutes: '8 min',
-    url: ''
-  },
-  meditation: {
-    title: 'The Harvest Meditation',
-    body: 'Fields, trees, and roots. A quiet look at what this year has grown in you — not only what you have to show for it.',
-    minutes: '15 min',
-    url: ''
-  },
-  moon: [
-    {type:'New Moon', date:'Saturday, October 10', note:'Even in harvest season, something small can be seeded. What would you like to plant before the year closes?'},
-    {type:'Full Moon · Hunter’s Moon', date:'Sunday, October 25 · late evening', note:'Look at what’s ripe. What are you ready to gather in, and what are you ready to set down — with thanks?'}
-  ],
-  lbd: {
-    eyebrow: 'Living by Design · October',
-    title: 'Your Incarnation Cross',
-    body: 'What pattern does your life keep repeating, in different rooms, with different people — and what if that’s not a rut, but a direction? The widest lens we’ve used all year.',
-    minutes: '~20 min',
-    url: ''
-  },
-  mudra: {
-    name: 'Prithvi Mudra',
-    body: 'Touch the tip of your ring finger to the tip of your thumb, other fingers soft. Rest your hands on your knees. Hold it through the meditation, or anytime you want to feel a little more rooted.'
-  },
-  creative: {
-    title: 'A little evidence that October was here.',
-    sub: 'Grab your art journal. Fifteen quiet minutes is plenty.',
-    steps: [
-      ['Gather', 'A few leaves in full color, grasses, seed pods — small pieces of the season that catch your eye. Things that are ripe, or already beginning to let go.'],
-      ['Make', 'One page from what you gathered. Arrange, tape, layer, paint, or write around the pieces. Let it become whatever it becomes.'],
-      ['Notice', 'What caught your eye, and what did you walk past?'],
-      ['Leave a few words', 'One sentence about what October feels like right now.']
-    ],
-    pull: 'You don’t have to make it beautiful. Just keep a little evidence that October was here.',
-    gathering: {eyebrow:'Next seasonal gathering', title:'Winter Solstice', body:'Our seasonal Creative Flow gatherings follow the solstices and equinoxes. Details for December are coming soon — members are always welcome.'}
-  },
-  events: [
-    {date:'Oct 17', name:'Farmers Market Yoga', time:'Saturday · 9:30–10:30am · free', url:''}
-  ],
-  eventsNote: 'Root & Rise lives in person — in fields, barns, and gathering spaces. More fall classes and gatherings are posted on the events page.',
-  eventsUrl: 'https://www.threebarnacres.org/calendar',
-  circlePrompt: 'What grew in you this year that you didn’t plan for?',
-  quotes: [
-    'The harvest is rarely exactly what you planted. That’s the gift.',
-    'Not everything that grew this year was on the plan. Let it count anyway.',
-    'You don’t have to make it beautiful. Just keep a little evidence that October was here.',
-    'Let yourself be moved by the beauty of things ending well.',
-    'What grew in you this year might be quieter than what you have to show for it.',
-    'Gather what’s ripe. Leave what isn’t ready yet.',
-    'You were made to flourish — in your own rhythm, by your own design.',
-    'Even in harvest season, something new can be seeded.',
-    'Satisfaction doesn’t shout. It settles.',
-    'The trees aren’t losing anything. They’re making room.',
-    'Count the unexpected. Especially the unexpected.',
-    'Not to become someone new. To remember who you already are beneath the noise.',
-    'Rest is part of the harvest, not a reward for finishing it.',
-    'There is more room than you think.',
-    'Look at what actually grew. It deserves your kindness, even the parts you didn’t choose.',
-    'Come as you are. That is the whole invitation.'
-  ]
-};
-
-/* Living by Design lens — October: Signature. One thread per Type. */
-var THREADS = {
-  topic: 'Your Signature',
-  'Generator': {
-    title: 'The quiet yes after a full day',
-    body: ['You know the feeling at the end of a day when you’re tired in a good way — used up by things that actually mattered to you. Nothing to prove, nothing nagging. In Human Design, that feeling has a name for Generators: satisfaction. It’s your signature, the sign your energy went toward what lit you up.',
-           'Its opposite is frustration — that stuck, grinding feeling of pushing on something your body never said yes to. Frustration isn’t failure. It’s information. It usually means something got started from “should” instead of from a real gut response.',
-           'Harvest season is a good time to look back honestly. Where did satisfaction actually show up this year? Not where it was supposed to — where it did.'],
-    invitation: 'Tonight, name one thing from today that left you satisfied, even a small one. Then one thing that left you frustrated, without judging it. Just notice which way your body leaned.',
-    reflection: 'What am I still doing out of habit that my gut stopped saying yes to?'
-  },
-  'Manifesting Generator': {
-    title: 'Satisfaction, even when you skip steps',
-    body: ['There’s a particular kind of tired that feels good — you moved fast, followed what was alive, maybe changed direction twice, and still landed somewhere that felt right. For Manifesting Generators, that feeling is satisfaction. It’s your signature, the felt sign your energy went where it wanted to go.',
-           'When it doesn’t, it tends to show up as frustration — and sometimes a flash of anger when you’ve been slowed down, second-guessed, or pushed to finish something your body already knew was done. Neither is a flaw. Both are a compass.',
-           'You’re built to try things, drop what isn’t yours, and keep what is. As you look at what grew this year, let the abandoned things count too. Some of them were how you found the path.'],
-    invitation: 'Pick one thing you started this year and let go of. Instead of calling it unfinished, ask what it taught you about what you actually want.',
-    reflection: 'Where did I feel most like myself this year — and how fast was I moving when I did?'
-  },
-  'Projector': {
-    title: 'Being truly seen is the harvest',
-    body: ['Think of a time someone genuinely asked for your perspective — and then really took it in. The warmth of that. Recognized, not tolerated. For Projectors, that feeling is called success. It isn’t about achievement on paper. It’s the felt sense of your guidance landing with someone who wanted it.',
-           'The not-self theme is bitterness: the tired, sour feeling that comes from giving and giving where you weren’t asked, or weren’t seen. If you’ve felt that this year, it doesn’t mean you’re bitter by nature. It means your gifts were spent in rooms that hadn’t invited them.',
-           'Harvest season is a lovely time to notice who actually recognized you this year. Those are your fields. Tend them.'],
-    invitation: 'Write down the names of two or three people who truly saw you this year. If it feels right, let one of them know.',
-    reflection: 'Where am I still offering what no one asked for — and what would happen if I rested there instead?'
-  },
-  'Manifestor': {
-    title: 'Peace is what’s left after you move',
-    body: ['There’s a stillness that comes after you’ve acted on an urge — you said the thing, made the move, started it — and then the room goes quiet and you can finally breathe. For Manifestors, that stillness is called peace. It’s your signature, the sign you followed your own impulse and let people know along the way.',
-           'The not-self theme is anger: the heat that rises when you feel controlled, interrupted, or made to ask permission for something that was always yours to start. Anger isn’t wrong. It’s a signal that something tried to contain you.',
-           'As you look back over this year, notice the moments of peace. They often came right after you trusted yourself enough to begin.'],
-    invitation: 'Before you start something this week, try informing the people it touches — not asking, just letting them know. Then notice what it does to the resistance around you, and inside you.',
-    reflection: 'Where am I still asking permission for something that’s mine to start?'
-  },
-  'Reflector': {
-    title: 'Let yourself be surprised',
-    body: ['Remember a moment this year when something delighted you out of nowhere — a conversation, a place, a version of yourself you didn’t expect. That lift of wonder. For Reflectors, that feeling is surprise. It’s your signature, the sign you’re in the right place, with the right people, taking your time.',
-           'The not-self theme is disappointment: the flat, heavy feeling of being somewhere that doesn’t reflect anything good back to you. If you’ve felt that, it’s rarely about you. It’s usually about the room.',
-           'You’re built to take in the world and mirror it back, which makes your surroundings everything. This month, notice which places and people left you surprised, and which left you disappointed. That’s your map.'],
-    invitation: 'Spend a little time this week somewhere that has delighted you before. Don’t plan what should happen there. Just notice how you feel.',
-    reflection: 'Which room in my life lets me feel most like myself?'
-  },
-  '_none': {
-    title: 'The feeling that tells you you’re on track',
-    body: ['Every design has a feeling that shows up when life is fitting you well — a quiet signal that you’re living in your own rhythm. In Human Design it’s called your signature: satisfaction, success, peace, or surprise, depending on your Type.',
-           'There’s an opposite signal too, called the not-self theme — frustration, bitterness, anger, or disappointment. Not a verdict. Just a nudge that something isn’t yours.',
-           'Add your Type from the You tab and this page will speak to your design specifically.'],
-    invitation: 'This week, notice the moments you feel quietly right. Write one down.',
-    reflection: 'When did I last feel like my life fit me?'
-  }
-};
-
 var DESIGN_FACTS = {
-  'Generator': {strategy:'To respond', sig:'Satisfaction', ns:'Frustration'},
-  'Manifesting Generator': {strategy:'To respond', sig:'Satisfaction', ns:'Frustration'},
-  'Projector': {strategy:'Wait for the invitation', sig:'Success', ns:'Bitterness'},
-  'Manifestor': {strategy:'To inform', sig:'Peace', ns:'Anger'},
-  'Reflector': {strategy:'Wait a lunar cycle', sig:'Surprise', ns:'Disappointment'}
+  'Generator': {strategy:'To respond', sig:'Satisfaction', ns:'Frustration', short:'Generator'},
+  'Manifesting Generator': {strategy:'To respond', sig:'Satisfaction', ns:'Frustration', short:'MG'},
+  'Projector': {strategy:'Wait for the invitation', sig:'Success', ns:'Bitterness', short:'Projector'},
+  'Manifestor': {strategy:'To inform', sig:'Peace', ns:'Anger', short:'Manifestor'},
+  'Reflector': {strategy:'Wait a lunar cycle', sig:'Surprise', ns:'Disappointment', short:'Reflector'}
 };
-
+var TYPES = ['Generator','Manifesting Generator','Projector','Manifestor','Reflector','_none'];
+var KINDS = {
+  breath:    {label:'Breathwork',       sym:'༄', col:'var(--slate)'},
+  meditation:{label:'Guided meditation',sym:'𑁍', col:'var(--deep)'},
+  lbd:       {label:'Living by Design', sym:'✦', col:'var(--deep)'},
+  movement:  {label:'Movement',         sym:'✺', col:'var(--terra)'},
+  other:     {label:'Extra',            sym:'◇', col:'var(--sage)'}
+};
 var SESSIONS = [
   {title:'Living by Design', scope:'Individual · 30 min', full:77, member:67},
   {title:'Parenting by Design', scope:'1 parent + 1 child · 45 min', full:97, member:87},
   {title:'Family by Design', scope:'Whole family · 60 min · +$10 per additional child', full:127, member:117}
 ];
-
-/* ════════════════════════════════════════════════════════════
-   APP
-   ════════════════════════════════════════════════════════════ */
-var member = {};
-var arrCallback = null;
-var circleTimer = null;
+var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
+/* ════════════════════════════════════════════════════════════
+   DATA LAYER — every call to Supabase goes through here
+   ════════════════════════════════════════════════════════════ */
+var sb = null;
+function ok(r){ if (r.error) throw r.error; return r.data; }
+var api = window.API_OVERRIDE || {
+  init: function(){
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {auth:{persistSession:true, autoRefreshToken:true, detectSessionInUrl:true, storageKey:'ff-auth'}});
+  },
+  session: async function(){ return ok(await sb.auth.getSession()).session; },
+  isInvited: async function(email){ return ok(await sb.rpc('is_invited', {p_email: email})); },
+  sendCode: async function(email){ ok(await sb.auth.signInWithOtp({email: email, options: {shouldCreateUser: true, emailRedirectTo: location.origin + location.pathname}})); },
+  verify: async function(email, code){ return ok(await sb.auth.verifyOtp({email: email, token: code, type: 'email'})).session; },
+  signOut: async function(){ await sb.auth.signOut(); },
+  me: async function(email){ return ok(await sb.from('members').select('*').eq('email', email).maybeSingle()); },
+  saveProfile: async function(p){ ok(await sb.rpc('update_my_profile', {p_name:p.name, p_type:p.type, p_profile:p.profile, p_authority:p.authority})); },
+  months: async function(){ return ok(await sb.from('months').select('key,published,content').order('key')); },
+  recordings: async function(){ return ok(await sb.from('recordings').select('*').order('month_key', {ascending:false}).order('sort').order('id')); },
+  lens: async function(){ return ok(await sb.from('lens_threads').select('*')); },
+  logVisit: async function(uid, day){ ok(await sb.from('visits').upsert({user_id: uid, day: day}, {onConflict:'user_id,day', ignoreDuplicates:true})); },
+  setMood: async function(uid, day, mood){ ok(await sb.from('visits').upsert({user_id: uid, day: day, mood: mood}, {onConflict:'user_id,day'})); },
+  myVisits: async function(uid, from){ return ok(await sb.from('visits').select('day,mood').eq('user_id', uid).gte('day', from)); },
+  posts: async function(month){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id').eq('month', month).order('created_at').limit(400)); },
+  addPost: async function(p){ ok(await sb.from('circle_posts').insert(p)); },
+  deletePost: async function(id){ ok(await sb.from('circle_posts').delete().eq('id', id)); },
+  hidePost: async function(id, hidden){ ok(await sb.from('circle_posts').update({hidden: hidden}).eq('id', id)); },
+  sendNote: async function(p){ ok(await sb.from('beta_feedback').insert(p)); },
+  // Studio
+  saveMonth: async function(key, published, content){ ok(await sb.from('months').upsert({key:key, published:published, content:content, updated_at:new Date().toISOString()})); },
+  saveRecording: async function(r){ var id = r.id; delete r.id; if (id) ok(await sb.from('recordings').update(r).eq('id', id)); else ok(await sb.from('recordings').insert(r)); },
+  deleteRecording: async function(id){ ok(await sb.from('recordings').delete().eq('id', id)); },
+  saveLens: async function(row){ ok(await sb.from('lens_threads').upsert(row, {onConflict:'month_key,type'})); },
+  members: async function(){ return ok(await sb.from('members').select('*').order('created_at')); },
+  addMember: async function(email, name){ ok(await sb.from('members').insert({email: email, name: name || null})); },
+  removeMember: async function(email){ ok(await sb.from('members').delete().eq('email', email)); },
+  notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); }
+};
+
+/* ════════════════════════════════════════════════════════════
+   HELPERS
+   ════════════════════════════════════════════════════════════ */
+var S = {session:null, me:null, months:[], recs:[], lens:[], cur:null, M:null, visits:[]};
+var arrCallback = null, circleTimer = null, authEmail = '', resendAt = 0;
+
 function $(id){ return document.getElementById(id); }
-function store(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch(e) { return null; } }
-function todayKey(d){ d = d || new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
-function dayOfYear(){ var n = new Date(); return Math.floor((n - new Date(n.getFullYear(),0,0)) / 86400000); }
-function supaReady(){ return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
 function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+function store(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch(e){ return null; } }
+function pad2(n){ return String(n).padStart(2, '0'); }
+function todayKey(d){ d = d || new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+function monthKeyOf(d){ d = d || new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1); }
+function dayOfYear(){ var n = new Date(); return Math.floor((n - new Date(n.getFullYear(), 0, 0)) / 86400000); }
+function monthLabel(key){ var p = key.split('-'); return MONTH_NAMES[parseInt(p[1], 10) - 1] + ' ' + p[0]; }
+function isAdmin(){ return !!(S.me && S.me.role === 'admin'); }
+function lighten(hex, amt){
+  var m = /^#?([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return '#d3a582';
+  var n = parseInt(m[1], 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+  r = Math.round(r + (255 - r) * amt); g = Math.round(g + (255 - g) * amt); b = Math.round(b + (255 - b) * amt);
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+function friendlyError(e){
+  var m = (e && (e.message || e.error_description)) || '';
+  if (/rate|too many|security purposes/i.test(m)) return 'Too many codes asked for just now. Wait a minute, then try again.';
+  if (/expired|invalid/i.test(m)) return 'That code didn’t work. Check it, or send a new one.';
+  if (/fetch|network|failed/i.test(m)) return 'Couldn’t reach the app. Check your connection and try again.';
+  return 'Something went wrong. Try again in a moment.';
+}
+function armButton(btn, label, fn){
+  // two-tap confirm instead of a browser dialog
+  btn.onclick = function(){
+    if (btn.classList.contains('armed')) { fn(); return; }
+    btn.classList.add('armed'); var old = btn.textContent; btn.textContent = label;
+    setTimeout(function(){ btn.classList.remove('armed'); btn.textContent = old; }, 3500);
+  };
+}
 
-document.documentElement.style.setProperty('--accent', MONTH.accent);
-document.documentElement.style.setProperty('--accent-light', MONTH.accentLight);
+/* Fill in every field so a half-written month never breaks the app */
+function normalize(c, key){
+  c = c || {};
+  var p = key ? key.split('-') : null;
+  var n = {
+    name: c.name || (p ? MONTH_NAMES[parseInt(p[1], 10) - 1] : ''),
+    theme: c.theme || '', accent: c.accent || '#8ea185', intention: c.intention || '', rhythmLine: c.rhythmLine || '',
+    guidePdfUrl: c.guidePdfUrl || '',
+    breath: {name: (c.breath && c.breath.name) || '', line: (c.breath && c.breath.line) || '', counts: (c.breath && c.breath.counts) || []},
+    moon: c.moon || [], mudra: {name: (c.mudra && c.mudra.name) || '', body: (c.mudra && c.mudra.body) || ''},
+    creative: c.creative || {}, events: c.events || [], eventsNote: c.eventsNote || '', eventsUrl: c.eventsUrl || '',
+    circlePrompt: c.circlePrompt || '', quotes: (c.quotes && c.quotes.length) ? c.quotes : ['You were made to flourish — in your own rhythm, by your own design.'],
+    lensTopic: c.lensTopic || ''
+  };
+  var cr = n.creative;
+  n.creative = {title: cr.title || '', sub: cr.sub || '', steps: cr.steps || [], pull: cr.pull || '',
+    gathering: {eyebrow: (cr.gathering && cr.gathering.eyebrow) || '', title: (cr.gathering && cr.gathering.title) || '', body: (cr.gathering && cr.gathering.body) || ''}};
+  n.accentLight = lighten(n.accent, 0.35);
+  return n;
+}
+function publishedMonths(){ return S.months.filter(function(m){ return m.published; }); }
+function pickCurrent(){
+  var pub = publishedMonths(), now = monthKeyOf(), best = null;
+  pub.forEach(function(m){ if (m.key <= now && (!best || m.key > best.key)) best = m; });
+  if (!best && pub.length) best = pub[pub.length - 1];
+  return best;
+}
+function recsFor(key, kind){ return S.recs.filter(function(r){ return r.month_key === key && (!kind || r.kind === kind) && (r.published || isAdmin()); }); }
 
-window.addEventListener('load', function(){
-  var savedName = store('ff_member_name');
-  if (savedName) $('l-name').value = savedName;
-  setTimeout(function(){
-    var s = $('pwa-splash'); s.classList.add('hiding');
-    setTimeout(function(){ s.style.display = 'none'; }, 650);
-    // Returning member on this device: skip login
-    if (store('ff_in') === '1' && savedName) {
-      member.name = savedName;
-      loadChartFromStore();
-      $('login-screen').style.display = 'none';
-      showArrival(launchApp);
-    }
-  }, 1100);
-});
-
-// Home-screen icon
-(function(){
+/* ════════════════════════════════════════════════════════════
+   BOOT + SIGN IN
+   ════════════════════════════════════════════════════════════ */
+window.addEventListener('load', boot);
+async function boot(){
+  if (!window.API_OVERRIDE && !window.supabase) { hideSplash(); showLogin(); $('a-err').textContent = 'Couldn’t load the app. Check your connection and refresh.'; return; }
+  try { api.init(); S.session = await api.session(); } catch(e) { S.session = null; }
+  setTimeout(hideSplash, 900);
+  if (S.session) enter(true); else setTimeout(showLogin, 900);
+}
+function hideSplash(){ var s = $('pwa-splash'); if (!s || s.style.display === 'none') return; s.classList.add('hiding'); setTimeout(function(){ s.style.display = 'none'; }, 650); }
+function showLogin(){
+  $('login-screen').style.display = 'flex';
+  $('auth-email').style.display = 'block'; $('auth-code').style.display = 'none';
+  var last = store('ff_last_email'); if (last && !$('a-email').value) $('a-email').value = last;
+}
+async function authSendCode(ev){
+  if (ev) ev.preventDefault();
+  var email = $('a-email').value.trim().toLowerCase(), err = $('a-err'), btn = $('a-send');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'That email doesn’t look quite right.'; return; }
+  err.textContent = ''; btn.disabled = true; btn.textContent = 'One moment…';
   try {
-    var c = document.createElement('canvas'); c.width = 180; c.height = 180;
-    var x = c.getContext('2d');
-    x.fillStyle = '#3a3d38'; x.fillRect(0,0,180,180);
-    x.strokeStyle = '#b8c9b3'; x.lineWidth = 5; x.beginPath(); x.arc(90,84,38,0,Math.PI*2); x.stroke();
-    x.fillStyle = '#8ea185'; x.beginPath(); x.arc(90,84,13,0,Math.PI*2); x.fill();
-    x.fillStyle = '#a1765a'; x.beginPath(); x.arc(90,146,6,0,Math.PI*2); x.fill();
-    var l = document.createElement('link'); l.rel = 'apple-touch-icon'; l.href = c.toDataURL('image/png');
-    document.head.appendChild(l);
-  } catch(e){}
-})();
+    var invited = await api.isInvited(email);
+    if (!invited) { err.textContent = 'That email isn’t on the beta list yet. Use the one you gave Staci — or reach out to her.'; return; }
+    await api.sendCode(email);
+    authEmail = email; store('ff_last_email', email); resendAt = Date.now() + 60000;
+    $('a-sent-to').textContent = email;
+    $('auth-email').style.display = 'none'; $('auth-code').style.display = 'block';
+    $('a-code').value = ''; $('a-err2').textContent = ''; setTimeout(function(){ $('a-code').focus(); }, 50);
+  } catch(e) { err.textContent = friendlyError(e); }
+  finally { btn.disabled = false; btn.textContent = 'Send my code'; }
+}
+async function authVerify(ev){
+  if (ev) ev.preventDefault();
+  var code = $('a-code').value.replace(/\D/g, ''), err = $('a-err2'), btn = $('a-verify');
+  if (code.length < 6) { err.textContent = 'Enter the code from your email.'; return; }
+  err.textContent = ''; btn.disabled = true; btn.textContent = 'Opening…';
+  try {
+    S.session = await api.verify(authEmail, code);
+    $('login-screen').style.display = 'none';
+    enter(false);
+  } catch(e) { err.textContent = friendlyError(e); }
+  finally { btn.disabled = false; btn.textContent = 'Come in'; }
+}
+function authBack(){ $('auth-code').style.display = 'none'; $('auth-email').style.display = 'block'; }
+async function authResend(){
+  var wait = Math.ceil((resendAt - Date.now()) / 1000);
+  if (wait > 0) { $('a-err2').textContent = 'You can ask for a new code in ' + wait + ' seconds.'; return; }
+  try { await api.sendCode(authEmail); resendAt = Date.now() + 60000; $('a-err2').textContent = 'A new code is on its way.'; }
+  catch(e) { $('a-err2').textContent = friendlyError(e); }
+}
+
+async function enter(returning){
+  try {
+    S.me = await api.me(S.session.user.email.toLowerCase());
+  } catch(e) { S.me = null; }
+  if (!S.me) {
+    await api.signOut(); S.session = null;
+    showLogin(); $('a-err').textContent = 'That email isn’t on the member list. Use the one you gave Staci.';
+    return;
+  }
+  try { await loadContent(); } catch(e) { /* keep going with whatever loaded */ }
+  if (!S.me.name) { openOnboarding(false); return; }
+  showArrival(launchApp);
+}
+async function loadContent(){
+  var r = await Promise.all([api.months(), api.recordings(), api.lens()]);
+  S.months = r[0] || []; S.recs = r[1] || []; S.lens = r[2] || [];
+  S.cur = pickCurrent();
+  S.M = normalize(S.cur ? S.cur.content : {}, S.cur ? S.cur.key : monthKeyOf());
+  document.documentElement.style.setProperty('--accent', S.M.accent);
+  document.documentElement.style.setProperty('--accent-light', S.M.accentLight);
+}
+
+/* ── ONBOARDING / EDIT DETAILS ── */
+function openOnboarding(editing){
+  var m = S.me || {};
+  $('ob-name').value = m.name || ''; $('ob-type').value = m.type || ''; $('ob-profile').value = m.profile || ''; $('ob-authority').value = m.authority || '';
+  $('ob-save').textContent = editing ? 'Save' : 'Come in';
+  $('ob-cancel').style.display = editing ? 'block' : 'none';
+  $('ob-err').textContent = '';
+  $('onboarding-screen').style.display = 'flex';
+}
+function closeOnboarding(){ $('onboarding-screen').style.display = 'none'; }
+function editDesign(){ openOnboarding(true); }
+async function saveOnboarding(){
+  var p = {name: $('ob-name').value.trim(), type: $('ob-type').value || null, profile: $('ob-profile').value || null, authority: $('ob-authority').value || null};
+  if (!p.name) { $('ob-err').textContent = 'Add your first name to continue.'; $('ob-name').focus(); return; }
+  var btn = $('ob-save'); btn.disabled = true;
+  try {
+    await api.saveProfile(p);
+    S.me.name = p.name; S.me.type = p.type; S.me.profile = p.profile; S.me.authority = p.authority;
+    closeOnboarding();
+    if ($('app').style.display === 'flex') { renderAll(); goScreen('you'); }
+    else showArrival(launchApp);
+  } catch(e) { $('ob-err').textContent = friendlyError(e); }
+  finally { btn.disabled = false; }
+}
 
 /* ── ARRIVAL ── */
 function showArrival(cb){
   arrCallback = cb;
-  var q = MONTH.quotes[(dayOfYear() + 5) % MONTH.quotes.length];
-  $('arr-eye').textContent = MONTH.name + ' · ' + MONTH.theme;
+  var q = S.M.quotes[(dayOfYear() + 5) % S.M.quotes.length];
+  $('arr-eye').textContent = S.M.theme ? S.M.name + ' · ' + S.M.theme : 'Flourish & Flow';
   $('arr-quote').textContent = '“' + q + '”';
   var a = $('arrival-screen'); a.classList.remove('leaving'); a.style.display = 'flex';
 }
@@ -815,119 +981,69 @@ function dismissArrival(){
   setTimeout(function(){ a.style.display = 'none'; if (arrCallback) { var cb = arrCallback; arrCallback = null; cb(); } }, 700);
 }
 
-/* ── LOGIN ── */
-function doLogin(ev){
-  if (ev) ev.preventDefault();
-  var name = $('l-name').value.trim();
-  var code = $('l-code').value.trim().toLowerCase();
-  if (!name) { $('l-err').textContent = 'Add your first name to come in.'; return; }
-  if (code !== ACCESS_CODE.toLowerCase()) { $('l-err').textContent = 'That code doesn’t match. It’s in your welcome note from Staci.'; return; }
-  $('l-err').textContent = '';
-  member.name = name;
-  store('ff_member_name', name); store('ff_in', '1');
-  $('login-screen').style.display = 'none';
-  if (loadChartFromStore() || store('ff_chart_skipped') === '1') showArrival(launchApp);
-  else $('onboarding-screen').style.display = 'flex';
-}
-function loadChartFromStore(){
-  var s = store('ff_chart');
-  if (!s) return false;
-  try { var d = JSON.parse(s); member.type = d.type; member.profile = d.profile; member.authority = d.authority; return !!d.type; } catch(e){ return false; }
-}
-
-/* ── ONBOARDING ── */
-function saveChart(){
-  var type = $('ob-type').value;
-  if (!type) { $('ob-type').focus(); return; }
-  var d = {type:type, profile:$('ob-profile').value, authority:$('ob-authority').value};
-  member.type = d.type; member.profile = d.profile; member.authority = d.authority;
-  store('ff_chart', JSON.stringify(d));
-  $('onboarding-screen').style.display = 'none';
-  if ($('app').style.display === 'flex') { renderDesign(); goScreen('you'); }
-  else showArrival(launchApp);
-}
-function skipOnboarding(){
-  store('ff_chart_skipped', '1');
-  $('onboarding-screen').style.display = 'none';
-  if ($('app').style.display !== 'flex') showArrival(launchApp);
-}
-function editDesign(){
-  $('ob-type').value = member.type || '';
-  $('ob-profile').value = member.profile || '';
-  $('ob-authority').value = member.authority || '';
-  $('onboarding-screen').style.display = 'flex';
-}
-
-/* ── LAUNCH ── */
-function launchApp(){
-  logVisit();
-  var first = (member.name || '').split(' ')[0] || 'friend';
-  $('t-av').textContent = first.charAt(0).toUpperCase();
-  $('t-month').textContent = MONTH.name + ' · ' + MONTH.theme;
-  $('yh-name').textContent = member.name || 'Friend';
-  $('yh-streak').textContent = visitText();
-  buildHome(first);
-  buildPractice();
-  buildRhythm();
-  buildCreate();
-  buildCircleHeader();
-  buildSessions();
-  renderDesign();
+/* ════════════════════════════════════════════════════════════
+   APP
+   ════════════════════════════════════════════════════════════ */
+async function launchApp(){
   $('app').style.display = 'flex';
+  renderAll();
+  var uid = S.session.user.id, t = todayKey();
+  try {
+    await api.logVisit(uid, t);
+    S.visits = await api.myVisits(uid, monthKeyOf() + '-01') || [];
+  } catch(e) { S.visits = [{day: t}]; }
+  renderVisits();
 }
-
-// Gentle "returning" count — days visited this month, never a broken streak
-function logVisit(){
-  var days = [];
-  try { days = JSON.parse(store('ff_days') || '[]'); } catch(e){}
-  var t = todayKey();
-  if (days.indexOf(t) === -1) days.push(t);
-  days = days.slice(-120);
-  store('ff_days', JSON.stringify(days));
+function renderAll(){
+  var first = (S.me.name || 'friend').split(' ')[0];
+  $('t-av').textContent = first.charAt(0).toUpperCase();
+  $('t-month').textContent = S.M.theme ? S.M.name + ' · ' + S.M.theme : S.M.name;
+  $('yh-name').textContent = S.me.name || 'Friend';
+  $('yh-meta').textContent = isAdmin() ? 'Founder · Flourish & Flow' : 'Founding beta · Fall 2026';
+  $('studio-open').style.display = isAdmin() ? 'inline-flex' : 'none';
+  buildHome(first); buildPractice(); buildRhythm(); buildCreate(); buildCircleHeader(); buildSessions(); renderDesign(); buildLibrary();
 }
-function visitText(){
-  var days = [];
-  try { days = JSON.parse(store('ff_days') || '[]'); } catch(e){}
-  var n = days.filter(function(d){ return d.indexOf(MONTH.key) === 0; }).length;
-  return n <= 1 ? 'Your first return this ' + MONTH.name + '.' : 'You’ve returned ' + n + ' days this ' + MONTH.name + '.';
+function renderVisits(){
+  var mine = S.visits || [], n = mine.length;
+  $('yh-streak').textContent = n <= 1 ? 'Your first return this ' + MONTH_NAMES[new Date().getMonth()] + '.' : 'You’ve returned ' + n + ' days this ' + MONTH_NAMES[new Date().getMonth()] + '.';
+  var today = mine.filter(function(v){ return v.day === todayKey(); })[0];
+  if (today && today.mood) {
+    document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(b){ b.classList.toggle('selected', b.textContent === today.mood); });
+    $('checkin-thanks').textContent = checkinReply(today.mood);
+  }
 }
 
 /* ── HOME ── */
+function todayQuote(){ return S.M.quotes[(new Date().getDate() - 1) % S.M.quotes.length]; }
 function buildHome(first){
-  var d = new Date();
-  $('hero-day').textContent = DAY_NAMES[d.getDay()] + ' · ' + MONTH.name + ' ' + d.getDate();
+  var d = new Date(), M = S.M;
+  $('hero-day').textContent = DAY_NAMES[d.getDay()] + ' · ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getDate();
   $('hero-name').textContent = 'Hello, ' + first + '.';
   $('hero-quote').textContent = '“' + todayQuote() + '”';
-  $('hp-month').textContent = MONTH.name;
-  $('hp-theme').textContent = MONTH.theme;
-  $('ts-eye').textContent = '◉ The Rhythm · ' + MONTH.name;
-  $('ts-title').textContent = MONTH.theme;
-  $('ts-int').textContent = MONTH.intention;
-  $('ct-q').textContent = '“' + MONTH.circlePrompt + '”';
+  $('hp-month').textContent = M.name; $('hp-theme').textContent = M.theme;
+  $('ts-eye').textContent = '◉ The Rhythm · ' + M.name;
+  $('ts-title').textContent = M.theme || M.name;
+  $('ts-int').textContent = M.intention;
+  $('ct-q').textContent = M.circlePrompt ? '“' + M.circlePrompt + '”' : 'What’s alive for you this month?';
+  var nRec = S.recs.filter(function(r){ return r.published && r.url; }).length, nMon = publishedMonths().length;
+  $('lib-count').textContent = nRec ? nRec + ' recordings across ' + nMon + ' months' : 'Every month, kept for you.';
 
-  // check-in
-  var saved = store('ff_checkin_' + todayKey());
   document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(b){
-    if (b.textContent === saved) b.classList.add('selected');
     b.onclick = function(){
       document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(x){ x.classList.remove('selected'); });
-      b.classList.add('selected');
-      store('ff_checkin_' + todayKey(), b.textContent);
-      $('checkin-thanks').textContent = checkinReply(b.textContent);
+      b.classList.add('selected'); $('checkin-thanks').textContent = checkinReply(b.textContent);
+      api.setMood(S.session.user.id, todayKey(), b.textContent).catch(function(){});
     };
   });
-  if (saved) $('checkin-thanks').textContent = checkinReply(saved);
 
-  // practice suggestions — rotate gently by weekday
-  var t = threadFor();
+  var breath = recsFor(S.cur && S.cur.key, 'breath')[0], med = recsFor(S.cur && S.cur.key, 'meditation')[0];
   var cards = [
-    {sym:'༄', col:'var(--slate)', type:'Breathe', title:MONTH.breath.name, sub:'A few minutes · any time today', go:function(){ goScreen('practice'); switchPTab('pt-breathe'); }},
-    {sym:'𑁍', col:'var(--deep)', type:'Meditate', title:MONTH.meditation.title, sub:MONTH.meditation.minutes + ' · guided', go:function(){ goScreen('practice'); switchPTab('pt-meditate'); }},
+    {sym:'༄', col:'var(--slate)', type:'Breathe', title: breath ? breath.title : (M.breath.name || 'This month’s breath'), sub: breath && breath.minutes ? breath.minutes + ' · any time today' : 'A few minutes · any time today', go:function(){ goScreen('practice'); switchPTab('pt-breathe'); }},
+    {sym:'𑑍', col:'var(--deep)', type:'Meditate', title: med ? med.title : 'This month’s meditation', sub: med && med.minutes ? med.minutes + ' · guided' : 'Guided', go:function(){ goScreen('practice'); switchPTab('pt-meditate'); }},
     {sym:'✷', col:'var(--ochre)', type:'Create', title:'This month’s art-journal page', sub:'Gather · Make · Notice', go:function(){ goScreen('creative'); }},
-    {sym:'◉', col:'var(--sage)', type:'Reflect', title:'Your ' + MONTH.name + ' guide', sub:'Pick one page. That’s enough.', go:function(){ goScreen('rhythm'); }}
+    {sym:'◇', col:'var(--sage)', type:'Explore', title:'Something from an earlier month', sub:'The Library keeps every practice', go:function(){ goScreen('library'); }}
   ];
-  var dow = d.getDay();
-  var pick = [cards[0], cards[(dow % 3) + 1]];
+  var pick = [cards[0], cards[(d.getDay() % 3) + 1]];
   var c = $('today-cards'); c.innerHTML = '';
   pick.forEach(function(p){
     var b = el('button', 'pcard'); b.style.borderLeftColor = p.col;
@@ -939,19 +1055,14 @@ function buildHome(first){
   });
 }
 function checkinReply(v){
-  return {
-    'Grounded':'Lovely. Notice what helped — that’s worth keeping.',
-    'Scattered':'That’s alright. One slow breath is a perfectly good start.',
-    'Tender':'Go gently today. You don’t have to do it all.',
-    'In between':'In between is honest. Come as you are.'
-  }[v] || '';
+  return {'Grounded':'Lovely. Notice what helped — that’s worth keeping.','Scattered':'That’s alright. One slow breath is a perfectly good start.',
+          'Tender':'Go gently today. You don’t have to do it all.','In between':'In between is honest. Come as you are.'}[v] || '';
 }
-function todayQuote(){ return MONTH.quotes[(new Date().getDate() - 1) % MONTH.quotes.length]; }
 
-/* ── PRACTICE ── */
-function mediaButton(url, wrap){
+/* ── MEDIA ── */
+function mediaButton(url, wrap, small){
   if (!url) return el('div', 'soon', 'Arriving soon');
-  var b = el('button', 'pill-btn dark', '▶  Play');
+  var b = el('button', 'pill-btn dark' + (small ? ' small-btn' : ''), '▶  Play');
   b.onclick = function(){
     var vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/(\w+))?/);
     if (vm) {
@@ -962,131 +1073,188 @@ function mediaButton(url, wrap){
       if (!f.parentNode) wrap.appendChild(f);
     } else if (/\.(mp3|m4a|wav|ogg|aac)(\?|$)/i.test(url)) {
       var a = wrap.querySelector('audio') || document.createElement('audio');
-      a.src = url; a.controls = true; a.style.width = '100%'; a.style.marginTop = '12px';
+      a.src = url; a.controls = true; a.style.width = '100%'; a.style.marginTop = '10px';
       if (!a.parentNode) wrap.appendChild(a);
       a.play();
     } else { window.open(url, '_blank', 'noopener'); }
   };
   return b;
 }
-function practiceCard(eyebrow, title, body, meta, url, border){
+function recCard(r, fallbackEyebrow){
+  var meta = KINDS[r.kind] || KINDS.other;
   var card = el('div', 'content-card');
-  var head = el('div', 'cc-head'); if (border) head.style.borderLeftColor = border;
-  head.appendChild(el('div', 'cc-eye', eyebrow)); head.appendChild(el('div', 'cc-title', title));
-  if (body) head.appendChild(el('div', 'cc-body', body));
+  var head = el('div', 'cc-head'); head.style.borderLeftColor = meta.col;
+  head.appendChild(el('div', 'cc-eye', fallbackEyebrow || meta.label));
+  head.appendChild(el('div', 'cc-title', r.title));
+  if (r.description) head.appendChild(el('div', 'cc-body', r.description));
   card.appendChild(head);
-  var foot = el('div', 'cc-foot'); foot.appendChild(el('div', 'cc-meta', meta));
-  var mediaWrap = el('div'); mediaWrap.style.padding = '0 18px';
-  foot.appendChild(mediaButton(url, mediaWrap));
-  card.appendChild(foot); card.appendChild(mediaWrap);
+  var foot = el('div', 'cc-foot'); foot.appendChild(el('div', 'cc-meta', [r.minutes, meta.label.toLowerCase()].filter(Boolean).join(' · ')));
+  var wrap = el('div'); wrap.style.padding = '0 18px';
+  foot.appendChild(mediaButton(r.url, wrap)); card.appendChild(foot); card.appendChild(wrap);
   return card;
 }
+function emptyCard(text){ var c = el('div', 'note-line', text); c.style.marginTop = '0'; return c; }
+
+/* ── PRACTICE ── */
 function buildPractice(){
+  var key = S.cur && S.cur.key, M = S.M;
   var br = $('pt-breathe'); br.innerHTML = '';
-  br.appendChild(practiceCard('This month · The Return · ' + MONTH.name, MONTH.breath.name, MONTH.breath.line, MONTH.breath.minutes + ' · breathwork', MONTH.breath.url, 'var(--slate)'));
-  br.appendChild(breathCounts());
+  var bRecs = recsFor(key, 'breath');
+  bRecs.forEach(function(r){ br.appendChild(recCard(r, 'This month · The Return · ' + M.name)); });
+  if (!bRecs.length && M.breath.name) br.appendChild(recCard({kind:'breath', title:M.breath.name, description:M.breath.line, url:''}, 'This month · The Return'));
+  if (M.breath.counts.length) br.appendChild(breathCounts());
+  if (!br.children.length) br.appendChild(emptyCard('This month’s breath is on its way.'));
+
   var me = $('pt-meditate'); me.innerHTML = '';
-  me.appendChild(practiceCard('This month · Guided meditation', MONTH.meditation.title, MONTH.meditation.body, MONTH.meditation.minutes + ' · guided', MONTH.meditation.url, 'var(--deep)'));
+  var mRecs = recsFor(key, 'meditation');
+  mRecs.forEach(function(r){ me.appendChild(recCard(r, 'This month · Guided meditation')); });
+  if (!mRecs.length) me.appendChild(emptyCard('This month’s meditation is on its way.'));
+
   var g = $('pt-gather'); g.innerHTML = '';
-  var lead = el('div', 'cc-body', 'Root & Rise is yoga in real rooms and open air. Come move with us.'); lead.style.marginBottom = '14px';
+  recsFor(key, 'movement').forEach(function(r){ g.appendChild(recCard(r)); });
+  var lead = el('div', 'cc-body', 'Root & Rise is yoga in real rooms and open air. Come move with us.'); lead.style.margin = '4px 0 14px';
   g.appendChild(lead);
-  MONTH.events.forEach(function(e){
+  M.events.forEach(function(e){
     var row = el('div', 'event');
-    var l = el('div'); l.appendChild(el('div', 'ev-date', e.date)); l.appendChild(el('div', 'ev-name', e.name)); l.appendChild(el('div', 'ev-time', e.time));
+    var l = el('div'); l.appendChild(el('div', 'ev-date', e.date)); l.appendChild(el('div', 'ev-name', e.name)); if (e.time) l.appendChild(el('div', 'ev-time', e.time));
     row.appendChild(l);
     if (e.url) { var a = el('a', 'pill-btn outline', 'Details'); a.href = e.url; a.target = '_blank'; a.rel = 'noopener'; row.appendChild(a); }
     g.appendChild(row);
   });
-  g.appendChild(el('div', 'note-line', MONTH.eventsNote));
-  var more = el('a', 'pill-btn full', 'See all classes & events'); more.href = MONTH.eventsUrl; more.target = '_blank'; more.rel = 'noopener'; more.style.marginTop = '14px';
-  g.appendChild(more);
-  document.querySelectorAll('.ptab').forEach(function(t){ t.onclick = function(){ switchPTab(t.dataset.tab); }; });
+  if (M.eventsNote) g.appendChild(el('div', 'note-line', M.eventsNote));
+  if (M.eventsUrl) { var more = el('a', 'pill-btn full', 'See all classes & events'); more.href = M.eventsUrl; more.target = '_blank'; more.rel = 'noopener'; more.style.marginTop = '14px'; g.appendChild(more); }
+  document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.onclick = function(){ switchPTab(t.dataset.tab); }; });
 }
 function breathCounts(){
   var wrap = el('div', 'bc-counts'); wrap.style.marginTop = '4px';
-  MONTH.breath.counts.forEach(function(c){
-    var b = el('div', 'bc-count'); b.appendChild(el('div', 'bc-num', c[0])); b.appendChild(el('div', 'bc-phase', c[1])); wrap.appendChild(b);
-  });
+  S.M.breath.counts.forEach(function(c){ var b = el('div', 'bc-count'); b.appendChild(el('div', 'bc-num', c[0])); b.appendChild(el('div', 'bc-phase', c[1] || '')); wrap.appendChild(b); });
   return wrap;
 }
 function switchPTab(id){
-  document.querySelectorAll('.ptab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === id); });
-  document.querySelectorAll('.psec').forEach(function(s){ s.classList.toggle('active', s.id === id); });
+  document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === id); });
+  document.querySelectorAll('#screen-practice .psec').forEach(function(s){ s.classList.toggle('active', s.id === id); });
 }
 
 /* ── RHYTHM ── */
 function buildRhythm(){
-  $('rh-wm').textContent = MONTH.theme.replace(/^The /, '');
-  $('rh-eye').textContent = 'The Rhythm · ' + MONTH.name + ' 2026';
-  $('rh-title').textContent = MONTH.theme;
-  $('rh-int').textContent = MONTH.rhythmLine;
-  $('gc-title').textContent = MONTH.name + ' Guide';
+  var M = S.M, key = S.cur && S.cur.key;
+  $('rh-wm').textContent = (M.theme || M.name).replace(/^The /, '');
+  $('rh-eye').textContent = 'The Rhythm · ' + (key ? monthLabel(key) : M.name);
+  $('rh-title').textContent = M.theme || M.name;
+  $('rh-int').textContent = M.rhythmLine || M.intention;
+  $('gc-title').textContent = M.name + ' Guide';
   var ga = $('gc-action'); ga.innerHTML = '';
-  if (MONTH.guidePdfUrl) { var a = el('a', 'pill-btn', 'Open →'); a.href = MONTH.guidePdfUrl; a.target = '_blank'; a.rel = 'noopener'; ga.appendChild(a); }
+  if (M.guidePdfUrl) { var a = el('a', 'pill-btn', 'Open →'); a.href = M.guidePdfUrl; a.target = '_blank'; a.rel = 'noopener'; ga.appendChild(a); }
   else { var s = el('div', 'soon', 'In your email'); s.style.color = 'rgba(255,255,255,.6)'; s.style.borderColor = 'rgba(255,255,255,.3)'; ga.appendChild(s); }
   var bc = $('breath-card'); bc.innerHTML = '';
+  bc.style.display = M.breath.name ? 'block' : 'none';
   bc.appendChild(el('div', 'bc-eye', '⟲ This month’s breath'));
-  bc.appendChild(el('div', 'bc-title', MONTH.breath.name));
-  bc.appendChild(el('div', 'bc-line', MONTH.breath.line));
-  bc.appendChild(breathCounts());
-  $('moon-eye').textContent = 'Moon dates · ' + MONTH.name;
+  bc.appendChild(el('div', 'bc-title', M.breath.name));
+  if (M.breath.line) bc.appendChild(el('div', 'bc-line', M.breath.line));
+  if (M.breath.counts.length) bc.appendChild(breathCounts());
+  $('moon-wrap').style.display = M.moon.length ? 'block' : 'none';
+  $('moon-eye').textContent = 'Moon dates · ' + M.name;
   var ml = $('moon-list'); ml.innerHTML = '';
-  MONTH.moon.forEach(function(m){
-    var it = el('div', 'moon-item');
-    it.appendChild(el('div', 'moon-type', m.type)); it.appendChild(el('div', 'moon-date', m.date)); it.appendChild(el('div', 'moon-note', m.note));
-    ml.appendChild(it);
-  });
+  M.moon.forEach(function(m){ var it = el('div', 'moon-item'); it.appendChild(el('div', 'moon-type', m.type)); it.appendChild(el('div', 'moon-date', m.date)); if (m.note) it.appendChild(el('div', 'moon-note', m.note)); ml.appendChild(it); });
   var lc = $('lbd-card'); lc.innerHTML = '';
-  lc.appendChild(practiceCard(MONTH.lbd.eyebrow, MONTH.lbd.title, MONTH.lbd.body, MONTH.lbd.minutes + ' · audio', MONTH.lbd.url, 'var(--deep)'));
+  var l = recsFor(key, 'lbd');
+  l.forEach(function(r){ lc.appendChild(recCard(r, 'Living by Design · ' + M.name)); });
+  if (!l.length) lc.appendChild(emptyCard('This month’s episode is on its way.'));
+  $('mudra-wrap').style.display = M.mudra.name ? 'block' : 'none';
   var mc = $('mudra-card'); mc.innerHTML = '';
-  mc.appendChild(el('div', 'cc-eye', 'Mudra'));
-  mc.appendChild(el('div', 'cc-title', MONTH.mudra.name));
-  mc.appendChild(el('div', 'cc-body', MONTH.mudra.body));
+  mc.appendChild(el('div', 'cc-eye', 'Mudra')); mc.appendChild(el('div', 'cc-title', M.mudra.name)); mc.appendChild(el('div', 'cc-body', M.mudra.body));
 }
 
 /* ── CREATE ── */
 function buildCreate(){
-  var c = MONTH.creative;
-  $('cf-title').textContent = c.title;
+  var c = S.M.creative;
+  $('cf-title').textContent = c.title || 'Make something, without performance.';
   $('cf-sub').textContent = c.sub;
+  $('cf-steps-wrap').style.display = c.steps.length ? 'block' : 'none';
   var s = $('cf-steps'); s.innerHTML = '';
-  c.steps.forEach(function(st){ var r = el('div', 'step'); r.appendChild(el('div', 'step-k', st[0])); r.appendChild(el('div', 'step-t', st[1])); s.appendChild(r); });
+  c.steps.forEach(function(st){ var r = el('div', 'step'); r.appendChild(el('div', 'step-k', st[0])); r.appendChild(el('div', 'step-t', st[1] || '')); s.appendChild(r); });
+  $('cf-pull').style.display = c.pull ? 'block' : 'none';
   $('cf-pull').textContent = '“' + c.pull + '”';
+  $('cf-gather-wrap').style.display = c.gathering.title ? 'block' : 'none';
   var g = $('cf-gather'); g.innerHTML = '';
   var h = el('div', 'cc-head'); h.style.borderLeftColor = 'var(--ochre)';
   h.appendChild(el('div', 'cc-eye', c.gathering.eyebrow)); h.appendChild(el('div', 'cc-title', c.gathering.title)); h.appendChild(el('div', 'cc-body', c.gathering.body));
   g.appendChild(h);
 }
 
+/* ── LIBRARY ── */
+var libFilter = 'all';
+function buildLibrary(){
+  var chips = $('lib-chips'); chips.innerHTML = '';
+  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Move'],['guide','Guides']].forEach(function(c){
+    var b = el('button', 'chip' + (libFilter === c[0] ? ' on' : ''), c[1]);
+    b.onclick = function(){ libFilter = c[0]; buildLibrary(); };
+    chips.appendChild(b);
+  });
+  var list = $('lib-list'); list.innerHTML = '';
+  var curKey = S.cur ? S.cur.key : monthKeyOf();
+  var months = publishedMonths().filter(function(m){ return m.key <= curKey; }).sort(function(a, b){ return a.key < b.key ? 1 : -1; });
+  var shown = 0;
+  months.forEach(function(m){
+    var M = normalize(m.content, m.key);
+    var recs = recsFor(m.key).filter(function(r){ return libFilter === 'all' || r.kind === libFilter; });
+    var showGuide = M.guidePdfUrl && (libFilter === 'all' || libFilter === 'guide');
+    if (libFilter !== 'all' && !recs.length && !showGuide) return;
+    shown++;
+    var box = el('div', 'lib-month');
+    var band = el('div', 'lm-band'); band.style.background = M.accent; box.appendChild(band);
+    var head = el('div', 'lm-head');
+    var hl = el('div'); hl.appendChild(el('div', 'lm-eye', monthLabel(m.key)));
+    var t = el('div', 'lm-title', M.theme || M.name);
+    if (m.key === curKey) { var now = el('span', 'lm-now', 'This month'); now.style.background = M.accent; t.appendChild(now); }
+    hl.appendChild(t); head.appendChild(hl);
+    if (showGuide) { var ga = el('a', 'pill-btn outline small-btn', 'Guide'); ga.href = M.guidePdfUrl; ga.target = '_blank'; ga.rel = 'noopener'; head.appendChild(ga); }
+    box.appendChild(head);
+    recs.forEach(function(r){
+      var meta = KINDS[r.kind] || KINDS.other;
+      var row = el('div', 'lm-row'), top = el('div', 'lm-row-top');
+      var sym = el('div', 'lm-sym', meta.sym); sym.style.color = meta.col; top.appendChild(sym);
+      var info = el('div', 'lm-info'); info.appendChild(el('div', 'lm-k', meta.label)); info.appendChild(el('div', 'lm-t', r.title)); if (r.minutes) info.appendChild(el('div', 'lm-m', r.minutes));
+      top.appendChild(info);
+      var wrap = el('div');
+      top.appendChild(mediaButton(r.url, wrap, true));
+      row.appendChild(top); row.appendChild(wrap); box.appendChild(row);
+    });
+    if (!recs.length) box.appendChild(el('div', 'lm-empty', libFilter === 'guide' ? '' : 'Recordings from this month are being added.'));
+    list.appendChild(box);
+  });
+  if (!shown) list.appendChild(el('div', 'feed-empty', 'Nothing here yet — it fills in month by month.'));
+}
+
 /* ── DESIGN THREAD ── */
-function threadFor(){ return THREADS[member.type] || THREADS._none; }
+function threadFor(){
+  var key = S.cur && S.cur.key;
+  var t = S.lens.filter(function(l){ return l.month_key === key && l.type === (S.me.type || '_none'); })[0];
+  if (!t || !t.title) t = S.lens.filter(function(l){ return l.month_key === key && l.type === '_none'; })[0];
+  return t && t.title ? t : null;
+}
 function renderDesign(){
-  var t = threadFor();
-  var f = DESIGN_FACTS[member.type];
-  $('hdt-topic').textContent = t.title;
-  $('hdt-preview').textContent = t.body[0].length > 120 ? t.body[0].slice(0, 118).replace(/\s+\S*$/, '').replace(/[\s.,;:—-]+$/, '') + '…' : t.body[0];
-  $('bd-eye').textContent = '✦ ' + THREADS.topic + ' · ' + MONTH.name;
-  $('bd-for').textContent = member.type ? [member.type, member.profile, member.authority].filter(Boolean).join(' · ') : 'Every design';
-  $('bd-title').textContent = t.title;
+  var t = threadFor(), f = DESIGN_FACTS[S.me.type], paras = t ? (t.body || '').split(/\n\s*\n/).filter(Boolean) : [];
+  $('hdt-topic').textContent = t ? t.title : 'Your lens is on its way';
+  var first = paras[0] || 'Each month brings a short, personal note on your design.';
+  $('hdt-preview').textContent = first.length > 120 ? first.slice(0, 118).replace(/\s+\S*$/, '').replace(/[\s.,;:—-]+$/, '') + '…' : first;
+  $('bd-eye').textContent = '✦ ' + (S.M.lensTopic || 'Living by Design') + ' · ' + S.M.name;
+  $('bd-for').textContent = S.me.type ? [S.me.type, S.me.profile, S.me.authority].filter(Boolean).join(' · ') : 'Every design';
+  $('bd-title').textContent = t ? t.title : 'Your lens is on its way';
   var b = $('bd-body'); b.innerHTML = '';
-  t.body.forEach(function(p){ b.appendChild(el('p', null, p)); });
-  $('bd-inv').textContent = t.invitation;
-  $('bd-ref').textContent = t.reflection;
-  $('bd-foot').textContent = 'Human Design is a lens, not a rulebook. Keep what fits; leave what doesn’t. This month’s Living by Design audio goes wider, into your Incarnation Cross.';
-  $('hdi-type').textContent = member.type || '—';
-  $('hdi-strategy').textContent = f ? f.strategy : '—';
-  $('hdi-profile').textContent = member.profile || '—';
-  $('hdi-auth').textContent = member.authority || '—';
-  $('hdi-sig').textContent = f ? f.sig : '—';
-  $('hdi-ns').textContent = f ? f.ns : '—';
+  paras.forEach(function(p){ b.appendChild(el('p', null, p.trim())); });
+  $('bd-inv-wrap').style.display = t && t.invitation ? 'block' : 'none'; $('bd-inv').textContent = t ? t.invitation : '';
+  $('bd-ref-wrap').style.display = t && t.reflection ? 'block' : 'none'; $('bd-ref').textContent = t ? t.reflection : '';
+  $('hdi-type').textContent = S.me.type || '—'; $('hdi-strategy').textContent = f ? f.strategy : '—';
+  $('hdi-profile').textContent = S.me.profile || '—'; $('hdi-auth').textContent = S.me.authority || '—';
+  $('hdi-sig').textContent = f ? f.sig : '—'; $('hdi-ns').textContent = f ? f.ns : '—';
 }
 
 /* ── SESSIONS ── */
 function buildSessions(){
   var w = $('sessions'); w.innerHTML = '';
   SESSIONS.forEach(function(s){
-    var c = el('div', 'session');
-    var h = el('div', 'ss-head');
+    var c = el('div', 'session'), h = el('div', 'ss-head');
     var l = el('div'); l.appendChild(el('div', 'ss-title', s.title)); l.appendChild(el('div', 'ss-scope', s.scope));
     var r = el('div', 'ss-price'); r.appendChild(el('div', 'ss-full', '$' + s.full)); r.appendChild(el('div', 'ss-member', '$' + s.member)); r.appendChild(el('div', 'ss-mlbl', 'member rate'));
     h.appendChild(l); h.appendChild(r); c.appendChild(h);
@@ -1095,92 +1263,81 @@ function buildSessions(){
   });
 }
 
-/* ── CIRCLE (shared, via Supabase) ── */
+/* ── CIRCLE ── */
 function buildCircleHeader(){
-  $('circle-eye').textContent = '◯ The Circle · ' + MONTH.name;
-  $('circle-q').textContent = '“' + MONTH.circlePrompt + '”';
-  if (!supaReady()) { $('circle-live').style.display = 'none'; $('circle-offline').style.display = 'block'; $('ct-meta').textContent = 'Opening soon →'; }
+  $('circle-eye').textContent = '○ The Circle · ' + S.M.name;
+  $('circle-q').textContent = S.M.circlePrompt ? '“' + S.M.circlePrompt + '”' : 'What’s alive for you this month?';
 }
-function supa(path, opts){
-  opts = opts || {};
-  var headers = {'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json'};
-  if (/^eyJ/.test(SUPABASE_ANON_KEY)) headers['Authorization'] = 'Bearer ' + SUPABASE_ANON_KEY; // legacy anon key; new sb_publishable_ keys go in apikey only
-  if (opts.prefer) headers['Prefer'] = opts.prefer;
-  return fetch(SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/' + path, {method: opts.method || 'GET', headers: headers, body: opts.body ? JSON.stringify(opts.body) : undefined})
-    .then(function(r){ if (!r.ok) throw new Error('status ' + r.status); return r.text(); })
-    .then(function(t){ return t ? JSON.parse(t) : null; });
-}
-function myPostIds(){ try { return JSON.parse(store('ff_my_posts') || '[]'); } catch(e){ return []; } }
-function loadCircle(){
-  if (!supaReady()) return;
-  supa('circle_posts?select=id,created_at,name,design,body,is_host&month=eq.' + encodeURIComponent(MONTH.key) + '&order=created_at.asc&limit=300')
-    .then(renderFeed)
-    .catch(function(){ $('chat-feed').innerHTML = ''; $('chat-feed').appendChild(el('div', 'feed-empty', 'The Circle couldn’t load just now. Check your connection and come back in a moment.')); });
+async function loadCircle(){
+  if (!S.cur) return;
+  try { renderFeed(await api.posts(S.cur.key)); }
+  catch(e) { var f = $('chat-feed'); f.innerHTML = ''; f.appendChild(el('div', 'feed-empty', 'The Circle couldn’t load just now. Check your connection and come back in a moment.')); }
 }
 function renderFeed(posts){
   var feed = $('chat-feed'); feed.innerHTML = '';
-  var mine = myPostIds();
-  if (!posts || !posts.length) {
-    feed.appendChild(el('div', 'feed-empty', 'No one has shared yet this month. You’re welcome to go first — a sentence is plenty.'));
-    $('ct-meta').textContent = 'Be the first to share →';
-    return;
-  }
-  $('ct-meta').textContent = posts.length + (posts.length === 1 ? ' voice' : ' voices') + ' so far →';
+  var uid = S.session.user.id;
+  posts = posts || [];
+  var visible = posts.filter(function(p){ return !p.hidden; }).length;
+  $('ct-meta').textContent = visible ? visible + (visible === 1 ? ' voice' : ' voices') + ' so far →' : 'Be the first to share →';
+  if (!posts.length) { feed.appendChild(el('div', 'feed-empty', 'No one has shared yet this month. You’re welcome to go first — a sentence is plenty.')); return; }
   posts.forEach(function(p){
-    var m = el('div', 'chat-msg');
-    var av = el('div', 'msg-av' + (p.is_host ? ' host' : (mine.indexOf(p.id) > -1 ? ' mine' : '')), (p.name || '?').charAt(0).toUpperCase());
+    var mine = p.user_id === uid;
+    var m = el('div', 'chat-msg' + (p.hidden ? ' msg-hidden' : ''));
+    m.appendChild(el('div', 'msg-av' + (p.is_host ? ' host' : (mine ? ' mine' : '')), (p.name || '?').charAt(0).toUpperCase()));
     var right = el('div'); right.style.flex = '1'; right.style.minWidth = '0';
     var meta = el('div', 'msg-meta');
     meta.appendChild(el('span', 'msg-name', p.name + (p.design ? ' · ' + p.design : '')));
     meta.appendChild(el('span', null, new Date(p.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric'})));
+    if (p.hidden) meta.appendChild(el('span', null, '· hidden'));
     right.appendChild(meta); right.appendChild(el('div', 'msg-text', p.body));
-    m.appendChild(av); m.appendChild(right); feed.appendChild(m);
+    if (mine || isAdmin()) {
+      var tools = el('div', 'msg-tools');
+      if (mine || isAdmin()) { var del = el('button', null, 'Remove'); armButton(del, 'Tap again to remove', function(){ api.deletePost(p.id).then(loadCircle); }); tools.appendChild(del); }
+      if (isAdmin() && !mine) { var hide = el('button', null, p.hidden ? 'Show' : 'Hide'); hide.onclick = function(){ api.hidePost(p.id, !p.hidden).then(loadCircle); }; tools.appendChild(hide); }
+      right.appendChild(tools);
+    }
+    m.appendChild(right); feed.appendChild(m);
   });
 }
 function shortDesign(){
-  if (!member.type) return '';
-  var abbr = {'Manifesting Generator':'MG','Generator':'Generator','Projector':'Projector','Manifestor':'Manifestor','Reflector':'Reflector'}[member.type];
-  return [abbr, member.profile].filter(Boolean).join(' ');
+  if (!S.me.type) return '';
+  return [DESIGN_FACTS[S.me.type] ? DESIGN_FACTS[S.me.type].short : S.me.type, S.me.profile].filter(Boolean).join(' ');
 }
-function sendPost(){
-  var ta = $('circle-ta'); var text = ta.value.trim();
-  if (!text || !supaReady()) return;
+async function sendPost(){
+  var ta = $('circle-ta'), text = ta.value.trim();
+  if (!text || !S.cur) return;
   var btn = $('circle-send'); btn.disabled = true; btn.textContent = 'Sharing…';
-  supa('circle_posts', {method:'POST', prefer:'return=representation', body:{month: MONTH.key, name: (member.name || 'Friend').slice(0, 40), design: shortDesign(), body: text}})
-    .then(function(rows){
-      if (rows && rows[0]) { var ids = myPostIds(); ids.push(rows[0].id); store('ff_my_posts', JSON.stringify(ids.slice(-200))); }
-      ta.value = ''; loadCircle();
-    })
-    .catch(function(){ alertSoft('That didn’t send. Your words are still in the box — try again in a moment.'); })
-    .then(function(){ btn.disabled = false; btn.textContent = 'Share'; });
+  try {
+    await api.addPost({month: S.cur.key, name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: text, user_id: S.session.user.id});
+    ta.value = ''; await loadCircle();
+  } catch(e) {
+    var f = $('chat-feed'), n = el('div', 'feed-empty', 'That didn’t send. Your words are still in the box — try again in a moment.');
+    f.insertBefore(n, f.firstChild); setTimeout(function(){ n.remove(); }, 6000);
+  } finally { btn.disabled = false; btn.textContent = 'Share'; }
 }
-function alertSoft(msg){ var f = $('chat-feed'); var n = el('div', 'feed-empty', msg); f.insertBefore(n, f.firstChild); setTimeout(function(){ n.remove(); }, 6000); }
 
-/* ── BETA FEEDBACK ── */
-function sendFeedback(){
-  var text = $('fb-text').value.trim(); var screen = $('fb-screen').value;
+/* ── BETA NOTES ── */
+async function sendFeedback(){
+  var text = $('fb-text').value.trim(), screen = $('fb-screen').value, status = $('fb-status');
   if (!text) { $('fb-text').focus(); return; }
-  var status = $('fb-status');
-  if (!supaReady()) {
-    window.location.href = 'mailto:' + FEEDBACK_EMAIL + '?subject=' + encodeURIComponent('Flourish & Flow beta · ' + screen) + '&body=' + encodeURIComponent(text + '\n\n— ' + (member.name || ''));
-    return;
-  }
   status.textContent = 'Sending…';
-  supa('beta_feedback', {method:'POST', body:{name: member.name || '', screen: screen, body: text, design: shortDesign(), device: navigator.userAgent.slice(0, 200)}})
-    .then(function(){ $('fb-text').value = ''; status.textContent = 'Thank you. Staci will read every word.'; })
-    .catch(function(){ status.textContent = 'That didn’t send. Try again in a moment.'; });
+  try {
+    await api.sendNote({name: S.me.name || '', screen: screen, body: text, design: shortDesign(), device: navigator.userAgent.slice(0, 200)});
+    $('fb-text').value = ''; status.textContent = 'Thank you. Staci will read every word.';
+  } catch(e) { status.textContent = 'That didn’t send. Try again in a moment.'; }
 }
 
 /* ── NAV ── */
 function goScreen(id){
+  if (id === 'studio' && !isAdmin()) id = 'you';
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   var sc = $('screen-' + id); if (sc) sc.classList.add('active');
-  document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.remove('active'); });
-  var bn = $('bn-' + (id === 'design' ? 'home' : id)); if (bn) bn.classList.add('active');
+  var navFor = {design:'home', library:'home', studio:'you'}[id] || id;
+  document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.toggle('active', b.id === 'bn-' + navFor); });
   $('content-area').scrollTop = 0;
   clearInterval(circleTimer);
-  if (id === 'circle' && supaReady()) { loadCircle(); circleTimer = setInterval(loadCircle, 20000); }
-  if (id === 'you') $('yh-streak').textContent = visitText();
+  if (id === 'circle') { loadCircle(); circleTimer = setInterval(loadCircle, 20000); }
+  if (id === 'studio') studioOpen();
 }
 
 /* ── SHARE CARD ── */
@@ -1191,23 +1348,23 @@ function openShareCard(){
 }
 function closeShareCard(){ $('share-overlay').classList.remove('open'); }
 function drawShareCard(quote){
-  var cv = $('share-canvas'), x = cv.getContext('2d'), W = 1080, H = 1080;
-  x.fillStyle = '#f6f4f0'; x.fillRect(0,0,W,H);
-  x.fillStyle = MONTH.accent; x.fillRect(0,0,W,14);
+  var cv = $('share-canvas'), x = cv.getContext('2d'), W = 1080, H = 1080, M = S.M;
+  x.fillStyle = '#f6f4f0'; x.fillRect(0, 0, W, H);
+  x.fillStyle = M.accent; x.fillRect(0, 0, W, 14);
   x.textAlign = 'center';
   x.fillStyle = '#3a3d38'; x.font = '400 52px "Abril Fatface", serif'; x.textBaseline = 'middle';
-  x.fillText('flourish & flow', W/2, 170);
-  x.strokeStyle = '#8ea185'; x.lineWidth = 2; x.beginPath(); x.moveTo(W/2-50, 222); x.lineTo(W/2+50, 222); x.stroke();
+  x.fillText('flourish & flow', W / 2, 170);
+  x.strokeStyle = '#8ea185'; x.lineWidth = 2; x.beginPath(); x.moveTo(W / 2 - 50, 222); x.lineTo(W / 2 + 50, 222); x.stroke();
   x.font = 'italic 300 54px Poppins, sans-serif'; x.fillStyle = '#3a3d38'; x.textBaseline = 'top';
   var words = ('“' + quote + '”').split(' '), lines = [], cur = '';
   words.forEach(function(w){ var t = cur ? cur + ' ' + w : w; if (x.measureText(t).width > 820 && cur) { lines.push(cur); cur = w; } else cur = t; });
   if (cur) lines.push(cur);
   var lh = 80, y = (H - lines.length * lh) / 2 + 10;
-  lines.forEach(function(l, i){ x.fillText(l, W/2, y + i * lh); });
+  lines.forEach(function(l, i){ x.fillText(l, W / 2, y + i * lh); });
   x.textBaseline = 'alphabetic';
   x.fillStyle = '#8a8a8a'; x.font = '400 24px Poppins, sans-serif';
-  x.fillText((MONTH.name + '  ·  ' + MONTH.theme).toUpperCase().split('').join(String.fromCharCode(8202)), W/2, H - 118);
-  x.fillStyle = MONTH.accent; x.font = '400 26px Poppins, sans-serif'; x.fillText('stacilamp.com', W/2, H - 70);
+  x.fillText((M.name + (M.theme ? '  ·  ' + M.theme : '')).toUpperCase().split('').join(String.fromCharCode(8202)), W / 2, H - 118);
+  x.fillStyle = M.accent; x.font = '400 26px Poppins, sans-serif'; x.fillText('stacilamp.com', W / 2, H - 70);
 }
 function downloadShareCard(){ var a = document.createElement('a'); a.download = 'flourish-flow-' + todayKey() + '.png'; a.href = $('share-canvas').toDataURL('image/png'); a.click(); }
 function nativeShare(){
@@ -1218,14 +1375,259 @@ function nativeShare(){
   });
 }
 
-function doSignout(){
-  store('ff_in', '0');
+async function doSignout(){
   clearInterval(circleTimer);
-  $('app').style.display = 'none';
-  $('login-screen').style.display = 'flex';
-  $('l-code').value = '';
-  member = {};
+  try { await api.signOut(); } catch(e) {}
+  location.reload();
 }
+
+/* ════════════════════════════════════════════════════════════
+   STUDIO (Staci only — the database also enforces this)
+   ════════════════════════════════════════════════════════════ */
+var ST = {key:null, panel:'month', editRec:null, lensType:'Generator', members:null, notes:null};
+function stMonth(){ return S.months.filter(function(m){ return m.key === ST.key; })[0]; }
+function studioOpen(){
+  if (!ST.key) ST.key = S.cur ? S.cur.key : (S.months.length ? S.months[S.months.length - 1].key : null);
+  studioFillMonthSelect();
+  document.querySelectorAll('#st-tabs .ptab').forEach(function(t){
+    t.classList.toggle('active', t.dataset.p === ST.panel);
+    t.onclick = function(){ ST.panel = t.dataset.p; ST.editRec = null; studioOpen(); };
+  });
+  studioRender();
+}
+function studioFillMonthSelect(){
+  var sel = $('st-month'); sel.innerHTML = '';
+  S.months.slice().sort(function(a, b){ return a.key < b.key ? 1 : -1; }).forEach(function(m){
+    var M = normalize(m.content, m.key);
+    var o = el('option', null, monthLabel(m.key) + (M.theme ? ' · ' + M.theme : '') + (m.published ? '' : '  (draft)') + (S.cur && m.key === S.cur.key ? '  — live now' : ''));
+    o.value = m.key; if (m.key === ST.key) o.selected = true; sel.appendChild(o);
+  });
+}
+function studioPickMonth(k){ ST.key = k; ST.editRec = null; studioRender(); }
+function studioToggleNew(){ var n = $('st-new'); n.style.display = n.style.display === 'none' ? 'flex' : 'none'; if (n.style.display === 'flex') { var d = new Date(); d.setMonth(d.getMonth() + 1); $('st-new-key').value = monthKeyOf(d); } }
+async function studioCreateMonth(){
+  var k = $('st-new-key').value;
+  if (!/^\d{4}-\d{2}$/.test(k)) return;
+  if (S.months.some(function(m){ return m.key === k; })) { ST.key = k; $('st-new').style.display = 'none'; studioOpen(); return; }
+  var base = normalize(S.cur ? S.cur.content : {}, k);
+  var fresh = {name: MONTH_NAMES[parseInt(k.split('-')[1], 10) - 1], theme:'', accent: base.accent, intention:'', rhythmLine:'', guidePdfUrl:'',
+    breath:{name:'', line:'', counts:[]}, moon:[], mudra:{name:'', body:''}, creative:{title:'', sub:'', steps: base.creative.steps.map(function(s){ return [s[0], '']; }), pull:'', gathering:{eyebrow:'', title:'', body:''}},
+    events:[], eventsNote: base.eventsNote, eventsUrl: base.eventsUrl, circlePrompt:'', quotes:[], lensTopic:''};
+  try { await api.saveMonth(k, false, fresh); await reloadContent(); ST.key = k; ST.panel = 'month'; $('st-new').style.display = 'none'; studioOpen(); }
+  catch(e) { alertStudio('Couldn’t create that month. ' + friendlyError(e)); }
+}
+async function reloadContent(){ await loadContent(); renderAll(); }
+function alertStudio(msg){ var p = $('st-panel'); var n = el('div', 'save-msg err', msg); n.style.marginBottom = '12px'; p.insertBefore(n, p.firstChild); }
+function studioRender(){
+  var p = $('st-panel'); p.innerHTML = '';
+  if (ST.panel === 'members') return studioMembers(p);
+  if (ST.panel === 'notes') return studioNotes(p);
+  if (!ST.key) { p.appendChild(el('div', 'feed-empty', 'Create your first month above.')); return; }
+  if (ST.panel === 'month') studioMonthForm(p);
+  if (ST.panel === 'recs') studioRecs(p);
+  if (ST.panel === 'lens') studioLens(p);
+}
+
+/* form helpers */
+function fld(parent, label, value, opts){
+  opts = opts || {};
+  var f = el('div', 'fld'); f.appendChild(el('label', null, label));
+  var input;
+  if (opts.area) { input = el('textarea'); input.value = value || ''; if (opts.rows) input.style.minHeight = (opts.rows * 24 + 20) + 'px'; }
+  else if (opts.select) { input = el('select'); opts.select.forEach(function(o){ var op = el('option', null, o[1]); op.value = o[0]; if (o[0] === value) op.selected = true; input.appendChild(op); }); }
+  else { input = el('input'); input.type = opts.type || 'text'; input.value = value || ''; if (opts.placeholder) input.placeholder = opts.placeholder; }
+  f.appendChild(input);
+  if (opts.hint) f.appendChild(el('div', 'hint', opts.hint));
+  parent.appendChild(f);
+  return input;
+}
+function sec(parent, title){ parent.appendChild(el('div', 'st-sec', title)); }
+function linesOf(t){ return (t || '').split('\n').map(function(s){ return s.trim(); }).filter(Boolean); }
+function pipes(t, n){ return linesOf(t).map(function(l){ var parts = l.split('|').map(function(s){ return s.trim(); }); while (parts.length < n) parts.push(''); return parts.slice(0, n); }); }
+function saveRow(parent, label, fn){
+  var row = el('div', 'save-row'), btn = el('button', 'pill-btn', label), msg = el('div', 'save-msg');
+  btn.onclick = async function(){
+    btn.disabled = true; msg.className = 'save-msg'; msg.textContent = 'Saving…';
+    try { await fn(); msg.textContent = 'Saved — live for members now.'; }
+    catch(e) { msg.className = 'save-msg err'; msg.textContent = e.userMsg || ('Didn’t save. ' + friendlyError(e)); }
+    finally { btn.disabled = false; }
+  };
+  row.appendChild(btn); row.appendChild(msg); parent.appendChild(row);
+}
+
+function studioMonthForm(p){
+  var m = stMonth(), M = normalize(m.content, m.key);
+  var pubWrap = el('label', 'check'), pub = el('input'); pub.type = 'checkbox'; pub.checked = m.published;
+  pubWrap.appendChild(pub); pubWrap.appendChild(document.createTextNode('Live for members'));
+  p.appendChild(pubWrap);
+  p.appendChild(el('div', 'hint', 'Members always see the newest live month up to today. Draft a month early, then tick this when it’s ready.'));
+
+  sec(p, 'The month');
+  var two = el('div', 'fld-2'); p.appendChild(two);
+  var fName = fld(two, 'Month name', M.name), fTheme = fld(two, 'Theme', M.theme, {placeholder:'The Harvest'});
+  var fAccent = fld(p, 'Accent colour', M.accent, {placeholder:'#996b4a', hint:'The month’s colour from your arc, as a hex code.'});
+  var fInt = fld(p, 'Intention', M.intention, {area:true, rows:2});
+  var fRL = fld(p, 'Rhythm page line', M.rhythmLine, {area:true, rows:2});
+  var fPdf = fld(p, 'Guide PDF link', M.guidePdfUrl, {type:'url', placeholder:'https://…', hint:'A share link to the month’s PDF (Google Drive, Dropbox, or your site). It also appears in the Library.'});
+
+  sec(p, 'Breath');
+  var fBN = fld(p, 'Breath name', M.breath.name), fBL = fld(p, 'One-line invitation', M.breath.line, {area:true, rows:2});
+  var fBC = fld(p, 'Counts', M.breath.counts.map(function(c){ return c.join(' | '); }).join('\n'), {area:true, rows:3, hint:'One per line: number | label   e.g.  4 | Inhale left'});
+
+  sec(p, 'Moon & body');
+  var fMoon = fld(p, 'Moon dates', M.moon.map(function(x){ return [x.type, x.date, x.note].join(' | '); }).join('\n'), {area:true, rows:3, hint:'One per line: type | date | note'});
+  var fMN = fld(p, 'Mudra name', M.mudra.name), fMB = fld(p, 'Mudra how-to', M.mudra.body, {area:true, rows:3});
+
+  sec(p, 'Creative Flow');
+  var fCT = fld(p, 'Headline', M.creative.title), fCS = fld(p, 'Subtitle', M.creative.sub);
+  var fCSt = fld(p, 'Art-journal steps', M.creative.steps.map(function(s){ return s.join(' | '); }).join('\n'), {area:true, rows:5, hint:'One per line: step | what to do   e.g.  Gather | A few leaves…'});
+  var fCP = fld(p, 'Pull quote', M.creative.pull, {area:true, rows:2});
+  var fGE = fld(p, 'Gathering eyebrow', M.creative.gathering.eyebrow), fGT = fld(p, 'Gathering title', M.creative.gathering.title), fGB = fld(p, 'Gathering details', M.creative.gathering.body, {area:true, rows:3});
+
+  sec(p, 'Move in person');
+  var fEv = fld(p, 'Events', M.events.map(function(e){ return [e.date, e.name, e.time, e.url].join(' | '); }).join('\n'), {area:true, rows:4, hint:'One per line: date | name | time & place | link (optional)'});
+  var fEN = fld(p, 'Note under events', M.eventsNote, {area:true, rows:2}), fEU = fld(p, '“See all events” link', M.eventsUrl, {type:'url'});
+
+  sec(p, 'Circle & words');
+  var fCQ = fld(p, 'Circle question', M.circlePrompt, {area:true, rows:2});
+  var fQ = fld(p, 'Daily quotes', (m.content.quotes || []).join('\n'), {area:true, rows:10, hint:'One per line. They rotate by date and appear on the home screen, arrival screen, and share card.'});
+
+  saveRow(p, 'Save month', async function(){
+    var content = {
+      name: fName.value.trim(), theme: fTheme.value.trim(), accent: fAccent.value.trim() || '#8ea185', intention: fInt.value.trim(), rhythmLine: fRL.value.trim(), guidePdfUrl: fPdf.value.trim(),
+      breath: {name: fBN.value.trim(), line: fBL.value.trim(), counts: pipes(fBC.value, 2)},
+      moon: pipes(fMoon.value, 3).map(function(x){ return {type:x[0], date:x[1], note:x[2]}; }),
+      mudra: {name: fMN.value.trim(), body: fMB.value.trim()},
+      creative: {title: fCT.value.trim(), sub: fCS.value.trim(), steps: pipes(fCSt.value, 2), pull: fCP.value.trim(), gathering: {eyebrow: fGE.value.trim(), title: fGT.value.trim(), body: fGB.value.trim()}},
+      events: pipes(fEv.value, 4).map(function(x){ return {date:x[0], name:x[1], time:x[2], url:x[3]}; }),
+      eventsNote: fEN.value.trim(), eventsUrl: fEU.value.trim(), circlePrompt: fCQ.value.trim(), quotes: linesOf(fQ.value),
+      lensTopic: M.lensTopic
+    };
+    await api.saveMonth(m.key, pub.checked, content);
+    await reloadContent(); studioFillMonthSelect();
+  });
+}
+
+function studioRecs(p){
+  var m = stMonth(), recs = S.recs.filter(function(r){ return r.month_key === m.key; });
+  p.appendChild(el('div', 'hint', 'Everything you add here shows in this month’s Practice and Rhythm tabs, and stays in the Library forever after.'));
+  p.lastChild.style.marginBottom = '14px';
+  if (!recs.length) p.appendChild(el('div', 'feed-empty', 'No recordings for ' + monthLabel(m.key) + ' yet.'));
+  recs.forEach(function(r){
+    var meta = KINDS[r.kind] || KINDS.other;
+    var it = el('div', 'item');
+    var s = el('div', 'lm-sym', meta.sym); s.style.color = meta.col; it.appendChild(s);
+    var b = el('div', 'it-b'); var t = el('div', 'it-t', r.title);
+    if (!r.published) { var tg = el('span', 'tag', 'hidden'); tg.style.color = 'var(--muted)'; t.appendChild(tg); }
+    if (!r.url) { var tg2 = el('span', 'tag', 'no link yet'); tg2.style.color = 'var(--terra)'; t.appendChild(tg2); }
+    b.appendChild(t); b.appendChild(el('div', 'it-s', meta.label + (r.minutes ? ' · ' + r.minutes : '')));
+    it.appendChild(b);
+    var a = el('div', 'it-a');
+    var eb = el('button', 'pill-btn outline small-btn', 'Edit'); eb.onclick = function(){ ST.editRec = r; studioRender(); setTimeout(function(){ $('rec-form').scrollIntoView({behavior:'smooth'}); }, 50); };
+    var db = el('button', 'pill-btn small-btn danger', 'Remove'); armButton(db, 'Sure?', async function(){ await api.deleteRecording(r.id); await reloadContent(); studioRender(); });
+    a.appendChild(eb); a.appendChild(db); it.appendChild(a);
+    p.appendChild(it);
+  });
+  var r = ST.editRec || {kind:'breath', title:'', description:'', minutes:'', url:'', published:true, sort: recs.length};
+  var form = el('div'); form.id = 'rec-form'; p.appendChild(form);
+  sec(form, r.id ? 'Edit recording' : 'Add a recording');
+  var fK = fld(form, 'Type', r.kind, {select: Object.keys(KINDS).map(function(k){ return [k, KINDS[k].label]; })});
+  var fT = fld(form, 'Title', r.title, {placeholder:'Alternate Nostril Breath'});
+  var fD = fld(form, 'Short description', r.description, {area:true, rows:2});
+  var two = el('div', 'fld-2'); form.appendChild(two);
+  var fM = fld(two, 'Length', r.minutes, {placeholder:'8 min'});
+  var fS = fld(two, 'Order', String(r.sort || 0), {type:'text', hint:'Lower shows first.'});
+  var fU = fld(form, 'Vimeo or audio link', r.url, {type:'url', placeholder:'https://vimeo.com/123456789', hint:'Paste the Vimeo page link. Leave blank and members see “Arriving soon”.'});
+  var pw = el('label', 'check'), pc = el('input'); pc.type = 'checkbox'; pc.checked = r.published !== false;
+  pw.appendChild(pc); pw.appendChild(document.createTextNode('Show to members')); form.appendChild(pw);
+  saveRow(form, r.id ? 'Save changes' : 'Add recording', async function(){
+    if (!fT.value.trim()) throw {userMsg:'Add a title first.'};
+    await api.saveRecording({id: r.id, month_key: m.key, kind: fK.value, title: fT.value.trim(), description: fD.value.trim() || null, minutes: fM.value.trim() || null, url: fU.value.trim() || null, sort: parseInt(fS.value, 10) || 0, published: pc.checked});
+    ST.editRec = null; await reloadContent(); studioRender();
+  });
+  if (r.id) { var c = el('button', 'link-btn', 'Cancel editing'); c.onclick = function(){ ST.editRec = null; studioRender(); }; form.appendChild(c); }
+}
+
+function studioLens(p){
+  var m = stMonth(), M = normalize(m.content, m.key);
+  var fTopic = fld(p, 'This month’s topic', M.lensTopic, {placeholder:'Your Signature'});
+  var tb = el('button', 'pill-btn outline small-btn', 'Save topic');
+  tb.onclick = async function(){ var c = JSON.parse(JSON.stringify(m.content || {})); c.lensTopic = fTopic.value.trim(); await api.saveMonth(m.key, m.published, c); await reloadContent(); tb.textContent = 'Saved'; setTimeout(function(){ tb.textContent = 'Save topic'; }, 2000); };
+  p.appendChild(tb);
+  sec(p, 'One note per Type');
+  var pills = el('div', 'pills'); p.appendChild(pills);
+  TYPES.forEach(function(t){
+    var has = S.lens.some(function(l){ return l.month_key === m.key && l.type === t && l.title; });
+    var b = el('button', 'chip' + (ST.lensType === t ? ' on' : ''), (t === '_none' ? 'No type yet' : t) + (has ? ' ✓' : ''));
+    b.onclick = function(){ ST.lensType = t; studioRender(); };
+    pills.appendChild(b);
+  });
+  var row = S.lens.filter(function(l){ return l.month_key === m.key && l.type === ST.lensType; })[0] || {};
+  var fT = fld(p, 'Title', row.title), fB = fld(p, 'Body', row.body, {area:true, rows:10, hint:'Leave a blank line between paragraphs. Lead with the felt experience, then name the term.'});
+  var fI = fld(p, 'Invitation', row.invitation, {area:true, rows:3}), fR = fld(p, 'Carry this with you', row.reflection, {area:true, rows:2});
+  saveRow(p, 'Save note', async function(){
+    await api.saveLens({month_key: m.key, type: ST.lensType, title: fT.value.trim(), body: fB.value.trim(), invitation: fI.value.trim(), reflection: fR.value.trim()});
+    await reloadContent(); studioRender();
+  });
+}
+
+async function studioMembers(p){
+  sec(p, 'Invite someone');
+  var two = el('div', 'fld-2'); p.appendChild(two);
+  var fE = fld(two, 'Email', '', {type:'email', placeholder:'name@email.com'}), fN = fld(two, 'First name', '', {placeholder:'Optional'});
+  saveRow(p, 'Add to the list', async function(){
+    var e = fE.value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) throw {userMsg:'Check the email address.'};
+    await api.addMember(e, fN.value.trim()); fE.value = ''; fN.value = ''; ST.members = null; studioRender();
+  });
+  p.appendChild(el('div', 'hint', 'Then send her the link: flourish-and-flow.stacilamp.com — she signs in with that email and a code.'));
+  sec(p, 'Members');
+  var list = el('div'); list.appendChild(el('div', 'loading', 'Loading…')); p.appendChild(list);
+  try { ST.members = await api.members(); } catch(e) { list.innerHTML = ''; list.appendChild(el('div', 'feed-empty', 'Couldn’t load members.')); return; }
+  list.innerHTML = '';
+  list.appendChild(el('div', 'hint', ST.members.length + (ST.members.length === 1 ? ' person' : ' people') + ' on the list.'));
+  ST.members.forEach(function(mb){
+    var it = el('div', 'item'), b = el('div', 'it-b');
+    var t = el('div', 'it-t', mb.name || '(hasn’t signed in yet)');
+    if (mb.role === 'admin') { var tg = el('span', 'tag', 'you'); tg.style.color = 'var(--sage)'; t.appendChild(tg); }
+    b.appendChild(t); b.appendChild(el('div', 'it-s', mb.email + (mb.type ? ' · ' + [mb.type, mb.profile, mb.authority].filter(Boolean).join(' ') : '')));
+    it.appendChild(b);
+    if (mb.role !== 'admin') {
+      var a = el('div', 'it-a'), db = el('button', 'pill-btn small-btn danger', 'Remove');
+      armButton(db, 'Sure?', async function(){ await api.removeMember(mb.email); ST.members = null; studioRender(); });
+      a.appendChild(db); it.appendChild(a);
+    }
+    list.appendChild(it);
+  });
+}
+
+async function studioNotes(p){
+  var list = el('div'); list.appendChild(el('div', 'loading', 'Loading notes…')); p.appendChild(list);
+  try { ST.notes = await api.notes(); } catch(e) { list.innerHTML = ''; list.appendChild(el('div', 'feed-empty', 'Couldn’t load notes.')); return; }
+  list.innerHTML = '';
+  if (!ST.notes.length) { list.appendChild(el('div', 'feed-empty', 'No beta notes yet.')); return; }
+  ST.notes.forEach(function(n){
+    var c = el('div', 'note-card');
+    c.appendChild(el('div', 'note-meta', new Date(n.created_at).toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}) + ' · ' + (n.name || n.email || 'Someone') + (n.design ? ' · ' + n.design : '') + ' · ' + (n.screen || 'General')));
+    c.appendChild(el('div', 'note-body', n.body));
+    list.appendChild(c);
+  });
+}
+
+/* Home-screen icon */
+(function(){
+  try {
+    var c = document.createElement('canvas'); c.width = 180; c.height = 180;
+    var x = c.getContext('2d');
+    x.fillStyle = '#3a3d38'; x.fillRect(0, 0, 180, 180);
+    x.strokeStyle = '#b8c9b3'; x.lineWidth = 5; x.beginPath(); x.arc(90, 84, 38, 0, Math.PI * 2); x.stroke();
+    x.fillStyle = '#8ea185'; x.beginPath(); x.arc(90, 84, 13, 0, Math.PI * 2); x.fill();
+    x.fillStyle = '#a1765a'; x.beginPath(); x.arc(90, 146, 6, 0, Math.PI * 2); x.fill();
+    var l = document.createElement('link'); l.rel = 'apple-touch-icon'; l.href = c.toDataURL('image/png');
+    document.head.appendChild(l);
+  } catch(e){}
+})();
+
 </script>
 </body>
 </html>
