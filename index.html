@@ -605,6 +605,13 @@ button{font-family:'Poppins',sans-serif;}
 .fd-dot.on{background:#3f4b41;}
 .st-design{margin-top:10px;padding:14px;background:#fff;border:1px solid var(--border);}
 .st-design .hint{margin:6px 0 10px;}
+.dd-core{background:#3f4b41;}
+.dd-core .dd-k,.dd-core summary::after{color:#d6e0d0;}
+.dd-core .dd-t{color:#fff;font-size:21px;}
+.dd-core .dd-b p,.dd-core .fd-s{color:#e9ede6;}
+.dd-core .fd-t{color:#fff;}
+.dd-core .fd-item{border-top-color:rgba(255,255,255,.18);}
+.fd-core .fd-t{color:#3f4b41;}
 
 </style>
 </head>
@@ -2145,6 +2152,17 @@ function buildFullDesign(){
   var def = DEFINITION_TEXT[D.areas] || DEFINITION_TEXT[1];
   w.appendChild(designCard('Your definition', def[0], def[1]));
   if (D.cross) w.appendChild(designCard('Your incarnation cross', D.cross, 'Your cross is the widest lens on your life: the theme that keeps showing up in different rooms, with different people. It isn’t a job title or a destination. It’s a direction your whole design keeps pointing toward.'));
+  // core gates: conscious Sun first and open by default, then its Earth and the unconscious pair
+  var sunG = D.sun.gate, earthG = parseActs(S.me.design.p)[1].gate, dsunG = D.dsun.gate, dearthG = parseActs(S.me.design.d)[1].gate;
+  var core = el('details', 'dd dd-core'); core.open = true;
+  var ks = el('summary'); ks.appendChild(el('span', 'dd-k', '☉ Your core gate'));
+  ks.appendChild(el('span', 'dd-t', 'Gate ' + sunG + ' · ' + GATES[sunG][0])); core.appendChild(ks);
+  var kb = el('div', 'dd-b');
+  kb.appendChild(el('p', null, GATES[sunG][1]));
+  kb.appendChild(el('p', null, 'This gate sits in your conscious Sun, the strongest light in your chart. Think of it as the main theme you’re here to live and shine, the thread people feel most when they’re around you.'));
+  kb.appendChild(ddItem('Grounded by Gate ' + earthG + ' · ' + GATES[earthG][0], GATES[earthG][1] + '  Your conscious Earth: what keeps your Sun theme steady and rooted.'));
+  kb.appendChild(ddItem('Carried underneath by Gates ' + dsunG + ' and ' + dearthG, GATES[dsunG][0] + ' and ' + GATES[dearthG][0] + '. Your unconscious Sun and Earth: themes your body lives out, often noticed by others before you notice them yourself.'));
+  core.appendChild(kb); w.insertBefore(core, w.firstChild);
   // centers
   var cd = el('details', 'dd'), cs = el('summary'); cs.appendChild(el('span', 'dd-k', 'Your nine centers')); cs.appendChild(el('span', 'dd-t', Object.keys(D.defined).length + ' defined · ' + (9 - Object.keys(D.defined).length) + ' open')); cd.appendChild(cs);
   var cb = el('div', 'dd-b');
@@ -2166,9 +2184,11 @@ function buildFullDesign(){
   var gd = el('details', 'dd'), gs = el('summary'); gs.appendChild(el('span', 'dd-k', 'Your gates')); gs.appendChild(el('span', 'dd-t', nums.length + ' gates')); gd.appendChild(gs);
   var gb = el('div', 'dd-b');
   gb.appendChild(el('p', null, 'Gates are the specific gifts and themes in your design. Conscious gates tend to feel familiar to you; unconscious gates are often what others notice in you first.'));
+  nums.sort(function(a, b){ return (a === sunG ? -1 : 0) - (b === sunG ? -1 : 0); });
   nums.forEach(function(n){
     var g = D.gates[n], meta = GATES[n] || ['', ''], kind = g.c.length && g.u.length ? 'Conscious & unconscious' : (g.c.length ? 'Conscious' : 'Unconscious');
-    gb.appendChild(ddItem('Gate ' + n + ' · ' + meta[0], meta[1] + '  ' + kind + '.'));
+    var it = ddItem((n === sunG ? '☉ ' : '') + 'Gate ' + n + ' · ' + meta[0], meta[1] + '  ' + kind + (n === sunG ? ' · your core gate.' : '.'));
+    if (n === sunG) it.classList.add('fd-core'); gb.appendChild(it);
   });
   gd.appendChild(gb); w.appendChild(gd);
 }
