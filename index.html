@@ -718,6 +718,14 @@ button{font-family:'Poppins',sans-serif;}
 .cw-pick{align-self:flex-start;cursor:pointer;}
 .cw-box .je-prev img{max-width:100%;border-radius:10px;}
 
+.hrt{display:inline-flex;vertical-align:-0.15em;color:#a1765a;line-height:1;}
+.hrt svg{display:block;}
+.cp-hear{font-size:20px;display:inline-flex;align-items:center;gap:4px;}
+.cp-hear .cp-hl{vertical-align:0;}
+.cp-heard .hrt{font-size:13px;margin-right:2px;}
+.pill-btn .hrt{font-size:14px;margin-right:2px;}
+.pill-btn.dark .hrt{color:#e9d3c3;}
+
 </style>
 </head>
 <body>
@@ -2586,11 +2594,17 @@ function renderFeed(){
   if (C.filter === 'gathering' && C.gathering) feed.appendChild(gatherCard());
   if (!posts.length) {
     feed.appendChild(el('div', 'feed-empty', C.filter === 'all' ? 'No one has shared yet. You’re welcome to go first. A sentence is plenty.' :
-      (C.filter === 'gathering' ? 'Monthly call links and gathering details will be shared here. Tap ♡ on a gathering post to let Staci know you plan to join live.' : 'Nothing here yet.')));
+      (C.filter === 'gathering' ? 'Monthly call links and gathering details will be shared here. Tap the heart on a gathering post to let Staci know you plan to join live.' : 'Nothing here yet.')));
   }
   posts.forEach(function(p){ feed.appendChild(postCard(p, uid, false)); });
   renderWall();
 }
+function heartIcon(filled){
+  var s = document.createElement('span'); s.className = 'hrt' + (filled ? ' on' : ''); s.setAttribute('aria-hidden', 'true');
+  s.innerHTML = '<svg viewBox="0 0 24 24" width="1em" height="1em"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="' + (filled ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+  return s;
+}
+function withHeart(node, filled){ node.insertBefore(heartIcon(filled), node.firstChild); return node; }
 function photoInto(img, path){
   if (C['u' + path]) { img.src = C['u' + path]; return; }
   api.circlePhotoUrl(path).then(function(u){ C['u' + path] = u; img.src = u; }).catch(function(){ img.remove(); });
@@ -2612,7 +2626,7 @@ function postCard(p, uid, isReply){
   var rs = C.reacts[p.id] || [], heard = rs.some(function(x){ return x.user_id === uid; });
   var acts = el('div', 'cp-acts');
   if (!mine) {
-    var h = el('button', 'cp-hear' + (heard ? ' on' : ''), heard ? '♥' : '♡'); h.setAttribute('aria-pressed', heard ? 'true' : 'false');
+    var h = withHeart(el('button', 'cp-hear' + (heard ? ' on' : '')), heard); h.setAttribute('aria-pressed', heard ? 'true' : 'false');
     h.setAttribute('aria-label', p.tag === 'gathering' ? (heard ? 'You plan to join. Tap to undo' : 'Heart to say you plan to join') : (heard ? 'Remove heart' : 'Heart this post'));
     if (p.tag === 'gathering' && !isReply) h.appendChild(el('span', 'cp-hl', heard ? ' You’re joining' : ' I plan to join'));
     h.onclick = async function(){
@@ -2632,7 +2646,7 @@ function postCard(p, uid, isReply){
   more.onclick = function(){ C.menu = C.menu === p.id ? null : p.id; renderFeed(); };
   acts.appendChild(more);
   right.appendChild(acts);
-  if (mine && rs.length) right.appendChild(el('div', 'cp-heard', '♥ ' + (p.tag === 'gathering' ? 'Joining: ' : '') + rs.map(function(x){ return x.name || 'a member'; }).join(', ')));
+  if (mine && rs.length) right.appendChild(withHeart(el('div', 'cp-heard', ' ' + (p.tag === 'gathering' ? 'Joining: ' : '') + rs.map(function(x){ return x.name || 'a member'; }).join(', '))));
   if (C.menu === p.id) right.appendChild(postMenu(p, mine));
   if (!isReply && C.open[p.id]) {
     var box = el('div', 'cp-replies');
@@ -2746,7 +2760,7 @@ function gatherCard(){
   if (live && g.join_url) {
     var j = el('a', 'pill-btn dark full', 'Join the gathering'); j.href = g.join_url; j.target = '_blank'; j.rel = 'noopener'; acts.appendChild(j);
   } else if (!past) {
-    var rb = el('button', 'pill-btn ' + (C.rsvp ? 'outline' : 'dark'), C.rsvp ? '♥ You’re joining · change' : '♡ I plan to join');
+    var rb = withHeart(el('button', 'pill-btn ' + (C.rsvp ? 'outline' : 'dark'), C.rsvp ? ' You’re joining · change' : ' I plan to join'), !!C.rsvp);
     rb.onclick = async function(){
       rb.disabled = true;
       try { if (C.rsvp) await api.unrsvp(g.id); else await api.rsvp(g.id, (S.me.name || 'A member').slice(0, 40)); await loadGathering(); }
@@ -2768,7 +2782,7 @@ function gatherCard(){
     row.appendChild(share);
     c.appendChild(row);
   }
-  if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? '♥ ' + C.rsvpList.length + ' joining: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No one has said yet.'));
+  if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? C.rsvpList.length + ' joining: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No one has said yet.'));
   return c;
 }
 /* ── CREATIVE FLOW · share your creative work ── */
