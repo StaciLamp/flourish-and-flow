@@ -617,6 +617,15 @@ button{font-family:'Poppins',sans-serif;}
 .fd-tag.strong{background:#3f4b41;color:#fff;font-weight:500;}
 .fd-tag.core{background:#a1765a;color:#fff;font-weight:500;}
 .fd-key .fd-t{font-weight:600;font-size:16px;}
+/* softer corners everywhere cards appear */
+.r-guide{border-radius:14px;}
+.ex-guide,.content-card,.breath-card,.mudra,.event,.pull,.hd-summary,.session,.fb-box,.lib-month,.note-card,.item,.circle-compose .compose-ta,.compose-ta,.msg-text,.bc-counts,.st-design{border-radius:14px;}
+.lib-month,.content-card{overflow:hidden;}
+.bc-count:first-child{border-radius:14px 0 0 14px;}.bc-count:last-child{border-radius:0 14px 14px 0;}
+.event{margin-bottom:8px;}
+.rr-phil{background:#f1e5dc;padding:16px 18px;border-radius:14px;}
+.rr-phil .cc-body{margin:8px 0 0;}
+#rr-body .er-h:first-child{margin-top:4px;}
 
 </style>
 </head>
@@ -828,11 +837,11 @@ button{font-family:'Poppins',sans-serif;}
       </section>
       <div class="sec-lbl"><span>Five ways in</span></div>
       <div class="tiles">
-        <button class="tile" style="--wt:#e6ebe2;--wc:#8ea185;--wd:#4d6150" onclick="goScreen('explore')"><span class="tile-wm" aria-hidden="true">◉</span><span class="tile-b"><span class="tile-k">◉ Live your rhythm</span><span class="tile-t">Explore the Rhythm</span><span class="tile-s">Moon, mudra and the month's breath.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#e6ebe2;--wc:#8ea185;--wd:#4d6150" onclick="goScreen('explore')"><span class="tile-wm" aria-hidden="true">◉</span><span class="tile-b"><span class="tile-k">◉ Live your rhythm</span><span class="tile-t">Explore the Rhythm</span><span class="tile-s">This month's theme, moon dates and small things to notice.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
         <button class="tile" style="--wt:#e3e8ec;--wc:#8096a7;--wd:#4f5f6b" onclick="goScreen('practice')"><span class="tile-wm" aria-hidden="true">⟲</span><span class="tile-b"><span class="tile-k">⟲ Return to yourself</span><span class="tile-t">The Return</span><span class="tile-s">Breathwork and meditation, every month.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
-        <button class="tile" style="--wt:#f1e5dc;--wc:#a1765a;--wd:#7a5537" onclick="goScreen('rootrise')"><span class="tile-wm" aria-hidden="true">✺</span><span class="tile-b"><span class="tile-k">✺ Embody your rhythm</span><span class="tile-t">Root &amp; Rise</span><span class="tile-s">Grounding flows and vinyasa, classes and events.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
-        <button class="tile" style="--wt:#dfe4df;--wc:#758578;--wd:#3f4b41" onclick="goScreen('lbd')"><span class="tile-wm" aria-hidden="true">✦</span><span class="tile-b"><span class="tile-k">✦ Understand your rhythm</span><span class="tile-t">Living by Design</span><span class="tile-s">This month's video and your lens on it.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
-        <button class="tile" style="--wt:#f5ecd3;--wc:#c9a032;--wd:#6f561a" onclick="goScreen('creative')"><span class="tile-wm" aria-hidden="true">✷</span><span class="tile-b"><span class="tile-k">✷ Express your rhythm</span><span class="tile-t">Creative Flow</span><span class="tile-s" id="tile-cf"></span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#f1e5dc;--wc:#a1765a;--wd:#7a5537" onclick="goScreen('rootrise')"><span class="tile-wm" aria-hidden="true">✺</span><span class="tile-b"><span class="tile-k">✺ Embody your rhythm</span><span class="tile-t">Root &amp; Rise</span><span class="tile-s">Root and Rise flows, yoga philosophy, mudra, classes and events.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#dfe4df;--wc:#758578;--wd:#3f4b41" onclick="goScreen('lbd')"><span class="tile-wm" aria-hidden="true">✦</span><span class="tile-b"><span class="tile-k">✦ Understand your rhythm</span><span class="tile-t">Living by Design</span><span class="tile-s">An invitation to see your design through this month's lens.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#f5ecd3;--wc:#c9a032;--wd:#6f561a" onclick="goScreen('creative')"><span class="tile-wm" aria-hidden="true">✷</span><span class="tile-b"><span class="tile-k">✷ Express your rhythm</span><span class="tile-t">Creative Flow</span><span class="tile-s">A seasonal art and nature journal, one page at a time. By December, a visual reflection of your year.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
       </div>
       <p class="r-quote" id="rh-quote"></p>
       <button class="text-link" onclick="goScreen('library')"><span id="rh-earlier">Earlier months</span><span aria-hidden="true">→</span></button>
@@ -852,10 +861,6 @@ button{font-family:'Poppins',sans-serif;}
       <div class="pad" id="moon-wrap">
         <div class="eye" id="moon-eye"></div>
         <div id="moon-list"></div>
-      </div>
-      <div class="pad" id="mudra-wrap">
-        <div class="eye">✺ Into the body</div>
-        <div class="mudra" id="mudra-card"></div>
       </div>
       <div class="pad" id="ex-guide-wrap">
         <div class="eye">◉ The month in your hands</div>
@@ -1229,6 +1234,7 @@ function normalize(c, key){
     guidePdfUrl: c.guidePdfUrl || '', guidePath: c.guidePath || '',
     breath: {name: (c.breath && c.breath.name) || '', line: (c.breath && c.breath.line) || '', counts: (c.breath && c.breath.counts) || []},
     moon: c.moon || [], mudra: {name: (c.mudra && c.mudra.name) || '', body: (c.mudra && c.mudra.body) || ''},
+    philosophy: {title: (c.philosophy && c.philosophy.title) || '', body: (c.philosophy && c.philosophy.body) || ''},
     creative: c.creative || {}, events: c.events || [], eventsNote: c.eventsNote || '', eventsUrl: c.eventsUrl || '',
     circlePrompt: c.circlePrompt || '', quotes: (c.quotes && c.quotes.length) ? c.quotes : ['You were made to flourish — in your own rhythm, by your own design.'],
     lensTopic: c.lensTopic || ''
@@ -1622,8 +1628,18 @@ function buildRootRise(){
   var key = S.cur && S.cur.key, M = S.M, g = $('rr-body'); g.innerHTML = '';
   var mv = recsFor(key, 'movement');
   mv.forEach(function(r){ g.appendChild(recCard(r, 'Root & Rise · ' + M.name)); });
-  var lead = el('div', 'cc-body', 'Root & Rise lives in real rooms and open air: fields, barns and gathering spaces. Come move with us.'); lead.style.margin = '4px 0 14px';
-  g.appendChild(lead);
+  if (M.mudra.name) {
+    g.appendChild(el('div', 'er-h', '✺ Into the body · this month’s mudra'));
+    var mc = el('div', 'mudra'); mc.appendChild(el('div', 'cc-eye', 'Mudra')); mc.appendChild(el('div', 'cc-title', M.mudra.name)); mc.appendChild(el('div', 'cc-body', M.mudra.body)); g.appendChild(mc);
+  }
+  if (M.philosophy.title || M.philosophy.body) {
+    g.appendChild(el('div', 'er-h', '✺ Yoga philosophy'));
+    var pc = el('div', 'rr-phil'); if (M.philosophy.title) pc.appendChild(el('div', 'cc-title', M.philosophy.title));
+    M.philosophy.body.split(/\n\s*\n/).filter(Boolean).forEach(function(p){ pc.appendChild(el('p', 'cc-body', p.trim())); });
+    g.appendChild(pc);
+  }
+  g.appendChild(el('div', 'er-h', '✺ Classes & events'));
+
   M.events.forEach(function(e){
     var row = el('div', 'event');
     var l = el('div'); l.appendChild(el('div', 'ev-date', e.date)); l.appendChild(el('div', 'ev-name', e.name)); if (e.time) l.appendChild(el('div', 'ev-time', e.time));
@@ -1648,7 +1664,6 @@ function buildRhythm(){
   var ga = $('gc-action'); ga.innerHTML = '';
   if (hasGuide(M)) ga.appendChild(guideButton(M, 'pill-btn', 'Open'));
   else ga.appendChild(el('div', 'soon', 'In your email'));
-  $('tile-cf').textContent = M.creative.title || 'This month’s art-journal page.';
   $('rh-quote').textContent = M.quotes[(new Date().getDate() + 3) % M.quotes.length];
   var earlier = publishedMonths().filter(function(m){ return !key || m.key < key; }).sort(function(a, b){ return a.key < b.key ? -1 : 1; });
   $('rh-earlier').textContent = earlier.length ? 'Earlier months · ' + normalize(earlier[0].content, earlier[0].key).name + ' – ' + normalize(earlier[earlier.length - 1].content, earlier[earlier.length - 1].key).name : 'The Library';
@@ -1674,9 +1689,6 @@ function buildExplore(){
   $('moon-eye').textContent = '☾ Moon dates · ' + M.name;
   var ml = $('moon-list'); ml.innerHTML = '';
   M.moon.forEach(function(m){ var it = el('div', 'moon-item'); it.appendChild(el('div', 'moon-type', m.type)); it.appendChild(el('div', 'moon-date', m.date)); if (m.note) it.appendChild(el('div', 'moon-note', m.note)); ml.appendChild(it); });
-  $('mudra-wrap').style.display = M.mudra.name ? 'block' : 'none';
-  var mc = $('mudra-card'); mc.innerHTML = '';
-  mc.appendChild(el('div', 'cc-eye', 'Mudra')); mc.appendChild(el('div', 'cc-title', M.mudra.name)); mc.appendChild(el('div', 'cc-body', M.mudra.body));
   var eg = $('ex-guide'); eg.innerHTML = '';
   var l = el('div'); l.appendChild(el('div', 'eg-t', 'The Rhythm · ' + M.name)); l.appendChild(el('div', 'eg-s', '12 pages · print or GoodNotes')); eg.appendChild(l);
   if (hasGuide(M)) eg.appendChild(guideButton(M, 'pill-btn', 'Open guide')); else eg.appendChild(el('div', 'soon', 'In your email'));
@@ -2454,9 +2466,8 @@ function studioMonthForm(p){
   var fBN = fld(p, 'Breath name', M.breath.name), fBL = fld(p, 'One-line invitation', M.breath.line, {area:true, rows:2});
   var fBC = fld(p, 'Counts', M.breath.counts.map(function(c){ return c.join(' | '); }).join('\n'), {area:true, rows:3, hint:'One per line: number | label   e.g.  4 | Inhale left'});
 
-  sec(p, 'Moon & body');
+  sec(p, 'Moon');
   var fMoon = fld(p, 'Moon dates', M.moon.map(function(x){ return [x.type, x.date, x.note].join(' | '); }).join('\n'), {area:true, rows:3, hint:'One per line: type | date | note'});
-  var fMN = fld(p, 'Mudra name', M.mudra.name), fMB = fld(p, 'Mudra how-to', M.mudra.body, {area:true, rows:3});
 
   sec(p, 'Creative Flow');
   var fCT = fld(p, 'Headline', M.creative.title), fCS = fld(p, 'Subtitle', M.creative.sub);
@@ -2464,7 +2475,9 @@ function studioMonthForm(p){
   var fCP = fld(p, 'Pull quote', M.creative.pull, {area:true, rows:2});
   var fGE = fld(p, 'Gathering eyebrow', M.creative.gathering.eyebrow), fGT = fld(p, 'Gathering title', M.creative.gathering.title), fGB = fld(p, 'Gathering details', M.creative.gathering.body, {area:true, rows:3});
 
-  sec(p, 'Move in person');
+  sec(p, 'Root & Rise');
+  var fMN = fld(p, 'Mudra name', M.mudra.name), fMB = fld(p, 'Mudra how-to', M.mudra.body, {area:true, rows:3});
+  var fPT = fld(p, 'Yoga philosophy · title', M.philosophy.title, {placeholder:'Aparigraha · non-grasping'}), fPB = fld(p, 'Yoga philosophy · a few words', M.philosophy.body, {area:true, rows:4, hint:'Leave a blank line between paragraphs.'});
   var fEv = fld(p, 'Events', M.events.map(function(e){ return [e.date, e.name, e.time, e.url].join(' | '); }).join('\n'), {area:true, rows:4, hint:'One per line: date | name | time & place | link (optional)'});
   var fEN = fld(p, 'Note under events', M.eventsNote, {area:true, rows:2}), fEU = fld(p, '“See all events” link', M.eventsUrl, {type:'url'});
 
@@ -2478,6 +2491,7 @@ function studioMonthForm(p){
       breath: {name: fBN.value.trim(), line: fBL.value.trim(), counts: pipes(fBC.value, 2)},
       moon: pipes(fMoon.value, 3).map(function(x){ return {type:x[0], date:x[1], note:x[2]}; }),
       mudra: {name: fMN.value.trim(), body: fMB.value.trim()},
+      philosophy: {title: fPT.value.trim(), body: fPB.value.trim()},
       creative: {title: fCT.value.trim(), sub: fCS.value.trim(), steps: pipes(fCSt.value, 2), pull: fCP.value.trim(), gathering: {eyebrow: fGE.value.trim(), title: fGT.value.trim(), body: fGB.value.trim()}},
       events: pipes(fEv.value, 4).map(function(x){ return {date:x[0], name:x[1], time:x[2], url:x[3]}; }),
       eventsNote: fEN.value.trim(), eventsUrl: fEU.value.trim(), circlePrompt: fCQ.value.trim(), quotes: linesOf(fQ.value),
