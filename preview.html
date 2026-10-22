@@ -1001,7 +1001,7 @@ button{font-family:'Poppins',sans-serif;}
 var SUPABASE_URL = 'https://bftjumojninejlxpksdm.supabase.co';
 var SUPABASE_KEY = 'sb_publishable_iUU4IPWIcXAmM4EWIJb3mg_eDM573pg'; // publishable key: safe in the browser
 var FEEDBACK_EMAIL = 'staci-lamp@outlook.com';
-var BOOKING_URL = 'https://calendar.app.google/HmEgtKkLZGdDDmwH9';
+var BOOKING_URL = 'https://calendar.app.google/wk1J132xUtwcjtGq6';
 
 var DESIGN_FACTS = {
   'Generator': {strategy:'To respond', sig:'Satisfaction', ns:'Frustration', short:'Generator'},
@@ -1669,10 +1669,9 @@ function buildSessions(){
     var l = el('div'); l.appendChild(el('div', 'ss-title', s.title)); l.appendChild(el('div', 'ss-scope', s.scope));
     var r = el('div', 'ss-price'); r.appendChild(el('div', 'ss-full', '$' + s.full)); r.appendChild(el('div', 'ss-member', '$' + s.member)); r.appendChild(el('div', 'ss-mlbl', 'member rate'));
     h.appendChild(l); h.appendChild(r); c.appendChild(h);
-    var a = el('a', 'pill-btn full dark', 'Choose a time'); a.href = BOOKING_URL; a.target = '_blank'; a.rel = 'noopener';
+    var a = el('a', 'pill-btn full dark', 'Book this session'); a.href = BOOKING_URL; a.target = '_blank'; a.rel = 'noopener';
     c.appendChild(a); w.appendChild(c);
   });
-  var n = el('div', 'note-line', 'Pick a time that feels right. Staci will send your payment link personally to confirm your session.'); n.style.marginTop = '4px'; w.appendChild(n);
 }
 
 /* ── CIRCLE ── */
