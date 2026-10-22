@@ -627,6 +627,84 @@ button{font-family:'Poppins',sans-serif;}
 .rr-phil .cc-body{margin:8px 0 0;}
 #rr-body .er-h:first-child{margin-top:4px;}
 
+/* ── Circle ── */
+.circle-compose{padding:16px 20px 6px;}
+.cc-tags{margin:0 0 10px;}
+.compose-foot .je-photo-btn{min-height:42px;font-size:13px;}
+.compose-note{margin-top:8px;}
+#cf-filter{padding:8px 20px 4px;}
+.cpost{display:flex;gap:11px;margin-bottom:18px;}
+.cpost.reply{margin:12px 0 0;}
+.cp-r{flex:1;min-width:0;}
+.cp-tag{font-size:10.5px;letter-spacing:.08em;padding:2px 8px;border-radius:20px;background:#e6ebe2;color:#4d6150;}
+.cp-tag.t-creative{background:#f5ecd3;color:#6f561a;}
+.cp-tag.t-reflection{background:#ece8e1;color:#5a4f45;}
+.cp-tag.t-gathering{background:#e3e8ec;color:#4f5f6b;}
+.cp-photo{display:block;width:100%;max-height:420px;object-fit:cover;border-radius:12px;margin-top:8px;background:var(--cream-dark);}
+.cp-acts{display:flex;gap:14px;align-items:center;margin-top:6px;}
+.cp-hear,.cp-btn{min-height:36px;background:none;border:none;padding:0;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:var(--mid);cursor:pointer;}
+.cp-hear.on{color:#7a5537;}
+.cp-heard{font-size:12px;font-style:italic;color:#7a5537;margin-top:2px;}
+.cp-menu{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px;padding:10px;background:var(--cream-dark);border-radius:12px;}
+.cp-menu .compose-ta{min-height:60px;}
+.cp-note{font-size:13px;font-style:italic;color:var(--deep);}
+.cp-replies{margin-top:4px;padding-left:12px;border-left:2px solid var(--border);}
+.cp-replies .msg-av{width:26px;height:26px;font-size:10px;}
+.rp-row{display:flex;gap:8px;align-items:flex-end;margin-top:10px;}
+.rp-row .compose-ta{min-height:52px;flex:1;}
+.care{margin:20px 20px 0;padding:14px 16px;background:var(--cream-dark);border-radius:14px;}
+.care summary{cursor:pointer;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dark);min-height:32px;display:flex;align-items:center;}
+.care ul{margin:10px 0 0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--mid);}
+/* ── Gather With Us ── */
+.gather{margin:16px 20px 0;padding:20px;border-radius:16px;background:#e3e8ec;position:relative;overflow:hidden;}
+.gather::after{content:'◎';position:absolute;right:12px;top:-6px;font-size:84px;color:#8096a7;opacity:.25;pointer-events:none;}
+.g-eye{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4f5f6b;}
+.g-title{margin-top:6px;font-family:'Abril Fatface',serif;font-size:23px;line-height:1.15;color:var(--dark);padding-right:40px;}
+.g-when{margin-top:6px;font-size:14px;font-weight:500;color:#3f4a52;}
+.g-desc{margin:8px 0 0;font-size:14px;line-height:1.65;color:#44494a;}
+.g-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative;z-index:1;}
+.g-acts .pill-btn.outline{background:transparent;border-color:#4f5f6b;color:#33404a;}
+.g-note{margin-top:10px;font-size:13px;font-style:italic;color:#4f5f6b;}
+.g-admin{margin-top:10px;font-size:12px;color:#33404a;}
+.g-empty{margin:16px 20px 0;padding:14px 16px;border:1px dashed var(--border);border-radius:14px;font-size:13px;font-style:italic;color:var(--mid);}
+.gather .pill-btn.dark.full{width:100%;}
+
+/* ── Journal PDF ── */
+.j-export{margin-top:10px;padding:16px;background:#fbfaf7;border:1px solid var(--border);border-radius:14px;}
+.j-export input[type=date]{width:100%;min-height:44px;border:1px solid var(--border);border-radius:8px;padding:0 10px;font-family:'Poppins',sans-serif;font-size:15px;background:#fff;}
+#print-area{display:none;}
+@media print{
+  @page{size:A5;margin:16mm 14mm;}
+  html{background:#fff !important;}
+  body.printing{background:#fff !important;height:auto !important;min-height:0 !important;overflow:visible !important;position:static !important;}
+  body.printing > *{display:none !important;}
+  body.printing > #print-area{display:block !important;}
+  #print-area{font-family:'Poppins',sans-serif;font-weight:300;color:#3a3d38;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .pr-cover{height:170mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;page-break-after:always;}
+  .pr-brand{font-family:'Abril Fatface',serif;font-size:22pt;}
+  .pr-rule{width:30mm;height:1px;background:#8ea185;margin:6mm 0;}
+  .pr-title{font-family:'Abril Fatface',serif;font-weight:400;font-size:26pt;margin:0;}
+  .pr-name{margin-top:5mm;font-size:12pt;letter-spacing:.2em;text-transform:uppercase;color:#5d665e;}
+  .pr-range{margin-top:2mm;font-size:10pt;color:#5d665e;}
+  .pr-quote{margin-top:16mm;font-style:italic;font-size:10pt;color:#5d665e;max-width:90mm;}
+  .pr-month{page-break-before:always;}
+  .pr-month:first-of-type{page-break-before:auto;}
+  .pr-mh{font-family:'Abril Fatface',serif;font-weight:400;font-size:20pt;margin:0 0 2mm;padding-bottom:2mm;border-bottom:1px solid #d4cfc8;}
+  .pr-ck{font-size:8.5pt;color:#5d665e;margin-bottom:4mm;}
+  .pr-entry{padding:5mm 0;border-bottom:1px solid #ece8e1;page-break-inside:avoid;break-inside:avoid;}
+  .pr-top{display:flex;justify-content:space-between;align-items:baseline;gap:4mm;}
+  .pr-date{font-family:'Abril Fatface',serif;font-size:12.5pt;}
+  .pr-kind{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#7a5537;}
+  .pr-prompt{margin:2mm 0 0;font-style:italic;font-size:9.5pt;color:#5d665e;padding-left:3mm;border-left:1.5px solid #a1765a;}
+  .pr-body{margin:2.5mm 0 0;font-size:10.5pt;line-height:1.6;white-space:pre-wrap;}
+  .pr-photo{display:block;max-width:100%;max-height:85mm;margin-top:3mm;border-radius:2mm;}
+}
+
+.m-letter{background:#fff;border:1px solid var(--border,#d4cfc8);border-left:3px solid var(--sage,#8ea185);border-radius:14px;padding:18px 20px;}
+.m-letter p{font-family:'Poppins',sans-serif;font-weight:300;font-size:14px;line-height:1.75;color:#3a3d38;margin:0 0 12px;}
+.m-letter p:last-of-type{font-family:'Abril Fatface',serif;font-size:17px;line-height:1.4;margin-top:16px;}
+.ml-sign{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#919d9d;margin-top:6px;}
+
 </style>
 </head>
 <body>
@@ -745,6 +823,7 @@ button{font-family:'Poppins',sans-serif;}
 </div>
 
 <!-- APP -->
+<div id="print-area" aria-hidden="true"></div>
 <div id="app">
   <div class="topbar">
     <div class="topbar-l">
@@ -856,6 +935,10 @@ button{font-family:'Poppins',sans-serif;}
         <h1 class="w-title" id="ex-title"></h1>
         <p class="w-sub" id="ex-sub"></p>
       </section>
+      <div class="pad" id="letter-wrap" style="display:none">
+        <div class="eye" id="letter-eye">◉ A note for the month</div>
+        <div class="m-letter" id="m-letter"></div>
+      </div>
       <div class="breath-card" id="breath-card"></div>
       <div class="pad" id="moon-wrap">
         <div class="eye" id="moon-eye"></div>
@@ -968,14 +1051,30 @@ button{font-family:'Poppins',sans-serif;}
         <div class="sh-title">A space to be witnessed.</div>
         <div class="ch-q" id="circle-q"></div>
       </div>
+      <div id="gather-wrap"></div>
       <div class="circle-compose">
+        <div class="je-chips cc-tags" id="cc-tags" role="group" aria-label="What are you sharing?"></div>
         <textarea class="compose-ta" id="circle-ta" maxlength="1500" aria-label="Share with the Circle" placeholder="Share what's true for you right now…"></textarea>
+        <div class="je-prev" id="cc-prev"></div>
         <div class="compose-foot">
-          <div class="compose-note">Only members see the Circle.</div>
+          <label class="je-photo-btn">Add a photo<input type="file" accept="image/*" id="cc-file" class="sr-only" onchange="pickCirclePhoto(this)"></label>
           <button class="pill-btn dark" id="circle-send" onclick="sendPost()">Share</button>
         </div>
+        <div class="compose-note">Only members see the Circle. Your Journal is never shared here.</div>
       </div>
+      <div class="chips" id="cf-filter" aria-label="Show"></div>
       <div class="chat-feed" id="chat-feed"><div class="feed-empty">Gathering the Circle…</div></div>
+      <details class="care">
+        <summary>How we hold this space</summary>
+        <ul>
+          <li>Share from your own experience. Listen more than you advise.</li>
+          <li>What’s shared here stays here. Please don’t screenshot or repeat someone’s story.</li>
+          <li>Kindness over cleverness. There’s no right way to feel.</li>
+          <li>If something feels off, tap ⋯ on the post to report it. Only Staci sees reports.</li>
+          <li>You can block someone at any time from ⋯. They won’t be told.</li>
+        </ul>
+        <button class="text-link" style="margin:8px 0 0;width:100%" onclick="unblockAll(this)"><span>Unblock everyone I’ve blocked</span><span aria-hidden="true">↺</span></button>
+      </details>
       <div class="spacer"></div>
     </div>
 
@@ -992,7 +1091,17 @@ button{font-family:'Poppins',sans-serif;}
       <div id="j-list"></div>
       <div class="j-foot">
         <p>Your Journal is private. Only you can see, change or delete what you keep here, and nothing is ever shared to the Circle.</p>
-        <button class="text-link" style="margin:8px 0 0;width:100%" onclick="downloadJournal()"><span>Download my journal</span><span aria-hidden="true">↓</span></button>
+        <button class="text-link" style="margin:8px 0 0;width:100%" onclick="toggleExport()"><span>Save my journal as a PDF</span><span aria-hidden="true">↓</span></button>
+        <div class="j-export" id="j-export" style="display:none">
+          <div class="fld-2">
+            <div class="fld"><label for="jx-from">From</label><input type="date" id="jx-from"></div>
+            <div class="fld"><label for="jx-to">To</label><input type="date" id="jx-to"></div>
+          </div>
+          <div class="hint">Leave both empty to include everything.</div>
+          <button class="pill-btn dark full" id="jx-go" style="margin-top:12px" onclick="exportJournalPdf()">Create my PDF</button>
+          <div class="hint" id="jx-msg" style="margin-top:8px">Your phone’s print screen will open. Choose <b>Save to Files</b> (iPhone: tap Share, then Save to Files) or <b>Save as PDF</b>.</div>
+          <button class="cp-btn" style="margin-top:6px" onclick="downloadJournal()">Or download plain text</button>
+        </div>
       </div>
       <div class="spacer"></div>
     </div>
@@ -1074,6 +1183,8 @@ button{font-family:'Poppins',sans-serif;}
         <button class="ptab" data-p="recs">Recordings</button>
         <button class="ptab" data-p="lens">Lens</button>
         <button class="ptab" data-p="members">Members</button>
+        <button class="ptab" data-p="gather">Gather</button>
+        <button class="ptab" data-p="circle">Circle</button>
         <button class="ptab" data-p="notes">Notes</button>
       </div>
       <div class="st-panel" id="st-panel"></div>
@@ -1154,7 +1265,27 @@ var api = window.API_OVERRIDE || {
   logVisit: async function(uid, day){ ok(await sb.from('visits').upsert({user_id: uid, day: day}, {onConflict:'user_id,day', ignoreDuplicates:true})); },
   setMood: async function(uid, day, mood){ ok(await sb.from('visits').upsert({user_id: uid, day: day, mood: mood}, {onConflict:'user_id,day'})); },
   myVisits: async function(uid, from){ return ok(await sb.from('visits').select('day,mood').eq('user_id', uid).gte('day', from)); },
-  posts: async function(month){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id').eq('month', month).order('created_at').limit(400)); },
+  feed: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,tag,photo_path,gathering_id,month').is('parent_id', null).order('created_at', {ascending:false}).limit(80)); },
+  replies: async function(ids){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,parent_id').in('parent_id', ids).order('created_at').limit(500)); },
+  reactions: async function(ids){ return ok(await sb.from('circle_reactions').select('post_id,user_id,name').in('post_id', ids)); },
+  react: async function(id, name){ ok(await sb.from('circle_reactions').insert({post_id: id, name: name})); },
+  unreact: async function(id){ ok(await sb.from('circle_reactions').delete().eq('post_id', id).eq('user_id', S.session.user.id)); },
+  report: async function(id, reason){ ok(await sb.from('circle_reports').insert({post_id: id, reason: reason || null})); },
+  reports: async function(){ return ok(await sb.from('circle_reports').select('id,post_id,reason,resolved,created_at,circle_posts(body,name,hidden)').order('created_at', {ascending:false}).limit(200)); },
+  resolveReport: async function(id){ ok(await sb.from('circle_reports').update({resolved: true}).eq('id', id)); },
+  blocks: async function(){ return ok(await sb.from('circle_blocks').select('blocked')); },
+  block: async function(uid){ ok(await sb.from('circle_blocks').insert({blocked: uid})); },
+  unblockAll: async function(){ ok(await sb.from('circle_blocks').delete().eq('blocker', S.session.user.id)); },
+  circlePhotoUpload: async function(path, blob){ ok(await sb.storage.from('circle').upload(path, blob, {upsert: true, contentType: blob.type || 'image/jpeg'})); },
+  circlePhotoUrl: async function(path){ return ok(await sb.storage.from('circle').createSignedUrl(path, 3600)).signedUrl; },
+  circlePhotoDelete: async function(path){ await sb.storage.from('circle').remove([path]); },
+  gatherings: async function(){ return ok(await sb.from('gatherings').select('*').order('starts_at', {ascending:false}).limit(40)); },
+  saveGathering: async function(id, row){ if (id) ok(await sb.from('gatherings').update(row).eq('id', id)); else ok(await sb.from('gatherings').insert(row)); },
+  deleteGathering: async function(id){ ok(await sb.from('gatherings').delete().eq('id', id)); },
+  myRsvp: async function(gid){ return ok(await sb.from('gathering_rsvps').select('gathering_id').eq('gathering_id', gid).eq('user_id', S.session.user.id).maybeSingle()); },
+  rsvp: async function(gid, name){ ok(await sb.from('gathering_rsvps').insert({gathering_id: gid, name: name})); },
+  unrsvp: async function(gid){ ok(await sb.from('gathering_rsvps').delete().eq('gathering_id', gid).eq('user_id', S.session.user.id)); },
+  rsvps: async function(gid){ return ok(await sb.from('gathering_rsvps').select('name,created_at').eq('gathering_id', gid).order('created_at')); },
   addPost: async function(p){ ok(await sb.from('circle_posts').insert(p)); },
   deletePost: async function(id){ ok(await sb.from('circle_posts').delete().eq('id', id)); },
   hidePost: async function(id, hidden){ ok(await sb.from('circle_posts').update({hidden: hidden}).eq('id', id)); },
@@ -1236,7 +1367,7 @@ function normalize(c, key){
     philosophy: {title: (c.philosophy && c.philosophy.title) || '', body: (c.philosophy && c.philosophy.body) || ''},
     creative: c.creative || {}, events: c.events || [], eventsNote: c.eventsNote || '', eventsUrl: c.eventsUrl || '',
     circlePrompt: c.circlePrompt || '', quotes: (c.quotes && c.quotes.length) ? c.quotes : ['You were made to flourish — in your own rhythm, by your own design.'],
-    lensTopic: c.lensTopic || ''
+    lensTopic: c.lensTopic || '', letter: c.letter || ''
   };
   var cr = n.creative;
   n.creative = {title: cr.title || '', sub: cr.sub || '', steps: cr.steps || [], pull: cr.pull || '',
@@ -1674,6 +1805,11 @@ function buildExplore(){
   $('ex-eye').textContent = '◉ Explore the Rhythm · ' + M.name;
   $('ex-title').textContent = M.theme || M.name;
   $('ex-sub').textContent = M.rhythmLine || M.intention;
+  var lw = $('m-letter'); lw.innerHTML = '';
+  $('letter-wrap').style.display = M.letter ? 'block' : 'none';
+  $('letter-eye').textContent = '◉ A note for ' + M.name;
+  M.letter.split(/\n\s*\n/).filter(Boolean).forEach(function(p){ lw.appendChild(el('p', null, p.trim())); });
+  if (M.letter) lw.appendChild(el('div', 'ml-sign', 'With love, Staci'));
   var bc = $('breath-card'); bc.innerHTML = '';
   bc.style.display = M.breath.name ? 'block' : 'none';
   bc.appendChild(el('div', 'bc-eye', '༄ This month’s breath'));
@@ -1994,6 +2130,52 @@ function shrinkImage(file){
     img.src = u;
   });
 }
+function toggleExport(){ var x = $('j-export'); x.style.display = x.style.display === 'none' ? 'block' : 'none'; }
+async function exportJournalPdf(){
+  var from = $('jx-from').value, to = $('jx-to').value, btn = $('jx-go');
+  var list = (J.entries || []).filter(function(e){ return (!from || e.entry_date >= from) && (!to || e.entry_date <= to); }).slice().reverse();
+  var cks = (J.checkins || []).filter(function(c){ return (!from || c.day >= from) && (!to || c.day <= to); });
+  if (!list.length) { $('jx-msg').textContent = 'No entries in those dates yet.'; return; }
+  btn.disabled = true; btn.textContent = 'Preparing your pages…';
+  var pa = $('print-area'); pa.innerHTML = '';
+  var cover = el('section', 'pr-cover');
+  cover.appendChild(el('div', 'pr-brand', 'flourish & flow'));
+  cover.appendChild(el('div', 'pr-rule'));
+  cover.appendChild(el('h1', 'pr-title', 'A Moment to Remember'));
+  cover.appendChild(el('div', 'pr-name', S.me.name || ''));
+  var range = (from || list[0].entry_date), endD = (to || list[list.length - 1].entry_date);
+  cover.appendChild(el('div', 'pr-range', fmtDay(range, {month:'long', day:'numeric', year:'numeric'}) + ' – ' + fmtDay(endD, {month:'long', day:'numeric', year:'numeric'})));
+  cover.appendChild(el('div', 'pr-quote', 'You were made to flourish, in your own rhythm, by your own design.'));
+  pa.appendChild(cover);
+  var loads = [], month = null, sec = null;
+  list.forEach(function(e){
+    var k = e.entry_date.slice(0, 7);
+    if (k !== month) {
+      month = k; sec = el('section', 'pr-month'); sec.appendChild(el('h2', 'pr-mh', monthLabel(k)));
+      var mck = cks.filter(function(c){ return c.day.slice(0, 7) === k; }).reverse();
+      if (mck.length) sec.appendChild(el('div', 'pr-ck', 'How you arrived: ' + mck.map(function(c){ return fmtDay(c.day, {month:'short', day:'numeric'}) + ' ' + c.mood; }).join(' · ')));
+      pa.appendChild(sec);
+    }
+    var a = el('article', 'pr-entry');
+    var top = el('div', 'pr-top'); top.appendChild(el('span', 'pr-date', fmtDay(e.entry_date, {weekday:'long', month:'long', day:'numeric'}))); if (e.kind) top.appendChild(el('span', 'pr-kind', JKINDS[e.kind] || '')); a.appendChild(top);
+    if (e.prompt) a.appendChild(el('p', 'pr-prompt', e.prompt));
+    if (e.body) a.appendChild(el('p', 'pr-body', e.body));
+    if (e.photo_path) {
+      var img = el('img', 'pr-photo'); img.alt = ''; a.appendChild(img);
+      loads.push(photoSrc(e.photo_path).then(function(u){
+        if (!u) { img.remove(); return; }
+        return new Promise(function(res){ img.onload = res; img.onerror = function(){ img.remove(); res(); }; img.src = u; setTimeout(res, 8000); });
+      }));
+    }
+    sec.appendChild(a);
+  });
+  await Promise.all(loads);
+  document.body.classList.add('printing');
+  var done = function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint', done); };
+  window.addEventListener('afterprint', done);
+  btn.disabled = false; btn.textContent = 'Create my PDF';
+  setTimeout(function(){ window.print(); setTimeout(done, 1500); }, 150);
+}
 function downloadJournal(){
   var lines = ['A Moment to Remember · Flourish & Flow', 'Downloaded ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}), ''];
   (J.entries || []).slice().reverse().forEach(function(e){
@@ -2220,6 +2402,83 @@ function buildFullDesign(){
   gd.appendChild(gb); w.appendChild(gd);
 }
 
+/* ── STUDIO · Gather With Us ── */
+function toLocalInput(iso){ var d = iso ? new Date(iso) : new Date(Date.now() + 7 * 86400000); d.setSeconds(0, 0); var off = d.getTimezoneOffset(); return new Date(d.getTime() - off * 60000).toISOString().slice(0, 16); }
+async function studioGather(p){
+  var list = el('div'); list.appendChild(el('div', 'loading', 'Loading…')); p.appendChild(list);
+  var all;
+  try { all = await api.gatherings(); } catch(e) { list.innerHTML = ''; list.appendChild(el('div', 'feed-empty', 'Couldn’t load gatherings. If this is the first time, the Circle and Gather database step may not have run yet.')); return; }
+  list.innerHTML = '';
+  var g = ST.editG === 'new' ? {} : (all.filter(function(x){ return x.id === ST.editG; })[0] || null);
+  if (!g) {
+    sec(list, 'Gatherings');
+    list.appendChild(el('div', 'hint', 'Members see the next upcoming gathering at the top of the Circle, from the moment you tick “Live for members.” After it ends, it stays for three weeks with the recording and the conversation.'));
+    var nb = el('button', 'pill-btn', '+ New gathering'); nb.style.margin = '12px 0'; nb.onclick = function(){ ST.editG = 'new'; studioRender(); }; list.appendChild(nb);
+    all.slice().sort(function(a, b){ return a.starts_at < b.starts_at ? 1 : -1; }).forEach(function(x){
+      var it = el('div', 'item'), b = el('div', 'it-b');
+      var t = el('div', 'it-t', x.title); if (!x.published) { var tg = el('span', 'tag', 'draft'); tg.style.color = 'var(--terra)'; t.appendChild(tg); }
+      b.appendChild(t); b.appendChild(el('div', 'it-s', fmtWhen(x))); it.appendChild(b);
+      var a = el('div', 'it-a'), e = el('button', 'pill-btn small-btn outline', 'Edit'); e.onclick = function(){ ST.editG = x.id; studioRender(); }; a.appendChild(e); it.appendChild(a);
+      list.appendChild(it);
+    });
+    if (!all.length) list.appendChild(el('div', 'feed-empty', 'No gatherings yet.'));
+    return;
+  }
+  sec(list, g.id ? 'Edit gathering' : 'New gathering');
+  var pubWrap = el('label', 'check'), pub = el('input'); pub.type = 'checkbox'; pub.checked = !!g.published;
+  pubWrap.appendChild(pub); pubWrap.appendChild(document.createTextNode('Live for members')); list.appendChild(pubWrap);
+  var fT = fld(list, 'Title', g.title || '', {placeholder:'Breath & reflection · January'});
+  var two = el('div', 'fld-2'); list.appendChild(two);
+  var fW = fld(two, 'Date & time (your time)', toLocalInput(g.starts_at), {type:'datetime-local'});
+  var fD = fld(two, 'Length (minutes)', String(g.duration_min || 60), {type:'number'});
+  var fDesc = fld(list, 'A few words about it', g.description || '', {area:true, rows:3});
+  var fJ = fld(list, 'Zoom or meeting link', g.join_url || '', {type:'url', placeholder:'https://zoom.us/j/…', hint:'Only members can see this, and only from 15 minutes before.'});
+  var fR = fld(list, 'Recording link (after)', g.recording_url || '', {type:'url', placeholder:'Vimeo link, set to Unlisted'});
+  saveRow(list, 'Save gathering', async function(){
+    var t = fT.value.trim(); if (!t) throw {userMsg:'Add a title.'};
+    var when = new Date(fW.value); if (isNaN(when)) throw {userMsg:'Check the date and time.'};
+    var row = {title: t, starts_at: when.toISOString(), duration_min: Math.max(10, Math.min(480, parseInt(fD.value, 10) || 60)), description: fDesc.value.trim() || null,
+               join_url: fJ.value.trim() || null, recording_url: fR.value.trim() || null, published: pub.checked};
+    await api.saveGathering(g.id || null, row);
+    ST.editG = null; studioRender(); C.gathering = null; loadGathering();
+  });
+  var back = el('button', 'pill-btn small-btn outline', '← All gatherings'); back.style.marginTop = '14px'; back.onclick = function(){ ST.editG = null; studioRender(); }; list.appendChild(back);
+  if (g.id) {
+    var del = el('button', 'pill-btn small-btn danger', 'Delete gathering'); del.style.margin = '14px 0 0 8px';
+    armButton(del, 'Tap again to delete', async function(){ await api.deleteGathering(g.id); ST.editG = null; studioRender(); loadGathering(); });
+    list.appendChild(del);
+    sec(list, 'Who’s coming');
+    var rl = el('div', 'hint', 'Loading…'); list.appendChild(rl);
+    api.rsvps(g.id).then(function(r){ rl.textContent = r.length ? r.length + ' · ' + r.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No RSVPs yet.'; }).catch(function(){ rl.textContent = 'Couldn’t load RSVPs.'; });
+  }
+}
+
+/* ── STUDIO · Circle care ── */
+async function studioCircle(p){
+  sec(p, 'Reports');
+  p.appendChild(el('div', 'hint', 'When a member reports a post, it lands here. Only you see reports, and the person is never told who reported.'));
+  var list = el('div'); list.appendChild(el('div', 'loading', 'Loading…')); p.appendChild(list);
+  var reps;
+  try { reps = await api.reports(); } catch(e) { list.innerHTML = ''; list.appendChild(el('div', 'feed-empty', 'Couldn’t load reports.')); return; }
+  list.innerHTML = '';
+  var open = reps.filter(function(r){ return !r.resolved; });
+  if (!open.length) list.appendChild(el('div', 'feed-empty', 'Nothing to look at. The Circle is quiet and kind.'));
+  open.forEach(function(r){
+    var post = r.circle_posts || {};
+    var c = el('div', 'note-card');
+    c.appendChild(el('div', 'note-meta', new Date(r.created_at).toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}) + ' · post by ' + (post.name || 'someone') + (post.hidden ? ' · hidden' : '')));
+    c.appendChild(el('div', 'note-body', post.body || '(post already removed)'));
+    if (r.reason) c.appendChild(el('div', 'hint', 'Reason: ' + r.reason));
+    var a = el('div', 'st-row');
+    if (post.body && !post.hidden) { var h = el('button', 'pill-btn small-btn outline', 'Hide post'); h.onclick = async function(){ await api.hidePost(r.post_id, true); await api.resolveReport(r.id); studioRender(); }; a.appendChild(h); }
+    if (post.body) { var d = el('button', 'pill-btn small-btn danger', 'Remove post'); armButton(d, 'Tap again', async function(){ await api.deletePost(r.post_id); studioRender(); }); a.appendChild(d); }
+    var ok2 = el('button', 'pill-btn small-btn', 'Dismiss'); ok2.onclick = async function(){ await api.resolveReport(r.id); studioRender(); }; a.appendChild(ok2);
+    c.appendChild(a); list.appendChild(c);
+  });
+  sec(p, 'Everyday care');
+  p.appendChild(el('div', 'hint', 'In the Circle, tap ⋯ on any post to hide it (it disappears for members, you still see it) or remove it for good.'));
+}
+
 /* ── SESSIONS ── */
 function buildSessions(){
   var w = $('sessions'); w.innerHTML = '';
@@ -2233,41 +2492,152 @@ function buildSessions(){
   });
 }
 
-/* ── CIRCLE ── */
+/* ── CIRCLE · one ongoing feed, gently tagged ── */
+var CTAGS = {reflection:'Monthly reflection', open:'Open conversation', creative:'Creative sharing', gathering:'After the gathering'};
+var C = {tag:'reflection', photo:null, filter:'all', posts:[], replies:{}, reacts:{}, blocked:{}, open:{}, menu:null, gathering:null, rsvp:null, gid:null, loading:false};
 function buildCircleHeader(){
   $('circle-eye').textContent = '○ The Circle · ' + S.M.name;
   $('circle-q').textContent = S.M.circlePrompt ? '“' + S.M.circlePrompt + '”' : 'What’s alive for you this month?';
+  buildComposer(); buildFilters();
 }
-async function loadCircle(){
-  if (!S.cur) return;
-  try { renderFeed(await api.posts(S.cur.key)); }
-  catch(e) { var f = $('chat-feed'); f.innerHTML = ''; f.appendChild(el('div', 'feed-empty', 'The Circle couldn’t load just now. Check your connection and come back in a moment.')); }
+function buildComposer(){
+  var t = $('cc-tags'); t.innerHTML = '';
+  ['reflection', 'open', 'creative'].concat(C.tag === 'gathering' ? ['gathering'] : []).forEach(function(k){
+    var b = el('button', 'je-chip' + (C.tag === k ? ' on' : ''), CTAGS[k]); b.type = 'button'; b.setAttribute('aria-pressed', C.tag === k ? 'true' : 'false');
+    b.onclick = function(){ C.tag = k; if (k !== 'gathering') C.gid = null; buildComposer(); };
+    t.appendChild(b);
+  });
+  $('circle-ta').placeholder = C.tag === 'reflection' && S.M.circlePrompt ? S.M.circlePrompt : (C.tag === 'creative' ? 'Share something you made, or noticed…' : (C.tag === 'gathering' ? 'What stayed with you from the gathering?' : 'Share what’s true for you right now…'));
 }
-function renderFeed(posts){
+function buildFilters(){
+  var f = $('cf-filter'); f.innerHTML = '';
+  [['all', 'Everything'], ['reflection', 'Monthly reflections'], ['open', 'Open conversation'], ['creative', 'Creative sharing'], ['gathering', 'Gatherings']].forEach(function(o){
+    var b = el('button', 'chip' + (C.filter === o[0] ? ' on' : ''), o[1]);
+    b.onclick = function(){ C.filter = o[0]; buildFilters(); renderFeed(); };
+    f.appendChild(b);
+  });
+}
+async function pickCirclePhoto(input){
+  var f = input.files && input.files[0]; if (!f) return;
+  try { C.photo = await shrinkImage(f); } catch(e) { C.photo = null; }
+  var pv = $('cc-prev'); pv.innerHTML = '';
+  if (!C.photo) { pv.appendChild(el('div', 'je-msg', 'That photo couldn’t be opened. Try another.')); return; }
+  var im = el('img'); im.src = URL.createObjectURL(C.photo); im.alt = 'Photo to share'; pv.appendChild(im);
+  var rm = el('button', 'je-rm', 'Remove photo'); rm.type = 'button'; rm.onclick = function(){ C.photo = null; pv.innerHTML = ''; input.value = ''; }; pv.appendChild(rm);
+}
+function circleBusy(){
+  var a = document.activeElement;
+  if (a && $('screen-circle').contains(a) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
+  return [].some.call(document.querySelectorAll('#chat-feed textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
+}
+async function loadCircle(quiet){
+  if (C.loading || (quiet && circleBusy())) return;
+  C.loading = true;
+  try {
+    var r = await Promise.all([api.feed(), api.blocks().catch(function(){ return []; })]);
+    C.posts = r[0] || []; C.blocked = {}; (r[1] || []).forEach(function(b){ C.blocked[b.blocked] = 1; });
+    var ids = C.posts.map(function(p){ return p.id; });
+    var rr = ids.length ? await Promise.all([api.replies(ids), api.reactions(ids).catch(function(){ return []; })]) : [[], []];
+    C.replies = {}; (rr[0] || []).forEach(function(p){ (C.replies[p.parent_id] = C.replies[p.parent_id] || []).push(p); });
+    var replyIds = (rr[0] || []).map(function(p){ return p.id; });
+    var more = replyIds.length ? await api.reactions(replyIds).catch(function(){ return []; }) : [];
+    C.reacts = {}; (rr[1] || []).concat(more).forEach(function(x){ (C.reacts[x.post_id] = C.reacts[x.post_id] || []).push(x); });
+    renderFeed();
+  } catch(e) {
+    var f = $('chat-feed'); f.innerHTML = ''; f.appendChild(el('div', 'feed-empty', 'The Circle couldn’t load just now. Check your connection and come back in a moment.'));
+  } finally { C.loading = false; }
+  loadGathering();
+}
+function renderFeed(){
   var feed = $('chat-feed'); feed.innerHTML = '';
   var uid = S.session.user.id;
-  posts = posts || [];
-  var visible = posts.filter(function(p){ return !p.hidden; }).length;
-  if ($('ct-meta')) $('ct-meta').textContent = visible ? visible + (visible === 1 ? ' voice' : ' voices') + ' so far →' : 'Be the first to share →';
-  if (!posts.length) { feed.appendChild(el('div', 'feed-empty', 'No one has shared yet this month. You’re welcome to go first — a sentence is plenty.')); return; }
-  posts.forEach(function(p){
-    var mine = p.user_id === uid;
-    var m = el('div', 'chat-msg' + (p.hidden ? ' msg-hidden' : ''));
-    m.appendChild(el('div', 'msg-av' + (p.is_host ? ' host' : (mine ? ' mine' : '')), (p.name || '?').charAt(0).toUpperCase()));
-    var right = el('div'); right.style.flex = '1'; right.style.minWidth = '0';
-    var meta = el('div', 'msg-meta');
-    meta.appendChild(el('span', 'msg-name', p.name + (p.design ? ' · ' + p.design : '')));
-    meta.appendChild(el('span', null, new Date(p.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric'})));
-    if (p.hidden) meta.appendChild(el('span', null, '· hidden'));
-    right.appendChild(meta); right.appendChild(el('div', 'msg-text', p.body));
-    if (mine || isAdmin()) {
-      var tools = el('div', 'msg-tools');
-      if (mine || isAdmin()) { var del = el('button', null, 'Remove'); armButton(del, 'Tap again to remove', function(){ api.deletePost(p.id).then(loadCircle); }); tools.appendChild(del); }
-      if (isAdmin() && !mine) { var hide = el('button', null, p.hidden ? 'Show' : 'Hide'); hide.onclick = function(){ api.hidePost(p.id, !p.hidden).then(loadCircle); }; tools.appendChild(hide); }
-      right.appendChild(tools);
+  var posts = C.posts.filter(function(p){ return !C.blocked[p.user_id] && (C.filter === 'all' || (p.tag || 'open') === C.filter); });
+  if (!posts.length) {
+    feed.appendChild(el('div', 'feed-empty', C.filter === 'all' ? 'No one has shared yet. You’re welcome to go first. A sentence is plenty.' : 'Nothing here yet.'));
+    return;
+  }
+  posts.forEach(function(p){ feed.appendChild(postCard(p, uid, false)); });
+}
+function photoInto(img, path){
+  if (C['u' + path]) { img.src = C['u' + path]; return; }
+  api.circlePhotoUrl(path).then(function(u){ C['u' + path] = u; img.src = u; }).catch(function(){ img.remove(); });
+}
+function postCard(p, uid, isReply){
+  var mine = p.user_id === uid;
+  var m = el('article', 'cpost' + (isReply ? ' reply' : '') + (p.hidden ? ' msg-hidden' : ''));
+  m.appendChild(el('div', 'msg-av' + (p.is_host ? ' host' : (mine ? ' mine' : '')), (p.name || '?').charAt(0).toUpperCase()));
+  var right = el('div', 'cp-r');
+  var meta = el('div', 'msg-meta');
+  meta.appendChild(el('span', 'msg-name', p.name + (p.design ? ' · ' + p.design : '')));
+  meta.appendChild(el('span', null, new Date(p.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric'})));
+  if (!isReply && p.tag) meta.appendChild(el('span', 'cp-tag t-' + p.tag, CTAGS[p.tag] || ''));
+  if (p.hidden) meta.appendChild(el('span', null, '· hidden'));
+  right.appendChild(meta);
+  right.appendChild(el('div', 'msg-text', p.body));
+  if (p.photo_path) { var img = el('img', 'cp-photo'); img.alt = 'Photo shared by ' + p.name; img.loading = 'lazy'; photoInto(img, p.photo_path); right.appendChild(img); }
+  // quiet acknowledgement
+  var rs = C.reacts[p.id] || [], heard = rs.some(function(x){ return x.user_id === uid; });
+  var acts = el('div', 'cp-acts');
+  if (!mine) {
+    var h = el('button', 'cp-hear' + (heard ? ' on' : ''), heard ? '♡ Heard' : '♡ I hear you'); h.setAttribute('aria-pressed', heard ? 'true' : 'false');
+    h.onclick = async function(){
+      h.disabled = true;
+      try { if (heard) await api.unreact(p.id); else await api.react(p.id, (S.me.name || 'A member').slice(0, 40)); await loadCircle(); }
+      catch(e) { h.disabled = false; }
+    };
+    acts.appendChild(h);
+  }
+  if (!isReply) {
+    var reps = (C.replies[p.id] || []).filter(function(x){ return !C.blocked[x.user_id]; });
+    var rb = el('button', 'cp-btn', reps.length ? (C.open[p.id] ? 'Hide replies' : reps.length + (reps.length === 1 ? ' reply' : ' replies')) : 'Reply');
+    rb.onclick = function(){ C.open[p.id] = !C.open[p.id]; renderFeed(); if (C.open[p.id]) setTimeout(function(){ var t = document.getElementById('rp-' + p.id); if (t && !reps.length) t.focus(); }, 50); };
+    acts.appendChild(rb);
+  }
+  var more = el('button', 'cp-btn', '⋯'); more.setAttribute('aria-label', 'More options');
+  more.onclick = function(){ C.menu = C.menu === p.id ? null : p.id; renderFeed(); };
+  acts.appendChild(more);
+  right.appendChild(acts);
+  if (mine && rs.length) right.appendChild(el('div', 'cp-heard', 'Heard by ' + rs.map(function(x){ return x.name || 'a member'; }).join(', ')));
+  if (C.menu === p.id) right.appendChild(postMenu(p, mine));
+  if (!isReply && C.open[p.id]) {
+    var box = el('div', 'cp-replies');
+    (C.replies[p.id] || []).filter(function(x){ return !C.blocked[x.user_id]; }).forEach(function(r){ box.appendChild(postCard(r, uid, true)); });
+    var ta = el('textarea', 'compose-ta rp-ta'); ta.id = 'rp-' + p.id; ta.maxLength = 1500; ta.placeholder = 'Write a reply…'; ta.setAttribute('aria-label', 'Reply to ' + p.name);
+    var send = el('button', 'pill-btn small-btn dark', 'Reply');
+    send.onclick = async function(){
+      var text = ta.value.trim(); if (!text) { ta.focus(); return; }
+      send.disabled = true;
+      try { await api.addPost({month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: text, user_id: uid, parent_id: p.id, tag: p.tag || 'open'}); ta.value = ''; await loadCircle(); }
+      catch(e) { send.disabled = false; send.textContent = 'Try again'; }
+    };
+    var row = el('div', 'rp-row'); row.appendChild(ta); row.appendChild(send); box.appendChild(row);
+    right.appendChild(box);
+  }
+  m.appendChild(right);
+  return m;
+}
+function postMenu(p, mine){
+  var w = el('div', 'cp-menu');
+  if (mine || isAdmin()) { var del = el('button', 'pill-btn small-btn danger', 'Remove'); armButton(del, 'Tap again to remove', async function(){ C.menu = null; await api.deletePost(p.id); if (p.photo_path) api.circlePhotoDelete(p.photo_path).catch(function(){}); loadCircle(); }); w.appendChild(del); }
+  if (isAdmin() && !mine) { var hide = el('button', 'pill-btn small-btn outline', p.hidden ? 'Show' : 'Hide'); hide.onclick = async function(){ C.menu = null; await api.hidePost(p.id, !p.hidden); loadCircle(); }; w.appendChild(hide); }
+  if (!mine) {
+    var rep = el('button', 'pill-btn small-btn outline', 'Report');
+    rep.onclick = function(){
+      w.innerHTML = '';
+      var ta = el('textarea', 'compose-ta'); ta.maxLength = 500; ta.placeholder = 'What feels off? (optional) Only Staci will see this.'; ta.setAttribute('aria-label', 'Reason for report'); w.appendChild(ta);
+      var go = el('button', 'pill-btn small-btn dark', 'Send to Staci');
+      go.onclick = async function(){ go.disabled = true; try { await api.report(p.id, ta.value.trim()); w.innerHTML = ''; w.appendChild(el('div', 'cp-note', 'Thank you. Staci will take a look, quietly.')); setTimeout(function(){ C.menu = null; renderFeed(); }, 2500); } catch(e) { go.disabled = false; go.textContent = 'Try again'; } };
+      w.appendChild(go);
+    };
+    w.appendChild(rep);
+    if (!p.is_host) {
+      var bl = el('button', 'pill-btn small-btn outline', 'Block ' + (p.name || '').split(' ')[0]);
+      armButton(bl, 'Tap again to block', async function(){ C.menu = null; await api.block(p.user_id); loadCircle(); });
+      w.appendChild(bl);
     }
-    m.appendChild(right); feed.appendChild(m);
-  });
+  }
+  var close = el('button', 'cp-btn', 'Close'); close.onclick = function(){ C.menu = null; renderFeed(); }; w.appendChild(close);
+  return w;
 }
 function shortDesign(){
   if (!S.me.type) return '';
@@ -2275,15 +2645,101 @@ function shortDesign(){
 }
 async function sendPost(){
   var ta = $('circle-ta'), text = ta.value.trim();
-  if (!text || !S.cur) return;
+  if (!text) { ta.focus(); return; }
   var btn = $('circle-send'); btn.disabled = true; btn.textContent = 'Sharing…';
   try {
-    await api.addPost({month: S.cur.key, name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: text, user_id: S.session.user.id});
-    ta.value = ''; await loadCircle();
+    var photo = null;
+    if (C.photo) { photo = S.session.user.id + '/' + Date.now() + '.jpg'; await api.circlePhotoUpload(photo, C.photo); }
+    var row = {month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: text, user_id: S.session.user.id, tag: C.tag, photo_path: photo};
+    if (C.tag === 'gathering' && C.gid) row.gathering_id = C.gid;
+    await api.addPost(row);
+    ta.value = ''; C.photo = null; $('cc-prev').innerHTML = ''; $('cc-file').value = '';
+    C.tag = 'reflection'; C.gid = null; buildComposer();
+    await loadCircle();
   } catch(e) {
-    var f = $('chat-feed'), n = el('div', 'feed-empty', 'That didn’t send. Your words are still in the box — try again in a moment.');
+    var f = $('chat-feed'), n = el('div', 'feed-empty', 'That didn’t send. Your words are still in the box. Try again in a moment.');
     f.insertBefore(n, f.firstChild); setTimeout(function(){ n.remove(); }, 6000);
   } finally { btn.disabled = false; btn.textContent = 'Share'; }
+}
+async function unblockAll(btn){
+  btn.disabled = true;
+  try { await api.unblockAll(); btn.textContent = 'Done'; loadCircle(); } catch(e) { btn.disabled = false; }
+}
+
+/* ── GATHER WITH US ── */
+function gEnd(g){ return new Date(new Date(g.starts_at).getTime() + (g.duration_min || 60) * 60000); }
+function fmtWhen(g){
+  var d = new Date(g.starts_at);
+  return d.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'}) + ' · ' + d.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+}
+function pickGathering(list){
+  var now = Date.now(), up = null, past = null;
+  (list || []).forEach(function(g){
+    if (!g.published && !isAdmin()) return;
+    var end = gEnd(g).getTime();
+    if (end >= now) { if (!up || new Date(g.starts_at) < new Date(up.starts_at)) up = g; }
+    else if (now - end < 21 * 86400000) { if (!past || new Date(g.starts_at) > new Date(past.starts_at)) past = g; }
+  });
+  return up || past;
+}
+async function loadGathering(){
+  try {
+    var g = pickGathering(await api.gatherings());
+    C.gathering = g; C.rsvp = g ? await api.myRsvp(g.id).catch(function(){ return null; }) : null;
+    C.rsvpList = g && isAdmin() ? await api.rsvps(g.id).catch(function(){ return []; }) : null;
+  } catch(e) { C.gathering = null; }
+  renderGathering();
+}
+function renderGathering(){
+  var w = $('gather-wrap'); w.innerHTML = '';
+  var g = C.gathering;
+  if (!g) { if (isAdmin()) w.appendChild(el('div', 'g-empty', 'Gather With Us · add your next gathering in Studio → Gather.')); return; }
+  var now = Date.now(), start = new Date(g.starts_at).getTime(), end = gEnd(g).getTime();
+  var live = now >= start - 15 * 60000 && now <= end + 15 * 60000, past = now > end + 15 * 60000;
+  var c = el('section', 'gather'); c.setAttribute('aria-label', 'Gather With Us');
+  c.appendChild(el('div', 'g-eye', '◎ Gather With Us' + (g.published ? '' : ' · draft, only you can see this')));
+  c.appendChild(el('div', 'g-title', g.title));
+  c.appendChild(el('div', 'g-when', fmtWhen(g) + ' · ' + (g.duration_min || 60) + ' min · online'));
+  if (g.description) c.appendChild(el('p', 'g-desc', g.description));
+  var acts = el('div', 'g-acts');
+  if (live && g.join_url) {
+    var j = el('a', 'pill-btn dark full', 'Join the gathering'); j.href = g.join_url; j.target = '_blank'; j.rel = 'noopener'; acts.appendChild(j);
+  } else if (!past) {
+    var rb = el('button', 'pill-btn ' + (C.rsvp ? 'outline' : 'dark'), C.rsvp ? '✓ You’re coming · change' : 'I’ll be there');
+    rb.onclick = async function(){
+      rb.disabled = true;
+      try { if (C.rsvp) await api.unrsvp(g.id); else await api.rsvp(g.id, (S.me.name || 'A member').slice(0, 40)); await loadGathering(); }
+      catch(e) { rb.disabled = false; }
+    };
+    acts.appendChild(rb);
+    var cal = el('button', 'pill-btn outline', 'Add to calendar'); cal.onclick = function(){ downloadIcs(g); }; acts.appendChild(cal);
+  }
+  c.appendChild(acts);
+  if (!past && !live) c.appendChild(el('div', 'g-note', 'The join link appears here 15 minutes before we begin. Come as you are, camera on or off.'));
+  if (past) {
+    c.appendChild(el('div', 'g-note', 'Thank you for gathering.'));
+    if (g.recording_url) { var pw = el('div'); var pb = mediaButton(g.recording_url, pw); pb.textContent = '▶  Watch the recording'; c.appendChild(pb); c.appendChild(pw); }
+  }
+  if (past || live) {
+    var n = C.posts.filter(function(p){ return p.gathering_id === g.id; }).length;
+    var row = el('div', 'g-acts');
+    var share = el('button', 'pill-btn outline', 'Share a reflection');
+    share.onclick = function(){ C.tag = 'gathering'; C.gid = g.id; buildComposer(); $('circle-ta').focus(); };
+    row.appendChild(share);
+    if (n) { var see = el('button', 'pill-btn outline', 'The conversation (' + n + ')'); see.onclick = function(){ C.filter = 'gathering'; buildFilters(); renderFeed(); }; row.appendChild(see); }
+    c.appendChild(row);
+  }
+  if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? C.rsvpList.length + ' coming: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No RSVPs yet.'));
+  w.appendChild(c);
+}
+function downloadIcs(g){
+  function z(d){ return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
+  var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Flourish & Flow//Gather//EN', 'BEGIN:VEVENT',
+    'UID:gather-' + g.id + '@flourish-and-flow.stacilamp.com', 'DTSTAMP:' + z(new Date()), 'DTSTART:' + z(new Date(g.starts_at)), 'DTEND:' + z(gEnd(g)),
+    'SUMMARY:' + ('Flourish & Flow · ' + g.title).replace(/[,\n]/g, ' '),
+    'DESCRIPTION:' + ((g.description || '') + ' Join from the Circle in the Flourish & Flow app.').replace(/\n/g, ' ').replace(/,/g, '\\,'),
+    'URL:https://flourish-and-flow.stacilamp.com', 'END:VEVENT', 'END:VCALENDAR'];
+  var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([lines.join('\r\n')], {type:'text/calendar'})); a.download = 'flourish-flow-gathering.ics'; a.click();
 }
 
 /* ── BETA NOTES ── */
@@ -2307,7 +2763,7 @@ function goScreen(id){
   document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.toggle('active', b.id === 'bn-' + navFor); });
   $('content-area').scrollTop = 0;
   clearInterval(circleTimer);
-  if (id === 'circle') { loadCircle(); circleTimer = setInterval(loadCircle, 20000); }
+  if (id === 'circle') { loadCircle(); circleTimer = setInterval(function(){ loadCircle(true); }, 20000); }
   if (id === 'studio') studioOpen();
   if (id === 'journal') loadJournal();
 }
@@ -2356,7 +2812,7 @@ async function doSignout(){
 /* ════════════════════════════════════════════════════════════
    STUDIO (Staci only — the database also enforces this)
    ════════════════════════════════════════════════════════════ */
-var ST = {key:null, panel:'month', editRec:null, lensType:'Generator', members:null, notes:null};
+var ST = {editG:null, key:null, panel:'month', editRec:null, lensType:'Generator', members:null, notes:null};
 function stMonth(){ return S.months.filter(function(m){ return m.key === ST.key; })[0]; }
 function studioOpen(){
   if (!ST.key) ST.key = S.cur ? S.cur.key : (S.months.length ? S.months[S.months.length - 1].key : null);
@@ -2394,6 +2850,8 @@ function studioRender(){
   var p = $('st-panel'); p.innerHTML = '';
   if (ST.panel === 'members') return studioMembers(p);
   if (ST.panel === 'notes') return studioNotes(p);
+  if (ST.panel === 'gather') return studioGather(p);
+  if (ST.panel === 'circle') return studioCircle(p);
   if (!ST.key) { p.appendChild(el('div', 'feed-empty', 'Create your first month above.')); return; }
   if (ST.panel === 'month') studioMonthForm(p);
   if (ST.panel === 'recs') studioRecs(p);
@@ -2440,6 +2898,7 @@ function studioMonthForm(p){
   var fAccent = fld(p, 'Accent colour', M.accent, {placeholder:'#996b4a', hint:'The month’s colour from your arc, as a hex code.'});
   var fInt = fld(p, 'Intention', M.intention, {area:true, rows:2});
   var fRL = fld(p, 'Rhythm page line', M.rhythmLine, {area:true, rows:2});
+  var fLet = fld(p, 'A note for the month', M.letter, {area:true, rows:8, hint:'Your letter for the month. Shows on Explore the Rhythm. Leave a blank line between paragraphs.'});
   var gWrap = el('div', 'fld'); gWrap.appendChild(el('label', null, 'Rhythm guide (PDF)'));
   var gNow = el('div', 'hint', M.guidePath ? 'Uploaded \u2713 \u2014 members can open it from Rhythm and the Library.' : 'No guide uploaded yet.');
   var gFile = el('input'); gFile.type = 'file'; gFile.accept = 'application/pdf'; gFile.id = 'st-guide-file'; gFile.style.cssText = 'font-size:13px;margin:6px 0;max-width:100%;display:block;';
@@ -2494,7 +2953,7 @@ function studioMonthForm(p){
       creative: {title: fCT.value.trim(), sub: fCS.value.trim(), steps: pipes(fCSt.value, 2), pull: fCP.value.trim(), gathering: {eyebrow: fGE.value.trim(), title: fGT.value.trim(), body: fGB.value.trim()}},
       events: pipes(fEv.value, 4).map(function(x){ return {date:x[0], name:x[1], time:x[2], url:x[3]}; }),
       eventsNote: fEN.value.trim(), eventsUrl: fEU.value.trim(), circlePrompt: fCQ.value.trim(), quotes: linesOf(fQ.value),
-      lensTopic: M.lensTopic
+      lensTopic: M.lensTopic, letter: fLet.value.trim()
     };
     await api.saveMonth(m.key, pub.checked, content);
     await reloadContent(); studioFillMonthSelect();
