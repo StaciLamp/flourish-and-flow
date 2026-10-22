@@ -597,6 +597,7 @@ button{font-family:'Poppins',sans-serif;}
 .dd-empty{margin:0;font-size:14px;font-style:italic;color:var(--mid);}
 .dd-foot{margin:12px 24px 0;font-size:13px;font-style:italic;color:var(--muted);}
 .chart-up{position:relative;cursor:pointer;}
+.w-hero .w-wm-svg{width:150px;height:150px;top:-20px;right:-16px;}
 
 </style>
 </head>
@@ -914,7 +915,7 @@ button{font-family:'Poppins',sans-serif;}
         <div class="eye">This month's art-journal page</div>
         <div id="cf-steps"></div>
         <div class="pull" id="cf-pull"></div>
-        <button class="text-link" style="margin:16px 0 0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>❦ Keep your page in your Journal</span><span aria-hidden="true">→</span></button>
+        <button class="text-link" style="margin:16px 0 0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>✷ Keep your page in your Journal</span><span aria-hidden="true">→</span></button>
       </div>
       <div class="pad" id="cf-gather-wrap">
         <div class="eye">Seasonal gatherings</div>
@@ -958,7 +959,7 @@ button{font-family:'Poppins',sans-serif;}
     <!-- JOURNAL (opens in a later phase) -->
     <div class="screen" id="screen-journal">
       <section class="w-hero" style="--wc:#a1765a">
-        <span class="w-wm" aria-hidden="true">❦</span>
+        <svg class="w-wm w-wm-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M12 7C10 5.4 7 5 4 5.5v13c3-.5 6-.1 8 1.5 2-1.6 5-2 8-1.5v-13C17 5 14 5.4 12 7z"/><path d="M12 7v13"/></svg>
         <div class="w-eye" style="margin-top:12px">Journal</div>
         <h1 class="w-title">A Moment to Remember.</h1>
         <p class="w-sub">Reflections, photos and the moments you want to keep. No streaks, nothing to keep up with.</p>
