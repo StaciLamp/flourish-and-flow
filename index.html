@@ -612,6 +612,11 @@ button{font-family:'Poppins',sans-serif;}
 .dd-core .fd-t{color:#fff;}
 .dd-core .fd-item{border-top-color:rgba(255,255,255,.18);}
 .fd-core .fd-t{color:#3f4b41;}
+.fd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+.fd-tag{font-size:11.5px;padding:3px 9px;border-radius:20px;background:rgba(63,75,65,.1);color:#3f4b41;}
+.fd-tag.strong{background:#3f4b41;color:#fff;font-weight:500;}
+.fd-tag.core{background:#a1765a;color:#fff;font-weight:500;}
+.fd-key .fd-t{font-weight:600;font-size:16px;}
 
 </style>
 </head>
@@ -2183,12 +2188,23 @@ function buildFullDesign(){
   var nums = Object.keys(D.gates).map(Number).sort(function(a, b){ return a - b; });
   var gd = el('details', 'dd'), gs = el('summary'); gs.appendChild(el('span', 'dd-k', 'Your gates')); gs.appendChild(el('span', 'dd-t', nums.length + ' gates')); gd.appendChild(gs);
   var gb = el('div', 'dd-b');
-  gb.appendChild(el('p', null, 'Gates are the specific gifts and themes in your design. Conscious gates tend to feel familiar to you; unconscious gates are often what others notice in you first.'));
-  nums.sort(function(a, b){ return (a === sunG ? -1 : 0) - (b === sunG ? -1 : 0); });
+  gb.appendChild(el('p', null, 'Gates are the specific gifts and themes in your design. Conscious gates tend to feel familiar to you; unconscious gates are often what others notice in you first. Your Sun and Earth gates come first: they carry the most weight in your chart.'));
+  // Sun and Earth gates first (conscious, then unconscious), then the rest in order
+  var rank = {}; rank[sunG] = 1; if (!rank[earthG]) rank[earthG] = 2; if (!rank[dsunG]) rank[dsunG] = 3; if (!rank[dearthG]) rank[dearthG] = 4;
+  nums.sort(function(a, b){ return (rank[a] || 9) - (rank[b] || 9) || a - b; });
   nums.forEach(function(n){
-    var g = D.gates[n], meta = GATES[n] || ['', ''], kind = g.c.length && g.u.length ? 'Conscious & unconscious' : (g.c.length ? 'Conscious' : 'Unconscious');
-    var it = ddItem((n === sunG ? '☉ ' : '') + 'Gate ' + n + ' · ' + meta[0], meta[1] + '  ' + kind + (n === sunG ? ' · your core gate.' : '.'));
-    if (n === sunG) it.classList.add('fd-core'); gb.appendChild(it);
+    var g = D.gates[n], meta = GATES[n] || ['', ''];
+    var places = g.c.map(function(x){ return 'Conscious ' + x.split(' ').slice(0, -1).join(' '); })
+      .concat(g.u.map(function(x){ return 'Unconscious ' + x.split(' ').slice(0, -1).join(' '); }));
+    var key = !!rank[n];
+    var r = el('div', 'fd-item fd-gate' + (key ? ' fd-key' : ''));
+    var t = el('div', 'fd-t'); t.appendChild(document.createTextNode(((n === sunG || n === dsunG) ? '☉ ' : (key ? '⊕ ' : '')) + 'Gate ' + n + ' · ' + meta[0])); r.appendChild(t);
+    var tags = el('div', 'fd-tags');
+    places.forEach(function(p){ tags.appendChild(el('span', 'fd-tag' + (/ (Sun|Earth)$/.test(p) ? ' strong' : ''), p)); });
+    if (n === sunG) tags.appendChild(el('span', 'fd-tag core', 'Your core gate'));
+    r.appendChild(tags);
+    r.appendChild(el('div', 'fd-s', meta[1]));
+    gb.appendChild(r);
   });
   gd.appendChild(gb); w.appendChild(gd);
 }
