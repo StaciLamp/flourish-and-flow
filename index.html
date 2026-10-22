@@ -1250,7 +1250,6 @@ function dismissArrival(){
 async function launchApp(){
   $('app').style.display = 'flex';
   renderAll();
-  if (!store('ff_worlds_seen')) openWorlds();
   var uid = S.session.user.id, t = todayKey();
   try {
     await api.logVisit(uid, t);
