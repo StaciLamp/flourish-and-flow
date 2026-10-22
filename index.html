@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#3a3d38">
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <!--
-  FLOURISH & FLOW · MEMBER APP · v9
+  FLOURISH & FLOW · MEMBER APP · v10
   All monthly content, recordings, the Living by Design lens and the member list
   live in Supabase and are edited from the Studio inside the app (Staci only).
   This file only changes when the app itself changes.
@@ -358,6 +358,178 @@ button{font-family:'Poppins',sans-serif;}
 .msg-tools{display:flex;gap:10px;margin-top:4px;}
 .msg-tools button{background:none;border:none;font-size:10px;color:var(--muted);text-decoration:underline;cursor:pointer;padding:2px 0;}
 .msg-hidden .msg-text{opacity:.45;}
+/* ── v10 · Phase 1: five tabs, five worlds, easier reading ── */
+:root{--muted:#5d665e;--mid:#4a4f48;--ochre:#c9a032;}
+.topbar-month{display:none;}
+.topbar-beta{font-size:9px;color:#4d6150;border-color:var(--sage);}
+.topbar-brand{font-size:20px;}
+
+/* readability: bigger, darker small type */
+.eye{font-size:11px;color:var(--muted);}
+.pill-btn{font-size:11px;padding:12px 18px;min-height:44px;}
+.small-btn{font-size:10px;padding:9px 14px;min-height:36px;}
+.cc-eye,.pc-type,.bc-phase,.lm-k,.lm-eye,.ss-mlbl,.moon-type,.bc-eye,.hdi-lbl,.hds-lbl,.bd-lbl,.bd-badge-lbl{font-size:10.5px;}
+.cc-meta,.ev-time,.ss-scope,.compose-note,.msg-meta,.lm-m,.note-meta{font-size:12px;}
+.cc-body,.step-t,.msg-text,.bc-line,.moon-note{font-size:14px;}
+.cc-title{font-size:20px;}
+.ptab{font-size:11px;min-height:48px;}
+.chip{font-size:11px;padding:10px 14px;}
+.soon{font-size:10px;}
+.step-k{font-size:10.5px;color:#6f561a;}
+.signout-btn{font-size:11px;min-height:48px;}
+.sh-eye{font-size:11px;color:rgba(255,255,255,.72);}
+.sh-sub{font-size:14px;color:rgba(255,255,255,.78);}
+.yh-meta{font-size:11px;color:rgba(255,255,255,.7);}
+.note-line{font-size:13px;}
+.feed-empty{font-size:14px;}
+.fld label{font-size:10.5px;}
+.lm-now{font-size:9px;}
+.lm-t{font-size:14px;}
+.tag{font-size:9px;}
+.msg-tools button{font-size:12px;padding:6px 0;}
+.share-btn{display:none;}
+
+/* bottom nav */
+.bottom-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:6px 6px calc(6px + env(safe-area-inset-bottom));}
+.bnav-item{min-height:54px;padding:6px 2px;gap:5px;color:#b5b8b2;}
+.bnav-item svg{display:block;}
+.bnav-lbl{font-size:10px;letter-spacing:.1em;color:inherit;}
+.bnav-item.active{color:#d6e0d0;}
+.bnav-item.active .bnav-lbl{color:inherit;font-weight:500;}
+
+/* section label with hairline */
+.sec-lbl{margin:28px 24px 12px;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+.text-link{margin:6px 24px 0;width:calc(100% - 48px);min-height:46px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:none;border:none;border-top:1px solid var(--border);padding:0;cursor:pointer;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dark);text-align:left;}
+
+/* HOME */
+.h-hero{position:relative;overflow:hidden;background:var(--dark);color:#fff;padding:26px 24px 26px;}
+.h-hero::before{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--accent);opacity:.22;}
+.h-hero>*{position:relative;}
+.h-day{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#c9ccc6;}
+.h-name{margin:8px 0 0;font-family:'Abril Fatface',serif;font-weight:400;font-size:33px;line-height:1.05;}
+.h-quote{margin:16px 0 0;padding-left:14px;border-left:2px solid var(--accent-light);font-size:15px;font-style:italic;line-height:1.65;color:#ecebe7;max-width:310px;}
+.h-share{margin-top:12px;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:40px;border:1px solid #8a8d86;background:transparent;color:#ecebe7;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;}
+.h-ask{margin:26px 0 0;font-size:15px;font-weight:300;font-style:italic;color:#ecebe7;}
+.h-taps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px;}
+.h-taps .tap-btn{height:46px;padding:0 8px;border-radius:40px;border:1px solid #8a8d86;background:transparent;font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:#fff;}
+.h-taps .tap-btn.selected{background:var(--accent);border-color:var(--accent);}
+.h-private{margin-top:10px;font-size:12px;color:#c9ccc6;}
+.h-chosen{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.h-chip{display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:40px;background:var(--accent);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.h-change{min-height:44px;padding:0 4px;border:none;background:none;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:#d6e0d0;cursor:pointer;}
+.h-reply{margin:16px 0 0;padding-left:14px;border-left:2px solid var(--accent-light);font-size:15px;font-style:italic;line-height:1.65;color:#ecebe7;}
+
+.sug{position:relative;overflow:hidden;margin:0 24px;padding:22px 20px 10px;border-radius:16px;background:var(--wt);color:var(--dark);}
+.sug-wm{position:absolute;right:14px;top:4px;font-size:66px;color:var(--wc);opacity:.3;pointer-events:none;}
+.sug>*:not(.sug-wm){position:relative;}
+.sug-k{font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);}
+.sug-t{margin-top:6px;font-family:'Abril Fatface',serif;font-size:23px;line-height:1.15;padding-right:40px;}
+.sug-l{margin:8px 0 0;font-size:14px;font-style:italic;line-height:1.6;color:#44494a;}
+.sug .pill-btn{width:100%;margin-top:16px;min-height:48px;}
+.sug-links{display:flex;justify-content:space-between;margin-top:4px;}
+.sug-links button{min-height:44px;background:none;border:none;padding:0;font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;color:var(--dark);cursor:pointer;}
+.sug-done{margin:0 24px;font-size:14px;font-style:italic;color:var(--mid);}
+
+.issue{position:relative;overflow:hidden;display:block;width:calc(100% - 48px);margin:28px 24px 0;padding:22px 20px 20px;border:none;border-radius:16px 16px 0 0;background:var(--accent);color:#fff;text-align:left;cursor:pointer;font-family:'Poppins',sans-serif;}
+.issue>span{position:relative;display:block;}
+.issue .issue-wm{position:absolute;right:-10px;bottom:-26px;font-family:'Abril Fatface',serif;font-size:80px;opacity:.1;white-space:nowrap;pointer-events:none;}
+.issue-top{display:flex !important;justify-content:space-between;gap:10px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;}
+.issue-title{margin-top:10px;font-family:'Abril Fatface',serif;font-size:32px;line-height:1;}
+.issue-int{margin-top:8px;font-size:14px;font-weight:300;font-style:italic;line-height:1.55;}
+.toc{margin:0 24px;padding:6px 20px 4px;background:#fbfaf7;border:1px solid var(--border);border-top:none;border-radius:0 0 16px 16px;}
+.toc-h{margin:12px 0 2px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.toc-row{width:100%;min-height:58px;display:flex;align-items:center;gap:14px;padding:8px 0;border:none;border-bottom:1px solid var(--border-light);background:none;text-align:left;cursor:pointer;font-family:'Poppins',sans-serif;color:var(--dark);}
+.toc-row:last-child{border-bottom:none;}
+.toc-n{width:24px;flex-shrink:0;font-family:'Abril Fatface',serif;font-size:18px;color:#7a5537;}
+.toc-b{flex:1;min-width:0;}
+.toc-k{display:block;font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--wd);}
+.toc-t{display:block;font-size:15px;font-weight:400;line-height:1.4;}
+.refl{margin:0 24px;}
+.refl-q{margin:0;font-family:'Abril Fatface',serif;font-size:22px;line-height:1.3;color:var(--dark);}
+.refl-note{margin-top:8px;font-size:13px;font-style:italic;color:var(--muted);}
+.lens-row{width:calc(100% - 48px);margin:20px 24px 0;padding:14px 16px;border:none;border-radius:14px;background:#dfe4df;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;font-family:'Poppins',sans-serif;color:var(--dark);}
+.lr-sym{font-size:22px;color:#3f4b41;}
+.lr-body{flex:1;min-width:0;}
+.lr-k{display:block;font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:#3f4b41;}
+.lr-t{display:block;margin-top:3px;font-size:15px;line-height:1.45;}
+.lr-a{font-size:18px;color:#3f4b41;}
+.beta-line{display:block;width:calc(100% - 48px);margin:22px 24px 0;min-height:44px;background:none;border:none;font-family:'Poppins',sans-serif;font-size:13px;color:var(--muted);cursor:pointer;}
+
+/* RHYTHM hub */
+.r-hero{position:relative;overflow:hidden;background:var(--accent);color:#fff;padding:26px 24px 34px;}
+.r-hero>*{position:relative;}
+.r-hero .r-wm{position:absolute;right:-14px;bottom:-30px;font-family:'Abril Fatface',serif;font-size:96px;opacity:.1;white-space:nowrap;pointer-events:none;}
+.r-top{display:flex;justify-content:space-between;gap:10px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;}
+.r-title{margin:10px 0 0;font-family:'Abril Fatface',serif;font-weight:400;font-size:42px;line-height:1;}
+.r-int{margin:12px 0 0;font-size:15px;font-style:italic;line-height:1.6;max-width:320px;}
+.r-guide{position:relative;margin:-16px 20px 0;background:var(--dark);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.rg-k{font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#c9d4c2;}
+.rg-t{margin-top:4px;font-family:'Abril Fatface',serif;font-size:19px;}
+.r-guide .pill-btn{background:var(--sage);color:#22261f;}
+.r-guide .soon{color:#c9ccc6;border-color:rgba(255,255,255,.35);}
+.tiles{margin:0 24px;display:flex;flex-direction:column;gap:12px;}
+.tile{position:relative;overflow:hidden;width:100%;padding:18px 20px;border:none;border-radius:16px;background:var(--wt);display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;font-family:'Poppins',sans-serif;color:var(--dark);}
+.tile-wm{position:absolute;right:-4px;top:-16px;font-size:88px;line-height:1.2;color:var(--wc);opacity:.28;pointer-events:none;}
+.tile-b{position:relative;flex:1;min-width:0;}
+.tile-k{display:block;font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);}
+.tile-t{display:block;margin-top:4px;font-family:'Abril Fatface',serif;font-size:22px;line-height:1.15;}
+.tile-s{display:block;margin-top:3px;font-size:14px;font-weight:300;line-height:1.5;color:#44494a;}
+.tile-a{position:relative;font-size:18px;color:var(--wd);}
+.r-quote{margin:26px 24px 0;padding-left:14px;border-left:2px solid var(--accent);font-size:15px;font-style:italic;line-height:1.65;color:var(--mid);}
+#screen-rhythm .text-link{margin-top:16px;}
+
+/* world page headers */
+.w-hero{position:relative;overflow:hidden;background:var(--dark);color:#fff;padding:12px 24px 26px;border-bottom:3px solid var(--wc);}
+.w-hero>*{position:relative;}
+.w-hero .w-wm{position:absolute;right:-10px;top:-30px;font-size:150px;line-height:1.2;color:var(--wc);opacity:.2;pointer-events:none;}
+.w-back{min-height:44px;display:inline-flex;align-items:center;padding:0;border:none;background:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#d6e0d0;cursor:pointer;}
+.w-eye{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#c9ccc6;}
+.w-title{margin:8px 0 0;font-family:'Abril Fatface',serif;font-weight:400;font-size:30px;line-height:1.1;}
+.w-sub{margin:10px 0 0;font-size:15px;font-style:italic;line-height:1.6;color:#ecebe7;}
+#screen-practice .ptab.active{border-bottom-color:#8096a7;}
+#screen-practice .cc-head{border-left-color:var(--slate);}
+.er-h{margin:26px 0 4px;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.er-h::after{content:'';flex:1;height:1px;background:var(--border);}
+.er-row{padding:12px 0;border-bottom:1px solid var(--border-light);}
+.er-top{display:flex;align-items:center;gap:14px;}
+.er-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.er-b{flex:1;min-width:0;}
+.er-k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.er-t{font-size:15px;font-weight:400;color:var(--dark);}
+.ex-guide{margin-top:12px;background:var(--cream-dark);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.ex-guide .eg-t{font-family:'Abril Fatface',serif;font-size:17px;}
+.ex-guide .eg-s{font-size:13px;color:var(--mid);}
+#screen-lbd .bd-area{margin:12px 20px 0;min-height:0;border-radius:16px;}
+.cf-hero{display:none;}
+.pull{border-left-color:var(--ochre);}
+.j-soon{margin:28px 24px 0;}
+.j-big{margin:0;font-family:'Abril Fatface',serif;font-size:26px;color:var(--dark);}
+.j-p{margin:12px 0 0;font-size:15px;line-height:1.7;color:var(--mid);}
+
+/* five worlds welcome */
+#worlds-screen{position:fixed;inset:0;z-index:205;background:var(--cream);display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding:32px 16px calc(24px + env(safe-area-inset-bottom));overflow-y:auto;text-align:center;}
+#worlds-screen.open{display:flex;animation:fadeIn .4s ease;}
+.ws-eye{margin-top:auto;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.ws-title{margin:10px 0 0;font-family:'Abril Fatface',serif;font-weight:400;font-size:30px;color:var(--dark);}
+.ws-sub{margin:10px auto 0;max-width:320px;font-size:14px;font-style:italic;line-height:1.6;color:var(--mid);}
+.wheel{position:relative;width:min(342px,100%);aspect-ratio:342/384;margin:22px auto 0;flex-shrink:0;}
+.wheel-ring{position:absolute;left:13.45%;top:19.3%;width:73.1%;aspect-ratio:1;border-radius:50%;border:1px solid #cfc8bd;}
+.wheel-center{position:absolute;left:29.5%;top:33.6%;width:40.9%;aspect-ratio:1;border-radius:50%;border:1px dashed #c9c2b8;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.wc-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);}
+.wc-eye{margin-top:6px;font-size:8px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.wc-title{margin-top:4px;font-family:'Abril Fatface',serif;font-size:clamp(15px,4.6vw,18px);line-height:1.1;color:var(--dark);}
+.wc-sub{margin-top:4px;font-size:11px;font-style:italic;color:var(--mid);}
+.wheel-node{position:absolute;transform:translateX(-50%);width:118px;display:flex;flex-direction:column;align-items:center;background:none;border:none;padding:0;cursor:pointer;font-family:'Poppins',sans-serif;}
+.wn-dot{width:60px;height:60px;border-radius:50%;background:var(--wc);box-shadow:0 0 0 4px var(--cream),0 0 0 5px #d8d2c9;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.wn-t{margin-top:6px;padding:2px 4px;background:var(--cream);font-family:'Abril Fatface',serif;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--wd);line-height:1.15;}
+.wn-s{padding:0 4px;background:var(--cream);font-size:11px;font-style:italic;color:var(--mid);}
+.ws-in{margin-top:34px;min-width:200px;}
+.ws-note{margin-bottom:auto;margin-top:10px;font-size:12px;color:var(--muted);}
+
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+@media (max-width:370px){.wn-s{display:none;}.wheel-node{width:96px;}.ws-title{font-size:26px;}}
+
 </style>
 </head>
 <body>
@@ -452,6 +624,29 @@ button{font-family:'Poppins',sans-serif;}
   <div class="arr-cta"><div class="arr-cta-text">Tap to come in</div><div class="arr-dot"></div></div>
 </div>
 
+<!-- FIVE WORLDS (welcome, once — and from You) -->
+<div id="worlds-screen" role="dialog" aria-modal="true" aria-labelledby="ws-title">
+  <div class="ws-eye">Welcome to Flourish &amp; Flow</div>
+  <h2 class="ws-title" id="ws-title">Five worlds. One home.</h2>
+  <p class="ws-sub">Step into whichever one calls you today. There's no order and nothing to keep up with.</p>
+  <nav class="wheel" aria-label="The five worlds">
+    <div class="wheel-ring" aria-hidden="true"></div>
+    <div class="wheel-center" aria-hidden="true">
+      <div class="wc-dot"></div>
+      <div class="wc-eye">Flourish &amp; Flow</div>
+      <div class="wc-title">Come Home<br>to Yourself</div>
+      <div class="wc-sub">Again and again.</div>
+    </div>
+    <button class="wheel-node" style="left:50%;top:0;--wc:#8096a7;--wd:#4f5f6b" onclick="worldsGo('practice')"><span class="wn-dot" aria-hidden="true">⟲</span><span class="wn-t">The Return</span><span class="wn-s">Return to yourself.</span></button>
+    <button class="wheel-node" style="left:84.5%;top:24%;--wc:#a1765a;--wd:#7a5537" onclick="worldsGo('rootrise')"><span class="wn-dot" aria-hidden="true">✺</span><span class="wn-t">Root &amp; Rise</span><span class="wn-s">Embody your rhythm.</span></button>
+    <button class="wheel-node" style="left:71.6%;top:68.2%;--wc:#8ea185;--wd:#4d6150" onclick="worldsGo('explore')"><span class="wn-dot" aria-hidden="true">◉</span><span class="wn-t">The Rhythm</span><span class="wn-s">Live your rhythm.</span></button>
+    <button class="wheel-node" style="left:28.4%;top:68.2%;--wc:#758578;--wd:#3f4b41" onclick="worldsGo('lbd')"><span class="wn-dot" aria-hidden="true">✦</span><span class="wn-t">Living by Design</span><span class="wn-s">Understand your rhythm.</span></button>
+    <button class="wheel-node" style="left:15.5%;top:24%;--wc:#c9a032;--wd:#6f561a" onclick="worldsGo('creative')"><span class="wn-dot" aria-hidden="true">✷</span><span class="wn-t">Creative Flow</span><span class="wn-s">Express your rhythm.</span></button>
+  </nav>
+  <button class="pill-btn dark ws-in" onclick="worldsGo('home')">Come in</button>
+  <div class="ws-note">You'll always find this again under You.</div>
+</div>
+
 <!-- APP -->
 <div id="app">
   <div class="topbar">
@@ -469,114 +664,182 @@ button{font-family:'Poppins',sans-serif;}
 
     <!-- HOME -->
     <div class="screen active" id="screen-home">
-      <div class="home-checkin">
-        <div class="checkin-q">How are you arriving today?</div>
-        <div class="checkin-taps" id="checkin-taps">
-          <button class="tap-btn">Grounded</button>
-          <button class="tap-btn">Scattered</button>
-          <button class="tap-btn">Tender</button>
-          <button class="tap-btn">In between</button>
+      <section class="h-hero">
+        <div class="h-day" id="hero-day"></div>
+        <h1 class="h-name" id="hero-name">Hello, friend.</h1>
+        <p class="h-quote" id="hero-quote"></p>
+        <button class="h-share" id="share-open" onclick="openShareCard()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="m7 9 5-5 5 5"/><path d="M5 14v6h14v-6"/></svg>
+          Share today's words
+        </button>
+
+        <div id="ci-ask">
+          <h2 class="h-ask">How are you arriving today?</h2>
+          <div class="h-taps" id="checkin-taps">
+            <button class="tap-btn">Grounded</button>
+            <button class="tap-btn">Scattered</button>
+            <button class="tap-btn">Tender</button>
+            <button class="tap-btn">In between</button>
+          </div>
+          <div class="h-private">Only you see this.</div>
         </div>
-        <div class="checkin-thanks" id="checkin-thanks"></div>
-      </div>
-      <div class="home-hero">
-        <div class="hero-day" id="hero-day"></div>
-        <div class="hero-name" id="hero-name">Hello, friend.</div>
-        <div class="hero-quote" id="hero-quote"></div>
-        <div class="hero-row">
-          <div class="hero-pill"><span class="hp-lbl" id="hp-month"></span><span class="hp-word" id="hp-theme"></span></div>
-          <button class="share-btn" id="share-open" onclick="openShareCard()">Share today's words</button>
+        <div id="ci-done" style="display:none">
+          <div class="h-chosen">
+            <div class="h-chip" id="ci-chip"></div>
+            <button class="h-change" onclick="checkinChange()">Change</button>
+          </div>
+          <p class="h-reply" id="checkin-thanks"></p>
         </div>
+      </section>
+
+      <div id="sug-wrap" style="display:none">
+        <div class="sec-lbl"><span id="sug-lbl"></span></div>
+        <section class="sug" id="sug"></section>
       </div>
-      <div class="hd-teaser" onclick="goScreen('design')">
-        <div class="hdt-eye">✦ Living by Design · your lens this month</div>
-        <div class="hdt-topic" id="hdt-topic"></div>
-        <div class="hdt-preview" id="hdt-preview"></div>
-        <div class="hdt-cta">Read it →</div>
-      </div>
-      <div class="pad">
-        <div class="eye">Begin where you are</div>
-        <div class="practice-cards" id="today-cards"></div>
-      </div>
-      <div class="theme-strip" onclick="goScreen('rhythm')">
-        <div><div class="ts-eye" id="ts-eye"></div><div class="ts-title" id="ts-title"></div><div class="ts-int" id="ts-int"></div></div>
-        <div class="ts-btn">Open →</div>
-      </div>
-      <button class="lib-link" onclick="goScreen('library')">
-        <div><div class="ll-t">The Library</div><div class="ll-s" id="lib-count">Every month, kept for you.</div></div>
-        <div class="ll-a">Explore →</div>
+
+      <button class="issue" onclick="goScreen('rhythm')">
+        <span class="issue-wm" id="is-wm" aria-hidden="true"></span>
+        <span class="issue-top"><span>◉ The Rhythm</span><span id="is-no"></span></span>
+        <span class="issue-title" id="is-title"></span>
+        <span class="issue-int" id="is-int"></span>
       </button>
-      <button class="circle-teaser" onclick="goScreen('circle')">
-        <div class="eye">○ The Circle</div>
-        <div class="ct-q" id="ct-q"></div>
-        <div class="ct-meta" id="ct-meta">Add your voice →</div>
-      </button>
-      <div class="beta-card">
-        <div class="bc-txt"><b>You're in the founding beta.</b> Anything confusing, lovely, or broken — tell me. It all shapes January.</div>
-        <button class="pill-btn outline" onclick="goScreen('you');setTimeout(function(){document.getElementById('fb-text').focus()},250)">Share a note</button>
+      <section class="toc" aria-labelledby="toc-h">
+        <h2 class="toc-h" id="toc-h">In this issue</h2>
+        <div id="toc-list"></div>
+      </section>
+      <button class="text-link" onclick="goScreen('library')"><span>⟲ Every practice, every month</span><span aria-hidden="true">→</span></button>
+
+      <div class="sec-lbl"><span>𝄜 Today's reflection</span></div>
+      <div class="refl">
+        <p class="refl-q" id="refl-q"></p>
+        <div class="refl-note">Sit with it for a moment. Your private Journal opens soon.</div>
       </div>
+
+      <button class="lens-row" onclick="goScreen('lbd')">
+        <span class="lr-sym" aria-hidden="true">✦</span>
+        <span class="lr-body"><span class="lr-k">Living by Design · your lens</span><span class="lr-t" id="hdt-topic"></span></span>
+        <span class="lr-a" aria-hidden="true">→</span>
+      </button>
+
+      <button class="beta-line" onclick="goScreen('you');setTimeout(function(){document.getElementById('fb-text').focus()},250)">Founding beta · Share a note with Staci →</button>
       <div class="spacer"></div>
     </div>
 
-    <!-- PRACTICE -->
-    <div class="screen" id="screen-practice">
-      <div class="screen-header">
-        <div class="sh-eye">⟲ The Return</div>
-        <div class="sh-title">Your Practice</div>
-        <div class="sh-sub">A few minutes to come back to your body. Start anywhere.</div>
+    <!-- RHYTHM (the month, and five ways in) -->
+    <div class="screen" id="screen-rhythm">
+      <section class="r-hero">
+        <span class="r-wm" id="rh-wm" aria-hidden="true"></span>
+        <div class="r-top"><span>◉ The Rhythm</span><span id="rh-no"></span></div>
+        <h1 class="r-title" id="rh-title"></h1>
+        <p class="r-int" id="rh-int"></p>
+      </section>
+      <section class="r-guide">
+        <div><div class="rg-k">Your monthly guide</div><div class="rg-t" id="gc-title"></div></div>
+        <div id="gc-action"></div>
+      </section>
+      <div class="sec-lbl"><span>Five ways in</span></div>
+      <div class="tiles">
+        <button class="tile" style="--wt:#e6ebe2;--wc:#8ea185;--wd:#4d6150" onclick="goScreen('explore')"><span class="tile-wm" aria-hidden="true">◉</span><span class="tile-b"><span class="tile-k">◉ Live your rhythm</span><span class="tile-t">Explore the Rhythm</span><span class="tile-s">Moon, mudra and the month's breath.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#e3e8ec;--wc:#8096a7;--wd:#4f5f6b" onclick="goScreen('practice')"><span class="tile-wm" aria-hidden="true">⟲</span><span class="tile-b"><span class="tile-k">⟲ Return to yourself</span><span class="tile-t">The Return</span><span class="tile-s">Breathwork and meditation, every month.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#f1e5dc;--wc:#a1765a;--wd:#7a5537" onclick="goScreen('rootrise')"><span class="tile-wm" aria-hidden="true">✺</span><span class="tile-b"><span class="tile-k">✺ Embody your rhythm</span><span class="tile-t">Root &amp; Rise</span><span class="tile-s">Grounding flows and vinyasa, classes and events.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#dfe4df;--wc:#758578;--wd:#3f4b41" onclick="goScreen('lbd')"><span class="tile-wm" aria-hidden="true">✦</span><span class="tile-b"><span class="tile-k">✦ Understand your rhythm</span><span class="tile-t">Living by Design</span><span class="tile-s">This month's video and your lens on it.</span></span><span class="tile-a" aria-hidden="true">→</span></button>
+        <button class="tile" style="--wt:#f5ecd3;--wc:#c9a032;--wd:#6f561a" onclick="goScreen('creative')"><span class="tile-wm" aria-hidden="true">✷</span><span class="tile-b"><span class="tile-k">✷ Express your rhythm</span><span class="tile-t">Creative Flow</span><span class="tile-s" id="tile-cf"></span></span><span class="tile-a" aria-hidden="true">→</span></button>
       </div>
-      <div class="ptabs">
-        <button class="ptab active" data-tab="pt-breathe">༄ Breathe</button>
-        <button class="ptab" data-tab="pt-meditate">𑁍 Meditate</button>
-        <button class="ptab" data-tab="pt-gather">✺ Move</button>
-      </div>
-      <div class="psec active" id="pt-breathe"></div>
-      <div class="psec" id="pt-meditate"></div>
-      <div class="psec" id="pt-gather"></div>
-      <button class="lib-link" onclick="goScreen('library')" style="margin-bottom:28px;">
-        <div><div class="ll-t">Earlier practices</div><div class="ll-s">Every past month lives in the Library.</div></div>
-        <div class="ll-a">Library →</div>
-      </button>
+      <p class="r-quote" id="rh-quote"></p>
+      <button class="text-link" onclick="goScreen('library')"><span id="rh-earlier">Earlier months</span><span aria-hidden="true">→</span></button>
+      <div class="spacer"></div>
     </div>
 
-    <!-- RHYTHM -->
-    <div class="screen" id="screen-rhythm">
-      <div class="rhythm-hero">
-        <div class="wm" id="rh-wm"></div>
-        <div class="rh-eye" id="rh-eye"></div>
-        <div class="rh-title" id="rh-title"></div>
-        <div class="rh-int" id="rh-int"></div>
-      </div>
-      <div class="guide-card">
-        <div><div class="gc-eye">◉ The Rhythm · your monthly guide</div><div class="gc-title" id="gc-title"></div><div class="gc-sub">A5 · print or GoodNotes</div></div>
-        <div id="gc-action"></div>
-      </div>
+    <!-- EXPLORE THE RHYTHM -->
+    <div class="screen" id="screen-explore">
+      <section class="w-hero" style="--wc:#8ea185">
+        <span class="w-wm" aria-hidden="true">◉</span>
+        <button class="w-back" onclick="goScreen('rhythm')">← Rhythm</button>
+        <div class="w-eye" id="ex-eye">◉ Explore the Rhythm</div>
+        <h1 class="w-title" id="ex-title"></h1>
+        <p class="w-sub" id="ex-sub"></p>
+      </section>
       <div class="breath-card" id="breath-card"></div>
       <div class="pad" id="moon-wrap">
         <div class="eye" id="moon-eye"></div>
         <div id="moon-list"></div>
       </div>
-      <div class="pad">
-        <div class="eye">✦ Living by Design</div>
-        <div style="margin-top:12px;" id="lbd-card"></div>
-      </div>
       <div class="pad" id="mudra-wrap">
         <div class="eye">✺ Into the body</div>
         <div class="mudra" id="mudra-card"></div>
       </div>
-      <button class="lib-link" onclick="goScreen('library')" style="margin-bottom:28px;">
-        <div><div class="ll-t">Past months</div><div class="ll-s">Guides and recordings from every month so far.</div></div>
-        <div class="ll-a">Library →</div>
-      </button>
+      <div class="pad" id="ex-guide-wrap">
+        <div class="eye">◉ The month in your hands</div>
+        <div class="ex-guide" id="ex-guide"></div>
+      </div>
+      <div class="spacer"></div>
     </div>
 
-    <!-- CREATE -->
-    <div class="screen" id="screen-creative">
-      <div class="cf-hero">
-        <div class="sh-eye">✷ Creative Flow</div>
-        <div class="sh-title" id="cf-title"></div>
-        <div class="sh-sub" id="cf-sub"></div>
+    <!-- THE RETURN -->
+    <div class="screen" id="screen-practice">
+      <section class="w-hero" style="--wc:#8096a7">
+        <span class="w-wm" aria-hidden="true">⟲</span>
+        <button class="w-back" onclick="goScreen('rhythm')">← Rhythm</button>
+        <div class="w-eye">⟲ The Return</div>
+        <h1 class="w-title">Your Practice</h1>
+        <p class="w-sub">A few minutes to come back to your body. Start anywhere.</p>
+      </section>
+      <div class="ptabs" role="tablist" aria-label="Practice type">
+        <button class="ptab active" role="tab" data-tab="pt-breathe">༄ Breathe</button>
+        <button class="ptab" role="tab" data-tab="pt-meditate">𑁍 Meditate</button>
       </div>
+      <div class="psec active" id="pt-breathe"></div>
+      <div class="psec" id="pt-meditate"></div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ROOT & RISE -->
+    <div class="screen" id="screen-rootrise">
+      <section class="w-hero" style="--wc:#a1765a">
+        <span class="w-wm" aria-hidden="true">✺</span>
+        <button class="w-back" onclick="goScreen('rhythm')">← Rhythm</button>
+        <div class="w-eye">✺ Root &amp; Rise</div>
+        <h1 class="w-title">Embody your rhythm.</h1>
+        <p class="w-sub">Root: grounding flows to land in your body. Rise: vinyasa to move your energy. Designed to meet you where you are.</p>
+      </section>
+      <div class="psec active" id="rr-body"></div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- LIVING BY DESIGN -->
+    <div class="screen" id="screen-lbd">
+      <section class="w-hero" style="--wc:#758578">
+        <span class="w-wm" aria-hidden="true">✦</span>
+        <button class="w-back" onclick="goScreen('rhythm')">← Rhythm</button>
+        <div class="w-eye" id="bd-eye">✦ Living by Design</div>
+        <h1 class="w-title">Understand your rhythm.</h1>
+        <p class="w-sub">Your design as a lens, not a system to master.</p>
+      </section>
+      <div class="pad">
+        <div class="eye">This month's episode</div>
+        <div style="margin-top:12px;" id="lbd-card"></div>
+      </div>
+      <div class="pad"><div class="eye">✦ Your lens this month</div></div>
+      <div class="bd-area">
+        <div class="bd-badge"><span class="bd-badge-lbl">For</span><span class="bd-badge-topic" id="bd-for"></span></div>
+        <div class="bd-title" id="bd-title"></div>
+        <div class="bd-body" id="bd-body"></div>
+        <div class="bd-inv" id="bd-inv-wrap"><div class="bd-lbl">An invitation</div><div class="bd-inv-text" id="bd-inv"></div></div>
+        <div class="bd-ref" id="bd-ref-wrap"><div class="bd-lbl">Carry this with you</div><div class="bd-ref-q" id="bd-ref"></div></div>
+        <div class="bd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- CREATIVE FLOW -->
+    <div class="screen" id="screen-creative">
+      <section class="w-hero" style="--wc:#c9a032">
+        <span class="w-wm" aria-hidden="true">✷</span>
+        <button class="w-back" onclick="goScreen('rhythm')">← Rhythm</button>
+        <div class="w-eye">✷ Creative Flow</div>
+        <h1 class="w-title" id="cf-title"></h1>
+        <p class="w-sub" id="cf-sub"></p>
+      </section>
       <div class="pad" id="cf-steps-wrap">
         <div class="eye">This month's art-journal page</div>
         <div id="cf-steps"></div>
@@ -589,6 +852,20 @@ button{font-family:'Poppins',sans-serif;}
       <div class="spacer"></div>
     </div>
 
+    <!-- LIBRARY -->
+    <div class="screen" id="screen-library">
+      <section class="w-hero" style="--wc:#8ea185">
+        <span class="w-wm" aria-hidden="true">◇</span>
+        <button class="w-back" onclick="goScreen('rhythm')">← Rhythm</button>
+        <div class="w-eye">◇ The Library</div>
+        <h1 class="w-title">Every month, kept.</h1>
+        <p class="w-sub">Return to any practice, any month, any time.</p>
+      </section>
+      <div class="chips" id="lib-chips"></div>
+      <div id="lib-list"></div>
+      <div class="spacer"></div>
+    </div>
+
     <!-- CIRCLE -->
     <div class="screen" id="screen-circle">
       <div class="circle-header">
@@ -597,7 +874,7 @@ button{font-family:'Poppins',sans-serif;}
         <div class="ch-q" id="circle-q"></div>
       </div>
       <div class="circle-compose">
-        <textarea class="compose-ta" id="circle-ta" maxlength="1500" placeholder="Share what's true for you right now…"></textarea>
+        <textarea class="compose-ta" id="circle-ta" maxlength="1500" aria-label="Share with the Circle" placeholder="Share what's true for you right now…"></textarea>
         <div class="compose-foot">
           <div class="compose-note">Only members see the Circle.</div>
           <button class="pill-btn dark" id="circle-send" onclick="sendPost()">Share</button>
@@ -607,15 +884,19 @@ button{font-family:'Poppins',sans-serif;}
       <div class="spacer"></div>
     </div>
 
-    <!-- LIBRARY -->
-    <div class="screen" id="screen-library">
-      <div class="screen-header">
-        <div class="sh-eye">◇ The Library</div>
-        <div class="sh-title">Every month, kept.</div>
-        <div class="sh-sub">Return to any practice, any month, any time.</div>
+    <!-- JOURNAL (opens in a later phase) -->
+    <div class="screen" id="screen-journal">
+      <section class="w-hero" style="--wc:#a1765a">
+        <span class="w-wm" aria-hidden="true">❦</span>
+        <div class="w-eye" style="margin-top:12px">Journal</div>
+        <h1 class="w-title">A Moment to Remember.</h1>
+        <p class="w-sub">A private place for reflections, photos and the moments you want to keep.</p>
+      </section>
+      <div class="j-soon">
+        <p class="j-big">Opening soon.</p>
+        <p class="j-p">Your Journal is being built with care, so that what you keep here stays yours. Only you will be able to see it, change it or take it with you.</p>
+        <p class="j-p">Nothing to keep up with. Write when something feels worth remembering.</p>
       </div>
-      <div class="chips" id="lib-chips"></div>
-      <div id="lib-list"></div>
       <div class="spacer"></div>
     </div>
 
@@ -624,7 +905,6 @@ button{font-family:'Poppins',sans-serif;}
       <div class="you-hero">
         <div class="yh-name" id="yh-name"></div>
         <div class="yh-meta" id="yh-meta">Founding beta · Fall 2026</div>
-        <div class="yh-streak" id="yh-streak"></div>
         <button class="pill-btn studio-btn" id="studio-open" style="display:none" onclick="goScreen('studio')">Open Studio</button>
       </div>
       <div class="hd-summary">
@@ -642,16 +922,17 @@ button{font-family:'Poppins',sans-serif;}
           <a class="pill-btn" href="https://www.stacilamp.com/discover-your-design" target="_blank" rel="noopener">Get my free chart</a>
         </div>
       </div>
+      <button class="text-link" style="margin-top:14px" onclick="openWorlds()"><span>◎ The five worlds</span><span aria-hidden="true">→</span></button>
       <div class="pad">
         <div class="eye">Beta notes for Staci</div>
         <div class="fb-box" style="margin-top:12px;">
-          <select class="fb-sel" id="fb-screen">
+          <select class="fb-sel" id="fb-screen" aria-label="What is your note about?">
             <option value="General">About… anything</option>
-            <option>Home</option><option>Practice</option><option>Rhythm</option><option>Library</option>
-            <option>Create</option><option>Circle</option><option>Living by Design</option>
+            <option>Home</option><option>Rhythm</option><option>The Return</option><option>Root &amp; Rise</option>
+            <option>Living by Design</option><option>Creative Flow</option><option>Library</option><option>Circle</option><option>Journal</option>
             <option>Something's broken</option>
           </select>
-          <textarea class="compose-ta" id="fb-text" maxlength="3000" placeholder="What did you notice? What did you love? What was confusing?"></textarea>
+          <textarea class="compose-ta" id="fb-text" maxlength="3000" aria-label="Your note" placeholder="What did you notice? What did you love? What was confusing?"></textarea>
           <div style="margin-top:9px;display:flex;justify-content:flex-end;"><button class="pill-btn" id="fb-send" onclick="sendFeedback()">Send to Staci</button></div>
           <div class="fb-status" id="fb-status"></div>
         </div>
@@ -665,25 +946,6 @@ button{font-family:'Poppins',sans-serif;}
       <div class="spacer"></div>
     </div>
 
-    <!-- DESIGN THREAD -->
-    <div class="screen" id="screen-design">
-      <div class="design-header">
-        <div>
-          <div class="sh-eye" style="color:rgba(255,255,255,.65)" id="bd-eye"></div>
-          <div class="serif" style="font-size:22px;color:#fff;">Your lens this month</div>
-        </div>
-        <button class="dh-back" onclick="goScreen('home')">← Home</button>
-      </div>
-      <div class="bd-area">
-        <div class="bd-badge"><span class="bd-badge-lbl">For</span><span class="bd-badge-topic" id="bd-for"></span></div>
-        <div class="bd-title" id="bd-title"></div>
-        <div class="bd-body" id="bd-body"></div>
-        <div class="bd-inv" id="bd-inv-wrap"><div class="bd-lbl">An invitation</div><div class="bd-inv-text" id="bd-inv"></div></div>
-        <div class="bd-ref" id="bd-ref-wrap"><div class="bd-lbl">Carry this with you</div><div class="bd-ref-q" id="bd-ref"></div></div>
-        <div class="bd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</div>
-      </div>
-    </div>
-
     <!-- STUDIO (Staci only) -->
     <div class="screen" id="screen-studio">
       <div class="screen-header">
@@ -692,11 +954,11 @@ button{font-family:'Poppins',sans-serif;}
         <div class="sh-sub">Changes go live for members the moment you save.</div>
       </div>
       <div class="st-bar">
-        <select class="st-sel" id="st-month" onchange="studioPickMonth(this.value)"></select>
+        <select class="st-sel" id="st-month" aria-label="Month" onchange="studioPickMonth(this.value)"></select>
         <div class="st-row">
           <button class="pill-btn small-btn" onclick="studioToggleNew()">+ New month</button>
           <div id="st-new" style="display:none;align-items:center;gap:8px;flex:1;">
-            <input type="month" id="st-new-key" style="flex:1;padding:8px;font-family:Poppins;border:none;min-width:0;"/>
+            <input type="month" id="st-new-key" aria-label="New month" style="flex:1;padding:8px;font-family:Poppins;border:none;min-width:0;"/>
             <button class="pill-btn small-btn" onclick="studioCreateMonth()">Create</button>
           </div>
         </div>
@@ -722,13 +984,12 @@ button{font-family:'Poppins',sans-serif;}
     <button class="share-dismiss" onclick="closeShareCard()">Close</button>
   </div>
 
-  <nav class="bottom-nav">
-    <button class="bnav-item active" id="bn-home" onclick="goScreen('home')"><div class="bnav-sym">◇</div><div class="bnav-lbl">Home</div></button>
-    <button class="bnav-item" id="bn-practice" onclick="goScreen('practice')"><div class="bnav-sym">⟲</div><div class="bnav-lbl">Practice</div></button>
-    <button class="bnav-item" id="bn-rhythm" onclick="goScreen('rhythm')"><div class="bnav-sym">◉</div><div class="bnav-lbl">Rhythm</div></button>
-    <button class="bnav-item" id="bn-creative" onclick="goScreen('creative')"><div class="bnav-sym">✷</div><div class="bnav-lbl">Create</div></button>
-    <button class="bnav-item" id="bn-circle" onclick="goScreen('circle')"><div class="bnav-sym" style="font-size:13px">○</div><div class="bnav-lbl">Circle</div></button>
-    <button class="bnav-item" id="bn-you" onclick="goScreen('you')"><div class="bnav-sym">✦</div><div class="bnav-lbl">You</div></button>
+  <nav class="bottom-nav" aria-label="Main">
+    <button class="bnav-item active" id="bn-home" onclick="goScreen('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20h-5.5v-5h-5v5H4z"/></svg><span class="bnav-lbl">Home</span></button>
+    <button class="bnav-item" id="bn-rhythm" onclick="goScreen('rhythm')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/></svg><span class="bnav-lbl">Rhythm</span></button>
+    <button class="bnav-item" id="bn-circle" onclick="goScreen('circle')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/></svg><span class="bnav-lbl">Circle</span></button>
+    <button class="bnav-item" id="bn-journal" onclick="goScreen('journal')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 7C10 5.4 7 5 4 5.5v13c3-.5 6-.1 8 1.5 2-1.6 5-2 8-1.5v-13C17 5 14 5.4 12 7z"/><path d="M12 7v13"/></svg><span class="bnav-lbl">Journal</span></button>
+    <button class="bnav-item" id="bn-you" onclick="goScreen('you')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M11 4l1.7 5.3L18 11l-5.3 1.7L11 18l-1.7-5.3L4 11l5.3-1.7z"/><circle cx="18.5" cy="5.5" r="1.3"/></svg><span class="bnav-lbl">You</span></button>
   </nav>
 </div>
 
@@ -754,7 +1015,7 @@ var KINDS = {
   breath:    {label:'Breathwork',       sym:'༄', col:'var(--slate)'},
   meditation:{label:'Guided meditation',sym:'𑁍', col:'var(--deep)'},
   lbd:       {label:'Living by Design', sym:'✦', col:'var(--deep)'},
-  movement:  {label:'Movement',         sym:'✺', col:'var(--terra)'},
+  movement:  {label:'Root & Rise',      sym:'✺', col:'var(--terra)'},
   other:     {label:'Extra',            sym:'◇', col:'var(--sage)'}
 };
 var SESSIONS = [
@@ -989,6 +1250,7 @@ function dismissArrival(){
 async function launchApp(){
   $('app').style.display = 'flex';
   renderAll();
+  if (!store('ff_worlds_seen')) openWorlds();
   var uid = S.session.user.id, t = todayKey();
   try {
     await api.logVisit(uid, t);
@@ -1003,62 +1265,144 @@ function renderAll(){
   $('yh-name').textContent = S.me.name || 'Friend';
   $('yh-meta').textContent = isAdmin() ? 'Founder · Flourish & Flow' : 'Founding beta · Fall 2026';
   $('studio-open').style.display = isAdmin() ? 'inline-flex' : 'none';
-  buildHome(first); buildPractice(); buildRhythm(); buildCreate(); buildCircleHeader(); buildSessions(); renderDesign(); buildLibrary();
+  buildHome(first); buildPractice(); buildRootRise(); buildRhythm(); buildExplore(); buildLbd(); buildCreate(); buildCircleHeader(); buildSessions(); renderDesign(); buildLibrary();
 }
+/* No counting. Dates are kept privately for remembering, never shown as a tally. */
 function renderVisits(){
-  var mine = S.visits || [], n = mine.length;
-  $('yh-streak').textContent = n <= 1 ? 'Your first return this ' + MONTH_NAMES[new Date().getMonth()] + '.' : 'You’ve returned ' + n + ' days this ' + MONTH_NAMES[new Date().getMonth()] + '.';
-  var today = mine.filter(function(v){ return v.day === todayKey(); })[0];
-  if (today && today.mood) {
-    document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(b){ b.classList.toggle('selected', b.textContent === today.mood); });
-    $('checkin-thanks').textContent = checkinReply(today.mood);
-  }
+  var today = (S.visits || []).filter(function(v){ return v.day === todayKey(); })[0];
+  if (today && today.mood) showCheckin(today.mood);
+}
+
+/* ── FIVE WORLDS (welcome, once; again from You) ── */
+function openWorlds(){ $('worlds-screen').classList.add('open'); store('ff_worlds_seen', '1'); }
+function worldsGo(id){
+  $('worlds-screen').classList.remove('open');
+  if (id === 'practice') switchPTab('pt-breathe');
+  goScreen(id);
 }
 
 /* ── HOME ── */
+var WORLD = {
+  breath:    {wt:'#e3e8ec', wc:'#8096a7', wd:'#4f5f6b', sym:'༄', k:'Breathe'},
+  meditation:{wt:'#dfe4df', wc:'#758578', wd:'#3f4b41', sym:'𑁍', k:'Meditate'},
+  lbd:       {wt:'#dfe4df', wc:'#758578', wd:'#3f4b41', sym:'✦', k:'Living by Design'},
+  movement:  {wt:'#f1e5dc', wc:'#a1765a', wd:'#7a5537', sym:'✺', k:'Root & Rise'},
+  creative:  {wt:'#f5ecd3', wc:'#c9a032', wd:'#6f561a', sym:'✷', k:'Creative Flow'}
+};
+var REFLECTIONS = [
+  'What feels important today?',
+  'What is something small worth noticing?',
+  'Where did you feel supported this week?',
+  'What would you like to give yourself permission to feel?',
+  'What is something beautiful you don’t want to forget?',
+  'What does your body want more of today?',
+  'What can wait until tomorrow?',
+  'Who or what helped you come back to yourself lately?',
+  'What are you ready to set down?',
+  'Where did you notice ease today, even briefly?',
+  'What made you smile without trying?',
+  'What do you already know, underneath the noise?',
+  'What would make today feel a little softer?',
+  'What is growing in you right now?'
+];
 function todayQuote(){ return S.M.quotes[(new Date().getDate() - 1) % S.M.quotes.length]; }
+function wvars(node, w){ node.style.setProperty('--wt', w.wt); node.style.setProperty('--wc', w.wc); node.style.setProperty('--wd', w.wd); }
 function buildHome(first){
-  var d = new Date(), M = S.M;
+  var d = new Date(), M = S.M, key = S.cur && S.cur.key;
   $('hero-day').textContent = DAY_NAMES[d.getDay()] + ' · ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getDate();
-  $('hero-name').textContent = 'Hello, ' + first + '.';
-  $('hero-quote').textContent = '“' + todayQuote() + '”';
-  $('hp-month').textContent = M.name; $('hp-theme').textContent = M.theme;
-  $('ts-eye').textContent = '◉ The Rhythm · ' + M.name;
-  $('ts-title').textContent = M.theme || M.name;
-  $('ts-int').textContent = M.intention;
-  $('ct-q').textContent = M.circlePrompt ? '“' + M.circlePrompt + '”' : 'What’s alive for you this month?';
-  var nRec = S.recs.filter(function(r){ return r.published && r.url; }).length, nMon = publishedMonths().length;
-  $('lib-count').textContent = nRec ? nRec + ' recordings across ' + nMon + ' months' : 'Every month, kept for you.';
+  $('hero-name').textContent = (d.getHours() < 12 ? 'Good morning, ' : 'Hello, ') + first + '.';
+  $('hero-quote').textContent = todayQuote();
+
+  // the month as an issue
+  var mNo = key ? parseInt(key.split('-')[1], 10) : d.getMonth() + 1;
+  $('is-no').textContent = 'No. ' + mNo + ' · ' + M.name;
+  $('is-title').textContent = M.theme || M.name;
+  $('is-int').textContent = M.intention;
+  $('is-wm').textContent = (M.theme || M.name).replace(/^The /, '');
+
+  var breath = recsFor(key, 'breath')[0], med = recsFor(key, 'meditation')[0], lbd = recsFor(key, 'lbd')[0], mv = recsFor(key, 'movement')[0];
+  var ev = M.events[0];
+  var rows = [
+    {w:WORLD.breath, k:'༄ Breathe' + (breath && breath.minutes ? ' · ' + breath.minutes : ''), t: breath ? breath.title : (M.breath.name || 'Arriving soon'), go:function(){ goScreen('practice'); switchPTab('pt-breathe'); }},
+    {w:WORLD.meditation, k:'𑁍 Meditate' + (med && med.minutes ? ' · ' + med.minutes : ''), t: med ? med.title : 'Arriving soon', go:function(){ goScreen('practice'); switchPTab('pt-meditate'); }},
+    {w:WORLD.lbd, k:'✦ Living by Design' + (lbd && lbd.minutes ? ' · ' + lbd.minutes : ''), t: lbd ? lbd.title.replace(/^Living by Design\s*·\s*/, '') : 'Arriving soon', go:function(){ goScreen('lbd'); }},
+    {w:WORLD.creative, k:'✷ Creative Flow', t: (M.creative.title || 'This month’s art-journal page').replace(/\.$/, ''), go:function(){ goScreen('creative'); }},
+    {w:WORLD.movement, k:'✺ Root & Rise', t: mv ? mv.title : (ev ? ev.name + ' · ' + ev.date : 'Classes and flows this season'), go:function(){ goScreen('rootrise'); }}
+  ];
+  var list = $('toc-list'); list.innerHTML = '';
+  rows.forEach(function(r, i){
+    var b = el('button', 'toc-row'); wvars(b, r.w);
+    b.appendChild(el('span', 'toc-n', pad2(i + 1)));
+    var body = el('span', 'toc-b'); body.appendChild(el('span', 'toc-k', r.k)); body.appendChild(el('span', 'toc-t', r.t));
+    b.appendChild(body); b.onclick = r.go; list.appendChild(b);
+  });
+
+  $('refl-q').textContent = REFLECTIONS[dayOfYear() % REFLECTIONS.length];
 
   document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(b){
     b.onclick = function(){
-      document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(x){ x.classList.remove('selected'); });
-      b.classList.add('selected'); $('checkin-thanks').textContent = checkinReply(b.textContent);
+      showCheckin(b.textContent);
       api.setMood(S.session.user.id, todayKey(), b.textContent).catch(function(){});
     };
   });
-
-  var breath = recsFor(S.cur && S.cur.key, 'breath')[0], med = recsFor(S.cur && S.cur.key, 'meditation')[0];
-  var cards = [
-    {sym:'༄', col:'var(--slate)', type:'Breathe', title: breath ? breath.title : (M.breath.name || 'This month’s breath'), sub: breath && breath.minutes ? breath.minutes + ' · any time today' : 'A few minutes · any time today', go:function(){ goScreen('practice'); switchPTab('pt-breathe'); }},
-    {sym:'𑑍', col:'var(--deep)', type:'Meditate', title: med ? med.title : 'This month’s meditation', sub: med && med.minutes ? med.minutes + ' · guided' : 'Guided', go:function(){ goScreen('practice'); switchPTab('pt-meditate'); }},
-    {sym:'✷', col:'var(--ochre)', type:'Create', title:'This month’s art-journal page', sub:'Gather · Make · Notice', go:function(){ goScreen('creative'); }},
-    {sym:'◇', col:'var(--sage)', type:'Explore', title:'Something from an earlier month', sub:'The Library keeps every practice', go:function(){ goScreen('library'); }}
-  ];
-  var pick = [cards[0], cards[(d.getDay() % 3) + 1]];
-  var c = $('today-cards'); c.innerHTML = '';
-  pick.forEach(function(p){
-    var b = el('button', 'pcard'); b.style.borderLeftColor = p.col;
-    var s = el('div', 'pc-sym', p.sym); s.style.color = p.col; b.appendChild(s);
-    var body = el('div', 'pc-body');
-    body.appendChild(el('div', 'pc-type', p.type)); body.appendChild(el('div', 'pc-title', p.title)); body.appendChild(el('div', 'pc-sub', p.sub));
-    b.appendChild(body); b.appendChild(el('div', 'pc-arrow', '›'));
-    b.onclick = p.go; c.appendChild(b);
-  });
 }
-function checkinReply(v){
-  return {'Grounded':'Lovely. Notice what helped — that’s worth keeping.','Scattered':'That’s alright. One slow breath is a perfectly good start.',
-          'Tender':'Go gently today. You don’t have to do it all.','In between':'In between is honest. Come as you are.'}[v] || '';
+var CHECKIN = {
+  'Grounded':  {reply:'Grounded is a lovely place to move from.', lbl:'If you’d like, something to move or make with'},
+  'Scattered': {reply:'Scattered is welcome here. Nothing needs fixing.', lbl:'If you’d like, something slow'},
+  'Tender':    {reply:'Tender is welcome here. Go as gently as you like.', lbl:'If you’d like, something soft'},
+  'In between':{reply:'In between is honest. Come as you are.', lbl:'If you’d like, something simple'}
+};
+function checkinReply(v){ return (CHECKIN[v] || {}).reply || ''; }
+function showCheckin(mood){
+  document.querySelectorAll('#checkin-taps .tap-btn').forEach(function(x){ x.classList.toggle('selected', x.textContent === mood); });
+  $('ci-chip').textContent = mood;
+  $('checkin-thanks').textContent = checkinReply(mood);
+  $('ci-ask').style.display = 'none'; $('ci-done').style.display = 'block';
+  renderSuggestion(mood);
+}
+function checkinChange(){
+  $('ci-ask').style.display = 'block'; $('ci-done').style.display = 'none';
+  $('sug-wrap').style.display = 'none';
+}
+/* One practice that fits the check-in, drawn from what's actually in the app this month. */
+function suggestionFor(mood){
+  var key = S.cur && S.cur.key, M = S.M;
+  var breath = recsFor(key, 'breath')[0], med = recsFor(key, 'meditation')[0], mv = recsFor(key, 'movement')[0];
+  var breathCard = breath ? {w:WORLD.breath, rec:breath, tab:'pt-breathe'} : (M.breath.name ? {w:WORLD.breath, rec:{title:M.breath.name, description:M.breath.line, url:''}, tab:'pt-breathe'} : null);
+  if (mood === 'Tender' && med) return {w:WORLD.meditation, rec:med, tab:'pt-meditate'};
+  if (mood === 'Grounded') {
+    if (mv) return {w:WORLD.movement, rec:mv, screen:'rootrise'};
+    return {w:WORLD.creative, rec:{title: M.creative.title || 'This month’s art-journal page', description: M.creative.sub, url:''}, screen:'creative', open:'Open Creative Flow'};
+  }
+  return breathCard || (med ? {w:WORLD.meditation, rec:med, tab:'pt-meditate'} : null);
+}
+function renderSuggestion(mood){
+  var wrap = $('sug-wrap'), card = $('sug'), s = suggestionFor(mood);
+  if (!s || store('ff_skip') === todayKey() + mood) { wrap.style.display = 'none'; return; }
+  $('sug-lbl').textContent = (CHECKIN[mood] || {}).lbl || 'If you’d like';
+  card.innerHTML = ''; wvars(card, s.w);
+  card.appendChild(el('div', 'sug-wm', s.w.sym));
+  var meta = KINDS[s.rec.kind] || null;
+  card.appendChild(el('div', 'sug-k', s.w.k + (s.rec.minutes ? ' · ' + s.rec.minutes : '')));
+  card.appendChild(el('div', 'sug-t', s.rec.title));
+  if (s.rec.description) card.appendChild(el('p', 'sug-l', s.rec.description));
+  var player = el('div');
+  if (s.rec.url) {
+    var b = mediaButton(s.rec.url, player); b.textContent = '▶  Begin'; card.appendChild(b);
+  } else {
+    var o = el('button', 'pill-btn dark', s.open || 'Open');
+    o.onclick = function(){ if (s.tab) { goScreen('practice'); switchPTab(s.tab); } else goScreen(s.screen); };
+    card.appendChild(o);
+  }
+  card.appendChild(player);
+  var links = el('div', 'sug-links');
+  var other = el('button', null, 'Something else'); other.onclick = function(){ goScreen('rhythm'); };
+  var skip = el('button', null, 'Not today'); skip.onclick = function(){
+    store('ff_skip', todayKey() + mood);
+    card.innerHTML = ''; card.appendChild(el('p', 'sug-l', 'Of course. It will be here whenever you want it.'));
+  };
+  links.appendChild(other); links.appendChild(skip); card.appendChild(links);
+  wrap.style.display = 'block';
 }
 
 /* ── MEDIA ── */
@@ -1111,24 +1455,59 @@ function guideButton(M, cls, label){
   return b;
 }
 
-/* ── PRACTICE ── */
+/* ── THE RETURN ── */
+function earlierList(kind){
+  var curKey = S.cur ? S.cur.key : monthKeyOf();
+  var months = publishedMonths().filter(function(m){ return m.key < curKey; }).sort(function(a, b){ return a.key < b.key ? 1 : -1; });
+  var box = el('div'), n = 0;
+  box.appendChild(el('div', 'er-h', 'Earlier months'));
+  months.forEach(function(m){
+    var M = normalize(m.content, m.key);
+    recsFor(m.key, kind).forEach(function(r){
+      n++;
+      var row = el('div', 'er-row'), top = el('div', 'er-top');
+      var dot = el('span', 'er-dot'); dot.style.background = M.accent; dot.setAttribute('aria-hidden', 'true'); top.appendChild(dot);
+      var b = el('div', 'er-b'); b.appendChild(el('div', 'er-k', M.name + (M.theme ? ' · ' + M.theme : '') + (r.minutes ? ' · ' + r.minutes : ''))); b.appendChild(el('div', 'er-t', r.title));
+      top.appendChild(b);
+      var wrap = el('div'); top.appendChild(mediaButton(r.url, wrap, true));
+      row.appendChild(top); row.appendChild(wrap); box.appendChild(row);
+    });
+  });
+  return n ? box : null;
+}
 function buildPractice(){
   var key = S.cur && S.cur.key, M = S.M;
   var br = $('pt-breathe'); br.innerHTML = '';
   var bRecs = recsFor(key, 'breath');
-  bRecs.forEach(function(r){ br.appendChild(recCard(r, 'This month · The Return · ' + M.name)); });
-  if (!bRecs.length && M.breath.name) br.appendChild(recCard({kind:'breath', title:M.breath.name, description:M.breath.line, url:''}, 'This month · The Return'));
+  bRecs.forEach(function(r){ br.appendChild(recCard(r, 'New this month · ' + M.name)); });
+  if (!bRecs.length && M.breath.name) br.appendChild(recCard({kind:'breath', title:M.breath.name, description:M.breath.line, url:''}, 'New this month · ' + M.name));
   if (M.breath.counts.length) br.appendChild(breathCounts());
   if (!br.children.length) br.appendChild(emptyCard('This month’s breath is on its way.'));
+  var eb = earlierList('breath'); if (eb) br.appendChild(eb);
 
   var me = $('pt-meditate'); me.innerHTML = '';
   var mRecs = recsFor(key, 'meditation');
-  mRecs.forEach(function(r){ me.appendChild(recCard(r, 'This month · Guided meditation')); });
+  mRecs.forEach(function(r){ me.appendChild(recCard(r, 'New this month · ' + M.name)); });
   if (!mRecs.length) me.appendChild(emptyCard('This month’s meditation is on its way.'));
+  var em = earlierList('meditation'); if (em) me.appendChild(em);
+  document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.onclick = function(){ switchPTab(t.dataset.tab); }; });
+}
+function breathCounts(){
+  var wrap = el('div', 'bc-counts'); wrap.style.marginTop = '4px';
+  S.M.breath.counts.forEach(function(c){ var b = el('div', 'bc-count'); b.appendChild(el('div', 'bc-num', c[0])); b.appendChild(el('div', 'bc-phase', c[1] || '')); wrap.appendChild(b); });
+  return wrap;
+}
+function switchPTab(id){
+  document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === id); t.setAttribute('aria-selected', t.dataset.tab === id ? 'true' : 'false'); });
+  document.querySelectorAll('#screen-practice .psec').forEach(function(s){ s.classList.toggle('active', s.id === id); });
+}
 
-  var g = $('pt-gather'); g.innerHTML = '';
-  recsFor(key, 'movement').forEach(function(r){ g.appendChild(recCard(r)); });
-  var lead = el('div', 'cc-body', 'Root & Rise is yoga in real rooms and open air. Come move with us.'); lead.style.margin = '4px 0 14px';
+/* ── ROOT & RISE ── */
+function buildRootRise(){
+  var key = S.cur && S.cur.key, M = S.M, g = $('rr-body'); g.innerHTML = '';
+  var mv = recsFor(key, 'movement');
+  mv.forEach(function(r){ g.appendChild(recCard(r, 'Root & Rise · ' + M.name)); });
+  var lead = el('div', 'cc-body', 'Root & Rise lives in real rooms and open air: fields, barns and gathering spaces. Come move with us.'); lead.style.margin = '4px 0 14px';
   g.appendChild(lead);
   M.events.forEach(function(e){
     var row = el('div', 'event');
@@ -1138,47 +1517,64 @@ function buildPractice(){
     g.appendChild(row);
   });
   if (M.eventsNote) g.appendChild(el('div', 'note-line', M.eventsNote));
-  if (M.eventsUrl) { var more = el('a', 'pill-btn full', 'See all classes & events'); more.href = M.eventsUrl; more.target = '_blank'; more.rel = 'noopener'; more.style.marginTop = '14px'; g.appendChild(more); }
-  document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.onclick = function(){ switchPTab(t.dataset.tab); }; });
-}
-function breathCounts(){
-  var wrap = el('div', 'bc-counts'); wrap.style.marginTop = '4px';
-  S.M.breath.counts.forEach(function(c){ var b = el('div', 'bc-count'); b.appendChild(el('div', 'bc-num', c[0])); b.appendChild(el('div', 'bc-phase', c[1] || '')); wrap.appendChild(b); });
-  return wrap;
-}
-function switchPTab(id){
-  document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === id); });
-  document.querySelectorAll('#screen-practice .psec').forEach(function(s){ s.classList.toggle('active', s.id === id); });
+  if (M.eventsUrl) { var more = el('a', 'pill-btn full', 'See all classes & events'); more.href = M.eventsUrl; more.target = '_blank'; more.rel = 'noopener'; more.style.marginTop = '14px'; more.style.background = 'var(--terra)'; g.appendChild(more); }
+  var er = earlierList('movement'); if (er) g.appendChild(er);
 }
 
-/* ── RHYTHM ── */
+/* ── RHYTHM (the month, and five ways in) ── */
 function buildRhythm(){
   var M = S.M, key = S.cur && S.cur.key;
+  var mNo = key ? parseInt(key.split('-')[1], 10) : new Date().getMonth() + 1;
   $('rh-wm').textContent = (M.theme || M.name).replace(/^The /, '');
-  $('rh-eye').textContent = 'The Rhythm · ' + (key ? monthLabel(key) : M.name);
+  $('rh-no').textContent = 'No. ' + mNo + ' · ' + M.name;
   $('rh-title').textContent = M.theme || M.name;
-  $('rh-int').textContent = M.rhythmLine || M.intention;
-  $('gc-title').textContent = M.name + ' Guide';
+  $('rh-int').textContent = M.intention || M.rhythmLine;
+  $('gc-title').textContent = M.name + ' guide';
   var ga = $('gc-action'); ga.innerHTML = '';
-  if (hasGuide(M)) ga.appendChild(guideButton(M, 'pill-btn', 'Open \u2192'));
-  else { var s = el('div', 'soon', 'In your email'); s.style.color = 'rgba(255,255,255,.6)'; s.style.borderColor = 'rgba(255,255,255,.3)'; ga.appendChild(s); }
+  if (hasGuide(M)) ga.appendChild(guideButton(M, 'pill-btn', 'Open'));
+  else ga.appendChild(el('div', 'soon', 'In your email'));
+  $('tile-cf').textContent = M.creative.title || 'This month’s art-journal page.';
+  $('rh-quote').textContent = M.quotes[(new Date().getDate() + 3) % M.quotes.length];
+  var earlier = publishedMonths().filter(function(m){ return !key || m.key < key; }).sort(function(a, b){ return a.key < b.key ? -1 : 1; });
+  $('rh-earlier').textContent = earlier.length ? 'Earlier months · ' + normalize(earlier[0].content, earlier[0].key).name + ' – ' + normalize(earlier[earlier.length - 1].content, earlier[earlier.length - 1].key).name : 'The Library';
+}
+
+/* ── EXPLORE THE RHYTHM ── */
+function buildExplore(){
+  var M = S.M;
+  $('ex-eye').textContent = '◉ Explore the Rhythm · ' + M.name;
+  $('ex-title').textContent = M.theme || M.name;
+  $('ex-sub').textContent = M.rhythmLine || M.intention;
   var bc = $('breath-card'); bc.innerHTML = '';
   bc.style.display = M.breath.name ? 'block' : 'none';
-  bc.appendChild(el('div', 'bc-eye', '⟲ This month’s breath'));
+  bc.appendChild(el('div', 'bc-eye', '༄ This month’s breath'));
   bc.appendChild(el('div', 'bc-title', M.breath.name));
   if (M.breath.line) bc.appendChild(el('div', 'bc-line', M.breath.line));
   if (M.breath.counts.length) bc.appendChild(breathCounts());
+  var go = el('button', 'text-link', null); go.style.margin = '12px 0 0'; go.style.width = '100%';
+  go.appendChild(el('span', null, '⟲ Practice it in The Return')); go.appendChild(el('span', null, '→'));
+  go.onclick = function(){ goScreen('practice'); switchPTab('pt-breathe'); };
+  if (M.breath.name) bc.appendChild(go);
   $('moon-wrap').style.display = M.moon.length ? 'block' : 'none';
-  $('moon-eye').textContent = 'Moon dates · ' + M.name;
+  $('moon-eye').textContent = '☾ Moon dates · ' + M.name;
   var ml = $('moon-list'); ml.innerHTML = '';
   M.moon.forEach(function(m){ var it = el('div', 'moon-item'); it.appendChild(el('div', 'moon-type', m.type)); it.appendChild(el('div', 'moon-date', m.date)); if (m.note) it.appendChild(el('div', 'moon-note', m.note)); ml.appendChild(it); });
+  $('mudra-wrap').style.display = M.mudra.name ? 'block' : 'none';
+  var mc = $('mudra-card'); mc.innerHTML = '';
+  mc.appendChild(el('div', 'cc-eye', 'Mudra')); mc.appendChild(el('div', 'cc-title', M.mudra.name)); mc.appendChild(el('div', 'cc-body', M.mudra.body));
+  var eg = $('ex-guide'); eg.innerHTML = '';
+  var l = el('div'); l.appendChild(el('div', 'eg-t', 'The Rhythm · ' + M.name)); l.appendChild(el('div', 'eg-s', '12 pages · print or GoodNotes')); eg.appendChild(l);
+  if (hasGuide(M)) eg.appendChild(guideButton(M, 'pill-btn', 'Open guide')); else eg.appendChild(el('div', 'soon', 'In your email'));
+}
+
+/* ── LIVING BY DESIGN (monthly episode + your lens) ── */
+function buildLbd(){
+  var key = S.cur && S.cur.key, M = S.M;
   var lc = $('lbd-card'); lc.innerHTML = '';
   var l = recsFor(key, 'lbd');
   l.forEach(function(r){ lc.appendChild(recCard(r, 'Living by Design · ' + M.name)); });
   if (!l.length) lc.appendChild(emptyCard('This month’s episode is on its way.'));
-  $('mudra-wrap').style.display = M.mudra.name ? 'block' : 'none';
-  var mc = $('mudra-card'); mc.innerHTML = '';
-  mc.appendChild(el('div', 'cc-eye', 'Mudra')); mc.appendChild(el('div', 'cc-title', M.mudra.name)); mc.appendChild(el('div', 'cc-body', M.mudra.body));
+  var e = earlierList('lbd'); if (e) lc.appendChild(e);
 }
 
 /* ── CREATE ── */
@@ -1202,7 +1598,7 @@ function buildCreate(){
 var libFilter = 'all';
 function buildLibrary(){
   var chips = $('lib-chips'); chips.innerHTML = '';
-  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Move'],['guide','Guides']].forEach(function(c){
+  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Root & Rise'],['guide','Guides']].forEach(function(c){
     var b = el('button', 'chip' + (libFilter === c[0] ? ' on' : ''), c[1]);
     b.onclick = function(){ libFilter = c[0]; buildLibrary(); };
     chips.appendChild(b);
@@ -1253,8 +1649,6 @@ function threadFor(){
 function renderDesign(){
   var t = threadFor(), f = DESIGN_FACTS[S.me.type], paras = t ? (t.body || '').split(/\n\s*\n/).filter(Boolean) : [];
   $('hdt-topic').textContent = t ? t.title : 'Your lens is on its way';
-  var first = paras[0] || 'Each month brings a short, personal note on your design.';
-  $('hdt-preview').textContent = first.length > 120 ? first.slice(0, 118).replace(/\s+\S*$/, '').replace(/[\s.,;:—-]+$/, '') + '…' : first;
   $('bd-eye').textContent = '✦ ' + (S.M.lensTopic || 'Living by Design') + ' · ' + S.M.name;
   $('bd-for').textContent = S.me.type ? [S.me.type, S.me.profile, S.me.authority].filter(Boolean).join(' · ') : 'Every design';
   $('bd-title').textContent = t ? t.title : 'Your lens is on its way';
@@ -1295,7 +1689,7 @@ function renderFeed(posts){
   var uid = S.session.user.id;
   posts = posts || [];
   var visible = posts.filter(function(p){ return !p.hidden; }).length;
-  $('ct-meta').textContent = visible ? visible + (visible === 1 ? ' voice' : ' voices') + ' so far →' : 'Be the first to share →';
+  if ($('ct-meta')) $('ct-meta').textContent = visible ? visible + (visible === 1 ? ' voice' : ' voices') + ' so far →' : 'Be the first to share →';
   if (!posts.length) { feed.appendChild(el('div', 'feed-empty', 'No one has shared yet this month. You’re welcome to go first — a sentence is plenty.')); return; }
   posts.forEach(function(p){
     var mine = p.user_id === uid;
@@ -1347,9 +1741,10 @@ async function sendFeedback(){
 /* ── NAV ── */
 function goScreen(id){
   if (id === 'studio' && !isAdmin()) id = 'you';
+  if (id === 'design') id = 'lbd';
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   var sc = $('screen-' + id); if (sc) sc.classList.add('active');
-  var navFor = {design:'home', library:'home', studio:'you'}[id] || id;
+  var navFor = {explore:'rhythm', practice:'rhythm', rootrise:'rhythm', lbd:'rhythm', creative:'rhythm', library:'rhythm', studio:'you'}[id] || id;
   document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.toggle('active', b.id === 'bn-' + navFor); });
   $('content-area').scrollTop = 0;
   clearInterval(circleTimer);
