@@ -598,6 +598,13 @@ button{font-family:'Poppins',sans-serif;}
 .dd-foot{margin:12px 24px 0;font-size:13px;font-style:italic;color:var(--muted);}
 .chart-up{position:relative;cursor:pointer;}
 .w-hero .w-wm-svg{width:150px;height:150px;top:-20px;right:-16px;}
+.fd-item{padding:12px 0;border-top:1px solid rgba(63,75,65,.18);}
+.fd-t{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:var(--dark);}
+.fd-s{margin-top:4px;font-size:14px;line-height:1.65;color:#33382f;white-space:pre-line;}
+.fd-dot{width:12px;height:12px;border-radius:50%;border:2px solid #3f4b41;flex-shrink:0;}
+.fd-dot.on{background:#3f4b41;}
+.st-design{margin-top:10px;padding:14px;background:#fff;border:1px solid var(--border);}
+.st-design .hint{margin:6px 0 10px;}
 
 </style>
 </head>
@@ -1000,6 +1007,10 @@ button{font-family:'Poppins',sans-serif;}
       <div class="chart-box" id="chart-box"></div>
       <div class="sec-lbl"><span>✦ Know your design</span></div>
       <div class="dd-list" id="dd-list"></div>
+      <div id="fd-wrap" style="display:none">
+        <div class="sec-lbl"><span>✦ Your full design</span></div>
+        <div class="dd-list" id="fd-list"></div>
+      </div>
       <p class="dd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</p>
       <button class="text-link" style="margin-top:14px" onclick="openWorlds()"><span>◎ The five worlds</span><span aria-hidden="true">→</span></button>
       <div class="pad">
@@ -1155,6 +1166,7 @@ var api = window.API_OVERRIDE || {
   chartUrl: async function(path){ return ok(await sb.storage.from('charts').createSignedUrl(path, 3600)).signedUrl; },
   chartUpload: async function(path, file){ ok(await sb.storage.from('charts').upload(path, file, {upsert: true, contentType: file.type || 'image/png'})); },
   setChart: async function(email, path){ ok(await sb.from('members').update({chart_path: path}).eq('email', email)); },
+  setDesign: async function(email, design){ ok(await sb.from('members').update({design: design}).eq('email', email)); },
   notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); }
 };
 
@@ -1750,7 +1762,7 @@ function renderDesign(){
   $('hdi-type').textContent = S.me.type || '—'; $('hdi-strategy').textContent = f ? f.strategy : '—';
   $('hdi-profile').textContent = S.me.profile || '—'; $('hdi-auth').textContent = S.me.authority || '—';
   $('hdi-sig').textContent = f ? f.sig : '—'; $('hdi-ns').textContent = f ? f.ns : '—';
-  buildDesignDeep(); buildChart();
+  buildDesignDeep(); buildChart(); buildFullDesign();
 }
 
 /* ── YOUR DESIGN, IN MORE DEPTH ── */
@@ -1972,6 +1984,193 @@ function downloadJournal(){
   var a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([lines.join('\n')], {type:'text/plain'}));
   a.download = 'my-flourish-flow-journal-' + todayKey() + '.txt'; a.click();
+}
+
+/* ── FULL DESIGN: centers, channels, gates, definition, cross ──
+   Staci enters each member's 13 conscious (personality) and 13 unconscious (design)
+   activations in Studio; everything else is worked out here. */
+var PLANETS = ['Sun','Earth','North Node','South Node','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto'];
+var CENTERS = [
+  {k:'head',  n:'Head',         g:[64,61,63],                          on:'You carry a steady current of inspiration and mental pressure. You tend to know which questions are truly yours.', off:'You soak up the questions and inspiration around you. Not every question that lands in your mind needs your answer.'},
+  {k:'ajna',  n:'Ajna',         g:[47,24,4,17,43,11],                  on:'You have a consistent way of thinking things through, a familiar inner process you can rely on.', off:'Your thinking is wonderfully flexible; you can hold many perspectives. You don’t have to be certain.'},
+  {k:'throat',n:'Throat',       g:[62,23,56,35,12,45,33,8,31,20,16],   on:'You have a consistent voice and way of expressing yourself.', off:'Your voice shifts with the room. Your words tend to land best when they’re invited, rather than to fill a silence.'},
+  {k:'g',     n:'G · Identity', g:[1,13,25,46,2,15,10,7],              on:'You have a steady sense of who you are and where you’re headed.', off:'Your sense of self moves with the people and places around you, so the right places matter. A good question: do I love it here?'},
+  {k:'heart', n:'Heart · Will', g:[21,40,26,51],                       on:'You have reliable willpower. Keep the promises you truly want to keep.', off:'There is nothing to prove. Notice the moments you push to show your worth.'},
+  {k:'sacral',n:'Sacral',       g:[5,14,29,59,9,3,42,27,34],           on:'You have sustainable life force for the work and people you love, and a gut that answers.', off:'Your energy comes in borrowed waves. Rest before you’re depleted, and ask: when is enough, enough?'},
+  {k:'spleen',n:'Spleen',       g:[48,57,44,50,32,28,18],              on:'You have a steady instinct and sense of wellbeing. Trust the quiet, in-the-moment knowing.', off:'You’re sensitive to how others feel and what’s healthy. Notice what you hold on to that no longer feels good.'},
+  {k:'sp',    n:'Solar Plexus', g:[36,22,37,6,49,55,30],               on:'Your emotions move in waves, so clarity comes with time rather than in the moment.', off:'You feel other people’s emotions, often amplified. A good question: is this feeling mine?'},
+  {k:'root',  n:'Root',         g:[53,60,52,19,39,41,58,38,54],        on:'You have a steady relationship with pressure and timing, a fuel you can work with.', off:'You feel pressure from everywhere, and not all of it is urgent. Notice when you rush just to be free of it.'}
+];
+var CHANNELS = [
+  [1,8,'Inspiration','Creative self-expression that inspires others when it’s simply you being you.'],
+  [2,14,'The Beat','A steady inner compass paired with the energy to follow it.'],
+  [3,60,'Mutation','Energy that brings change in pulses, sometimes after long stillness.'],
+  [4,63,'Logic','A mind that questions, finds patterns and tests what holds true.'],
+  [5,15,'Rhythm','A deep connection to natural rhythms and timing, your own and the world’s.'],
+  [6,59,'Intimacy','The capacity to create closeness and bond deeply, in time.'],
+  [7,31,'The Alpha','Natural leadership that lands best when it’s asked for.'],
+  [9,52,'Concentration','The ability to focus, settle and stay with what matters.'],
+  [10,20,'Awakening','Living true to yourself, right now, and expressing it.'],
+  [10,34,'Exploration','The energy to follow your own convictions and live your own way.'],
+  [10,57,'Perfected Form','An intuitive sense for how to live well and stay whole.'],
+  [11,56,'Curiosity','A seeker’s mind that turns ideas and experiences into stories.'],
+  [12,22,'Openness','Social grace and a voice that moves people when the mood is right.'],
+  [13,33,'The Prodigal','A witness and keeper of stories who reflects on what’s been lived.'],
+  [16,48,'The Wavelength','Talent deepened through repetition, practice and depth.'],
+  [17,62,'Acceptance','A mind that organizes details into clear, useful perspectives.'],
+  [18,58,'Judgment','A joyful drive to correct and improve what isn’t working.'],
+  [19,49,'Synthesis','Sensitivity to needs and the principles that hold people together.'],
+  [20,34,'Charisma','Busy, capable energy that turns response into action. When you’re lit up, you can do so much.'],
+  [20,57,'The Brainwave','Sharp, in-the-moment intuition spoken aloud.'],
+  [21,45,'Money','A gift for managing resources and guiding the material world.'],
+  [23,43,'Structuring','Unique insights that need the right timing and words to be heard.'],
+  [24,61,'Awareness','A contemplative mind that circles mysteries until they come clear.'],
+  [25,51,'Initiation','The courage to leap, and to be shaped by what’s unexpected.'],
+  [26,44,'Surrender','A gift for sensing patterns and communicating what people need.'],
+  [27,50,'Preservation','A caretaker’s energy, guided by deep values.'],
+  [28,38,'Struggle','The drive to find what makes life worth fighting for. Purpose found through the struggle, not around it.'],
+  [29,46,'Discovery','Committing fully to an experience and discovering through it.'],
+  [30,41,'Recognition','The fuel of desire and the feeling of new experiences.'],
+  [32,54,'Transformation','Ambition grounded in instinct for what will last. You rise by transforming, step by step.'],
+  [34,57,'Power','Instinctive, responsive energy that knows how to survive and thrive.'],
+  [35,36,'Transitoriness','A hunger for experience that grows wiser with each one.'],
+  [37,40,'Community','Bonds of friendship, support and fair agreements.'],
+  [39,55,'Emoting','A spirited, moody depth that moves through creativity.'],
+  [42,53,'Maturation','The energy to begin cycles and see them through to completion.'],
+  [47,64,'Abstraction','A mind that makes sense of the past through images and memory.']
+];
+var GATES = {
+  1:['Self-Expression','A creative voice that’s here to be uniquely yours.'],
+  2:['Higher Knowing','An inner sense of direction, even when you can’t explain it.'],
+  3:['Ordering','Bringing order out of new and uncertain beginnings.'],
+  4:['Formulization','A gift for answers and possible explanations.'],
+  5:['Fixed Rhythms','Comfort and power in consistent daily rhythms.'],
+  6:['Friction','Sensing when to open toward intimacy and when to hold boundaries.'],
+  7:['The Role of the Self','A natural pull toward guiding the direction of a group.'],
+  8:['Contribution','Contributing what’s uniquely yours, and inspiring others to do the same.'],
+  9:['Focus','The ability to give full attention to the detail in front of you.'],
+  10:['Behavior of the Self','Love of self expressed through how you live.'],
+  11:['Ideas','A stream of ideas and images to share, not all of them to act on.'],
+  12:['Caution','A voice that knows to wait for the right mood to speak.'],
+  13:['The Listener','People tell you their stories. You hold them.'],
+  14:['Power Skills','Energy that fuels direction and resources when it’s aligned.'],
+  15:['Extremes','Love of humanity and a wide range of natural rhythms.'],
+  16:['Skills','Enthusiasm for practicing and mastering what you love.'],
+  17:['Opinions','Seeing the patterns and offering perspective, best when asked.'],
+  18:['Correction','An eye for what could be better, and the joy of improving it.'],
+  19:['Wanting','Sensitivity to the needs of the people and places around you.'],
+  20:['The Now','Presence. Awareness of what’s true in this moment.'],
+  21:['The Hunter','A need for a sense of control over your own resources and life.'],
+  22:['Openness','Grace, emotional depth and a love of the arts.'],
+  23:['Assimilation','Making unusual insight simple enough to be understood.'],
+  24:['Rationalization','Returning to a thought again and again until it settles.'],
+  25:['Spirit of the Self','Universal love and an open, innocent heart.'],
+  26:['The Egoist','A gift for persuasion, influence and making things land.'],
+  27:['Caring','A nurturer’s instinct to care for others and yourself.'],
+  28:['The Game Player','Searching for what makes life worth the struggle.'],
+  29:['Perseverance','Saying yes and seeing it through.'],
+  30:['Recognition of Feelings','The fire of desire and longing for new experience.'],
+  31:['Influence','A voice that leads when invited to.'],
+  32:['Continuity','An instinct for what will last and what won’t.'],
+  33:['Privacy','Retreating to reflect, then sharing what you’ve learned.'],
+  34:['Power','Strong, independent life force that responds to what’s alive.'],
+  35:['Change','A hunger for new experiences, and the wisdom that comes after.'],
+  36:['Crisis','Moving through emotional storms into new depth.'],
+  37:['Friendship','Warmth, loyalty and the ties that hold family and community.'],
+  38:['The Fighter','The Warrior of Light: finding purpose by standing for what matters.'],
+  39:['Provocation','Stirring others, and yourself, awake to spirit and feeling.'],
+  40:['Aloneness','Working hard for those you love, and needing time alone to restore.'],
+  41:['Contraction','The start of new experience, held first as imagination.'],
+  42:['Growth','Bringing cycles to completion and growing through them.'],
+  43:['Insight','Breakthrough knowing that arrives fully formed.'],
+  44:['Alertness','Sensing patterns from the past to guide what comes next.'],
+  45:['The Gatherer','Gathering people and resources, and sharing them well.'],
+  46:['Determination of the Self','Love of the body and being in the right place at the right time.'],
+  47:['Realization','Making sense of the past, often suddenly.'],
+  48:['Depth','A well of depth and wisdom that grows with practice.'],
+  49:['Principles','Sensing what needs to change, and standing by your principles.'],
+  50:['Values','A guardian of values and of what keeps people well.'],
+  51:['Shock','Courage, and the ability to meet the unexpected.'],
+  52:['Stillness','Calm focus: the mountain that doesn’t rush.'],
+  53:['Beginnings','The pressure and joy of starting something new.'],
+  54:['Ambition','A drive to rise and transform, for yourself and others.'],
+  55:['Spirit','Emotional abundance and a deep, changing inner world.'],
+  56:['Stimulation','A storyteller who makes experience come alive.'],
+  57:['Intuitive Clarity','A quiet, keen intuition in the moment.'],
+  58:['Vitality','Joy in life, and in making things better.'],
+  59:['Intimacy','Breaking down barriers to create closeness.'],
+  60:['Acceptance','Accepting limits, from which something new can grow.'],
+  61:['Mystery','Inner knowing and a pull toward life’s mysteries.'],
+  62:['Detail','Naming things precisely, and organizing them clearly.'],
+  63:['Doubt','A logical mind that questions in order to be sure.'],
+  64:['Confusion','Sitting with the mind’s images until they make sense.']
+};
+var DEFINITION_TEXT = {
+  0:['No definition','You have no defined centers: a Reflector’s openness. You sample and mirror the world around you, and your environment shapes you more than most.'],
+  1:['Single definition','All your defined centers connect. You tend to process in one continuous flow and often feel whole on your own.'],
+  2:['Split definition','Your definition has two areas that don’t quite touch. Certain people and places “bridge” you, and those connections can feel deeply settling. Give yourself time; clarity often arrives after you’ve talked something through or moved through a few environments.'],
+  3:['Triple split definition','Your definition has three separate areas. You integrate by moving through different people and places, and public, bustling spaces can help you feel whole. Give yourself time with decisions.'],
+  4:['Quadruple split definition','Your definition has four separate areas, which is rare. You take things in slowly and become steady once you settle. Let big things take the time they take.']
+};
+function parseActs(s){
+  return (s || '').trim().split(/[\s,]+/).filter(Boolean).map(function(v){
+    var m = /^(\d{1,2})(?:\.(\d))?$/.exec(v); if (!m) return null;
+    var g = +m[1]; return (g >= 1 && g <= 64) ? {gate:g, line: m[2] ? +m[2] : null} : null;
+  });
+}
+function computeDesign(ds){
+  if (!ds || !ds.p || !ds.d) return null;
+  var p = parseActs(ds.p), d = parseActs(ds.d);
+  if (p.some(function(x){ return !x; }) || d.some(function(x){ return !x; })) return null;
+  var has = {}, gates = {};
+  p.forEach(function(a, i){ has[a.gate] = 1; (gates[a.gate] = gates[a.gate] || {c:[], u:[]}).c.push(PLANETS[i] + (a.line ? ' ' + a.gate + '.' + a.line : '')); });
+  d.forEach(function(a, i){ has[a.gate] = 1; (gates[a.gate] = gates[a.gate] || {c:[], u:[]}).u.push(PLANETS[i] + (a.line ? ' ' + a.gate + '.' + a.line : '')); });
+  var centerOf = {}; CENTERS.forEach(function(c){ c.g.forEach(function(g){ centerOf[g] = c.k; }); });
+  var chans = CHANNELS.filter(function(c){ return has[c[0]] && has[c[1]]; });
+  var defined = {}; chans.forEach(function(c){ defined[centerOf[c[0]]] = 1; defined[centerOf[c[1]]] = 1; });
+  // count separate areas of definition
+  var parent = {}; Object.keys(defined).forEach(function(k){ parent[k] = k; });
+  function find(x){ while (parent[x] !== x) x = parent[x] = parent[parent[x]]; return x; }
+  chans.forEach(function(c){ parent[find(centerOf[c[0]])] = find(centerOf[c[1]]); });
+  var roots = {}; Object.keys(defined).forEach(function(k){ roots[find(k)] = 1; });
+  return {gates: gates, channels: chans, defined: defined, areas: Math.min(4, Object.keys(roots).length), cross: ds.cross || '',
+          sun: p[0], dsun: d[0]};
+}
+function ddItem(title, body){ var r = el('div', 'fd-item'); r.appendChild(el('div', 'fd-t', title)); if (body) r.appendChild(el('div', 'fd-s', body)); return r; }
+function buildFullDesign(){
+  var w = $('fd-list'); if (!w) return; w.innerHTML = '';
+  var D = computeDesign(S.me.design);
+  $('fd-wrap').style.display = 'block';
+  if (!D) { w.appendChild(el('p', 'dd-empty', 'Your full design (centers, channels and gates) will appear here once Staci adds your chart details.')); return; }
+  var def = DEFINITION_TEXT[D.areas] || DEFINITION_TEXT[1];
+  w.appendChild(designCard('Your definition', def[0], def[1]));
+  if (D.cross) w.appendChild(designCard('Your incarnation cross', D.cross, 'Your cross is the widest lens on your life: the theme that keeps showing up in different rooms, with different people. It isn’t a job title or a destination. It’s a direction your whole design keeps pointing toward.'));
+  // centers
+  var cd = el('details', 'dd'), cs = el('summary'); cs.appendChild(el('span', 'dd-k', 'Your nine centers')); cs.appendChild(el('span', 'dd-t', Object.keys(D.defined).length + ' defined · ' + (9 - Object.keys(D.defined).length) + ' open')); cd.appendChild(cs);
+  var cb = el('div', 'dd-b');
+  cb.appendChild(el('p', null, 'Defined centers are your consistent energy, how you reliably operate. Open centers are where you take in the world around you, and where much of your wisdom grows.'));
+  CENTERS.slice().sort(function(a, b){ return (D.defined[b.k] ? 1 : 0) - (D.defined[a.k] ? 1 : 0); }).forEach(function(c){
+    var on = !!D.defined[c.k], r = el('div', 'fd-item');
+    var t = el('div', 'fd-t'); var dot = el('span', 'fd-dot' + (on ? ' on' : '')); dot.setAttribute('aria-hidden', 'true'); t.appendChild(dot);
+    t.appendChild(document.createTextNode(c.n + (on ? ' · defined' : ' · open'))); r.appendChild(t); r.appendChild(el('div', 'fd-s', on ? c.on : c.off)); cb.appendChild(r);
+  });
+  cd.appendChild(cb); w.appendChild(cd);
+  // channels
+  var hd = el('details', 'dd'), hs = el('summary'); hs.appendChild(el('span', 'dd-k', 'Your channels')); hs.appendChild(el('span', 'dd-t', D.channels.length ? D.channels.map(function(c){ return c[2]; }).join(' · ') : 'None defined')); hd.appendChild(hs);
+  var hb = el('div', 'dd-b');
+  hb.appendChild(el('p', null, D.channels.length ? 'A channel forms when both of its gates are defined. These are the life forces you carry consistently.' : 'You have no defined channels, so you experience the energy of the people and places around you very fully.'));
+  D.channels.forEach(function(c){ hb.appendChild(ddItem(c[0] + '–' + c[1] + ' · The Channel of ' + c[2], c[3])); });
+  hd.appendChild(hb); w.appendChild(hd);
+  // gates
+  var nums = Object.keys(D.gates).map(Number).sort(function(a, b){ return a - b; });
+  var gd = el('details', 'dd'), gs = el('summary'); gs.appendChild(el('span', 'dd-k', 'Your gates')); gs.appendChild(el('span', 'dd-t', nums.length + ' gates')); gd.appendChild(gs);
+  var gb = el('div', 'dd-b');
+  gb.appendChild(el('p', null, 'Gates are the specific gifts and themes in your design. Conscious gates tend to feel familiar to you; unconscious gates are often what others notice in you first.'));
+  nums.forEach(function(n){
+    var g = D.gates[n], meta = GATES[n] || ['', ''], kind = g.c.length && g.u.length ? 'Conscious & unconscious' : (g.c.length ? 'Conscious' : 'Unconscious');
+    gb.appendChild(ddItem('Gate ' + n + ' · ' + meta[0], meta[1] + '  ' + kind + '.'));
+  });
+  gd.appendChild(gb); w.appendChild(gd);
 }
 
 /* ── SESSIONS ── */
@@ -2350,7 +2549,34 @@ async function studioMembers(p){
         ST.members = null; studioRender();
       } catch(e) { cw.firstChild.textContent = 'Try again'; }
     };
-    var ca = el('div', 'it-a'); ca.appendChild(cw); it.appendChild(ca);
+    var ca = el('div', 'it-a'); ca.appendChild(cw);
+    var dz = el('button', 'pill-btn small-btn outline', mb.design ? 'Design ✓' : 'Design'); ca.appendChild(dz); it.appendChild(ca);
+    dz.onclick = function(){
+      var open = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-design');
+      if (open) { it.nextSibling.remove(); return; }
+      var f = el('div', 'st-design'), ds = mb.design || {};
+      f.appendChild(el('div', 'hint', 'From her Bodygraph chart, type the 13 numbers in each column, top to bottom (Sun, Earth, North Node, South Node, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto). Gate.line, like 38.1, separated by spaces.'));
+      var fp = fld(f, 'Conscious · personality (black / right column)', ds.p || '', {area:true, rows:2});
+      var fd = fld(f, 'Unconscious · design (red / left column)', ds.d || '', {area:true, rows:2});
+      var fc = fld(f, 'Incarnation cross', ds.cross || '', {placeholder:'Right Angle Cross of Tension 4 (38/39 | 48/21)'});
+      var pv = el('div', 'hint'); f.appendChild(pv);
+      function preview(){
+        var D = computeDesign({p: fp.value, d: fd.value, cross: fc.value});
+        var np = parseActs(fp.value).length, nd = parseActs(fd.value).length;
+        if (!D || np !== 13 || nd !== 13) { pv.textContent = 'Needs 13 numbers in each box (now ' + np + ' and ' + nd + ').'; return null; }
+        pv.textContent = 'Reads as: ' + (DEFINITION_TEXT[D.areas] || DEFINITION_TEXT[1])[0] + ' · ' + Object.keys(D.gates).length + ' gates · channels ' + (D.channels.map(function(c){ return c[0] + '-' + c[1]; }).join(', ') || 'none') + ' · defined: ' + CENTERS.filter(function(c){ return D.defined[c.k]; }).map(function(c){ return c.n; }).join(', ');
+        return D;
+      }
+      fp.oninput = fd.oninput = preview; preview();
+      saveRow(f, 'Save design', async function(){
+        if (!preview()) throw {userMsg:'Check both boxes have 13 numbers.'};
+        var design = {p: fp.value.trim().replace(/\s+/g, ' '), d: fd.value.trim().replace(/\s+/g, ' '), cross: fc.value.trim()};
+        await api.setDesign(mb.email, design); mb.design = design;
+        if (S.me.email === mb.email) { S.me.design = design; buildFullDesign(); }
+        dz.textContent = 'Design ✓';
+      });
+      it.parentNode.insertBefore(f, it.nextSibling);
+    };
     if (mb.role !== 'admin') {
       var a = el('div', 'it-a'), db = el('button', 'pill-btn small-btn danger', 'Remove');
       armButton(db, 'Sure?', async function(){ await api.removeMember(mb.email); ST.members = null; studioRender(); });
@@ -2378,10 +2604,13 @@ async function studioNotes(p){
   try {
     var c = document.createElement('canvas'); c.width = 180; c.height = 180;
     var x = c.getContext('2d');
+    // the five worlds around a cream center
     x.fillStyle = '#3a3d38'; x.fillRect(0, 0, 180, 180);
-    x.strokeStyle = '#b8c9b3'; x.lineWidth = 5; x.beginPath(); x.arc(90, 84, 38, 0, Math.PI * 2); x.stroke();
-    x.fillStyle = '#8ea185'; x.beginPath(); x.arc(90, 84, 13, 0, Math.PI * 2); x.fill();
-    x.fillStyle = '#a1765a'; x.beginPath(); x.arc(90, 146, 6, 0, Math.PI * 2); x.fill();
+    x.strokeStyle = '#5a5d57'; x.lineWidth = 2; x.beginPath(); x.arc(90, 90, 50, 0, Math.PI * 2); x.stroke();
+    [['#8096a7', 90, 40], ['#a1765a', 137.6, 74.5], ['#8ea185', 119.4, 130.5], ['#758578', 60.6, 130.5], ['#c9a032', 42.4, 74.5]].forEach(function(d){
+      x.fillStyle = d[0]; x.beginPath(); x.arc(d[1], d[2], 15, 0, Math.PI * 2); x.fill();
+    });
+    x.fillStyle = '#f6f4f0'; x.beginPath(); x.arc(90, 90, 8, 0, Math.PI * 2); x.fill();
     var l = document.createElement('link'); l.rel = 'apple-touch-icon'; l.href = c.toDataURL('image/png');
     document.head.appendChild(l);
   } catch(e){}
