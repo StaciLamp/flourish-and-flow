@@ -643,8 +643,11 @@ button{font-family:'Poppins',sans-serif;}
 .cp-photo{display:block;width:100%;max-height:420px;object-fit:cover;border-radius:12px;margin-top:8px;background:var(--cream-dark);}
 .cp-acts{display:flex;gap:14px;align-items:center;margin-top:6px;}
 .cp-hear,.cp-btn{min-height:36px;background:none;border:none;padding:0;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:var(--mid);cursor:pointer;}
-.cp-hear.on{color:#7a5537;}
-.cp-heard{font-size:12px;font-style:italic;color:#7a5537;margin-top:2px;}
+.cp-hear{font-size:21px;line-height:1;color:#a1765a;}
+.cp-hear .cp-hl{font-size:12.5px;font-weight:500;color:var(--mid);vertical-align:3px;}
+.cp-hear.on{color:#a1765a;}
+.cp-hear.on .cp-hl{color:#7a5537;}
+.cp-heard{font-size:12px;color:#7a5537;margin-top:2px;}
 .cp-menu{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px;padding:10px;background:var(--cream-dark);border-radius:12px;}
 .cp-menu .compose-ta{min-height:60px;}
 .cp-note{font-size:13px;font-style:italic;color:var(--deep);}
@@ -704,6 +707,16 @@ button{font-family:'Poppins',sans-serif;}
 .m-letter p{font-family:'Poppins',sans-serif;font-weight:300;font-size:14px;line-height:1.75;color:#3a3d38;margin:0 0 12px;}
 .m-letter p:last-of-type{font-family:'Abril Fatface',serif;font-size:17px;line-height:1.4;margin-top:16px;}
 .ml-sign{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#919d9d;margin-top:6px;}
+
+.ch-q-eye{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;font-style:normal;opacity:.75;margin-bottom:6px;}
+.ch-q-go{margin:10px 0 0;width:100%;}
+.circle-header .ch-q-go,.circle-header .ch-q-go span{color:#f6f4f0;border-color:rgba(246,244,240,.35);font-style:normal;}
+.cw-wall .cp-tag{display:none;}
+.cw-box .je-msg:empty{display:none;}
+.cw-sub{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.6;color:var(--mid);margin:8px 0 12px;}
+.cw-box{background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.cw-pick{align-self:flex-start;cursor:pointer;}
+.cw-box .je-prev img{max-width:100%;border-radius:10px;}
 
 </style>
 </head>
@@ -1022,6 +1035,18 @@ button{font-family:'Poppins',sans-serif;}
         <div id="cf-steps"></div>
         <div class="pull" id="cf-pull"></div>
         <button class="text-link" style="margin:16px 0 0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>✷ Keep your page in your Journal</span><span aria-hidden="true">→</span></button>
+      </div>
+      <div class="pad" id="cw-wrap">
+        <div class="eye">✷ Share your creative work</div>
+        <p class="cw-sub">A photo of your page, a sketch, whatever you made. It doesn’t need to be finished or pretty.</p>
+        <div class="cw-box">
+          <label class="je-photo-btn cw-pick">＋ Add a photo<input type="file" accept="image/*" id="cw-file" class="sr-only" onchange="pickWallPhoto(this)"></label>
+          <div class="je-prev" id="cw-prev"></div>
+          <textarea class="compose-ta" id="cw-ta" maxlength="500" placeholder="A few words about it (optional)" aria-label="A few words about your creative work"></textarea>
+          <button class="pill-btn dark full" id="cw-send" onclick="sendWall()">Share it</button>
+          <div class="je-msg" id="cw-msg" role="status"></div>
+        </div>
+        <div class="chat-feed cw-wall" id="cw-wall"></div>
       </div>
       <div class="pad" id="cf-gather-wrap">
         <div class="eye">Seasonal gatherings</div>
@@ -2493,27 +2518,33 @@ function buildSessions(){
 }
 
 /* ── CIRCLE · one ongoing feed, gently tagged ── */
-var CTAGS = {reflection:'Monthly reflection', open:'Open conversation', creative:'Creative sharing', gathering:'After the gathering'};
-var C = {tag:'reflection', photo:null, filter:'all', posts:[], replies:{}, reacts:{}, blocked:{}, open:{}, menu:null, gathering:null, rsvp:null, gid:null, loading:false};
+var CTAGS = {reflection:'Monthly reflection', open:'Open conversation', creative:'Creative work', gathering:'Gatherings'};
+var C = {tag:'open', photo:null, wphoto:null, filter:'all', posts:[], replies:{}, reacts:{}, blocked:{}, open:{}, menu:null, gathering:null, rsvp:null, gid:null, loading:false};
 function buildCircleHeader(){
   $('circle-eye').textContent = '○ The Circle · ' + S.M.name;
-  $('circle-q').textContent = S.M.circlePrompt ? '“' + S.M.circlePrompt + '”' : 'What’s alive for you this month?';
+  var q = $('circle-q'); q.innerHTML = '';
+  q.appendChild(el('div', 'ch-q-eye', 'This month’s reflection'));
+  q.appendChild(el('div', null, S.M.circlePrompt ? '“' + S.M.circlePrompt + '”' : 'What’s alive for you this month?'));
+  var ans = el('button', 'text-link ch-q-go', null); ans.appendChild(el('span', null, 'Answer it')); ans.appendChild(el('span', null, '→'));
+  ans.onclick = function(){ C.tag = 'reflection'; C.gid = null; buildComposer(); $('circle-ta').focus(); };
+  q.appendChild(ans);
   buildComposer(); buildFilters();
 }
 function buildComposer(){
   var t = $('cc-tags'); t.innerHTML = '';
-  ['reflection', 'open', 'creative'].concat(C.tag === 'gathering' ? ['gathering'] : []).forEach(function(k){
+  if (C.tag === 'creative' || (C.tag === 'gathering' && !isAdmin())) C.tag = 'open';
+  ['open', 'reflection'].concat(isAdmin() ? ['gathering'] : []).forEach(function(k){
     var b = el('button', 'je-chip' + (C.tag === k ? ' on' : ''), CTAGS[k]); b.type = 'button'; b.setAttribute('aria-pressed', C.tag === k ? 'true' : 'false');
-    b.onclick = function(){ C.tag = k; if (k !== 'gathering') C.gid = null; buildComposer(); };
+    b.onclick = function(){ C.tag = k; C.gid = null; buildComposer(); };
     t.appendChild(b);
   });
-  $('circle-ta').placeholder = C.tag === 'reflection' && S.M.circlePrompt ? S.M.circlePrompt : (C.tag === 'creative' ? 'Share something you made, or noticed…' : (C.tag === 'gathering' ? 'What stayed with you from the gathering?' : 'Share what’s true for you right now…'));
+  $('circle-ta').placeholder = C.tag === 'reflection' ? 'Your reflection on this month’s question…' : (C.tag === 'gathering' ? 'Share the call link or a note about the next gathering…' : 'What’s on your mind? Anything is welcome here…');
 }
 function buildFilters(){
   var f = $('cf-filter'); f.innerHTML = '';
-  [['all', 'Everything'], ['reflection', 'Monthly reflections'], ['open', 'Open conversation'], ['creative', 'Creative sharing'], ['gathering', 'Gatherings']].forEach(function(o){
+  [['all', 'Everything'], ['reflection', 'Monthly reflection'], ['open', 'Open conversation'], ['gathering', 'Gatherings']].forEach(function(o){
     var b = el('button', 'chip' + (C.filter === o[0] ? ' on' : ''), o[1]);
-    b.onclick = function(){ C.filter = o[0]; buildFilters(); renderFeed(); };
+    b.onclick = function(){ C.filter = o[0]; buildFilters(); renderGathering(); };
     f.appendChild(b);
   });
 }
@@ -2527,8 +2558,8 @@ async function pickCirclePhoto(input){
 }
 function circleBusy(){
   var a = document.activeElement;
-  if (a && $('screen-circle').contains(a) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
-  return [].some.call(document.querySelectorAll('#chat-feed textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
+  if (a && ($('screen-circle').contains(a) || $('screen-creative').contains(a)) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
+  return [].some.call(document.querySelectorAll('#chat-feed textarea, #cw-wall textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
 }
 async function loadCircle(quiet){
   if (C.loading || (quiet && circleBusy())) return;
@@ -2551,12 +2582,14 @@ async function loadCircle(quiet){
 function renderFeed(){
   var feed = $('chat-feed'); feed.innerHTML = '';
   var uid = S.session.user.id;
-  var posts = C.posts.filter(function(p){ return !C.blocked[p.user_id] && (C.filter === 'all' || (p.tag || 'open') === C.filter); });
+  var posts = C.posts.filter(function(p){ var t = p.tag || 'open'; return !C.blocked[p.user_id] && t !== 'creative' && (C.filter === 'all' || t === C.filter); });
+  if (C.filter === 'gathering' && C.gathering) feed.appendChild(gatherCard());
   if (!posts.length) {
-    feed.appendChild(el('div', 'feed-empty', C.filter === 'all' ? 'No one has shared yet. You’re welcome to go first. A sentence is plenty.' : 'Nothing here yet.'));
-    return;
+    feed.appendChild(el('div', 'feed-empty', C.filter === 'all' ? 'No one has shared yet. You’re welcome to go first. A sentence is plenty.' :
+      (C.filter === 'gathering' ? 'Monthly call links and gathering details will be shared here. Tap ♡ on a gathering post to let Staci know you plan to join live.' : 'Nothing here yet.')));
   }
   posts.forEach(function(p){ feed.appendChild(postCard(p, uid, false)); });
+  renderWall();
 }
 function photoInto(img, path){
   if (C['u' + path]) { img.src = C['u' + path]; return; }
@@ -2579,7 +2612,9 @@ function postCard(p, uid, isReply){
   var rs = C.reacts[p.id] || [], heard = rs.some(function(x){ return x.user_id === uid; });
   var acts = el('div', 'cp-acts');
   if (!mine) {
-    var h = el('button', 'cp-hear' + (heard ? ' on' : ''), heard ? '♡ Heard' : '♡ I hear you'); h.setAttribute('aria-pressed', heard ? 'true' : 'false');
+    var h = el('button', 'cp-hear' + (heard ? ' on' : ''), heard ? '♥' : '♡'); h.setAttribute('aria-pressed', heard ? 'true' : 'false');
+    h.setAttribute('aria-label', p.tag === 'gathering' ? (heard ? 'You plan to join. Tap to undo' : 'Heart to say you plan to join') : (heard ? 'Remove heart' : 'Heart this post'));
+    if (p.tag === 'gathering' && !isReply) h.appendChild(el('span', 'cp-hl', heard ? ' You’re joining' : ' I plan to join'));
     h.onclick = async function(){
       h.disabled = true;
       try { if (heard) await api.unreact(p.id); else await api.react(p.id, (S.me.name || 'A member').slice(0, 40)); await loadCircle(); }
@@ -2587,7 +2622,7 @@ function postCard(p, uid, isReply){
     };
     acts.appendChild(h);
   }
-  if (!isReply) {
+  if (!isReply && p.tag !== 'gathering') {
     var reps = (C.replies[p.id] || []).filter(function(x){ return !C.blocked[x.user_id]; });
     var rb = el('button', 'cp-btn', reps.length ? (C.open[p.id] ? 'Hide replies' : reps.length + (reps.length === 1 ? ' reply' : ' replies')) : 'Reply');
     rb.onclick = function(){ C.open[p.id] = !C.open[p.id]; renderFeed(); if (C.open[p.id]) setTimeout(function(){ var t = document.getElementById('rp-' + p.id); if (t && !reps.length) t.focus(); }, 50); };
@@ -2597,7 +2632,7 @@ function postCard(p, uid, isReply){
   more.onclick = function(){ C.menu = C.menu === p.id ? null : p.id; renderFeed(); };
   acts.appendChild(more);
   right.appendChild(acts);
-  if (mine && rs.length) right.appendChild(el('div', 'cp-heard', 'Heard by ' + rs.map(function(x){ return x.name || 'a member'; }).join(', ')));
+  if (mine && rs.length) right.appendChild(el('div', 'cp-heard', '♥ ' + (p.tag === 'gathering' ? 'Joining: ' : '') + rs.map(function(x){ return x.name || 'a member'; }).join(', ')));
   if (C.menu === p.id) right.appendChild(postMenu(p, mine));
   if (!isReply && C.open[p.id]) {
     var box = el('div', 'cp-replies');
@@ -2651,10 +2686,10 @@ async function sendPost(){
     var photo = null;
     if (C.photo) { photo = S.session.user.id + '/' + Date.now() + '.jpg'; await api.circlePhotoUpload(photo, C.photo); }
     var row = {month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: text, user_id: S.session.user.id, tag: C.tag, photo_path: photo};
-    if (C.tag === 'gathering' && C.gid) row.gathering_id = C.gid;
+    if (C.gid) row.gathering_id = C.gid;
     await api.addPost(row);
     ta.value = ''; C.photo = null; $('cc-prev').innerHTML = ''; $('cc-file').value = '';
-    C.tag = 'reflection'; C.gid = null; buildComposer();
+    if (C.tag !== 'gathering') C.tag = 'open'; C.gid = null; buildComposer();
     await loadCircle();
   } catch(e) {
     var f = $('chat-feed'), n = el('div', 'feed-empty', 'That didn’t send. Your words are still in the box. Try again in a moment.');
@@ -2692,8 +2727,14 @@ async function loadGathering(){
 }
 function renderGathering(){
   var w = $('gather-wrap'); w.innerHTML = '';
+  if (C.filter === 'all') {
+    if (C.gathering) w.appendChild(gatherCard());
+    else if (isAdmin()) w.appendChild(el('div', 'g-empty', 'Gather With Us · add your next gathering in Studio → Gather.'));
+  }
+  renderFeed();
+}
+function gatherCard(){
   var g = C.gathering;
-  if (!g) { if (isAdmin()) w.appendChild(el('div', 'g-empty', 'Gather With Us · add your next gathering in Studio → Gather.')); return; }
   var now = Date.now(), start = new Date(g.starts_at).getTime(), end = gEnd(g).getTime();
   var live = now >= start - 15 * 60000 && now <= end + 15 * 60000, past = now > end + 15 * 60000;
   var c = el('section', 'gather'); c.setAttribute('aria-label', 'Gather With Us');
@@ -2705,7 +2746,7 @@ function renderGathering(){
   if (live && g.join_url) {
     var j = el('a', 'pill-btn dark full', 'Join the gathering'); j.href = g.join_url; j.target = '_blank'; j.rel = 'noopener'; acts.appendChild(j);
   } else if (!past) {
-    var rb = el('button', 'pill-btn ' + (C.rsvp ? 'outline' : 'dark'), C.rsvp ? '✓ You’re coming · change' : 'I’ll be there');
+    var rb = el('button', 'pill-btn ' + (C.rsvp ? 'outline' : 'dark'), C.rsvp ? '♥ You’re joining · change' : '♡ I plan to join');
     rb.onclick = async function(){
       rb.disabled = true;
       try { if (C.rsvp) await api.unrsvp(g.id); else await api.rsvp(g.id, (S.me.name || 'A member').slice(0, 40)); await loadGathering(); }
@@ -2721,17 +2762,44 @@ function renderGathering(){
     if (g.recording_url) { var pw = el('div'); var pb = mediaButton(g.recording_url, pw); pb.textContent = '▶  Watch the recording'; c.appendChild(pb); c.appendChild(pw); }
   }
   if (past || live) {
-    var n = C.posts.filter(function(p){ return p.gathering_id === g.id; }).length;
     var row = el('div', 'g-acts');
-    var share = el('button', 'pill-btn outline', 'Share a reflection');
-    share.onclick = function(){ C.tag = 'gathering'; C.gid = g.id; buildComposer(); $('circle-ta').focus(); };
+    var share = el('button', 'pill-btn outline', 'Share what stayed with you');
+    share.onclick = function(){ C.tag = 'open'; C.gid = g.id; C.filter = 'all'; buildComposer(); buildFilters(); renderGathering(); $('circle-ta').focus(); };
     row.appendChild(share);
-    if (n) { var see = el('button', 'pill-btn outline', 'The conversation (' + n + ')'); see.onclick = function(){ C.filter = 'gathering'; buildFilters(); renderFeed(); }; row.appendChild(see); }
     c.appendChild(row);
   }
-  if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? C.rsvpList.length + ' coming: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No RSVPs yet.'));
-  w.appendChild(c);
+  if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? '♥ ' + C.rsvpList.length + ' joining: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No one has said yet.'));
+  return c;
 }
+/* ── CREATIVE FLOW · share your creative work ── */
+async function pickWallPhoto(input){
+  var f = input.files && input.files[0]; if (!f) return;
+  try { C.wphoto = await shrinkImage(f); } catch(e) { C.wphoto = null; }
+  var pv = $('cw-prev'); pv.innerHTML = '';
+  if (!C.wphoto) { pv.appendChild(el('div', 'je-msg', 'That photo couldn’t be opened. Try another.')); return; }
+  var im = el('img'); im.src = URL.createObjectURL(C.wphoto); im.alt = 'Photo to share'; pv.appendChild(im);
+  var rm = el('button', 'je-rm', 'Remove photo'); rm.type = 'button'; rm.onclick = function(){ C.wphoto = null; pv.innerHTML = ''; input.value = ''; }; pv.appendChild(rm);
+}
+async function sendWall(){
+  var msg = $('cw-msg'); msg.textContent = '';
+  if (!C.wphoto) { msg.textContent = 'Add a photo of your work first.'; return; }
+  var btn = $('cw-send'); btn.disabled = true; btn.textContent = 'Sharing…';
+  try {
+    var path = S.session.user.id + '/' + Date.now() + '.jpg'; await api.circlePhotoUpload(path, C.wphoto);
+    await api.addPost({month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: $('cw-ta').value.trim() || 'My ' + S.M.name + ' page', user_id: S.session.user.id, tag: 'creative', photo_path: path});
+    $('cw-ta').value = ''; C.wphoto = null; $('cw-prev').innerHTML = ''; $('cw-file').value = '';
+    await loadCircle();
+  } catch(e) { msg.textContent = 'That didn’t send. Try again in a moment.'; }
+  finally { btn.disabled = false; btn.textContent = 'Share it'; }
+}
+function renderWall(){
+  var w = $('cw-wall'); if (!w || !S.session) return; w.innerHTML = '';
+  var uid = S.session.user.id;
+  var posts = C.posts.filter(function(p){ return p.tag === 'creative' && !C.blocked[p.user_id]; });
+  if (!posts.length) { w.appendChild(el('div', 'feed-empty', 'Nothing shared yet. Yours could be the first.')); return; }
+  posts.forEach(function(p){ w.appendChild(postCard(p, uid, false)); });
+}
+
 function downloadIcs(g){
   function z(d){ return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
   var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Flourish & Flow//Gather//EN', 'BEGIN:VEVENT',
@@ -2763,6 +2831,7 @@ function goScreen(id){
   document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.toggle('active', b.id === 'bn-' + navFor); });
   $('content-area').scrollTop = 0;
   clearInterval(circleTimer);
+  if (id === 'creative') loadCircle();
   if (id === 'circle') { loadCircle(); circleTimer = setInterval(function(){ loadCircle(true); }, 20000); }
   if (id === 'studio') studioOpen();
   if (id === 'journal') loadJournal();
