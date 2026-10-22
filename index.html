@@ -642,7 +642,7 @@ button{font-family:'Poppins',sans-serif;}
 <div id="login-screen" style="display:none">
   <div class="login-brand">flourish &amp; flow</div>
   <div class="login-tagline">a place you return to</div>
-  <div class="beta-chip">Founding beta · Fall 2026</div>
+  <div class="beta-chip">Founding Circle · 2026</div>
 
   <form class="auth-card" id="auth-email" onsubmit="authSendCode(event)">
     <div class="auth-h">Welcome in.</div>
@@ -665,7 +665,7 @@ button{font-family:'Poppins',sans-serif;}
       <button type="button" class="link-btn" id="a-resend" onclick="authResend()">Send a new code</button>
     </div>
   </form>
-  <div class="login-note">Not in the beta yet? stacilamp.com</div>
+  <div class="login-note">Not a member yet? stacilamp.com</div>
 </div>
 
 <!-- ONBOARDING -->
@@ -749,7 +749,6 @@ button{font-family:'Poppins',sans-serif;}
   <div class="topbar">
     <div class="topbar-l">
       <div class="topbar-brand">flourish &amp; flow</div>
-      <div class="topbar-beta">Beta</div>
     </div>
     <div class="topbar-r">
       <div class="topbar-month" id="t-month"></div>
@@ -819,7 +818,7 @@ button{font-family:'Poppins',sans-serif;}
         <span class="lr-a" aria-hidden="true">→</span>
       </button>
 
-      <button class="beta-line" onclick="goScreen('you');setTimeout(function(){document.getElementById('fb-text').focus()},250)">Founding beta · Share a note with Staci →</button>
+      <button class="beta-line" onclick="goScreen('you');setTimeout(function(){document.getElementById('fb-text').focus()},250)">Share a note with Staci →</button>
       <div class="spacer"></div>
     </div>
 
@@ -1002,7 +1001,7 @@ button{font-family:'Poppins',sans-serif;}
     <div class="screen" id="screen-you">
       <div class="you-hero">
         <div class="yh-name" id="yh-name"></div>
-        <div class="yh-meta" id="yh-meta">Founding beta · Fall 2026</div>
+        <div class="yh-meta" id="yh-meta">Founding Circle · 2026</div>
         <button class="pill-btn studio-btn" id="studio-open" style="display:none" onclick="goScreen('studio')">Open Studio</button>
       </div>
       <div class="hd-summary">
@@ -1031,7 +1030,7 @@ button{font-family:'Poppins',sans-serif;}
       <p class="dd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</p>
       <button class="text-link" style="margin-top:14px" onclick="openWorlds()"><span>◎ The five worlds</span><span aria-hidden="true">→</span></button>
       <div class="pad">
-        <div class="eye">Beta notes for Staci</div>
+        <div class="eye">Notes for Staci</div>
         <div class="fb-box" style="margin-top:12px;">
           <select class="fb-sel" id="fb-screen" aria-label="What is your note about?">
             <option value="General">About… anything</option>
@@ -1126,9 +1125,9 @@ var KINDS = {
   other:     {label:'Extra',            sym:'◇', col:'var(--sage)'}
 };
 var SESSIONS = [
-  {title:'Living by Design', scope:'Individual · 30 min', full:77, member:67},
-  {title:'Parenting by Design', scope:'1 parent + 1 child · 45 min', full:97, member:87},
-  {title:'Family by Design', scope:'Whole family · 60 min · +$10 per additional child', full:127, member:117}
+  {title:'Living by Design', scope:'Individual · 30 min', full:67, member:57},
+  {title:'Parenting by Design', scope:'1 parent + 1 child · 45 min', full:77, member:67},
+  {title:'Family by Design', scope:'Whole family · 60 min · +$10 per additional child', full:97, member:87}
 ];
 var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -1277,7 +1276,7 @@ async function authSendCode(ev){
   err.textContent = ''; btn.disabled = true; btn.textContent = 'One moment…';
   try {
     var invited = await api.isInvited(email);
-    if (!invited) { err.textContent = 'That email isn’t on the beta list yet. Use the one you gave Staci — or reach out to her.'; return; }
+    if (!invited) { err.textContent = 'That email isn’t on the member list yet. Use the one you gave Staci — or reach out to her.'; return; }
     await api.sendCode(email);
     authEmail = email; store('ff_last_email', email); resendAt = Date.now() + 60000;
     $('a-sent-to').textContent = email;
@@ -1384,7 +1383,7 @@ function renderAll(){
   $('t-av').textContent = first.charAt(0).toUpperCase();
   $('t-month').textContent = S.M.theme ? S.M.name + ' · ' + S.M.theme : S.M.name;
   $('yh-name').textContent = S.me.name || 'Friend';
-  $('yh-meta').textContent = isAdmin() ? 'Founder · Flourish & Flow' : 'Founding beta · Fall 2026';
+  $('yh-meta').textContent = isAdmin() ? 'Founder · Flourish & Flow' : 'Founding Circle · 2026';
   $('studio-open').style.display = isAdmin() ? 'inline-flex' : 'none';
   buildHome(first); buildPractice(); buildRootRise(); buildRhythm(); buildExplore(); buildLbd(); buildCreate(); buildCircleHeader(); buildSessions(); renderDesign(); buildLibrary();
 }
@@ -2640,7 +2639,7 @@ async function studioNotes(p){
   var list = el('div'); list.appendChild(el('div', 'loading', 'Loading notes…')); p.appendChild(list);
   try { ST.notes = await api.notes(); } catch(e) { list.innerHTML = ''; list.appendChild(el('div', 'feed-empty', 'Couldn’t load notes.')); return; }
   list.innerHTML = '';
-  if (!ST.notes.length) { list.appendChild(el('div', 'feed-empty', 'No beta notes yet.')); return; }
+  if (!ST.notes.length) { list.appendChild(el('div', 'feed-empty', 'No notes yet.')); return; }
   ST.notes.forEach(function(n){
     var c = el('div', 'note-card');
     c.appendChild(el('div', 'note-meta', new Date(n.created_at).toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}) + ' · ' + (n.name || n.email || 'Someone') + (n.design ? ' · ' + n.design : '') + ' · ' + (n.screen || 'General')));
