@@ -872,6 +872,25 @@ a.sh-t:hover{text-decoration:underline;}
 .bc-note{margin-top:12px;font-family:'Poppins',sans-serif;font-size:13px;color:#cfe0c8;}
 .fam-fill{margin:6px 0 4px;}
 
+/* ── Bodygraph (drawn) + session layer ── */
+.bg-box{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px 10px 12px;}
+.bg-svg{display:block;width:100%;max-width:340px;height:auto;margin:0 auto;}
+.bg-key{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin-top:8px;font-size:11px;color:var(--muted);}
+.bg-k{display:inline-flex;align-items:center;gap:6px;}
+.bg-dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+.fam-pic{margin:8px 0 14px;}
+.fam-pic .bg-box{background:#fbfaf7;}
+.fam-full{margin:6px 0 10px;}
+.sess{margin:14px 0 6px;padding:18px 18px 16px;border-radius:16px;background:#f6f4f0;border:1px solid var(--border);}
+.sess-eye{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a5537;font-weight:500;}
+.sess-t{font-family:'Abril Fatface',serif;font-size:22px;line-height:1.2;margin:6px 0 8px;color:var(--dark);}
+.sess-p{margin:0 0 10px;font-size:14px;line-height:1.7;color:var(--dark);}
+.sess-pdf{margin-top:4px;}
+.sess-ask{margin:12px 0 4px;font-size:13px;line-height:1.65;color:var(--mid);font-style:italic;}
+.sess-ask a{color:#7a5537;font-weight:500;font-style:normal;}
+.my-session{margin:0 24px 18px;}
+.st-check{display:flex;align-items:center;gap:6px;font-size:14px;margin:8px 0;}
+
 .demo-lock{display:inline-flex;align-items:center;gap:7px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#758578;border:1px solid #d4cfc8;border-radius:30px;padding:9px 16px;background:#f6f4f0;white-space:nowrap;}
 .demo-lock .dl-i{color:#a1765a;font-size:12px;letter-spacing:0;}
 .demo-lockcard{margin-top:18px;border:1px dashed #c9c2b8;border-radius:14px;padding:16px 18px;background:rgba(246,244,240,.6);}
@@ -1360,6 +1379,7 @@ a.sh-t:hover{text-decoration:underline;}
         <div class="bc-note" id="chart-auto-note" style="display:none"></div>
         <div class="x-editor bc-box" id="chart-auto-wrap" style="display:none"></div>
       </div>
+      <div id="my-session" class="my-session" style="display:none"></div>
       <div class="sec-lbl"><span>✦ Your bodygraph</span></div>
       <div class="chart-box" id="chart-box"></div>
       <div class="sec-lbl"><span>✦ Know your design</span></div>
@@ -1637,7 +1657,9 @@ var api = window.API_OVERRIDE || {
   family: async function(){ return ok(await sb.from('family_members').select('*').eq('user_id', S.session.user.id).order('created_at')); },
   addFamily: async function(row){ ok(await sb.from('family_members').insert(row)); },
   updateFamily: async function(id, row){ ok(await sb.from('family_members').update(row).eq('id', id)); },
-  familyOf: async function(email){ return ok(await sb.from('family_members').select('id,name,relation,type,profile,authority,design').eq('parent_email', email).order('created_at')); },
+  familyOf: async function(email){ return ok(await sb.from('family_members').select('id,name,relation,type,profile,authority,design,chart_path,session_open,session_note,session_pdf_path').eq('parent_email', email).order('created_at')); },
+  setFamilyFields: async function(id, patch){ ok(await sb.from('family_members').update(patch).eq('id', id)); },
+  setMemberFields: async function(email, patch){ ok(await sb.from('members').update(patch).eq('email', email)); },
   setFamilyDesign: async function(id, design){ ok(await sb.from('family_members').update({design: design}).eq('id', id)); },
   deleteFamily: async function(id){ ok(await sb.from('family_members').delete().eq('id', id)); },
   pieces: async function(){ return ok(await sb.from('exhibit_pieces').select('*').order('made_on', {ascending:false}).limit(2000)); },
@@ -2324,8 +2346,10 @@ function buildDesignDeep(){
 }
 async function buildChart(){
   var box = $('chart-box'); box.innerHTML = '';
+  renderMySession();
   if (!S.me.chart_path) {
-    box.appendChild(el('div', 'chart-empty', 'Your bodygraph will appear here once Staci adds it.'));
+    var g = bodygraphBox(S.me.design, {label: 'Your bodygraph'});
+    box.appendChild(g || el('div', 'chart-empty', 'Tap “Fill in my full chart” above and your bodygraph will appear here.'));
     return;
   }
   box.appendChild(el('div', 'loading', 'Opening your chart…'));
@@ -2836,7 +2860,17 @@ function familyCard(f){
   var fill = el('button', 'pill-btn outline small-btn fam-fill', f.design ? 'Redo ' + f.name + '’s chart' : '✦ Fill in ' + f.name + '’s chart');
   fill.onclick = function(ev){ ev.preventDefault(); birthChartForm(fb, {title: f.name + '’s chart', button: 'Create ' + f.name + '’s chart', save: 'family', familyId: f.id, done: function(){ loadFamily(); }}); };
   b.appendChild(fill); b.appendChild(fb);
+  if (f.chart_path || computeDesign(f.design)) {
+    b.appendChild(el('div', 'fam-h', f.name + '’s bodygraph'));
+    var pic = el('div', 'fam-pic'); b.appendChild(pic);
+    chartPicture(pic, f.chart_path, f.design, f.name + '’s bodygraph');
+  }
   b.appendChild(meetSection(f));
+  if (f.session_open) {
+    b.appendChild(sessionBlock(f.name, f, false));
+    var full = familyFullDesign(f);
+    if (full) { b.appendChild(el('div', 'fam-h', f.name + '’s full design')); b.appendChild(full); }
+  } else if (f.design) b.appendChild(sessionInvite(f.name));
   var e = el('button', 'cp-btn', 'Edit ' + f.name); e.onclick = function(ev){ ev.preventDefault(); familyForm(f); }; b.appendChild(e);
   d.appendChild(b);
   return d;
@@ -4058,6 +4092,15 @@ async function studioMembers(p){
     var ca = el('div', 'it-a'); ca.appendChild(cw);
     var dz = el('button', 'pill-btn small-btn outline', mb.design ? 'Design ✓' : 'Design'); ca.appendChild(dz); it.appendChild(ca);
     var fz = el('button', 'pill-btn small-btn outline', 'Family'); ca.appendChild(fz);
+    var sz = el('button', 'pill-btn small-btn outline', mb.session_open ? 'Session ✓' : 'Session'); ca.appendChild(sz);
+    sz.onclick = function(){
+      var isOpen = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-sess');
+      if (isOpen) { it.nextSibling.remove(); return; }
+      it.parentNode.insertBefore(studioSessionEditor(mb, mb.name || 'her', mb.email, async function(patch){
+        await api.setMemberFields(mb.email, patch); sz.textContent = patch.session_open ? 'Session ✓' : 'Session';
+        if (S.me.email === mb.email) { Object.assign(S.me, patch); renderMySession(); }
+      }), it.nextSibling);
+    };
     fz.onclick = async function(){
       var open = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-family');
       if (open) { it.nextSibling.remove(); return; }
@@ -4072,6 +4115,24 @@ async function studioMembers(p){
         rb.appendChild(el('div', 'it-t', fm.name)); rb.appendChild(el('div', 'it-s', fm.relation + (fm.type ? ' · ' + [fm.type, fm.profile, fm.authority].filter(Boolean).join(' ') : '')));
         row.appendChild(rb);
         var db = el('button', 'pill-btn small-btn outline', fm.design ? 'Chart ✓' : 'Add chart'); var ra = el('div', 'it-a'); ra.appendChild(db); row.appendChild(ra); box.appendChild(row);
+        var iw = el('label', 'pill-btn small-btn outline chart-up', fm.chart_path ? 'Image ✓' : 'Image');
+        var inp = el('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.className = 'sr-only'; iw.appendChild(inp); ra.appendChild(iw);
+        inp.onchange = async function(){
+          var fl = inp.files && inp.files[0]; if (!fl) return;
+          iw.firstChild.textContent = 'Uploading…';
+          try {
+            var ext = (fl.type.split('/')[1] || 'png').replace('jpeg', 'jpg');
+            var path = mb.email + '/family-' + fm.id + '-' + Date.now() + '.' + ext;
+            await api.chartUpload(path, fl); await api.setFamilyFields(fm.id, {chart_path: path}); fm.chart_path = path;
+            iw.firstChild.textContent = 'Image ✓';
+          } catch(e) { iw.firstChild.textContent = 'Try again'; }
+        };
+        var sz = el('button', 'pill-btn small-btn outline', fm.session_open ? 'Session ✓' : 'Session'); ra.appendChild(sz);
+        sz.onclick = function(){
+          var isOpen = row.nextSibling && row.nextSibling.classList && row.nextSibling.classList.contains('st-sess');
+          if (isOpen) { row.nextSibling.remove(); return; }
+          row.parentNode.insertBefore(studioSessionEditor(fm, fm.name, mb.email, async function(patch){ await api.setFamilyFields(fm.id, patch); sz.textContent = patch.session_open ? 'Session ✓' : 'Session'; }), row.nextSibling);
+        };
         db.onclick = function(){
           var isOpen = row.nextSibling && row.nextSibling.classList && row.nextSibling.classList.contains('st-fd');
           if (isOpen) { row.nextSibling.remove(); return; }
@@ -4158,6 +4219,187 @@ async function studioNotes(p){
   } catch(e){}
 })();
 
+/* ── BODYGRAPH · drawn in the Flourish & Flow palette from the chart numbers ── */
+var BG_CENTERS = {
+  head:   {pts:'200,16 158,80 242,80', fill:'#8096a7'},
+  ajna:   {pts:'158,98 242,98 200,164', fill:'#8ea185'},
+  throat: {rect:[164,196,72,62], fill:'#a1765a'},
+  g:      {pts:'200,280 242,322 200,364 158,322', fill:'#c4956a'},
+  heart:  {pts:'250,348 296,388 242,388', fill:'#b07a8a'},
+  sacral: {rect:[164,412,72,66], fill:'#a1765a'},
+  root:   {rect:[164,506,72,64], fill:'#996b4a'},
+  spleen: {pts:'56,398 56,502 136,450', fill:'#7a9b6e'},
+  sp:     {pts:'344,398 344,502 264,450', fill:'#7a9b6e'}
+};
+var BG_GATES = {
+  64:[178,73],61:[200,73],63:[222,73],
+  47:[178,105],24:[200,105],4:[222,105],17:[184,122],11:[216,122],43:[200,148],
+  62:[178,202],23:[200,202],56:[222,202],16:[170,216],20:[170,238],35:[230,214],12:[230,230],45:[230,246],31:[180,252],8:[200,252],33:[220,252],
+  1:[200,290],7:[186,304],13:[214,304],10:[168,322],25:[232,322],15:[186,340],2:[200,354],46:[214,340],
+  21:[256,362],51:[250,378],26:[264,382],40:[284,382],
+  5:[180,418],14:[200,418],29:[220,418],34:[170,436],27:[170,462],59:[230,462],42:[180,472],3:[200,472],9:[220,472],
+  53:[180,512],60:[200,512],52:[220,512],54:[170,524],38:[170,540],58:[170,556],19:[230,524],39:[230,540],41:[230,556],
+  48:[64,412],57:[78,424],44:[94,434],50:[112,446],32:[94,464],28:[78,476],18:[64,488],
+  36:[336,412],22:[322,424],37:[306,434],6:[288,446],49:[306,464],55:[322,476],30:[336,488]
+};
+function svgEl(tag, attrs){ var n = document.createElementNS('http://www.w3.org/2000/svg', tag); for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+function drawBodygraph(design, label){
+  var D = computeDesign(design); if (!D) return null;
+  var P = '#3a3d38', U = '#a1765a', OFF = '#e6e1d9';
+  var s = svgEl('svg', {viewBox:'30 10 340 575', role:'img', 'aria-label': label || 'Bodygraph', 'class':'bg-svg'});
+  // channels: each half coloured by who carries that gate (conscious = charcoal, unconscious = terracotta)
+  CHANNELS.forEach(function(c){
+    var a = BG_GATES[c[0]], b = BG_GATES[c[1]]; if (!a || !b) return;
+    var m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    s.appendChild(svgEl('line', {x1:a[0], y1:a[1], x2:b[0], y2:b[1], stroke:OFF, 'stroke-width':7, 'stroke-linecap':'round'}));
+    [[c[0], a], [c[1], b]].forEach(function(h){
+      var g = D.gates[h[0]]; if (!g) return;
+      var both = g.c.length && g.u.length, col = g.c.length ? P : U;
+      if (both) {
+        var dx = m[0] - h[1][0], dy = m[1] - h[1][1], len = Math.sqrt(dx * dx + dy * dy) || 1, ox = -dy / len * 1.8, oy = dx / len * 1.8;
+        s.appendChild(svgEl('line', {x1:h[1][0] + ox, y1:h[1][1] + oy, x2:m[0] + ox, y2:m[1] + oy, stroke:P, 'stroke-width':3.4}));
+        s.appendChild(svgEl('line', {x1:h[1][0] - ox, y1:h[1][1] - oy, x2:m[0] - ox, y2:m[1] - oy, stroke:U, 'stroke-width':3.4}));
+      } else s.appendChild(svgEl('line', {x1:h[1][0], y1:h[1][1], x2:m[0], y2:m[1], stroke:col, 'stroke-width':6, 'stroke-linecap':'round'}));
+    });
+  });
+  // centres: coloured when defined, cream when open
+  Object.keys(BG_CENTERS).forEach(function(k){
+    var c = BG_CENTERS[k], on = !!D.defined[k];
+    var at = {fill: on ? c.fill : '#f6f4f0', stroke: on ? c.fill : '#bdb6ab', 'stroke-width':1.6, 'stroke-linejoin':'round'};
+    if (c.rect) { at.x = c.rect[0]; at.y = c.rect[1]; at.width = c.rect[2]; at.height = c.rect[3]; at.rx = 6; s.appendChild(svgEl('rect', at)); }
+    else { at.points = c.pts; s.appendChild(svgEl('polygon', at)); }
+  });
+  // gate numbers
+  Object.keys(BG_GATES).forEach(function(n){
+    var p = BG_GATES[n], g = D.gates[n], ctr = CENTERS.filter(function(c){ return c.g.indexOf(+n) > -1; })[0], onC = ctr && D.defined[ctr.k];
+    if (g) s.appendChild(svgEl('circle', {cx:p[0], cy:p[1], r:6.4, fill: g.c.length ? P : U}));
+    var t = svgEl('text', {x:p[0], y:p[1] + 2.6, 'text-anchor':'middle', 'font-size':7, 'font-family':'Poppins, sans-serif', 'font-weight':500, fill: g ? '#fff' : (onC ? 'rgba(255,255,255,.8)' : '#9a9388')});
+    t.textContent = n; s.appendChild(t);
+  });
+  return s;
+}
+function bodygraphBox(design, opts){
+  opts = opts || {};
+  var box = el('div', 'bg-box');
+  var svg = drawBodygraph(design, opts.label); if (!svg) return null;
+  box.appendChild(svg);
+  var key = el('div', 'bg-key');
+  [['#3a3d38', 'Conscious'], ['#a1765a', 'Unconscious']].forEach(function(k){ var i = el('span', 'bg-k'); var d = el('span', 'bg-dot'); d.style.background = k[0]; i.appendChild(d); i.appendChild(document.createTextNode(k[1])); key.appendChild(i); });
+  key.appendChild(el('span', 'bg-k bg-k-c', 'Coloured centres are defined'));
+  box.appendChild(key);
+  return box;
+}
+// Shows an uploaded chart image if there is one, otherwise draws the bodygraph.
+async function chartPicture(box, path, design, label){
+  box.innerHTML = '';
+  if (path) {
+    box.appendChild(el('div', 'loading', 'Opening the chart…'));
+    try {
+      var url = await api.chartUrl(path);
+      box.innerHTML = '';
+      var a = el('a', 'chart-link'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('aria-label', 'Open ' + label + ' full size');
+      var img = el('img', 'chart-img'); img.src = url; img.alt = label; a.appendChild(img); box.appendChild(a);
+      box.appendChild(el('div', 'chart-hint', 'Tap to see it full size.'));
+      return true;
+    } catch(e) { box.innerHTML = ''; }
+  }
+  var g = bodygraphBox(design, {label: label});
+  if (g) { box.appendChild(g); return true; }
+  return false;
+}
+
+/* ── FROM OUR SESSION · opened by Staci after a By Design session ── */
+var SESSION_ASK = 'mailto:' + FEEDBACK_EMAIL + '?subject=' + encodeURIComponent('By Design session');
+function sessionBlock(who, rec, isMe){
+  var box = el('div', 'sess');
+  box.appendChild(el('div', 'sess-eye', '✦ From our session'));
+  box.appendChild(el('div', 'sess-t', isMe ? 'What we found together' : 'What we found in ' + who + '’s design'));
+  (rec.session_note || '').split(/\n\s*\n/).filter(Boolean).forEach(function(p){ box.appendChild(el('p', 'sess-p', p.trim())); });
+  if (rec.session_pdf_path) {
+    var b = el('button', 'pill-btn small-btn sess-pdf', isMe ? 'Open my guide (PDF)' : 'Open ' + who + '’s guide (PDF)');
+    b.onclick = async function(ev){
+      ev.preventDefault();
+      var w = window.open('', '_blank'); b.disabled = true;
+      try { var u = await api.chartUrl(rec.session_pdf_path); if (w) w.location = u; else location.href = u; }
+      catch(e) { if (w) w.close(); b.textContent = 'Couldn’t open it just now'; }
+      b.disabled = false;
+    };
+    box.appendChild(b);
+  }
+  return box;
+}
+function sessionInvite(who){
+  var p = el('p', 'sess-ask');
+  p.appendChild(document.createTextNode('This is the gentle, surface view. In a Family by Design session we look at ' + who + '’s whole chart together, and everything we find is kept here for you. '));
+  var a = el('a', null, 'Ask about a session'); a.href = SESSION_ASK; p.appendChild(a);
+  return p;
+}
+// The full chart (centres, channels, every gate), told about someone else
+function familyFullDesign(f){
+  var D = computeDesign(f.design); if (!D) return null;
+  var w = el('div', 'dd-list fam-full');
+  var def = DEFINITION_TEXT[D.areas] || DEFINITION_TEXT[1];
+  w.appendChild(designCard(f.name + '’s definition', def[0], def[1]));
+  if (D.cross) w.appendChild(designCard(f.name + '’s incarnation cross', D.cross, 'The widest lens on a life: the theme that keeps showing up for ' + f.name + ' in different rooms, with different people. A direction, never a job description.'));
+  var sunG = D.sun.gate, dsunG = D.dsun.gate;
+  var cd = el('details', 'dd'), cs = el('summary'); cs.appendChild(el('span', 'dd-k', f.name + '’s nine centres')); cs.appendChild(el('span', 'dd-t', Object.keys(D.defined).length + ' defined · ' + (9 - Object.keys(D.defined).length) + ' open')); cd.appendChild(cs);
+  var cb = el('div', 'dd-b');
+  cb.appendChild(el('p', null, 'Defined centres are ' + f.name + '’s steady energy. Open centres are where ' + f.name + ' takes in the people and places around them, including you.'));
+  CENTERS.slice().sort(function(a, b){ return (D.defined[b.k] ? 1 : 0) - (D.defined[a.k] ? 1 : 0); }).forEach(function(c){
+    var on = !!D.defined[c.k]; cb.appendChild(ddItem(c.n + (on ? ' · defined' : ' · open'), null));
+  });
+  cd.appendChild(cb); w.appendChild(cd);
+  var hd = el('details', 'dd'), hs = el('summary'); hs.appendChild(el('span', 'dd-k', f.name + '’s channels')); hs.appendChild(el('span', 'dd-t', D.channels.length ? D.channels.map(function(c){ return c[2]; }).join(' · ') : 'None defined')); hd.appendChild(hs);
+  var hb = el('div', 'dd-b');
+  D.channels.forEach(function(c){ hb.appendChild(ddItem(c[0] + '–' + c[1] + ' · The Channel of ' + c[2], c[3])); });
+  if (!D.channels.length) hb.appendChild(el('p', null, 'No defined channels: ' + f.name + ' experiences the energy of others very fully.'));
+  hd.appendChild(hb); w.appendChild(hd);
+  var nums = Object.keys(D.gates).map(Number).sort(function(a, b){ return (a === sunG ? -1 : b === sunG ? 1 : a === dsunG ? -1 : b === dsunG ? 1 : a - b); });
+  var gd = el('details', 'dd'), gs = el('summary'); gs.appendChild(el('span', 'dd-k', f.name + '’s gates')); gs.appendChild(el('span', 'dd-t', nums.length + ' gates')); gd.appendChild(gs);
+  var gb = el('div', 'dd-b');
+  var mine = computeDesign(S.me.design);
+  nums.forEach(function(n){
+    var meta = GATES[n] || ['', ''], g = D.gates[n];
+    var r = el('div', 'fd-item fd-gate' + (n === sunG ? ' fd-key' : ''));
+    r.appendChild(el('div', 'fd-t', (n === sunG ? '☉ ' : '') + 'Gate ' + n + ' · ' + meta[0]));
+    var tags = el('div', 'fd-tags');
+    if (g.c.length) tags.appendChild(el('span', 'fd-tag', 'Conscious'));
+    if (g.u.length) tags.appendChild(el('span', 'fd-tag', 'Unconscious'));
+    if (n === sunG) tags.appendChild(el('span', 'fd-tag core', 'Core gate'));
+    if (mine && mine.gates[n]) tags.appendChild(el('span', 'fd-tag strong', 'You share this gate'));
+    r.appendChild(tags); r.appendChild(el('div', 'fd-s', meta[1])); gb.appendChild(r);
+  });
+  gd.appendChild(gb); w.appendChild(gd);
+  return w;
+}
+function renderMySession(){
+  var w = $('my-session'); if (!w) return; w.innerHTML = '';
+  if (!S.me || !S.me.session_open) { w.style.display = 'none'; return; }
+  w.style.display = 'block'; w.appendChild(sessionBlock(S.me.name || 'you', S.me, true));
+}
+
+/* Studio: session controls for a member or one of her family */
+function studioSessionEditor(rec, who, folder, save){
+  var f = el('div', 'st-fd st-sess');
+  f.appendChild(el('div', 'hint', 'After a By Design session, open ' + who + '’s full layer: your notes and the guide you made. Only ' + (rec.relation ? 'her family' : who) + ' can see it.'));
+  var openW = el('label', 'st-check'); var cb = el('input'); cb.type = 'checkbox'; cb.checked = !!rec.session_open; openW.appendChild(cb); openW.appendChild(document.createTextNode(' Session layer is open')); f.appendChild(openW);
+  var note = fld(f, 'Your notes from the session', rec.session_note || '', {area:true, rows:5, placeholder:'A few warm paragraphs. Leave a blank line between paragraphs.'});
+  var pw = el('div', 'fld'); pw.appendChild(el('label', null, 'Their guide (PDF)'));
+  var now = el('div', 'hint', rec.session_pdf_path ? 'A guide is attached.' : 'No guide yet.'); pw.appendChild(now);
+  var pf = el('input'); pf.type = 'file'; pf.accept = 'application/pdf'; pf.style.cssText = 'font-size:13px;margin:6px 0;max-width:100%;display:block;'; pw.appendChild(pf); f.appendChild(pw);
+  saveRow(f, 'Save session layer', async function(){
+    var patch = {session_open: cb.checked, session_note: note.value.trim() || null};
+    var file = pf.files && pf.files[0];
+    if (file) {
+      if (file.size > 45 * 1024 * 1024) throw {userMsg:'That PDF is over 45 MB. Try exporting a smaller one.'};
+      var path = folder + '/session-' + Date.now() + '.pdf';
+      await api.chartUpload(path, file); patch.session_pdf_path = path;
+    }
+    await save(patch); Object.assign(rec, patch);
+    now.textContent = rec.session_pdf_path ? 'A guide is attached.' : 'No guide yet.'; pf.value = '';
+  });
+  return f;
+}
 </script>
 <script>
 /* Flourish & Flow · website preview layer. Shows the app with a sample month.
