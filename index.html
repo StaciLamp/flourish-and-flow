@@ -2259,9 +2259,10 @@ function buildDesignDeep(){
 async function buildChart(){
   var box = $('chart-box'); box.innerHTML = '';
   renderMySession();
+  var g = bodygraphBox(S.me.design, {label: 'Your bodygraph'});
+  if (g) { box.appendChild(g); return; }
   if (!S.me.chart_path) {
-    var g = bodygraphBox(S.me.design, {label: 'Your bodygraph'});
-    box.appendChild(g || el('div', 'chart-empty', 'Tap “Fill in my full chart” above and your bodygraph will appear here.'));
+    box.appendChild(el('div', 'chart-empty', 'Tap “Fill in my full chart” above and your bodygraph will appear here.'));
     return;
   }
   box.appendChild(el('div', 'loading', 'Opening your chart…'));
@@ -4132,16 +4133,16 @@ async function studioNotes(p){
 })();
 
 /* ── BODYGRAPH · drawn in the Flourish & Flow palette from the chart numbers ── */
-var BG_CENTERS = {
-  head:   {pts:'200,16 158,80 242,80', fill:'#8096a7'},
+var BG_CENTERS = {   // colours from Staci's "Flourish & Flow" Bodygraph chart design
+  head:   {pts:'200,16 158,80 242,80', fill:'#919d9d'},
   ajna:   {pts:'158,98 242,98 200,164', fill:'#8ea185'},
   throat: {rect:[164,196,72,62], fill:'#a1765a'},
-  g:      {pts:'200,280 242,322 200,364 158,322', fill:'#c4956a'},
-  heart:  {pts:'250,348 296,388 242,388', fill:'#b07a8a'},
-  sacral: {rect:[164,412,72,66], fill:'#a1765a'},
-  root:   {rect:[164,506,72,64], fill:'#996b4a'},
-  spleen: {pts:'56,398 56,502 136,450', fill:'#7a9b6e'},
-  sp:     {pts:'344,398 344,502 264,450', fill:'#7a9b6e'}
+  g:      {pts:'200,280 242,322 200,364 158,322', fill:'#758578'},
+  heart:  {pts:'250,348 296,388 242,388', fill:'#8ea185'},
+  sacral: {rect:[164,412,72,66], fill:'#8ea185'},
+  root:   {rect:[164,506,72,64], fill:'#758578'},
+  spleen: {pts:'56,398 56,502 136,450', fill:'#a1765a'},
+  sp:     {pts:'344,398 344,502 264,450', fill:'#a1765a'}
 };
 var BG_GATES = {
   64:[178,73],61:[200,73],63:[222,73],
@@ -4155,38 +4156,50 @@ var BG_GATES = {
   36:[336,412],22:[322,424],37:[306,434],6:[288,446],49:[306,464],55:[322,476],30:[336,488]
 };
 function svgEl(tag, attrs){ var n = document.createElementNS('http://www.w3.org/2000/svg', tag); for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+var BG_GLYPH = ['☉','⊕','☊','☋','☽','☿','♀','♂','♃','♄','♅','♆','♇'];
 function drawBodygraph(design, label){
   var D = computeDesign(design); if (!D) return null;
-  var P = '#3a3d38', U = '#a1765a', OFF = '#e6e1d9';
-  var s = svgEl('svg', {viewBox:'30 10 340 575', role:'img', 'aria-label': label || 'Bodygraph', 'class':'bg-svg'});
-  // channels: each half coloured by who carries that gate (conscious = charcoal, unconscious = terracotta)
+  var P = '#a1765a', U = '#8ea185', DARK = '#3a3d38', CREAM = '#f6f4f0', OFF = '#e4dfd7';
+  var s = svgEl('svg', {viewBox:'0 4 520 580', role:'img', 'aria-label': label || 'Bodygraph', 'class':'bg-svg'});
+  var g0 = svgEl('g', {transform:'translate(60,0)'}); s.appendChild(g0);
+  // planet columns: Design (unconscious, sage) on the left, Personality (conscious, terracotta) on the right
+  [[design.d, U, 6, 'DESIGN'], [design.p, P, 444, 'PERSONALITY']].forEach(function(col){
+    var acts = parseActs(col[0]);
+    var h = svgEl('text', {x: col[2] + 35, y: 22, 'text-anchor':'middle', 'font-size':8.5, 'letter-spacing':'1.2', 'font-family':'Poppins, sans-serif', 'font-weight':500, fill: DARK}); h.textContent = col[3]; s.appendChild(h);
+    acts.forEach(function(x, i){
+      if (!x) return; var y = 32 + i * 30;
+      s.appendChild(svgEl('rect', {x: col[2], y: y, width: 70, height: 24, rx: 10, fill: col[1]}));
+      var gl = svgEl('text', {x: col[2] + (col[3] === 'DESIGN' ? 13 : 57), y: y + 16.5, 'text-anchor':'middle', 'font-size':11, fill: '#fff'}); gl.textContent = BG_GLYPH[i]; s.appendChild(gl);
+      var t = svgEl('text', {x: col[2] + (col[3] === 'DESIGN' ? 44 : 27), y: y + 16, 'text-anchor':'middle', 'font-size':10.5, 'font-family':'Poppins, sans-serif', 'font-weight':500, fill: DARK}); t.textContent = x.gate + (x.line ? '.' + x.line : ''); s.appendChild(t);
+    });
+  });
+  // channels: each half coloured by who carries that gate
   CHANNELS.forEach(function(c){
     var a = BG_GATES[c[0]], b = BG_GATES[c[1]]; if (!a || !b) return;
     var m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-    s.appendChild(svgEl('line', {x1:a[0], y1:a[1], x2:b[0], y2:b[1], stroke:OFF, 'stroke-width':7, 'stroke-linecap':'round'}));
+    g0.appendChild(svgEl('line', {x1:a[0], y1:a[1], x2:b[0], y2:b[1], stroke:OFF, 'stroke-width':7, 'stroke-linecap':'round'}));
     [[c[0], a], [c[1], b]].forEach(function(h){
       var g = D.gates[h[0]]; if (!g) return;
-      var both = g.c.length && g.u.length, col = g.c.length ? P : U;
-      if (both) {
+      if (g.c.length && g.u.length) {
         var dx = m[0] - h[1][0], dy = m[1] - h[1][1], len = Math.sqrt(dx * dx + dy * dy) || 1, ox = -dy / len * 1.8, oy = dx / len * 1.8;
-        s.appendChild(svgEl('line', {x1:h[1][0] + ox, y1:h[1][1] + oy, x2:m[0] + ox, y2:m[1] + oy, stroke:P, 'stroke-width':3.4}));
-        s.appendChild(svgEl('line', {x1:h[1][0] - ox, y1:h[1][1] - oy, x2:m[0] - ox, y2:m[1] - oy, stroke:U, 'stroke-width':3.4}));
-      } else s.appendChild(svgEl('line', {x1:h[1][0], y1:h[1][1], x2:m[0], y2:m[1], stroke:col, 'stroke-width':6, 'stroke-linecap':'round'}));
+        g0.appendChild(svgEl('line', {x1:h[1][0] + ox, y1:h[1][1] + oy, x2:m[0] + ox, y2:m[1] + oy, stroke:P, 'stroke-width':3.4}));
+        g0.appendChild(svgEl('line', {x1:h[1][0] - ox, y1:h[1][1] - oy, x2:m[0] - ox, y2:m[1] - oy, stroke:U, 'stroke-width':3.4}));
+      } else g0.appendChild(svgEl('line', {x1:h[1][0], y1:h[1][1], x2:m[0], y2:m[1], stroke: g.c.length ? P : U, 'stroke-width':6, 'stroke-linecap':'round'}));
     });
   });
-  // centres: coloured when defined, cream when open
+  // centres: brand colour when defined, cream when open
   Object.keys(BG_CENTERS).forEach(function(k){
     var c = BG_CENTERS[k], on = !!D.defined[k];
-    var at = {fill: on ? c.fill : '#f6f4f0', stroke: on ? c.fill : '#bdb6ab', 'stroke-width':1.6, 'stroke-linejoin':'round'};
-    if (c.rect) { at.x = c.rect[0]; at.y = c.rect[1]; at.width = c.rect[2]; at.height = c.rect[3]; at.rx = 6; s.appendChild(svgEl('rect', at)); }
-    else { at.points = c.pts; s.appendChild(svgEl('polygon', at)); }
+    var at = {fill: on ? c.fill : CREAM, stroke: DARK, 'stroke-width':1.1, 'stroke-linejoin':'round'};
+    if (c.rect) { at.x = c.rect[0]; at.y = c.rect[1]; at.width = c.rect[2]; at.height = c.rect[3]; at.rx = 5; g0.appendChild(svgEl('rect', at)); }
+    else { at.points = c.pts; g0.appendChild(svgEl('polygon', at)); }
   });
-  // gate numbers
+  // gates: charcoal dot with cream number when active
   Object.keys(BG_GATES).forEach(function(n){
-    var p = BG_GATES[n], g = D.gates[n], ctr = CENTERS.filter(function(c){ return c.g.indexOf(+n) > -1; })[0], onC = ctr && D.defined[ctr.k];
-    if (g) s.appendChild(svgEl('circle', {cx:p[0], cy:p[1], r:6.4, fill: g.c.length ? P : U}));
-    var t = svgEl('text', {x:p[0], y:p[1] + 2.6, 'text-anchor':'middle', 'font-size':7, 'font-family':'Poppins, sans-serif', 'font-weight':500, fill: g ? '#fff' : (onC ? 'rgba(255,255,255,.8)' : '#9a9388')});
-    t.textContent = n; s.appendChild(t);
+    var p = BG_GATES[n], g = D.gates[n];
+    if (g) g0.appendChild(svgEl('circle', {cx:p[0], cy:p[1], r:6.6, fill: DARK}));
+    var t = svgEl('text', {x:p[0], y:p[1] + 2.6, 'text-anchor':'middle', 'font-size':7, 'font-family':'Poppins, sans-serif', 'font-weight':500, fill: g ? CREAM : 'rgba(58,61,56,.55)'});
+    t.textContent = n; g0.appendChild(t);
   });
   return s;
 }
@@ -4196,14 +4209,16 @@ function bodygraphBox(design, opts){
   var svg = drawBodygraph(design, opts.label); if (!svg) return null;
   box.appendChild(svg);
   var key = el('div', 'bg-key');
-  [['#3a3d38', 'Conscious'], ['#a1765a', 'Unconscious']].forEach(function(k){ var i = el('span', 'bg-k'); var d = el('span', 'bg-dot'); d.style.background = k[0]; i.appendChild(d); i.appendChild(document.createTextNode(k[1])); key.appendChild(i); });
-  key.appendChild(el('span', 'bg-k bg-k-c', 'Coloured centres are defined'));
+  [['#a1765a', 'Personality · conscious'], ['#8ea185', 'Design · unconscious']].forEach(function(k){ var i = el('span', 'bg-k'); var d = el('span', 'bg-dot'); d.style.background = k[0]; i.appendChild(d); i.appendChild(document.createTextNode(k[1])); key.appendChild(i); });
+  key.appendChild(el('span', 'bg-k bg-k-c', 'Coloured centres are defined · cream are open'));
   box.appendChild(key);
   return box;
 }
 // Shows an uploaded chart image if there is one, otherwise draws the bodygraph.
 async function chartPicture(box, path, design, label){
   box.innerHTML = '';
+  var drawn = bodygraphBox(design, {label: label});
+  if (drawn) { box.appendChild(drawn); return true; }
   if (path) {
     box.appendChild(el('div', 'loading', 'Opening the chart…'));
     try {
@@ -4250,6 +4265,16 @@ function sessionInvite(who){
 function familyFullDesign(f){
   var D = computeDesign(f.design); if (!D) return null;
   var w = el('div', 'dd-list fam-full');
+  var pS = parseActs(f.design.p), dS = parseActs(f.design.d);
+  var cSun = pS[0].gate, cEarth = pS[1].gate, uSun = dS[0].gate, uEarth = dS[1].gate;
+  var core = el('details', 'dd dd-core'); core.open = true;
+  var ks = el('summary'); ks.appendChild(el('span', 'dd-k', '☉ ' + f.name + '’s core gate')); ks.appendChild(el('span', 'dd-t', 'Gate ' + cSun + ' · ' + GATES[cSun][0])); core.appendChild(ks);
+  var kb = el('div', 'dd-b');
+  kb.appendChild(el('p', null, GATES[cSun][1]));
+  kb.appendChild(el('p', null, 'This gate sits in ' + f.name + '’s conscious Sun, the strongest light in the chart: the theme people feel most when they’re around ' + f.name + '.'));
+  kb.appendChild(ddItem('Grounded by Gate ' + cEarth + ' · ' + GATES[cEarth][0], GATES[cEarth][1] + '  The conscious Earth: what keeps that Sun theme steady and rooted.'));
+  kb.appendChild(ddItem('Carried underneath by Gates ' + uSun + ' and ' + uEarth, GATES[uSun][0] + ' and ' + GATES[uEarth][0] + '. The unconscious Sun and Earth: themes ' + f.name + '’s body lives out, often noticed by others first.'));
+  core.appendChild(kb); w.appendChild(core);
   var def = DEFINITION_TEXT[D.areas] || DEFINITION_TEXT[1];
   w.appendChild(designCard(f.name + '’s definition', def[0], def[1]));
   if (D.cross) w.appendChild(designCard(f.name + '’s incarnation cross', D.cross, 'The widest lens on a life: the theme that keeps showing up for ' + f.name + ' in different rooms, with different people. A direction, never a job description.'));
@@ -4258,7 +4283,9 @@ function familyFullDesign(f){
   var cb = el('div', 'dd-b');
   cb.appendChild(el('p', null, 'Defined centres are ' + f.name + '’s steady energy. Open centres are where ' + f.name + ' takes in the people and places around them, including you.'));
   CENTERS.slice().sort(function(a, b){ return (D.defined[b.k] ? 1 : 0) - (D.defined[a.k] ? 1 : 0); }).forEach(function(c){
-    var on = !!D.defined[c.k]; cb.appendChild(ddItem(c.n + (on ? ' · defined' : ' · open'), null));
+    var on = !!D.defined[c.k], r = el('div', 'fd-item');
+    var t = el('div', 'fd-t'); var dot = el('span', 'fd-dot' + (on ? ' on' : '')); dot.setAttribute('aria-hidden', 'true'); t.appendChild(dot);
+    t.appendChild(document.createTextNode(c.n + (on ? ' · defined' : ' · open'))); r.appendChild(t); cb.appendChild(r);
   });
   cd.appendChild(cb); w.appendChild(cd);
   var hd = el('details', 'dd'), hs = el('summary'); hs.appendChild(el('span', 'dd-k', f.name + '’s channels')); hs.appendChild(el('span', 'dd-t', D.channels.length ? D.channels.map(function(c){ return c[2]; }).join(' · ') : 'None defined')); hd.appendChild(hs);
