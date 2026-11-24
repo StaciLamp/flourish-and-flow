@@ -729,7 +729,7 @@ button{font-family:'Poppins',sans-serif;}
 
 /* ── Journal shelves + THE LITTLE EXHIBIT ── */
 .j-shelf{display:flex;gap:6px;margin:18px 24px 4px;padding:4px;background:#ebe6df;border-radius:40px;}
-.j-shelf button{flex:1;border:none;background:none;border-radius:40px;padding:11px 8px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6a;cursor:pointer;min-height:42px;}
+.j-shelf button{flex:1;border:none;background:none;border-radius:40px;padding:11px 4px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#6f6f6a;cursor:pointer;min-height:42px;}
 .j-shelf button.on{background:#fff;color:#3a3d38;box-shadow:0 1px 3px rgba(58,61,56,.12);}
 #x-body{padding:0 0 8px;}
 .x-artists{display:flex;gap:8px;overflow-x:auto;padding:16px 24px 2px;scrollbar-width:none;}
@@ -856,6 +856,20 @@ a.sh-t:hover{text-decoration:underline;}
 .dd .meet-s{display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:space-between !important;text-align:left !important;padding:12px 0 !important;}
 .dd .meet-s::after,.dd .meet-s::before{content:none !important;display:none !important;}
 .dd .meet-s .meet-t{flex:1;text-align:left;}
+
+.xv-share{margin-top:18px;}
+.j-shelf{margin-left:16px;margin-right:16px;}
+
+/* Chart from birth details */
+.bc-box{margin:14px 0 0;text-align:left;}
+.hd-summary .bc-box{background:#fff;color:#3a3d38;}
+.bc-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bc-places{display:flex;flex-direction:column;gap:6px;margin:-6px 0 10px;}
+.bc-place-opt{text-align:left;border:1px solid #d4cfc8;background:#fbfaf8;border-radius:10px;padding:10px 12px;font-family:'Poppins',sans-serif;font-size:13.5px;color:#3a3d38;cursor:pointer;}
+.bc-picked{font-family:'Poppins',sans-serif;font-size:13px;color:#758578;margin:-4px 0 8px;}
+.bc-private{font-family:'Poppins',sans-serif;font-weight:300;font-size:12px;line-height:1.55;color:#8a8a84;margin:12px 0 0;}
+.bc-note{margin-top:12px;font-family:'Poppins',sans-serif;font-size:13px;color:#cfe0c8;}
+.fam-fill{margin:6px 0 4px;}
 </style>
 </head>
 <body>
@@ -1176,8 +1190,9 @@ a.sh-t:hover{text-decoration:underline;}
         <div id="cf-steps"></div>
         <div class="pull" id="cf-pull"></div>
         <div class="cf-little" id="cf-little" style="display:none"></div>
-        <button class="text-link" style="margin:16px 0 0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>✷ Keep your page in your Journal</span><span aria-hidden="true">→</span></button>
-        <button class="text-link" style="margin:0;width:100%" onclick="openLittleExhibit()"><span>Hang your little one’s art in The Little Exhibit</span><span aria-hidden="true">→</span></button>
+        <button class="text-link" style="margin:16px 0 0;width:100%" onclick="openMyExhibit()"><span>✷ Hang your page in My Exhibit</span><span aria-hidden="true">→</span></button>
+        <button class="text-link" style="margin:0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>Write about it in your Journal</span><span aria-hidden="true">→</span></button>
+        <button class="text-link" style="margin:0;width:100%" onclick="openLittleExhibit()"><span>Hang your little one’s art in the Little Exhibit</span><span aria-hidden="true">→</span></button>
       </div>
       <div class="pad" id="cw-wrap">
         <div class="eye">✷ Share your creative work</div>
@@ -1277,14 +1292,15 @@ a.sh-t:hover{text-decoration:underline;}
     <!-- JOURNAL (opens in a later phase) -->
     <div class="screen" id="screen-journal">
       <section class="w-hero" style="--wc:#a1765a">
-        <svg class="w-wm w-wm-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M12 7C10 5.4 7 5 4 5.5v13c3-.5 6-.1 8 1.5 2-1.6 5-2 8-1.5v-13C17 5 14 5.4 12 7z"/><path d="M12 7v13"/></svg>
-        <div class="w-eye" style="margin-top:12px">Journal</div>
+        <svg class="w-wm w-wm-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="1"/><rect x="7" y="6" width="10" height="9"/><path d="M8.5 13l2.5-2.5 2 2 1.5-1.5 2 2"/></svg>
+        <div class="w-eye" style="margin-top:12px">Moments</div>
         <h1 class="w-title">A Moment to Remember.</h1>
-        <p class="w-sub">Reflections, photos and the moments you want to keep. No streaks, nothing to keep up with.</p>
+        <p class="w-sub">Your words, your art and theirs: the little moments of wonder you want to keep. No streaks, nothing to keep up with.</p>
       </section>
-      <div class="j-shelf" id="j-shelf" role="tablist" aria-label="Journal shelves">
-        <button class="on" data-v="journal" role="tab" aria-selected="true" onclick="journalShelf('journal')">My Journal</button>
-        <button data-v="exhibit" role="tab" aria-selected="false" onclick="journalShelf('exhibit')">The Little Exhibit</button>
+      <div class="j-shelf" id="j-shelf" role="tablist" aria-label="Moments shelves">
+        <button class="on" data-v="journal" role="tab" aria-selected="true" onclick="journalShelf('journal')">Journal</button>
+        <button data-v="mine" role="tab" aria-selected="false" onclick="journalShelf('mine')">My Exhibit</button>
+        <button data-v="little" role="tab" aria-selected="false" onclick="journalShelf('little')">Little Exhibit</button>
       </div>
       <div id="j-mine">
       <div class="j-new" id="j-new"><button class="pill-btn dark" onclick="journalNew()">+ A moment to remember</button></div>
@@ -1328,8 +1344,10 @@ a.sh-t:hover{text-decoration:underline;}
         </div>
         <div class="hds-actions">
           <button class="pill-btn" onclick="editDesign()">Edit my details</button>
-          <a class="pill-btn" href="https://www.stacilamp.com/discover-your-design" target="_blank" rel="noopener">Get my free chart</a>
+          <button class="pill-btn" id="chart-auto" onclick="openMyChartForm()">✦ Fill in my full chart</button>
         </div>
+        <div class="bc-note" id="chart-auto-note" style="display:none"></div>
+        <div class="x-editor bc-box" id="chart-auto-wrap" style="display:none"></div>
       </div>
       <div class="sec-lbl"><span>✦ Your bodygraph</span></div>
       <div class="chart-box" id="chart-box"></div>
@@ -1349,7 +1367,7 @@ a.sh-t:hover{text-decoration:underline;}
           <select class="fb-sel" id="fb-screen" aria-label="What is your note about?">
             <option value="General">About… anything</option>
             <option>Home</option><option>Rhythm</option><option>The Return</option><option>Root &amp; Rise</option>
-            <option>Living by Design</option><option>Creative Flow</option><option>Library</option><option>Circle</option><option>Journal</option>
+            <option>Living by Design</option><option>Creative Flow</option><option>Library</option><option>Circle</option><option>Moments</option>
             <option>Something's broken</option>
           </select>
           <textarea class="compose-ta" id="fb-text" maxlength="3000" aria-label="Your note" placeholder="What did you notice? What did you love? What was confusing?"></textarea>
@@ -1410,7 +1428,7 @@ a.sh-t:hover{text-decoration:underline;}
     <button class="bnav-item active" id="bn-home" onclick="goScreen('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20h-5.5v-5h-5v5H4z"/></svg><span class="bnav-lbl">Home</span></button>
     <button class="bnav-item" id="bn-rhythm" onclick="goScreen('rhythm')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/></svg><span class="bnav-lbl">Rhythm</span></button>
     <button class="bnav-item" id="bn-circle" onclick="goScreen('circle')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/></svg><span class="bnav-lbl">Circle</span></button>
-    <button class="bnav-item" id="bn-journal" onclick="goScreen('journal')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 7C10 5.4 7 5 4 5.5v13c3-.5 6-.1 8 1.5 2-1.6 5-2 8-1.5v-13C17 5 14 5.4 12 7z"/><path d="M12 7v13"/></svg><span class="bnav-lbl">Journal</span></button>
+    <button class="bnav-item" id="bn-journal" onclick="goScreen('journal')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="1"/><rect x="7" y="6" width="10" height="9"/><path d="M8.5 13l2.5-2.5 2 2 1.5-1.5 2 2"/></svg><span class="bnav-lbl">Moments</span></button>
     <button class="bnav-item" id="bn-you" onclick="goScreen('you')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M11 4l1.7 5.3L18 11l-5.3 1.7L11 18l-1.7-5.3L4 11l5.3-1.7z"/><circle cx="18.5" cy="5.5" r="1.3"/></svg><span class="bnav-lbl">You</span></button>
   </nav>
 </div>
@@ -1522,6 +1540,11 @@ var api = window.API_OVERRIDE || {
   setChart: async function(email, path){ ok(await sb.from('members').update({chart_path: path}).eq('email', email)); },
   setDesign: async function(email, design){ ok(await sb.from('members').update({design: design}).eq('email', email)); },
   notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); },
+  hd: async function(body){
+    var r = await sb.functions.invoke('hd-chart', {body: body});
+    if (r.error) { var code = 'server'; try { var j = await r.error.context.json(); code = j.error || code; } catch(e) {} throw {code: code}; }
+    return r.data;
+  },
   /* Family and the Little Exhibit: private to each member (enforced by the database) */
   family: async function(){ return ok(await sb.from('family_members').select('*').eq('user_id', S.session.user.id).order('created_at')); },
   addFamily: async function(row){ ok(await sb.from('family_members').insert(row)); },
@@ -2163,7 +2186,7 @@ function renderDesign(){
   $('hdi-type').textContent = S.me.type || '—'; $('hdi-strategy').textContent = f ? f.strategy : '—';
   $('hdi-profile').textContent = S.me.profile || '—'; $('hdi-auth').textContent = S.me.authority || '—';
   $('hdi-sig').textContent = f ? f.sig : '—'; $('hdi-ns').textContent = f ? f.ns : '—';
-  buildDesignDeep(); buildChart(); buildFullDesign();
+  buildDesignDeep(); buildChart(); buildFullDesign(); updateChartButton();
   if (FM.list) renderFamily();
 }
 
@@ -2377,13 +2400,20 @@ function shrinkImage(file){
 var XMEDIA = ['Crayon', 'Marker', 'Pencil', 'Paint', 'Watercolor', 'Collage', 'Clay', 'Chalk', 'Mixed media', 'Something else'];
 var X = {fam:null, pieces:null, artist:null, view:'journal', blob:null};
 function journalShelf(which){
+  if (which === 'exhibit') which = 'little';
   X.view = which;
   document.querySelectorAll('#j-shelf button').forEach(function(b){ var on = b.dataset.v === which; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
   $('j-mine').style.display = which === 'journal' ? 'block' : 'none';
-  $('x-wrap').style.display = which === 'exhibit' ? 'block' : 'none';
-  if (which === 'exhibit') loadExhibit();
+  $('x-wrap').style.display = which !== 'journal' ? 'block' : 'none';
+  if (which !== 'journal') { if (X.fam) renderExhibit(); loadExhibit(); }
 }
-function openLittleExhibit(){ goScreen('journal'); journalShelf('exhibit'); }
+function openLittleExhibit(){ goScreen('journal'); journalShelf('little'); }
+function openMyExhibit(){ goScreen('journal'); journalShelf('mine'); }
+async function ensureSelf(){
+  if (X.self) return X.self;
+  var row = {id: window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), name: (S.me.name || 'Me').slice(0, 40), relation: 'self'};
+  await api.addFamily(row); X.self = row; return row;
+}
 function seasonOf(day){
   var y = +day.slice(0, 4), m = +day.slice(5, 7);
   if (m === 12) return {key: (y + 1) + '-1', label: 'Winter ' + y + '–' + String(y + 1).slice(2)};
@@ -2404,11 +2434,58 @@ async function loadExhibit(){
   try {
     var r = await Promise.all([api.family(), api.pieces()]);
     X.fam = (r[0] || []).filter(function(f){ return f.relation === 'child'; }); X.pieces = r[1] || [];
+    X.self = (r[0] || []).filter(function(f){ return f.relation === 'self'; })[0] || null;
     if (!X.artist || !X.fam.some(function(f){ return f.id === X.artist; })) X.artist = X.fam.length ? X.fam[0].id : null;
     renderExhibit();
   } catch(e) { w.innerHTML = ''; w.appendChild(el('div', 'feed-empty', 'The gallery couldn’t open just now. Check your connection and try again in a moment.')); }
 }
+function sortPieces(list){ return list.sort(function(a, b){ return a.made_on < b.made_on ? 1 : a.made_on > b.made_on ? -1 : (a.created_at < b.created_at ? 1 : -1); }); }
+function galleryWalls(w, f, mine){
+  var cur = seasonOf(todayKey()), seasons = {}, order = [];
+  mine.forEach(function(p){ var s = seasonOf(p.made_on); if (!seasons[s.key]) { seasons[s.key] = {s:s, list:[]}; order.push(s.key); } seasons[s.key].list.push(p); });
+  order.sort().reverse();
+  var collShown = false;
+  order.forEach(function(k){
+    var g = seasons[k];
+    if (k !== cur.key && !collShown) { w.appendChild(el('div', 'x-coll', 'The Collection')); collShown = true; }
+    var sec = el('section', 'x-season');
+    sec.appendChild(el('div', 'x-sh', (k === cur.key ? 'Now showing · ' : '') + g.s.label));
+    var wall = el('div', 'x-wall');
+    g.list.forEach(function(p){ wall.appendChild(frameCard(p, f)); });
+    sec.appendChild(wall); w.appendChild(sec);
+  });
+}
+function renderMine(){
+  var w = $('x-body'); w.innerHTML = '';
+  var f = X.self, mine = f ? sortPieces(X.pieces.filter(function(p){ return p.child_id === f.id; })) : [];
+  if (!mine.length) {
+    var c = el('section', 'x-welcome');
+    c.appendChild(el('div', 'x-eye', 'My Exhibit'));
+    c.appendChild(el('h2', 'x-wt', 'A gallery for your own art.'));
+    c.appendChild(el('div', 'x-rule'));
+    c.appendChild(el('p', 'x-wp', 'Your art-journal pages, sketches and paintings, each with a frame, a title and a few words. Season by season, it becomes a quiet record of your year in color.'));
+    var b = el('button', 'pill-btn dark x-hang', '＋ Hang my first piece'); b.id = 'x-first-mine';
+    b.onclick = async function(){ b.disabled = true; try { await ensureSelf(); openPieceForm(null); } catch(e) { b.disabled = false; } };
+    c.appendChild(b);
+    var ed0 = el('div', 'x-editor'); ed0.id = 'x-editor'; ed0.style.display = 'none'; c.appendChild(ed0);
+    w.appendChild(c); return;
+  }
+  var hall = el('section', 'x-hall');
+  hall.appendChild(el('div', 'x-eye', 'My Exhibit'));
+  hall.appendChild(el('h2', 'x-name', S.me.name || f.name));
+  hall.appendChild(el('div', 'x-rule'));
+  hall.appendChild(el('div', 'x-show', mine.length === 1 ? '1 piece in the collection' : mine.length + ' pieces in the collection'));
+  var hang = el('button', 'pill-btn dark x-hang', '＋ Hang a new piece'); hang.onclick = function(){ openPieceForm(null); }; hall.appendChild(hang);
+  w.appendChild(hall);
+  var ed = el('div', 'x-editor'); ed.id = 'x-editor'; ed.style.display = 'none'; w.appendChild(ed);
+  galleryWalls(w, f, mine);
+  var foot = el('div', 'x-foot');
+  var cat = el('button', 'text-link x-cat', null); cat.appendChild(el('span', null, 'Save my catalogue as a PDF')); cat.appendChild(el('span', null, '↓')); cat.onclick = function(){ exhibitCatalogue(f, mine); }; foot.appendChild(cat);
+  foot.appendChild(el('p', 'x-private', 'My Exhibit is private to you. If you’d like, you can share a single piece with the Circle from its placard.'));
+  w.appendChild(foot);
+}
 function renderExhibit(){
+  if (X.view === 'mine') { renderMine(); return; }
   var w = $('x-body'); w.innerHTML = '';
   if (!X.fam.length) { w.appendChild(exhibitWelcome()); return; }
   var tabs = el('div', 'x-artists');
@@ -2430,21 +2507,7 @@ function renderExhibit(){
   var ed = el('div', 'x-editor'); ed.id = 'x-editor'; ed.style.display = 'none'; w.appendChild(ed);
   if (!mine.length) {
     w.appendChild(el('div', 'x-empty', 'Their first piece is waiting on the fridge, in a backpack, or on the kitchen table. Snap a photo and hang it here.'));
-  } else {
-    var cur = seasonOf(todayKey()), seasons = {}, order = [];
-    mine.forEach(function(p){ var s = seasonOf(p.made_on); if (!seasons[s.key]) { seasons[s.key] = {s:s, list:[]}; order.push(s.key); } seasons[s.key].list.push(p); });
-    order.sort().reverse();
-    var collShown = false;
-    order.forEach(function(k){
-      var g = seasons[k];
-      if (k !== cur.key && !collShown) { w.appendChild(el('div', 'x-coll', 'The Collection')); collShown = true; }
-      var sec = el('section', 'x-season');
-      sec.appendChild(el('div', 'x-sh', (k === cur.key ? 'Now showing · ' : '') + g.s.label));
-      var wall = el('div', 'x-wall');
-      g.list.forEach(function(p){ wall.appendChild(frameCard(p, f)); });
-      sec.appendChild(wall); w.appendChild(sec);
-    });
-  }
+  } else galleryWalls(w, f, mine);
   var foot = el('div', 'x-foot');
   if (mine.length) { var cat = el('button', 'text-link x-cat', null); cat.appendChild(el('span', null, 'Save ' + f.name + '’s catalogue as a PDF')); cat.appendChild(el('span', null, '↓')); cat.onclick = function(){ exhibitCatalogue(f, mine); }; foot.appendChild(cat); }
   var ea = el('button', 'cp-btn', 'Edit ' + f.name + '’s details'); ea.onclick = function(){ openArtistForm(f); }; foot.appendChild(ea);
@@ -2481,10 +2544,23 @@ function openPiece(p, f){
   var pl = el('div', 'xv-plac');
   pl.appendChild(el('div', 'xv-t', p.title || 'Untitled'));
   var age = ageAt(f.birth_month, p.made_on);
-  pl.appendChild(el('div', 'xv-a', f.name + (age != null ? ', age ' + age : '')));
+  pl.appendChild(el('div', 'xv-a', (f.relation === 'self' ? (S.me.name || f.name) : f.name) + (age != null ? ', age ' + age : '')));
   pl.appendChild(el('div', 'xv-m', [p.medium, fmtDay(p.made_on, {month:'long', day:'numeric', year:'numeric'})].filter(Boolean).join(' · ')));
-  if (p.words) { pl.appendChild(el('div', 'xv-wl', 'In the artist’s words')); pl.appendChild(el('div', 'xv-w', '“' + p.words + '”')); }
+  if (p.words) { pl.appendChild(el('div', 'xv-wl', f.relation === 'self' ? 'A few words' : 'In the artist’s words')); pl.appendChild(el('div', 'xv-w', '“' + p.words + '”')); }
   box.appendChild(pl);
+  if (f.relation === 'self') {
+    var sh = el('button', 'pill-btn outline xv-share', 'Share this piece with the Circle'), sm = el('div', 'je-msg');
+    armButton(sh, 'Tap again to share with members', async function(){
+      sm.textContent = 'Sharing…';
+      try {
+        var u = await photoSrc(p.photo_path); var blob = await (await fetch(u)).blob();
+        var path = S.session.user.id + '/' + Date.now() + '.jpg'; await api.circlePhotoUpload(path, blob);
+        await api.addPost({month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: [p.title, p.words].filter(Boolean).join(' · ') || 'A page from my art journal', user_id: S.session.user.id, tag: 'creative', photo_path: path});
+        sm.textContent = 'Shared. It’s on the wall in Creative Flow for members to see.'; sh.style.display = 'none';
+      } catch(e) { sm.textContent = 'That didn’t share. Try again in a moment.'; }
+    });
+    box.appendChild(sh); box.appendChild(sm);
+  }
   var ed = el('button', 'cp-btn xv-edit', 'Edit this piece'); ed.onclick = function(){ closePiece(); openPieceForm(p); }; box.appendChild(ed);
   o.appendChild(box);
   o.onclick = function(e){ if (e.target === o) closePiece(); };
@@ -2527,7 +2603,8 @@ function openArtistForm(f){
   setTimeout(function(){ n.focus(); }, 60);
 }
 function openPieceForm(p){
-  var f = X.fam.filter(function(x){ return x.id === X.artist; })[0];
+  var f = X.view === 'mine' ? X.self : X.fam.filter(function(x){ return x.id === X.artist; })[0];
+  var isSelf = f && f.relation === 'self';
   var ed = $('x-editor'); ed.innerHTML = ''; ed.style.display = 'block'; X.blob = null;
   ed.appendChild(el('h3', 'je-h', p ? 'About this piece' : 'Hang a new piece'));
   var pick = el('label', 'x-drop'); var pin = el('input'); pin.type = 'file'; pin.accept = 'image/*'; pin.className = 'sr-only'; pin.id = 'x-file';
@@ -2542,7 +2619,7 @@ function openPieceForm(p){
     try { X.blob = await shrinkImage(file); pv.innerHTML = ''; var im = el('img'); im.src = URL.createObjectURL(X.blob); im.alt = ''; pv.appendChild(im); plab.textContent = 'Change the photo'; msg.textContent = ''; }
     catch(e) { msg.textContent = 'That photo couldn’t be opened. Try another.'; }
   };
-  var t = fldIn(ed, 'Title', p ? p.title : '', {placeholder:'What do they call it?', max:80}); t.id = 'x-title';
+  var t = fldIn(ed, 'Title', p ? p.title : '', {placeholder: isSelf ? 'Give it a name' : 'What do they call it?', max:80}); t.id = 'x-title';
   ed.appendChild(el('span', 'x-fl', 'Medium'));
   var med = p ? p.medium : null, chips = el('div', 'je-chips x-meds');
   XMEDIA.forEach(function(m){
@@ -2552,7 +2629,7 @@ function openPieceForm(p){
   });
   ed.appendChild(chips);
   var d = fldIn(ed, 'Made on', p ? p.made_on : todayKey(), {type:'date'}); d.max = todayKey(); d.id = 'x-date';
-  var wd = fldIn(ed, 'In the artist’s words (optional)', p ? p.words : '', {area:true, max:400, placeholder:'What would ' + f.name + ' say about it? Their words, or yours.'}); wd.id = 'x-words';
+  var wd = fldIn(ed, isSelf ? 'A few words about it (optional)' : 'In the artist’s words (optional)', p ? p.words : '', {area:true, max:400, placeholder: isSelf ? 'What were you noticing, feeling or letting go of?' : 'What would ' + f.name + ' say about it? Their words, or yours.'}); wd.id = 'x-words';
   var acts = el('div', 'je-acts');
   var save = el('button', 'pill-btn dark', p ? 'Save' : 'Hang it'); save.id = 'x-save'; acts.appendChild(save);
   var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; }; acts.appendChild(cancel);
@@ -2584,7 +2661,7 @@ async function exhibitCatalogue(f, list){
   var pa = $('print-area'); pa.innerHTML = '';
   var items = list.slice().reverse();
   var cover = el('section', 'pr-cover');
-  cover.appendChild(el('div', 'pr-brand', 'The Little Exhibit'));
+  cover.appendChild(el('div', 'pr-brand', f.relation === 'self' ? 'My Exhibit' : 'The Little Exhibit'));
   cover.appendChild(el('div', 'pr-rule'));
   cover.appendChild(el('h1', 'pr-title', f.name));
   var a = items[0].made_on, b = items[items.length - 1].made_on;
@@ -2640,7 +2717,7 @@ var FAM_REL = [['child', 'Child'], ['partner', 'Partner'], ['other', 'Someone el
 var FM = {list:null, edit:null};
 async function loadFamily(){
   var w = $('fam-wrap'); if (!w) return;
-  try { FM.list = await api.family(); } catch(e) { FM.list = FM.list || []; }
+  try { FM.list = (await api.family()).filter(function(f){ return f.relation !== 'self'; }); } catch(e) { FM.list = FM.list || []; }
   renderFamily();
 }
 function renderFamily(){
@@ -2667,6 +2744,10 @@ function familyCard(f){
   } else {
     b.appendChild(el('p', null, 'Add ' + f.name + '’s type, profile and authority from their chart to see their design here.'));
   }
+  var fb = el('div', 'x-editor bc-box'); fb.style.display = 'none';
+  var fill = el('button', 'pill-btn outline small-btn fam-fill', f.design ? 'Redo ' + f.name + '’s chart' : '✦ Fill in ' + f.name + '’s chart');
+  fill.onclick = function(ev){ ev.preventDefault(); birthChartForm(fb, {title: f.name + '’s chart', button: 'Create ' + f.name + '’s chart', save: 'family', familyId: f.id, done: function(){ loadFamily(); }}); };
+  b.appendChild(fill); b.appendChild(fb);
   b.appendChild(meetSection(f));
   var e = el('button', 'cp-btn', 'Edit ' + f.name); e.onclick = function(ev){ ev.preventDefault(); familyForm(f); }; b.appendChild(e);
   d.appendChild(b);
@@ -2693,7 +2774,7 @@ function meetSection(f){
   box.appendChild(el('div', 'fam-h', 'Where your designs meet'));
   var A = computeDesign(S.me.design), B = computeDesign(f.design);
   if (!A || !B) {
-    box.appendChild(el('p', null, 'This appears once both full charts are in the app. Staci can add them as part of a Parenting by Design or Family by Design session.'));
+    box.appendChild(el('p', null, !A ? 'This appears once your own full chart is in. Use “Fill in my full chart” at the top of this page.' : 'This appears once ' + f.name + '’s full chart is in. Use “Fill in ' + f.name + '’s chart” above, or Staci can add it in a Parenting by Design or Family by Design session.'));
     var go = el('button', 'cp-btn', 'See By Design sessions'); go.onclick = function(ev){ ev.preventDefault(); var s = $('sessions'); if (s) s.scrollIntoView({behavior:'smooth', block:'start'}); }; box.appendChild(go);
     return box;
   }
@@ -2763,6 +2844,66 @@ function familyForm(f){
   };
   setTimeout(function(){ n.focus(); }, 60);
 }
+
+/* ── CHART FROM BIRTH DETAILS (via Staci's Bodygraph account, through a private helper) ── */
+async function hdCall(body){ return api.hd(body); }
+function hdErrText(code){
+  return {not_set_up:'Chart calculation isn’t switched on yet. Staci is setting it up.', check_details:'Check the date, time and birthplace.', members_only:'This is for members.', sign_in:'Please sign in again.'}[code] || 'That didn’t work just now. Try again in a moment.';
+}
+function birthChartForm(box, o){
+  box.innerHTML = ''; box.style.display = 'block';
+  box.appendChild(el('h3', 'je-h', o.title));
+  var two = el('div', 'bc-two'); box.appendChild(two);
+  var d = fldIn(two, 'Birth date', '', {type:'date'}); d.max = todayKey(); d.className = 'bc-date';
+  var t = fldIn(two, 'Birth time', '', {type:'time'}); t.className = 'bc-time';
+  box.appendChild(el('p', 'x-fh', 'The exact time matters. A birth certificate or hospital record usually has it.'));
+  var q = fldIn(box, 'Birthplace', '', {placeholder:'Start typing a town or city'}); q.className = 'bc-place'; q.autocomplete = 'off';
+  var list = el('div', 'bc-places'); box.appendChild(list);
+  var chosen = null, timer = null;
+  var picked = el('div', 'bc-picked'); box.appendChild(picked);
+  q.oninput = function(){
+    chosen = null; picked.textContent = ''; clearTimeout(timer);
+    var v = q.value.trim(); if (v.length < 2) { list.innerHTML = ''; return; }
+    timer = setTimeout(async function(){
+      try {
+        var r = await hdCall({action:'places', q: v}); list.innerHTML = '';
+        (r.places || []).forEach(function(pl){
+          var b = el('button', 'bc-place-opt', pl.name); b.type = 'button';
+          b.onclick = function(){ chosen = pl; q.value = pl.name; list.innerHTML = ''; picked.textContent = '✓ ' + pl.name; };
+          list.appendChild(b);
+        });
+        if (!(r.places || []).length) list.appendChild(el('div', 'x-fh', 'No matches yet. Try the nearest larger town.'));
+      } catch(e) { list.innerHTML = ''; list.appendChild(el('div', 'je-msg', hdErrText(e.code))); }
+    }, 350);
+  };
+  var msg = el('div', 'je-msg');
+  var acts = el('div', 'je-acts');
+  var go = el('button', 'pill-btn dark', o.button); go.className += ' bc-go'; acts.appendChild(go);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ box.style.display = 'none'; box.innerHTML = ''; }; acts.appendChild(cancel);
+  box.appendChild(acts); box.appendChild(msg);
+  box.appendChild(el('p', 'bc-private', 'Your birth details are sent privately to Bodygraph to calculate the chart and are never saved in the app. Only the chart itself is kept.'));
+  go.onclick = async function(){
+    if (!d.value || !t.value) { msg.textContent = 'Add the birth date and time.'; return; }
+    if (!chosen) { msg.textContent = 'Choose the birthplace from the list.'; q.focus(); return; }
+    go.disabled = true; msg.textContent = 'Calculating the chart…';
+    try {
+      var r = await hdCall({action:'chart', date: d.value, time: t.value, timezone: chosen.timezone, save: o.save, family_id: o.familyId || null});
+      d.value = ''; t.value = ''; q.value = '';
+      box.style.display = 'none'; box.innerHTML = '';
+      o.done(r.chart);
+    } catch(e) { msg.textContent = hdErrText(e.code); go.disabled = false; }
+  };
+  setTimeout(function(){ d.focus(); }, 60);
+}
+function openMyChartForm(){
+  birthChartForm($('chart-auto-wrap'), {title: S.me.design ? 'Redo my chart from birth details' : 'Fill in my full chart', button: 'Create my chart', save: 'me',
+    done: function(ch){
+      S.me.design = ch.design; if (ch.type) S.me.type = ch.type; if (ch.profile) S.me.profile = ch.profile; if (ch.authority) S.me.authority = ch.authority;
+      renderDesign(); updateChartButton();
+      var n = $('chart-auto-note'); if (n) { n.textContent = '✓ Your full chart is in. Scroll down to explore it.'; n.style.display = 'block'; }
+    }});
+}
+function updateChartButton(){ var b = $('chart-auto'); if (b) b.textContent = S.me.design ? 'Redo my chart' : '✦ Fill in my full chart'; }
 
 function toggleExport(){ var x = $('j-export'); x.style.display = x.style.display === 'none' ? 'block' : 'none'; }
 async function exportJournalPdf(){
@@ -3525,7 +3666,7 @@ function goScreen(id){
   if (id === 'creative' || id === 'shelf') loadCircle();
   if (id === 'circle') { loadCircle(); circleTimer = setInterval(function(){ loadCircle(true); }, 20000); }
   if (id === 'studio') studioOpen();
-  if (id === 'journal') { loadJournal(); if (X.view === 'exhibit') loadExhibit(); }
+  if (id === 'journal') { loadJournal(); if (X.view !== 'journal') loadExhibit(); }
   if (id === 'you') loadFamily();
 }
 
@@ -3834,7 +3975,7 @@ async function studioMembers(p){
       if (open) { it.nextSibling.remove(); return; }
       var box = el('div', 'st-design st-family'); box.appendChild(el('div', 'loading', 'Loading…')); it.parentNode.insertBefore(box, it.nextSibling);
       var fam;
-      try { fam = await api.familyOf(mb.email); } catch(e) { box.innerHTML = ''; box.appendChild(el('div', 'hint', 'Couldn’t load her family list.')); return; }
+      try { fam = (await api.familyOf(mb.email)).filter(function(x){ return x.relation !== 'self'; }); } catch(e) { box.innerHTML = ''; box.appendChild(el('div', 'hint', 'Couldn’t load her family list.')); return; }
       box.innerHTML = '';
       if (!fam.length) { box.appendChild(el('div', 'hint', (mb.name || 'She') + ' hasn’t added anyone to her family yet. Once she adds a child or partner under You → My family, they’ll appear here so you can add their full chart.')); return; }
       box.appendChild(el('div', 'hint', 'Add a full chart to unlock “Where your designs meet” for ' + (mb.name || 'her') + '. Same numbers as a member’s design: 13 in each column, top to bottom.'));
