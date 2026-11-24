@@ -889,6 +889,24 @@ a.sh-t:hover{text-decoration:underline;}
 .sess-ask a{color:#7a5537;font-weight:500;font-style:normal;}
 .my-session{margin:0 24px 18px;}
 .st-check{display:flex;align-items:center;gap:6px;font-size:14px;margin:8px 0;}
+
+/* ── Creative Flow · seasonal craft for the kiddos ── */
+.craft{margin-top:12px;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.craft-pic{background:#efe9e1;aspect-ratio:4/3;overflow:hidden;}
+.craft-pic img{display:block;width:100%;height:100%;object-fit:cover;}
+.craft-pic.loading-pic{animation:pulse 1.6s ease-in-out infinite;}
+.craft-b{padding:18px 18px 16px;}
+.craft-t{font-family:'Abril Fatface',serif;font-weight:400;font-size:25px;line-height:1.15;margin:0 0 10px;color:var(--dark);}
+.craft-p{margin:0 0 10px;font-size:14px;line-height:1.7;color:var(--dark);}
+.craft-h{margin:16px 0 8px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a5537;font-weight:500;}
+.craft-need{margin:0;padding:0 0 0 18px;font-size:14px;line-height:1.7;color:var(--dark);}
+.craft-need li::marker{color:#a1765a;}
+.craft-steps{margin:0;padding:0 0 0 20px;font-size:14px;line-height:1.7;color:var(--dark);}
+.craft-steps li{margin-bottom:6px;padding-left:2px;}
+.craft-steps li::marker{font-family:'Abril Fatface',serif;color:#a1765a;}
+.craft-close{margin-top:14px;background:#f6ece4;border-left:3px solid #a1765a;border-radius:4px 12px 12px 4px;padding:12px 15px;}
+.craft-close p{margin:0 0 8px;font-size:14px;line-height:1.7;font-style:italic;color:var(--dark);}
+.craft-close p:last-child{margin-bottom:0;}
 </style>
 </head>
 <body>
@@ -1213,6 +1231,7 @@ a.sh-t:hover{text-decoration:underline;}
         <button class="text-link" style="margin:0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>Write about it in your Journal</span><span aria-hidden="true">→</span></button>
         <button class="text-link" style="margin:0;width:100%" onclick="openLittleExhibit()"><span>Hang your little one’s art in the Little Exhibit</span><span aria-hidden="true">→</span></button>
       </div>
+      <div class="pad" id="cf-craft-wrap" style="display:none"></div>
       <div class="pad" id="cw-wrap">
         <div class="eye">✷ Share your creative work</div>
         <p class="cw-sub">A photo of your page, a sketch, whatever you made. It doesn’t need to be finished or pretty.</p>
@@ -1544,6 +1563,7 @@ var api = window.API_OVERRIDE || {
   addMember: async function(email, name){ ok(await sb.from('members').insert({email: email, name: name || null})); },
   removeMember: async function(email){ ok(await sb.from('members').delete().eq('email', email)); },
   guideUrl: async function(path){ return ok(await sb.storage.from('guides').createSignedUrl(path, 3600)).signedUrl; },
+  uploadImage: async function(path, file){ ok(await sb.storage.from('guides').upload(path, file, {upsert: true, contentType: file.type || 'image/jpeg'})); },
   uploadGuide: async function(path, file){ ok(await sb.storage.from('guides').upload(path, file, {upsert: true, contentType: 'application/pdf'})); },
   /* Journal: private to each member (enforced by the database) */
   journal: async function(){ return ok(await sb.from('journal_entries').select('*').order('entry_date', {ascending:false}).order('created_at', {ascending:false}).limit(1000)); },
@@ -1632,7 +1652,9 @@ function normalize(c, key){
     circlePrompt: c.circlePrompt || '', quotes: (c.quotes && c.quotes.length) ? c.quotes : ['You were made to flourish — in your own rhythm, by your own design.'],
     lensTopic: c.lensTopic || '', letter: c.letter || '',
     littleRoots: {title: (c.littleRoots && c.littleRoots.title) || '', body: (c.littleRoots && c.littleRoots.body) || '', create: (c.littleRoots && c.littleRoots.create) || '',
-                  note: (c.littleRoots && c.littleRoots.note) || '', url: (c.littleRoots && c.littleRoots.url) || ''}
+                  note: (c.littleRoots && c.littleRoots.note) || '', url: (c.littleRoots && c.littleRoots.url) || ''},
+    craft: {title: (c.craft && c.craft.title) || '', intro: (c.craft && c.craft.intro) || '', need: (c.craft && c.craft.need) || [], steps: (c.craft && c.craft.steps) || [],
+            together: (c.craft && c.craft.together) || '', imagePath: (c.craft && c.craft.imagePath) || ''}
   };
   var cr = n.creative;
   n.creative = {title: cr.title || '', sub: cr.sub || '', steps: cr.steps || [], pull: cr.pull || '',
@@ -2136,6 +2158,7 @@ function buildCreate(){
   $('cf-pull').textContent = '“' + c.pull + '”';
   var cl = $('cf-little'), lrc = S.M.littleRoots.create; cl.innerHTML = ''; cl.style.display = lrc ? 'block' : 'none';
   if (lrc) { cl.appendChild(el('div', 'cl-eye', '❀ With your little ones')); cl.appendChild(el('div', 'cl-body', lrc)); }
+  buildCraft();
   $('cf-gather-wrap').style.display = c.gathering.title ? 'block' : 'none';
   var g = $('cf-gather'); g.innerHTML = '';
   var h = el('div', 'cc-head'); h.style.borderLeftColor = 'var(--ochre)';
@@ -3883,6 +3906,28 @@ function studioMonthForm(p){
   var fLC = fld(p, 'Creative Flow · with your little ones', LRm.create, {area:true, rows:2, hint:'One or two sentences: a kid-sized version of this month’s art-journal page.'});
   var fLN = fld(p, 'Little Roots · classes note', LRm.note, {area:true, rows:2}), fLU = fld(p, 'Little Roots · classes link', LRm.url, {type:'url'});
 
+  sec(p, 'Seasonal craft for the kiddos');
+  var CR = M.craft;
+  var fKT = fld(p, 'Craft · title', CR.title, {placeholder:'A Gratitude Branch'});
+  var fKI = fld(p, 'Craft · what it is', CR.intro, {area:true, rows:3, hint:'Shows in Creative Flow. Leave a blank line between paragraphs. Leave the title empty to hide the craft.'});
+  var fKN = fld(p, 'Craft · you’ll need', CR.need.join('\n'), {area:true, rows:4, hint:'One item per line.'});
+  var fKS = fld(p, 'Craft · steps', CR.steps.join('\n'), {area:true, rows:5, hint:'One step per line.'});
+  var fKG = fld(p, 'Craft · closing ritual', CR.together, {area:true, rows:3});
+  var kW = el('div', 'fld'); kW.appendChild(el('label', null, 'Craft · photo'));
+  var kNow = el('div', 'hint', CR.imagePath ? 'A photo is added. Choose a new one to replace it.' : 'No photo yet.'); kW.appendChild(kNow);
+  var kFile = el('input'); kFile.type = 'file'; kFile.accept = 'image/*'; kFile.style.cssText = 'font-size:13px;margin:6px 0;max-width:100%;display:block;'; kW.appendChild(kFile); p.appendChild(kW);
+  var kPath = CR.imagePath;
+  kFile.onchange = async function(){
+    var f = kFile.files && kFile.files[0]; if (!f) return;
+    if (f.size > 15 * 1024 * 1024) { kNow.textContent = 'That photo is over 15 MB. Try a smaller one.'; return; }
+    kNow.textContent = 'Uploading…';
+    try {
+      var blob = await shrinkImage(f, 1600);
+      var path = m.key + '/craft-' + Date.now() + '.jpg';
+      await api.uploadImage(path, blob); kPath = path; kNow.textContent = 'Photo added. Press “Save month” to keep it.';
+    } catch(e) { kNow.textContent = 'Couldn’t upload that. Try again.'; }
+  };
+
   sec(p, 'Circle & words');
   var fCQ = fld(p, 'Circle question', M.circlePrompt, {area:true, rows:2});
   var fQ = fld(p, 'Daily quotes', (m.content.quotes || []).join('\n'), {area:true, rows:10, hint:'One per line. They rotate by date and appear on the home screen, arrival screen, and share card.'});
@@ -3898,7 +3943,8 @@ function studioMonthForm(p){
       events: pipes(fEv.value, 4).map(function(x){ return {date:x[0], name:x[1], time:x[2], url:x[3]}; }),
       eventsNote: fEN.value.trim(), eventsUrl: fEU.value.trim(), circlePrompt: fCQ.value.trim(), quotes: linesOf(fQ.value),
       lensTopic: M.lensTopic, letter: fLet.value.trim(),
-      littleRoots: {title: fLT.value.trim(), body: fLB.value.trim(), create: fLC.value.trim(), note: fLN.value.trim(), url: fLU.value.trim()}
+      littleRoots: {title: fLT.value.trim(), body: fLB.value.trim(), create: fLC.value.trim(), note: fLN.value.trim(), url: fLU.value.trim()},
+      craft: {title: fKT.value.trim(), intro: fKI.value.trim(), need: linesOf(fKN.value), steps: linesOf(fKS.value), together: fKG.value.trim(), imagePath: kPath}
     };
     await api.saveMonth(m.key, pub.checked, content);
     await reloadContent(); studioFillMonthSelect();
@@ -4338,6 +4384,35 @@ function studioSessionEditor(rec, who, folder, save){
     now.textContent = rec.session_pdf_path ? 'A guide is attached.' : 'No guide yet.'; pf.value = '';
   });
   return f;
+}
+
+/* ── CREATIVE FLOW · a seasonal craft at home for the kiddos ── */
+async function buildCraft(){
+  var w = $('cf-craft-wrap'), C = S.M.craft; if (!w) return;
+  w.innerHTML = ''; w.style.display = C.title ? 'block' : 'none'; if (!C.title) return;
+  w.appendChild(el('div', 'eye', '❀ A seasonal craft for the kiddos'));
+  var card = el('div', 'craft'); w.appendChild(card);
+  var pic = el('div', 'craft-pic'); card.appendChild(pic);
+  if (C.imagePath) {
+    pic.classList.add('loading-pic');
+    api.guideUrl(C.imagePath).then(function(u){ var im = el('img'); im.src = u; im.alt = C.title; im.onload = function(){ pic.classList.remove('loading-pic'); }; pic.appendChild(im); })
+      .catch(function(){ pic.style.display = 'none'; });
+  } else pic.style.display = 'none';
+  var b = el('div', 'craft-b'); card.appendChild(b);
+  b.appendChild(el('h3', 'craft-t', C.title));
+  C.intro.split(/\n\s*\n/).filter(Boolean).forEach(function(x){ b.appendChild(el('p', 'craft-p', x.trim())); });
+  if (C.need.length) {
+    b.appendChild(el('div', 'craft-h', 'You’ll need'));
+    var ul = el('ul', 'craft-need'); C.need.forEach(function(x){ ul.appendChild(el('li', null, x)); }); b.appendChild(ul);
+  }
+  if (C.steps.length) {
+    b.appendChild(el('div', 'craft-h', 'Together'));
+    var ol = el('ol', 'craft-steps'); C.steps.forEach(function(x){ ol.appendChild(el('li', null, x)); }); b.appendChild(ol);
+  }
+  if (C.together) { var t = el('div', 'craft-close'); C.together.split(/\n\s*\n/).filter(Boolean).forEach(function(x){ t.appendChild(el('p', null, x.trim())); }); b.appendChild(t); }
+  var go = el('button', 'text-link', null); go.style.cssText = 'margin:14px 0 0;width:100%';
+  go.appendChild(el('span', null, 'Hang a photo of it in the Little Exhibit')); go.appendChild(el('span', null, '→')); go.setAttribute('aria-hidden', 'false');
+  go.onclick = function(){ openLittleExhibit(); }; b.appendChild(go);
 }
 </script>
 </body>
