@@ -726,6 +726,136 @@ button{font-family:'Poppins',sans-serif;}
 .pill-btn .hrt{font-size:14px;margin-right:2px;}
 .pill-btn.dark .hrt{color:#e9d3c3;}
 
+
+/* ── Journal shelves + THE LITTLE EXHIBIT ── */
+.j-shelf{display:flex;gap:6px;margin:18px 24px 4px;padding:4px;background:#ebe6df;border-radius:40px;}
+.j-shelf button{flex:1;border:none;background:none;border-radius:40px;padding:11px 8px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6a;cursor:pointer;min-height:42px;}
+.j-shelf button.on{background:#fff;color:#3a3d38;box-shadow:0 1px 3px rgba(58,61,56,.12);}
+#x-body{padding:0 0 8px;}
+.x-artists{display:flex;gap:8px;overflow-x:auto;padding:16px 24px 2px;scrollbar-width:none;}
+.x-artists::-webkit-scrollbar{display:none;}
+.x-artist{flex:none;border:1px solid #d4cfc8;background:#fff;border-radius:30px;padding:9px 16px;font-family:'Poppins',sans-serif;font-size:13px;color:#3a3d38;cursor:pointer;min-height:40px;}
+.x-artist.on{background:#3a3d38;border-color:#3a3d38;color:#f6f4f0;}
+.x-artist.add{color:#a1765a;border-style:dashed;}
+.x-hall,.x-welcome{margin:14px 16px 0;background:#efe9e1;border-radius:4px;padding:34px 22px 26px;text-align:center;position:relative;box-shadow:inset 0 -18px 0 #e6dfd5;}
+.x-eye{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#a1765a;}
+.x-name{font-family:'Abril Fatface',serif;font-weight:400;font-size:40px;line-height:1.1;color:#3a3d38;margin:10px 0 0;}
+.x-wt{font-family:'Abril Fatface',serif;font-weight:400;font-size:28px;line-height:1.2;color:#3a3d38;margin:12px 0 0;}
+.x-rule{width:44px;height:1px;background:#a1765a;margin:16px auto;}
+.x-show{font-family:'Poppins',sans-serif;font-weight:300;font-style:italic;font-size:13.5px;color:#6f6f6a;}
+.x-wp{font-family:'Poppins',sans-serif;font-weight:300;font-size:14px;line-height:1.7;color:#55574f;margin:0 auto 20px;max-width:330px;}
+.x-hang{margin-top:18px;}
+.x-empty{margin:22px 28px;font-family:'Poppins',sans-serif;font-weight:300;font-style:italic;font-size:14px;line-height:1.7;color:#6f6f6a;text-align:center;}
+.x-coll{margin:36px 24px 0;font-family:'Abril Fatface',serif;font-size:24px;color:#3a3d38;border-top:1px solid #d4cfc8;padding-top:22px;}
+.x-season{margin:22px 0 0;}
+.x-sh{margin:0 24px 14px;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a1765a;}
+.x-wall{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;padding:6px 24px 4px;align-items:start;}
+.x-piece{display:flex;flex-direction:column;align-items:stretch;gap:10px;border:none;background:none;padding:0;cursor:pointer;text-align:left;}
+.x-frame{display:block;background:#fff;border:5px solid #3a3d38;padding:9px;box-shadow:0 10px 18px -10px rgba(58,61,56,.55),0 2px 4px rgba(58,61,56,.12);}
+.x-frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#f1eee9;}
+.x-wall .x-piece:nth-child(3n+2) .x-frame img{aspect-ratio:1/1;}
+.x-wall .x-piece:nth-child(4n+3) .x-frame img{aspect-ratio:5/4;}
+.x-plac{display:block;background:#fff;border:1px solid #e3ded6;padding:8px 10px;align-self:flex-start;max-width:100%;}
+.x-pt{display:block;font-family:'Abril Fatface',serif;font-size:14px;line-height:1.25;color:#3a3d38;}
+.x-pm{display:block;font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a84;margin-top:3px;}
+.x-foot{margin:30px 0 0;padding:0 0 10px;}
+.x-foot .cp-btn{margin:10px 24px 0;}
+.x-private{margin:14px 24px 0;font-family:'Poppins',sans-serif;font-weight:300;font-size:12.5px;line-height:1.6;color:#8a8a84;}
+.x-editor{margin:18px 16px 0;background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:18px;text-align:left;}
+.x-welcome .x-editor{margin:22px 0 0;}
+.x-fld{display:block;margin:0 0 14px;}
+.x-fl{display:block;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6f6f6a;margin:0 0 7px;}
+.x-fld input,.x-fld textarea{width:100%;box-sizing:border-box;border:1px solid #d4cfc8;border-radius:10px;padding:12px 13px;font-family:'Poppins',sans-serif;font-weight:300;font-size:15px;color:#3a3d38;background:#fbfaf8;}
+.x-fld textarea{min-height:84px;resize:vertical;}
+.x-fh{display:block;font-family:'Poppins',sans-serif;font-weight:300;font-size:12px;color:#8a8a84;margin-top:6px;}
+.x-meds{margin:0 0 16px;}
+.x-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1.5px dashed #c9bfb3;border-radius:12px;padding:18px;margin:0 0 16px;cursor:pointer;background:#fbfaf8;min-height:90px;}
+.x-dprev img{display:block;max-width:100%;max-height:240px;border:4px solid #3a3d38;padding:6px;background:#fff;}
+.x-dl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#a1765a;}
+.x-view{position:fixed;inset:0;z-index:600;background:rgba(239,233,225,.98);display:none;overflow-y:auto;padding:56px 22px 40px;}
+.x-view.open{display:block;}
+.xv-box{max-width:520px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+.xv-close{position:fixed;top:14px;right:16px;width:44px;height:44px;border-radius:50%;border:none;background:#3a3d38;color:#f6f4f0;font-size:24px;line-height:1;cursor:pointer;}
+.xv-frame{background:#fff;border:7px solid #3a3d38;padding:16px;box-shadow:0 22px 40px -18px rgba(58,61,56,.6);max-width:100%;}
+.xv-frame img{display:block;max-width:100%;max-height:58vh;}
+.xv-plac{align-self:stretch;background:#fff;border:1px solid #e3ded6;margin-top:28px;padding:16px 18px;}
+.xv-t{font-family:'Abril Fatface',serif;font-size:22px;line-height:1.2;color:#3a3d38;}
+.xv-a{font-family:'Poppins',sans-serif;font-size:14px;color:#3a3d38;margin-top:6px;}
+.xv-m{font-family:'Poppins',sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a8a84;margin-top:4px;}
+.xv-wl{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a1765a;margin-top:16px;padding-top:14px;border-top:1px solid #ece7e0;}
+.xv-w{font-family:'Poppins',sans-serif;font-weight:300;font-style:italic;font-size:15px;line-height:1.65;color:#3a3d38;margin-top:6px;}
+.xv-edit{margin-top:18px;}
+@media print{
+  #print-area .pr-piece{page-break-before:always;break-before:page;page-break-inside:avoid;break-inside:avoid;display:flex;flex-direction:column;align-items:center;padding-top:4mm;}
+  #print-area .pr-frame{border:4mm solid #3a3d38;padding:5mm;background:#fff;max-width:100%;}
+  #print-area .pr-art{display:block;max-width:100%;max-height:88mm;}
+  #print-area .pr-plac{margin-top:7mm;border:0.3mm solid #d4cfc8;padding:5mm 6mm;min-width:70mm;max-width:110mm;}
+  #print-area .pr-pt{font-family:'Abril Fatface',serif;font-size:16pt;}
+  #print-area .pr-pa{font-size:10pt;margin-top:1.5mm;}
+  #print-area .pr-pm{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#8a8a84;margin-top:1mm;}
+  #print-area .pr-pw{font-style:italic;font-size:10pt;line-height:1.55;margin-top:4mm;}
+}
+
+/* Circle · gentler composer, quiet gatherings link, the Shelf */
+.cc-open{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:14px 16px;font-family:'Poppins',sans-serif;font-weight:300;font-size:14.5px;color:#8a8a8a;text-align:left;cursor:pointer;}
+.cc-open .cc-av{width:30px;height:30px;border-radius:50%;background:#eef1ec;color:#758578;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.cc-cancel{background:none;border:none;padding:0 0 0 6px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;color:#758578;text-decoration:underline;cursor:pointer;}
+#cf-filter{display:flex;justify-content:flex-end;padding-top:4px;padding-bottom:4px;overflow:visible;}
+.cf-link{background:none;border:none;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#758578;padding:8px 0;cursor:pointer;}
+.shelf-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:calc(100% - 40px);margin:18px 20px 6px;background:#f3ebe4;border:1px solid #e4d5c9;border-radius:14px;padding:15px 18px;text-align:left;cursor:pointer;color:#a1765a;font-size:16px;}
+.shelf-row .sr-eye{display:block;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a1765a;margin-bottom:3px;}
+.shelf-row .sr-n{display:block;font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;color:#5a5a5a;}
+.cc-open-sh{margin:4px 0 16px;}
+.sh-form{background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:16px;margin-bottom:18px;}
+.sh-form .je-chips{margin-bottom:12px;}
+.sh-in{display:block;width:100%;min-height:0;height:46px;margin-bottom:10px;}
+.sh-eye{margin:22px 0 10px;color:#a1765a !important;opacity:1 !important;}
+.sh-eye::after{background:#e4d5c9 !important;}
+.shelf-item{background:#fff;border:1px solid #e8e4df;border-left:3px solid #a1765a;border-radius:12px;padding:14px 16px;margin-bottom:10px;}
+.sh-t{display:block;font-family:'Abril Fatface',serif;font-size:17px;line-height:1.3;color:#3a3d38;text-decoration:none;}
+a.sh-t:hover{text-decoration:underline;}
+.sh-ext{font-family:'Poppins',sans-serif;font-size:13px;color:#a1765a;}
+.sh-why{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.6;color:#5a5a5a;margin-top:6px;}
+.sh-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;}
+.sh-by{font-family:'Poppins',sans-serif;font-size:11.5px;color:#8a8a8a;}
+.sh-acts{display:inline-flex;align-items:center;gap:14px;}
+
+/* Little Roots */
+.lr-intro{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.65;color:#5a5a5a;margin:0 0 14px;}
+.lr-h{color:#a1765a !important;}
+.lr-card{background:#f6ece4;border:1px solid #e9d6c8;border-radius:14px;padding:16px 18px;margin-bottom:6px;}
+.lr-card .note-line{margin-top:10px;}
+.lr-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.lr-acts .pill-btn{background:var(--terra);}
+.lr-acts .pill-btn.outline{background:transparent;color:var(--terra);border:1px solid var(--terra);}
+.cf-little{margin-top:16px;background:#f6ece4;border-left:3px solid #a1765a;border-radius:4px 12px 12px 4px;padding:13px 16px;}
+.cl-eye{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#a1765a;margin-bottom:5px;}
+.cl-body{font-family:'Poppins',sans-serif;font-weight:300;font-size:14px;line-height:1.6;color:#3a3d38;}
+.lr-card p.cc-body{margin:6px 0 10px;}
+
+/* My family */
+.fam-wrap{padding:0 24px;}
+.fam-intro,.fam-note{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.65;color:#5a5a5a;margin:0 0 14px;}
+.fam-note{font-size:12px;color:#8a8a84;margin-top:12px;}
+.fam-wrap .dd{margin-left:0;margin-right:0;}
+.fam-add{margin-top:6px;}
+.fam-editor{margin:10px 0;}
+.fam-h{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#758578;margin:4px 0 8px;}
+.fam-sel{width:100%;border:1px solid #d4cfc8;border-radius:10px;padding:11px 12px;font-family:'Poppins',sans-serif;font-size:15px;background:#fbfaf8;color:#3a3d38;}
+.fam-rel{margin:0 0 14px;}
+.meet{margin-top:18px;padding-top:14px;border-top:1px solid #ece7e0;}
+.meet-g{border-top:1px solid #ece7e0;}
+.meet-g:last-of-type{border-bottom:1px solid #ece7e0;}
+.meet-s{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;cursor:pointer;list-style:none;}
+.meet-s::-webkit-details-marker{display:none;}
+.meet-t{font-family:'Abril Fatface',serif;font-size:16px;color:#3a3d38;}
+.meet-n{flex:none;min-width:24px;height:24px;border-radius:12px;background:#eef1ec;color:#758578;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;}
+.meet-g[open] .meet-n{background:#758578;color:#fff;}
+.meet-b{padding:0 0 10px;}
+.meet-i{font-size:13px !important;color:#6f6f6a !important;margin:0 0 6px !important;}
+.dd .meet-s{display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:space-between !important;text-align:left !important;padding:12px 0 !important;}
+.dd .meet-s::after,.dd .meet-s::before{content:none !important;display:none !important;}
+.dd .meet-s .meet-t{flex:1;text-align:left;}
 </style>
 </head>
 <body>
@@ -845,6 +975,7 @@ button{font-family:'Poppins',sans-serif;}
 
 <!-- APP -->
 <div id="print-area" aria-hidden="true"></div>
+<div id="x-view" class="x-view"></div>
 <div id="app">
   <div class="topbar">
     <div class="topbar-l">
@@ -984,9 +1115,11 @@ button{font-family:'Poppins',sans-serif;}
       <div class="ptabs" role="tablist" aria-label="Practice type">
         <button class="ptab active" role="tab" data-tab="pt-breathe">༄ Breathe</button>
         <button class="ptab" role="tab" data-tab="pt-meditate">𑁍 Meditate</button>
+        <button class="ptab" role="tab" data-tab="pt-little">❀ Little Roots</button>
       </div>
       <div class="psec active" id="pt-breathe"></div>
       <div class="psec" id="pt-meditate"></div>
+      <div class="psec" id="pt-little"></div>
       <div class="spacer"></div>
     </div>
 
@@ -1042,7 +1175,9 @@ button{font-family:'Poppins',sans-serif;}
         <div class="eye">This month's art-journal page</div>
         <div id="cf-steps"></div>
         <div class="pull" id="cf-pull"></div>
+        <div class="cf-little" id="cf-little" style="display:none"></div>
         <button class="text-link" style="margin:16px 0 0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>✷ Keep your page in your Journal</span><span aria-hidden="true">→</span></button>
+        <button class="text-link" style="margin:0;width:100%" onclick="openLittleExhibit()"><span>Hang your little one’s art in The Little Exhibit</span><span aria-hidden="true">→</span></button>
       </div>
       <div class="pad" id="cw-wrap">
         <div class="eye">✷ Share your creative work</div>
@@ -1077,6 +1212,30 @@ button{font-family:'Poppins',sans-serif;}
       <div class="spacer"></div>
     </div>
 
+    <!-- THE SHELF -->
+    <div class="screen" id="screen-shelf">
+      <section class="w-hero" style="--wc:#a1765a">
+        <span class="w-wm" aria-hidden="true">✦</span>
+        <button class="w-back" onclick="goScreen('circle')">← Circle</button>
+        <div class="w-eye">✦ The Shelf</div>
+        <h1 class="w-title">What’s stayed with us.</h1>
+        <p class="w-sub">Books, podcasts and music the Circle loves. Add one whenever something moves you.</p>
+      </section>
+      <div class="pad">
+        <button class="pill-btn outline cc-open-sh" id="sh-add" onclick="toggleShelfForm(true)">＋ Add a favourite</button>
+        <div class="sh-form" id="sh-form" style="display:none">
+          <div class="je-chips" id="sh-kinds" role="group" aria-label="What are you adding?"></div>
+          <input class="compose-ta sh-in" id="sh-title" maxlength="160" aria-label="Title" placeholder="Title and author">
+          <input class="compose-ta sh-in" id="sh-link" maxlength="500" aria-label="Link (optional)" placeholder="Link (optional)" inputmode="url">
+          <textarea class="compose-ta" id="sh-why" maxlength="400" aria-label="Why it mattered (optional)" placeholder="A line on why it stayed with you (optional)"></textarea>
+          <div class="compose-foot"><button class="pill-btn outline" onclick="toggleShelfForm(false)">Cancel</button><button class="pill-btn dark" id="sh-send" onclick="sendShelf()">Add to the Shelf</button></div>
+          <div class="je-msg" id="sh-msg" role="status"></div>
+        </div>
+        <div id="shelf-list"></div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
     <!-- CIRCLE -->
     <div class="screen" id="screen-circle">
       <div class="circle-header">
@@ -1086,6 +1245,8 @@ button{font-family:'Poppins',sans-serif;}
       </div>
       <div id="gather-wrap"></div>
       <div class="circle-compose">
+        <button class="cc-open" id="cc-open" onclick="openComposer()"><span class="cc-av" aria-hidden="true">＋</span><span>Share something with the Circle…</span></button>
+        <div id="cc-body" style="display:none">
         <div class="je-chips cc-tags" id="cc-tags" role="group" aria-label="What are you sharing?"></div>
         <textarea class="compose-ta" id="circle-ta" maxlength="1500" aria-label="Share with the Circle" placeholder="Share what's true for you right now…"></textarea>
         <div class="je-prev" id="cc-prev"></div>
@@ -1093,10 +1254,12 @@ button{font-family:'Poppins',sans-serif;}
           <label class="je-photo-btn">Add a photo<input type="file" accept="image/*" id="cc-file" class="sr-only" onchange="pickCirclePhoto(this)"></label>
           <button class="pill-btn dark" id="circle-send" onclick="sendPost()">Share</button>
         </div>
-        <div class="compose-note">Only members see the Circle. Your Journal is never shared here.</div>
+        <div class="compose-note">Only members see the Circle. Your Journal is never shared here. <button class="cc-cancel" onclick="closeComposer()">Close</button></div>
+        </div>
       </div>
       <div class="chips" id="cf-filter" aria-label="Show"></div>
       <div class="chat-feed" id="chat-feed"><div class="feed-empty">Gathering the Circle…</div></div>
+      <button class="shelf-row" onclick="goScreen('shelf')"><span><span class="sr-eye">✦ The Shelf</span><span class="sr-n" id="shelf-row-n">Books, podcasts and music we love</span></span><span aria-hidden="true">→</span></button>
       <details class="care">
         <summary>How we hold this space</summary>
         <ul>
@@ -1119,6 +1282,11 @@ button{font-family:'Poppins',sans-serif;}
         <h1 class="w-title">A Moment to Remember.</h1>
         <p class="w-sub">Reflections, photos and the moments you want to keep. No streaks, nothing to keep up with.</p>
       </section>
+      <div class="j-shelf" id="j-shelf" role="tablist" aria-label="Journal shelves">
+        <button class="on" data-v="journal" role="tab" aria-selected="true" onclick="journalShelf('journal')">My Journal</button>
+        <button data-v="exhibit" role="tab" aria-selected="false" onclick="journalShelf('exhibit')">The Little Exhibit</button>
+      </div>
+      <div id="j-mine">
       <div class="j-new" id="j-new"><button class="pill-btn dark" onclick="journalNew()">+ A moment to remember</button></div>
       <div class="j-editor" id="j-editor" style="display:none"></div>
       <div id="j-list"></div>
@@ -1137,6 +1305,8 @@ button{font-family:'Poppins',sans-serif;}
         </div>
       </div>
       <div class="spacer"></div>
+      </div>
+      <div id="x-wrap" style="display:none"><div id="x-body"></div><div class="spacer"></div></div>
     </div>
 
     <!-- YOU -->
@@ -1169,6 +1339,8 @@ button{font-family:'Poppins',sans-serif;}
         <div class="sec-lbl"><span>✦ Your full design</span></div>
         <div class="dd-list" id="fd-list"></div>
       </div>
+      <div class="sec-lbl"><span>✦ My family</span></div>
+      <div id="fam-wrap" class="fam-wrap"></div>
       <p class="dd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</p>
       <button class="text-link" style="margin-top:14px" onclick="openWorlds()"><span>◎ The five worlds</span><span aria-hidden="true">→</span></button>
       <div class="pad">
@@ -1250,7 +1422,7 @@ button{font-family:'Poppins',sans-serif;}
    ════════════════════════════════════════════════════════════ */
 var SUPABASE_URL = 'https://bftjumojninejlxpksdm.supabase.co';
 var SUPABASE_KEY = 'sb_publishable_iUU4IPWIcXAmM4EWIJb3mg_eDM573pg'; // publishable key: safe in the browser
-var FEEDBACK_EMAIL = 'staci-lamp@outlook.com';
+var FEEDBACK_EMAIL = 'hello@stacilamp.com';
 var BOOKING_URL = 'https://calendar.app.google/wk1J132xUtwcjtGq6';
 
 var DESIGN_FACTS = {
@@ -1266,6 +1438,7 @@ var KINDS = {
   meditation:{label:'Guided meditation',sym:'𑁍', col:'var(--deep)'},
   lbd:       {label:'Living by Design', sym:'✦', col:'var(--deep)'},
   movement:  {label:'Root & Rise',      sym:'✺', col:'var(--terra)'},
+  little:    {label:'Little Roots',     sym:'❀', col:'var(--terra)'},
   other:     {label:'Extra',            sym:'◇', col:'var(--sage)'}
 };
 var SESSIONS = [
@@ -1298,7 +1471,8 @@ var api = window.API_OVERRIDE || {
   logVisit: async function(uid, day){ ok(await sb.from('visits').upsert({user_id: uid, day: day}, {onConflict:'user_id,day', ignoreDuplicates:true})); },
   setMood: async function(uid, day, mood){ ok(await sb.from('visits').upsert({user_id: uid, day: day, mood: mood}, {onConflict:'user_id,day'})); },
   myVisits: async function(uid, from){ return ok(await sb.from('visits').select('day,mood').eq('user_id', uid).gte('day', from)); },
-  feed: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,tag,photo_path,gathering_id,month').is('parent_id', null).order('created_at', {ascending:false}).limit(80)); },
+  feed: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,tag,photo_path,gathering_id,month').is('parent_id', null).neq('tag', 'shelf').order('created_at', {ascending:false}).limit(80)); },
+  shelf: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,body,is_host,hidden,user_id,tag,shelf_kind,title,link').eq('tag', 'shelf').is('parent_id', null).order('created_at', {ascending:false}).limit(300)); },
   replies: async function(ids){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,parent_id').in('parent_id', ids).order('created_at').limit(500)); },
   reactions: async function(ids){ return ok(await sb.from('circle_reactions').select('post_id,user_id,name').in('post_id', ids)); },
   react: async function(id, name){ ok(await sb.from('circle_reactions').insert({post_id: id, name: name})); },
@@ -1347,7 +1521,18 @@ var api = window.API_OVERRIDE || {
   chartUpload: async function(path, file){ ok(await sb.storage.from('charts').upload(path, file, {upsert: true, contentType: file.type || 'image/png'})); },
   setChart: async function(email, path){ ok(await sb.from('members').update({chart_path: path}).eq('email', email)); },
   setDesign: async function(email, design){ ok(await sb.from('members').update({design: design}).eq('email', email)); },
-  notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); }
+  notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); },
+  /* Family and the Little Exhibit: private to each member (enforced by the database) */
+  family: async function(){ return ok(await sb.from('family_members').select('*').eq('user_id', S.session.user.id).order('created_at')); },
+  addFamily: async function(row){ ok(await sb.from('family_members').insert(row)); },
+  updateFamily: async function(id, row){ ok(await sb.from('family_members').update(row).eq('id', id)); },
+  familyOf: async function(email){ return ok(await sb.from('family_members').select('id,name,relation,type,profile,authority,design').eq('parent_email', email).order('created_at')); },
+  setFamilyDesign: async function(id, design){ ok(await sb.from('family_members').update({design: design}).eq('id', id)); },
+  deleteFamily: async function(id){ ok(await sb.from('family_members').delete().eq('id', id)); },
+  pieces: async function(){ return ok(await sb.from('exhibit_pieces').select('*').order('made_on', {ascending:false}).limit(2000)); },
+  addPiece: async function(row){ ok(await sb.from('exhibit_pieces').insert(row)); },
+  updatePiece: async function(id, row){ ok(await sb.from('exhibit_pieces').update(row).eq('id', id)); },
+  deletePiece: async function(id){ ok(await sb.from('exhibit_pieces').delete().eq('id', id)); }
 };
 
 /* ════════════════════════════════════════════════════════════
@@ -1400,7 +1585,9 @@ function normalize(c, key){
     philosophy: {title: (c.philosophy && c.philosophy.title) || '', body: (c.philosophy && c.philosophy.body) || ''},
     creative: c.creative || {}, events: c.events || [], eventsNote: c.eventsNote || '', eventsUrl: c.eventsUrl || '',
     circlePrompt: c.circlePrompt || '', quotes: (c.quotes && c.quotes.length) ? c.quotes : ['You were made to flourish — in your own rhythm, by your own design.'],
-    lensTopic: c.lensTopic || '', letter: c.letter || ''
+    lensTopic: c.lensTopic || '', letter: c.letter || '',
+    littleRoots: {title: (c.littleRoots && c.littleRoots.title) || '', body: (c.littleRoots && c.littleRoots.body) || '', create: (c.littleRoots && c.littleRoots.create) || '',
+                  note: (c.littleRoots && c.littleRoots.note) || '', url: (c.littleRoots && c.littleRoots.url) || ''}
   };
   var cr = n.creative;
   n.creative = {title: cr.title || '', sub: cr.sub || '', steps: cr.steps || [], pull: cr.pull || '',
@@ -1774,6 +1961,13 @@ function buildPractice(){
   mRecs.forEach(function(r){ me.appendChild(recCard(r, 'New this month · ' + M.name)); });
   if (!mRecs.length) me.appendChild(emptyCard('This month’s meditation is on its way.'));
   var em = earlierList('meditation'); if (em) me.appendChild(em);
+
+  var li = $('pt-little'); li.innerHTML = '';
+  li.appendChild(el('p', 'lr-intro', 'Little Roots Rhythms: short breath and quiet practices to share with your little ones. Sit together, follow along, and let it be playful.'));
+  var lRecs = recsFor(key, 'little');
+  lRecs.forEach(function(r){ li.appendChild(recCard(r, 'Little Roots · ' + M.name)); });
+  if (!lRecs.length) li.appendChild(emptyCard('This month’s Little Roots practice is on its way.'));
+  var el2 = earlierList('little'); if (el2) li.appendChild(el2);
   document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.onclick = function(){ switchPTab(t.dataset.tab); }; });
 }
 function breathCounts(){
@@ -1800,6 +1994,19 @@ function buildRootRise(){
     var pc = el('div', 'rr-phil'); if (M.philosophy.title) pc.appendChild(el('div', 'cc-title', M.philosophy.title));
     M.philosophy.body.split(/\n\s*\n/).filter(Boolean).forEach(function(p){ pc.appendChild(el('p', 'cc-body', p.trim())); });
     g.appendChild(pc);
+  }
+  var LR = M.littleRoots, lrRecs = recsFor(key, 'little');
+  if (LR.title || LR.body || LR.note || lrRecs.length) {
+    g.appendChild(el('div', 'er-h lr-h', '❀ Little Roots · for your little ones'));
+    var lc = el('div', 'lr-card');
+    if (LR.title) lc.appendChild(el('div', 'cc-title', LR.title));
+    LR.body.split(/\n\s*\n/).filter(Boolean).forEach(function(p){ lc.appendChild(el('p', 'cc-body', p.trim())); });
+    if (LR.note) lc.appendChild(el('div', 'note-line', LR.note));
+    var lacts = el('div', 'lr-acts');
+    if (lrRecs.length) { var lp = el('button', 'pill-btn', '❀ Little Roots practices'); lp.onclick = function(){ goScreen('practice'); switchPTab('pt-little'); }; lacts.appendChild(lp); }
+    if (LR.url) { var lu = el('a', 'pill-btn outline', 'Little Roots classes'); lu.href = LR.url; lu.target = '_blank'; lu.rel = 'noopener'; lacts.appendChild(lu); }
+    if (lacts.children.length) lc.appendChild(lacts);
+    g.appendChild(lc);
   }
   g.appendChild(el('div', 'er-h', '✺ Classes & events'));
 
@@ -1882,6 +2089,8 @@ function buildCreate(){
   c.steps.forEach(function(st){ var r = el('div', 'step'); r.appendChild(el('div', 'step-k', st[0])); r.appendChild(el('div', 'step-t', st[1] || '')); s.appendChild(r); });
   $('cf-pull').style.display = c.pull ? 'block' : 'none';
   $('cf-pull').textContent = '“' + c.pull + '”';
+  var cl = $('cf-little'), lrc = S.M.littleRoots.create; cl.innerHTML = ''; cl.style.display = lrc ? 'block' : 'none';
+  if (lrc) { cl.appendChild(el('div', 'cl-eye', '❀ With your little ones')); cl.appendChild(el('div', 'cl-body', lrc)); }
   $('cf-gather-wrap').style.display = c.gathering.title ? 'block' : 'none';
   var g = $('cf-gather'); g.innerHTML = '';
   var h = el('div', 'cc-head'); h.style.borderLeftColor = 'var(--ochre)';
@@ -1893,7 +2102,7 @@ function buildCreate(){
 var libFilter = 'all';
 function buildLibrary(){
   var chips = $('lib-chips'); chips.innerHTML = '';
-  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Root & Rise'],['guide','Guides']].forEach(function(c){
+  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Root & Rise'],['little','Little Roots'],['guide','Guides']].forEach(function(c){
     var b = el('button', 'chip' + (libFilter === c[0] ? ' on' : ''), c[1]);
     b.onclick = function(){ libFilter = c[0]; buildLibrary(); };
     chips.appendChild(b);
@@ -1955,6 +2164,7 @@ function renderDesign(){
   $('hdi-profile').textContent = S.me.profile || '—'; $('hdi-auth').textContent = S.me.authority || '—';
   $('hdi-sig').textContent = f ? f.sig : '—'; $('hdi-ns').textContent = f ? f.ns : '—';
   buildDesignDeep(); buildChart(); buildFullDesign();
+  if (FM.list) renderFamily();
 }
 
 /* ── YOUR DESIGN, IN MORE DEPTH ── */
@@ -2163,6 +2373,397 @@ function shrinkImage(file){
     img.src = u;
   });
 }
+/* ── THE LITTLE EXHIBIT · a private gallery for the art that comes home ── */
+var XMEDIA = ['Crayon', 'Marker', 'Pencil', 'Paint', 'Watercolor', 'Collage', 'Clay', 'Chalk', 'Mixed media', 'Something else'];
+var X = {fam:null, pieces:null, artist:null, view:'journal', blob:null};
+function journalShelf(which){
+  X.view = which;
+  document.querySelectorAll('#j-shelf button').forEach(function(b){ var on = b.dataset.v === which; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+  $('j-mine').style.display = which === 'journal' ? 'block' : 'none';
+  $('x-wrap').style.display = which === 'exhibit' ? 'block' : 'none';
+  if (which === 'exhibit') loadExhibit();
+}
+function openLittleExhibit(){ goScreen('journal'); journalShelf('exhibit'); }
+function seasonOf(day){
+  var y = +day.slice(0, 4), m = +day.slice(5, 7);
+  if (m === 12) return {key: (y + 1) + '-1', label: 'Winter ' + y + '–' + String(y + 1).slice(2)};
+  if (m <= 2) return {key: y + '-1', label: 'Winter ' + (y - 1) + '–' + String(y).slice(2)};
+  if (m <= 5) return {key: y + '-2', label: 'Spring ' + y};
+  if (m <= 8) return {key: y + '-3', label: 'Summer ' + y};
+  return {key: y + '-4', label: 'Autumn ' + y};
+}
+function ageAt(birth, day){
+  if (!birth) return null;
+  var by = +birth.slice(0, 4), bm = +birth.slice(5, 7), y = +day.slice(0, 4), m = +day.slice(5, 7);
+  var a = y - by - (m < bm ? 1 : 0);
+  return a >= 0 && a < 120 ? a : null;
+}
+async function loadExhibit(){
+  var w = $('x-body');
+  if (!X.fam) { w.innerHTML = ''; w.appendChild(el('div', 'loading', 'Opening the gallery…')); }
+  try {
+    var r = await Promise.all([api.family(), api.pieces()]);
+    X.fam = (r[0] || []).filter(function(f){ return f.relation === 'child'; }); X.pieces = r[1] || [];
+    if (!X.artist || !X.fam.some(function(f){ return f.id === X.artist; })) X.artist = X.fam.length ? X.fam[0].id : null;
+    renderExhibit();
+  } catch(e) { w.innerHTML = ''; w.appendChild(el('div', 'feed-empty', 'The gallery couldn’t open just now. Check your connection and try again in a moment.')); }
+}
+function renderExhibit(){
+  var w = $('x-body'); w.innerHTML = '';
+  if (!X.fam.length) { w.appendChild(exhibitWelcome()); return; }
+  var tabs = el('div', 'x-artists');
+  X.fam.forEach(function(f){
+    var b = el('button', 'x-artist' + (f.id === X.artist ? ' on' : ''), f.name); b.type = 'button';
+    b.onclick = function(){ X.artist = f.id; renderExhibit(); }; tabs.appendChild(b);
+  });
+  var add = el('button', 'x-artist add', '＋ Artist'); add.type = 'button'; add.onclick = function(){ openArtistForm(null); }; tabs.appendChild(add);
+  w.appendChild(tabs);
+  var f = X.fam.filter(function(x){ return x.id === X.artist; })[0];
+  var mine = X.pieces.filter(function(p){ return p.child_id === f.id; }).sort(function(a, b){ return a.made_on < b.made_on ? 1 : a.made_on > b.made_on ? -1 : (a.created_at < b.created_at ? 1 : -1); });
+  var hall = el('section', 'x-hall');
+  hall.appendChild(el('div', 'x-eye', 'The Little Exhibit'));
+  hall.appendChild(el('h2', 'x-name', f.name));
+  hall.appendChild(el('div', 'x-rule'));
+  hall.appendChild(el('div', 'x-show', mine.length ? (mine.length === 1 ? '1 piece in the collection' : mine.length + ' pieces in the collection') : 'The walls are ready'));
+  var hang = el('button', 'pill-btn dark x-hang', '＋ Hang a new piece'); hang.onclick = function(){ openPieceForm(null); }; hall.appendChild(hang);
+  w.appendChild(hall);
+  var ed = el('div', 'x-editor'); ed.id = 'x-editor'; ed.style.display = 'none'; w.appendChild(ed);
+  if (!mine.length) {
+    w.appendChild(el('div', 'x-empty', 'Their first piece is waiting on the fridge, in a backpack, or on the kitchen table. Snap a photo and hang it here.'));
+  } else {
+    var cur = seasonOf(todayKey()), seasons = {}, order = [];
+    mine.forEach(function(p){ var s = seasonOf(p.made_on); if (!seasons[s.key]) { seasons[s.key] = {s:s, list:[]}; order.push(s.key); } seasons[s.key].list.push(p); });
+    order.sort().reverse();
+    var collShown = false;
+    order.forEach(function(k){
+      var g = seasons[k];
+      if (k !== cur.key && !collShown) { w.appendChild(el('div', 'x-coll', 'The Collection')); collShown = true; }
+      var sec = el('section', 'x-season');
+      sec.appendChild(el('div', 'x-sh', (k === cur.key ? 'Now showing · ' : '') + g.s.label));
+      var wall = el('div', 'x-wall');
+      g.list.forEach(function(p){ wall.appendChild(frameCard(p, f)); });
+      sec.appendChild(wall); w.appendChild(sec);
+    });
+  }
+  var foot = el('div', 'x-foot');
+  if (mine.length) { var cat = el('button', 'text-link x-cat', null); cat.appendChild(el('span', null, 'Save ' + f.name + '’s catalogue as a PDF')); cat.appendChild(el('span', null, '↓')); cat.onclick = function(){ exhibitCatalogue(f, mine); }; foot.appendChild(cat); }
+  var ea = el('button', 'cp-btn', 'Edit ' + f.name + '’s details'); ea.onclick = function(){ openArtistForm(f); }; foot.appendChild(ea);
+  foot.appendChild(el('p', 'x-private', 'The Little Exhibit is private to you. Only you can see these pieces, and they are never shared to the Circle.'));
+  w.appendChild(foot);
+}
+function exhibitWelcome(){
+  var c = el('section', 'x-welcome');
+  c.appendChild(el('div', 'x-eye', 'The Little Exhibit'));
+  c.appendChild(el('h2', 'x-wt', 'A gallery for the art that comes home.'));
+  c.appendChild(el('div', 'x-rule'));
+  c.appendChild(el('p', 'x-wp', 'Every drawing, painting and clay creature gets a frame, a title, and a few words in the artist’s own voice. The date is kept for you, and over the seasons it becomes a little gallery of who they were.'));
+  var b = el('button', 'pill-btn dark', '＋ Add your first artist'); b.id = 'x-first'; b.onclick = function(){ openArtistForm(null); }; c.appendChild(b);
+  var ed = el('div', 'x-editor'); ed.id = 'x-editor'; ed.style.display = 'none'; c.appendChild(ed);
+  return c;
+}
+function frameCard(p, f){
+  var c = el('button', 'x-piece'); c.type = 'button'; c.setAttribute('aria-label', (p.title || 'Untitled') + ', open');
+  var fr = el('span', 'x-frame'), im = el('img'); im.alt = p.title || 'A piece of art'; im.loading = 'lazy'; fr.appendChild(im); c.appendChild(fr);
+  photoSrc(p.photo_path).then(function(u){ if (u) im.src = u; });
+  var pl = el('span', 'x-plac');
+  pl.appendChild(el('span', 'x-pt', p.title || 'Untitled'));
+  pl.appendChild(el('span', 'x-pm', [p.medium, fmtDay(p.made_on, {month:'short', year:'numeric'})].filter(Boolean).join(' · ')));
+  c.appendChild(pl);
+  c.onclick = function(){ openPiece(p, f); };
+  return c;
+}
+function openPiece(p, f){
+  var o = $('x-view'); o.innerHTML = ''; o.classList.add('open');
+  var box = el('div', 'xv-box'); box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', p.title || 'Untitled');
+  var close = el('button', 'xv-close', '×'); close.setAttribute('aria-label', 'Close'); close.onclick = closePiece; box.appendChild(close);
+  var fr = el('div', 'xv-frame'), im = el('img'); im.alt = p.title || 'A piece of art'; fr.appendChild(im); box.appendChild(fr);
+  photoSrc(p.photo_path).then(function(u){ if (u) im.src = u; });
+  var pl = el('div', 'xv-plac');
+  pl.appendChild(el('div', 'xv-t', p.title || 'Untitled'));
+  var age = ageAt(f.birth_month, p.made_on);
+  pl.appendChild(el('div', 'xv-a', f.name + (age != null ? ', age ' + age : '')));
+  pl.appendChild(el('div', 'xv-m', [p.medium, fmtDay(p.made_on, {month:'long', day:'numeric', year:'numeric'})].filter(Boolean).join(' · ')));
+  if (p.words) { pl.appendChild(el('div', 'xv-wl', 'In the artist’s words')); pl.appendChild(el('div', 'xv-w', '“' + p.words + '”')); }
+  box.appendChild(pl);
+  var ed = el('button', 'cp-btn xv-edit', 'Edit this piece'); ed.onclick = function(){ closePiece(); openPieceForm(p); }; box.appendChild(ed);
+  o.appendChild(box);
+  o.onclick = function(e){ if (e.target === o) closePiece(); };
+  setTimeout(function(){ close.focus(); }, 50);
+}
+function closePiece(){ var o = $('x-view'); o.classList.remove('open'); o.innerHTML = ''; }
+function fldIn(parent, label, value, o){
+  o = o || {};
+  var w = el('label', 'x-fld'); w.appendChild(el('span', 'x-fl', label));
+  var i = el(o.area ? 'textarea' : 'input'); if (!o.area) i.type = o.type || 'text'; i.value = value || ''; if (o.placeholder) i.placeholder = o.placeholder; if (o.max) i.maxLength = o.max;
+  w.appendChild(i); if (o.hint) w.appendChild(el('span', 'x-fh', o.hint)); parent.appendChild(w); return i;
+}
+function openArtistForm(f){
+  var ed = $('x-editor'); ed.innerHTML = ''; ed.style.display = 'block';
+  ed.appendChild(el('h3', 'je-h', f ? 'About ' + f.name : 'A new artist'));
+  var n = fldIn(ed, 'Their name', f ? f.name : '', {placeholder:'First name or nickname', max:40}); n.id = 'x-aname';
+  var bm = fldIn(ed, 'Birth month (optional)', f && f.birth_month ? f.birth_month : '', {type:'month', hint:'Only used to show their age on each placard. You can leave it empty.'}); bm.id = 'x-abirth';
+  var msg = el('div', 'je-msg');
+  var acts = el('div', 'je-acts');
+  var save = el('button', 'pill-btn dark', f ? 'Save' : 'Open their exhibit'); save.id = 'x-asave'; acts.appendChild(save);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; }; acts.appendChild(cancel);
+  if (f) {
+    var del = el('button', 'pill-btn small-btn danger', 'Remove artist');
+    armButton(del, 'Tap again: removes their whole exhibit', async function(){
+      try { var ps = X.pieces.filter(function(p){ return p.child_id === f.id; }); await api.deleteFamily(f.id); ps.forEach(function(p){ if (p.photo_path) api.photoDelete(p.photo_path).catch(function(){}); }); X.artist = null; await loadExhibit(); }
+      catch(e) { msg.textContent = 'That didn’t remove. Try again in a moment.'; }
+    });
+    acts.appendChild(del);
+  }
+  ed.appendChild(acts); ed.appendChild(msg);
+  save.onclick = async function(){
+    var name = n.value.trim(); if (!name) { n.focus(); return; }
+    save.disabled = true;
+    try {
+      var row = {name: name.slice(0, 40), birth_month: bm.value || null, relation: 'child'};
+      if (f) await api.updateFamily(f.id, row); else { row.id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); await api.addFamily(row); X.artist = row.id; }
+      await loadExhibit();
+    } catch(e) { msg.textContent = 'That didn’t save. Try again in a moment.'; save.disabled = false; }
+  };
+  setTimeout(function(){ n.focus(); }, 60);
+}
+function openPieceForm(p){
+  var f = X.fam.filter(function(x){ return x.id === X.artist; })[0];
+  var ed = $('x-editor'); ed.innerHTML = ''; ed.style.display = 'block'; X.blob = null;
+  ed.appendChild(el('h3', 'je-h', p ? 'About this piece' : 'Hang a new piece'));
+  var pick = el('label', 'x-drop'); var pin = el('input'); pin.type = 'file'; pin.accept = 'image/*'; pin.className = 'sr-only'; pin.id = 'x-file';
+  var pv = el('span', 'x-dprev'); pick.appendChild(pv);
+  var plab = el('span', 'x-dl', p ? 'Change the photo' : '＋ Add a photo of the piece'); pick.appendChild(plab); pick.appendChild(pin);
+  ed.appendChild(pick);
+  if (p && p.photo_path) photoSrc(p.photo_path).then(function(u){ if (u) { pv.innerHTML = ''; var im = el('img'); im.src = u; im.alt = ''; pv.appendChild(im); } });
+  var msg = el('div', 'je-msg');
+  pin.onchange = async function(){
+    var file = pin.files && pin.files[0]; if (!file) return;
+    msg.textContent = 'Preparing the photo…';
+    try { X.blob = await shrinkImage(file); pv.innerHTML = ''; var im = el('img'); im.src = URL.createObjectURL(X.blob); im.alt = ''; pv.appendChild(im); plab.textContent = 'Change the photo'; msg.textContent = ''; }
+    catch(e) { msg.textContent = 'That photo couldn’t be opened. Try another.'; }
+  };
+  var t = fldIn(ed, 'Title', p ? p.title : '', {placeholder:'What do they call it?', max:80}); t.id = 'x-title';
+  ed.appendChild(el('span', 'x-fl', 'Medium'));
+  var med = p ? p.medium : null, chips = el('div', 'je-chips x-meds');
+  XMEDIA.forEach(function(m){
+    var b = el('button', 'je-chip' + (m === med ? ' on' : ''), m); b.type = 'button';
+    b.onclick = function(){ med = med === m ? null : m; chips.querySelectorAll('.je-chip').forEach(function(x){ x.classList.toggle('on', x.textContent === med); }); };
+    chips.appendChild(b);
+  });
+  ed.appendChild(chips);
+  var d = fldIn(ed, 'Made on', p ? p.made_on : todayKey(), {type:'date'}); d.max = todayKey(); d.id = 'x-date';
+  var wd = fldIn(ed, 'In the artist’s words (optional)', p ? p.words : '', {area:true, max:400, placeholder:'What would ' + f.name + ' say about it? Their words, or yours.'}); wd.id = 'x-words';
+  var acts = el('div', 'je-acts');
+  var save = el('button', 'pill-btn dark', p ? 'Save' : 'Hang it'); save.id = 'x-save'; acts.appendChild(save);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; }; acts.appendChild(cancel);
+  if (p) {
+    var del = el('button', 'pill-btn small-btn danger', 'Take it down');
+    armButton(del, 'Tap again to remove', async function(){
+      try { await api.deletePiece(p.id); if (p.photo_path) api.photoDelete(p.photo_path).catch(function(){}); await loadExhibit(); }
+      catch(e) { msg.textContent = 'That didn’t remove. Try again in a moment.'; }
+    });
+    acts.appendChild(del);
+  }
+  ed.appendChild(acts); ed.appendChild(msg);
+  save.onclick = async function(){
+    if (!X.blob && !(p && p.photo_path)) { msg.textContent = 'Add a photo of the piece first.'; return; }
+    save.disabled = true; msg.textContent = 'Hanging it…';
+    try {
+      var id = p ? p.id : (window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
+      var path = p ? p.photo_path : null, old = null;
+      if (X.blob) { old = path; path = S.session.user.id + '/exhibit/' + id + '-' + Date.now() + '.jpg'; await api.photoUpload(path, X.blob); }
+      var row = {child_id: f.id, title: t.value.trim().slice(0, 80) || null, medium: med, made_on: d.value || todayKey(), words: wd.value.trim().slice(0, 400) || null, photo_path: path};
+      if (p) await api.updatePiece(p.id, row); else { row.id = id; await api.addPiece(row); }
+      if (old && old !== path) api.photoDelete(old).catch(function(){});
+      X.blob = null; await loadExhibit();
+    } catch(e) { msg.textContent = 'That didn’t save. Try again in a moment.'; save.disabled = false; }
+  };
+  setTimeout(function(){ ed.scrollIntoView({block:'start'}); }, 60);
+}
+async function exhibitCatalogue(f, list){
+  var pa = $('print-area'); pa.innerHTML = '';
+  var items = list.slice().reverse();
+  var cover = el('section', 'pr-cover');
+  cover.appendChild(el('div', 'pr-brand', 'The Little Exhibit'));
+  cover.appendChild(el('div', 'pr-rule'));
+  cover.appendChild(el('h1', 'pr-title', f.name));
+  var a = items[0].made_on, b = items[items.length - 1].made_on;
+  cover.appendChild(el('div', 'pr-range', fmtDay(a, {month:'long', year:'numeric'}) + (a.slice(0, 7) !== b.slice(0, 7) ? ' – ' + fmtDay(b, {month:'long', year:'numeric'}) : '')));
+  cover.appendChild(el('div', 'pr-quote', 'A collection of ' + items.length + (items.length === 1 ? ' piece' : ' pieces') + ', kept with love.'));
+  pa.appendChild(cover);
+  var loads = [];
+  items.forEach(function(p){
+    var s = el('section', 'pr-piece');
+    var img = el('img', 'pr-art'); img.alt = ''; var fr = el('div', 'pr-frame'); fr.appendChild(img); s.appendChild(fr);
+    var pl = el('div', 'pr-plac');
+    pl.appendChild(el('div', 'pr-pt', p.title || 'Untitled'));
+    var age = ageAt(f.birth_month, p.made_on);
+    pl.appendChild(el('div', 'pr-pa', f.name + (age != null ? ', age ' + age : '')));
+    pl.appendChild(el('div', 'pr-pm', [p.medium, fmtDay(p.made_on, {month:'long', day:'numeric', year:'numeric'})].filter(Boolean).join(' · ')));
+    if (p.words) pl.appendChild(el('div', 'pr-pw', '“' + p.words + '”'));
+    s.appendChild(pl); pa.appendChild(s);
+    loads.push(photoSrc(p.photo_path).then(function(u){ if (!u) { fr.remove(); return; } return new Promise(function(res){ img.onload = res; img.onerror = function(){ fr.remove(); res(); }; img.src = u; setTimeout(res, 8000); }); }));
+  });
+  await Promise.all(loads);
+  document.body.classList.add('printing');
+  var done = function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint', done); };
+  window.addEventListener('afterprint', done);
+  setTimeout(function(){ window.print(); setTimeout(done, 1500); }, 150);
+}
+
+/* ── MY FAMILY · their designs beside yours ── */
+var FAM_TYPE = {
+  'Generator': 'Lights up when life gives them something to respond to. Offer choices rather than instructions, and listen for their gut’s “uh-huh” or “unh-unh.” Satisfaction looks like a good kind of tired; frustration is a sign they’ve been pushed into something their body never chose.',
+  'Manifesting Generator': 'Quick, curious and often doing three things at once. Like a Generator, they light up when something gives them something to respond to, and they may skip steps or change course mid-way. That’s often how they find their path. Frustration, or a flash of anger, usually means they’ve been slowed down or made to finish something their body already knew was done.',
+  'Projector': 'Sees people and situations deeply, and blooms when they feel truly seen. Their energy comes in waves, so rest is part of how they’re built rather than something to earn. Invite their ideas; bitterness can show up when they feel unrecognized or worn out.',
+  'Manifestor': 'An initiator who often knows what they want to do before anyone else. They tend to feel calmer when they have room to begin things and are gently asked to let you know first. Peace is their signal; anger can show up when they feel controlled or interrupted.',
+  'Reflector': 'Deeply sensitive to the people and places around them, almost like a mirror. Where they are matters a great deal, and big decisions go better with plenty of time. Delight and surprise are good signs; disappointment usually says more about the surroundings than about them.'
+};
+var FAM_AUTH = {
+  'Sacral': 'Their truth lives in their gut. Simple yes-or-no questions help them hear it.',
+  'Emotional': 'Their clarity comes in waves. It helps to let them sleep on big choices.',
+  'Splenic': 'Their knowing is quick and quiet, a first instinct worth trusting.',
+  'Ego': 'Their truth sounds like “I want” and “I will.” Listen for what they truly want.',
+  'Self-Projected': 'They find clarity by talking things through and hearing their own voice.',
+  'Mental / Environmental': 'The right place and a trusted sounding board help them find clarity.',
+  'Lunar': 'Big decisions unfold over a full moon cycle, so give them time.'
+};
+var FAM_LINES = {
+  '1': 'feels secure once they understand how something works',
+  '2': 'has natural gifts and needs real time to themselves',
+  '3': 'learns by doing, bumping into what doesn’t work and finding what does',
+  '4': 'grows through friendships and the people close to them',
+  '5': 'is often looked to for practical help and solutions',
+  '6': 'grows in seasons, watching and learning before stepping into their own way'
+};
+var FAM_REL = [['child', 'Child'], ['partner', 'Partner'], ['other', 'Someone else']];
+var FM = {list:null, edit:null};
+async function loadFamily(){
+  var w = $('fam-wrap'); if (!w) return;
+  try { FM.list = await api.family(); } catch(e) { FM.list = FM.list || []; }
+  renderFamily();
+}
+function renderFamily(){
+  var w = $('fam-wrap'); w.innerHTML = '';
+  var list = FM.list || [];
+  if (!list.length) w.appendChild(el('p', 'fam-intro', 'Add a child, partner or someone you love to see their design beside yours, gently. It’s a lens for understanding each other, never a label.'));
+  list.forEach(function(f){ w.appendChild(familyCard(f)); });
+  var ed = el('div', 'x-editor fam-editor'); ed.id = 'fam-editor'; ed.style.display = 'none'; w.appendChild(ed);
+  var add = el('button', 'pill-btn outline fam-add', '＋ Add a child or family member'); add.id = 'fam-add'; add.onclick = function(){ familyForm(null); }; w.appendChild(add);
+  w.appendChild(el('p', 'fam-note', 'Private to you. Children you add here also get their own Little Exhibit in your Journal.'));
+}
+function familyCard(f){
+  var d = el('details', 'dd fam-card'); var s = el('summary');
+  var rel = (FAM_REL.filter(function(r){ return r[0] === f.relation; })[0] || ['', ''])[1];
+  s.appendChild(el('span', 'dd-k', f.name + (rel ? ' · ' + rel.toLowerCase() : '')));
+  s.appendChild(el('span', 'dd-t', f.type ? [f.type, f.profile, f.authority].filter(Boolean).join(' · ') : 'Add their design'));
+  d.appendChild(s);
+  var b = el('div', 'dd-b');
+  if (f.type) {
+    b.appendChild(el('div', 'fam-h', 'What might help ' + f.name + ' feel understood'));
+    b.appendChild(el('p', null, FAM_TYPE[f.type] || ''));
+    if (f.authority && FAM_AUTH[f.authority]) b.appendChild(ddItem(f.authority + ' authority', FAM_AUTH[f.authority]));
+    if (f.profile) { var pl = f.profile.split('/'); var a = LINES[pl[0]], c = LINES[pl[1]]; if (a && c && FAM_LINES[pl[0]] && FAM_LINES[pl[1]]) b.appendChild(ddItem(f.profile + ' · ' + a[0] + ' / ' + c[0], 'A ' + f.profile + ' ' + FAM_LINES[pl[0]] + ', and ' + FAM_LINES[pl[1]] + '.')); }
+  } else {
+    b.appendChild(el('p', null, 'Add ' + f.name + '’s type, profile and authority from their chart to see their design here.'));
+  }
+  b.appendChild(meetSection(f));
+  var e = el('button', 'cp-btn', 'Edit ' + f.name); e.onclick = function(ev){ ev.preventDefault(); familyForm(f); }; b.appendChild(e);
+  d.appendChild(b);
+  return d;
+}
+function designMeet(A, B){
+  var ga = A.gates, gb = B.gates, out = {complete:[], share:[], steadyA:[], steadyB:[], toneA:[], toneB:[]};
+  CHANNELS.forEach(function(c){
+    var a1 = !!ga[c[0]], a2 = !!ga[c[1]], b1 = !!gb[c[0]], b2 = !!gb[c[1]];
+    var aF = a1 && a2, bF = b1 && b2;
+    if (aF && bF) out.share.push(c);
+    else if (aF && !b1 && !b2) out.steadyA.push(c);
+    else if (bF && !a1 && !a2) out.steadyB.push(c);
+    else if (aF) out.toneA.push(c);
+    else if (bF) out.toneB.push(c);
+    else if ((a1 && b2 && !a2 && !b1) || (a2 && b1 && !a1 && !b2)) out.complete.push(c);
+  });
+  out.centersA = CENTERS.filter(function(c){ return A.defined[c.k] && !B.defined[c.k]; });
+  out.centersB = CENTERS.filter(function(c){ return B.defined[c.k] && !A.defined[c.k]; });
+  return out;
+}
+function meetSection(f){
+  var box = el('div', 'meet');
+  box.appendChild(el('div', 'fam-h', 'Where your designs meet'));
+  var A = computeDesign(S.me.design), B = computeDesign(f.design);
+  if (!A || !B) {
+    box.appendChild(el('p', null, 'This appears once both full charts are in the app. Staci can add them as part of a Parenting by Design or Family by Design session.'));
+    var go = el('button', 'cp-btn', 'See By Design sessions'); go.onclick = function(ev){ ev.preventDefault(); var s = $('sessions'); if (s) s.scrollIntoView({behavior:'smooth', block:'start'}); }; box.appendChild(go);
+    return box;
+  }
+  var m = designMeet(A, B), n = f.name, any = false;
+  box.appendChild(el('p', 'meet-i', 'Tap a theme to open it. Read it as a gentle lens on how you meet, not a verdict on either of you.'));
+  function group(title, intro, items){ if (!items.length) return; any = true; var g = el('details', 'meet-g'); var sm = el('summary', 'meet-s'); sm.appendChild(el('span', 'meet-t', title)); sm.appendChild(el('span', 'meet-n', String(items.length))); g.appendChild(sm); var inner = el('div', 'meet-b'); if (intro) inner.appendChild(el('p', 'meet-i', intro)); items.forEach(function(x){ inner.appendChild(x); }); g.appendChild(inner); box.appendChild(g); }
+  function ch(c, extra){ return ddItem('The Channel of ' + c[2] + ' · ' + c[0] + '–' + c[1], c[3] + (extra ? '  ' + extra : '')); }
+  group('Where you complete each other', 'You each hold one half of these channels, so together you make something neither of you has alone. This is often where you feel most drawn together, and sometimes where you rub.', m.complete.map(function(c){ return ch(c); }));
+  group('Where you share the same energy', 'You both carry these fully: places of easy understanding.', m.share.map(function(c){ return ch(c); }));
+  group('Where one of you is steady', null,
+    m.steadyA.map(function(c){ return ch(c, 'You carry this fully, and ' + n + ' experiences it through you. Share it gently, without expecting them to carry it the same way.'); })
+    .concat(m.steadyB.map(function(c){ return ch(c, n + ' carries this fully, and you experience it through them. You may feel this energy strongly when you’re together.'); })));
+  group('Where one of you sets the tone', null,
+    m.toneA.map(function(c){ return ch(c, 'You carry the whole channel and ' + n + ' holds one side of it, so your way can set the tone here. Make room for their side.'); })
+    .concat(m.toneB.map(function(c){ return ch(c, n + ' carries the whole channel and you hold one side, so their way can set the tone. Your side still matters.'); })));
+  var cs = [];
+  m.centersA.forEach(function(c){ cs.push(ddItem('Your ' + c.n + ' · their open ' + c.n, n + ' takes in your steady ' + c.n + ' energy and may feel it amplified. Some of what they feel here may be yours, not theirs.')); });
+  m.centersB.forEach(function(c){ cs.push(ddItem('Their ' + c.n + ' · your open ' + c.n, n + '’s ' + c.n + ' is consistent, so you may feel it strongly around them. That’s a feeling to notice, not a job to fix.')); });
+  group('Where you take each other in', 'Where one of you is defined and the other is open, energy flows one way and is often felt more strongly.', cs);
+  if (!any) box.appendChild(el('p', null, 'Your designs give each other a lot of space: few shared channels and few pulls. Connection here comes from choosing each other, again and again.'));
+  return box;
+}
+function familyForm(f){
+  var ed = $('fam-editor'); ed.innerHTML = ''; ed.style.display = 'block'; $('fam-add').style.display = 'none';
+  ed.appendChild(el('h3', 'je-h', f ? 'About ' + f.name : 'Add someone you love'));
+  var n = fldIn(ed, 'Their name', f ? f.name : '', {placeholder:'First name or nickname', max:40}); n.id = 'fam-name';
+  ed.appendChild(el('span', 'x-fl', 'They are your'));
+  var rel = f ? f.relation : 'child', chips = el('div', 'je-chips fam-rel');
+  var bmWrap = el('div');
+  FAM_REL.forEach(function(r){
+    var b = el('button', 'je-chip' + (r[0] === rel ? ' on' : ''), r[1]); b.type = 'button';
+    b.onclick = function(){ rel = r[0]; chips.querySelectorAll('.je-chip').forEach(function(x){ x.classList.toggle('on', x.textContent === r[1]); }); bmWrap.style.display = rel === 'child' ? 'block' : 'none'; };
+    chips.appendChild(b);
+  });
+  ed.appendChild(chips);
+  var bm = fldIn(bmWrap, 'Birth month (optional)', f && f.birth_month ? f.birth_month : '', {type:'month', hint:'Only used to show their age in The Little Exhibit.'});
+  bmWrap.style.display = rel === 'child' ? 'block' : 'none'; ed.appendChild(bmWrap);
+  function sel(label, opts, val, id){
+    var w = el('label', 'x-fld'); w.appendChild(el('span', 'x-fl', label));
+    var s = el('select', 'fam-sel'); s.id = id; [''].concat(opts).forEach(function(o){ var op = el('option', null, o || '—'); op.value = o; if (o === (val || '')) op.selected = true; s.appendChild(op); });
+    w.appendChild(s); ed.appendChild(w); return s;
+  }
+  var tp = sel('Type', ['Manifesting Generator', 'Generator', 'Projector', 'Manifestor', 'Reflector'], f && f.type, 'fam-type');
+  var pr = sel('Profile', ['1/3','1/4','2/4','2/5','3/5','3/6','4/6','4/1','5/1','5/2','6/2','6/3'], f && f.profile, 'fam-profile');
+  var au = sel('Authority', ['Sacral','Emotional','Splenic','Ego','Self-Projected','Mental / Environmental','Lunar'], f && f.authority, 'fam-auth');
+  ed.appendChild(el('p', 'x-fh', 'You’ll find these on their bodygraph chart. Not sure? Leave them for now.'));
+  var msg = el('div', 'je-msg');
+  var acts = el('div', 'je-acts');
+  var save = el('button', 'pill-btn dark', 'Save'); save.id = 'fam-save'; acts.appendChild(save);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; $('fam-add').style.display = ''; }; acts.appendChild(cancel);
+  if (f) {
+    var del = el('button', 'pill-btn small-btn danger', 'Remove');
+    armButton(del, f.relation === 'child' ? 'Tap again: also removes their Little Exhibit' : 'Tap again to remove', async function(){
+      try { await api.deleteFamily(f.id); X.fam = null; await loadFamily(); } catch(e) { msg.textContent = 'That didn’t remove. Try again in a moment.'; }
+    });
+    acts.appendChild(del);
+  }
+  ed.appendChild(acts); ed.appendChild(msg);
+  save.onclick = async function(){
+    var name = n.value.trim(); if (!name) { n.focus(); return; }
+    save.disabled = true;
+    try {
+      var row = {name: name.slice(0, 40), relation: rel, birth_month: rel === 'child' ? (bm.value || null) : null, type: tp.value || null, profile: pr.value || null, authority: au.value || null};
+      if (f) await api.updateFamily(f.id, row); else { row.id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); await api.addFamily(row); }
+      X.fam = null; await loadFamily();
+    } catch(e) { msg.textContent = 'That didn’t save. Try again in a moment.'; save.disabled = false; }
+  };
+  setTimeout(function(){ n.focus(); }, 60);
+}
+
 function toggleExport(){ var x = $('j-export'); x.style.display = x.style.display === 'none' ? 'block' : 'none'; }
 async function exportJournalPdf(){
   var from = $('jx-from').value, to = $('jx-to').value, btn = $('jx-go');
@@ -2534,7 +3135,7 @@ function buildCircleHeader(){
   q.appendChild(el('div', 'ch-q-eye', 'This month’s reflection'));
   q.appendChild(el('div', null, S.M.circlePrompt ? '“' + S.M.circlePrompt + '”' : 'What’s alive for you this month?'));
   var ans = el('button', 'text-link ch-q-go', null); ans.appendChild(el('span', null, 'Answer it')); ans.appendChild(el('span', null, '→'));
-  ans.onclick = function(){ C.tag = 'reflection'; C.gid = null; buildComposer(); $('circle-ta').focus(); };
+  ans.onclick = function(){ openComposer('reflection'); };
   q.appendChild(ans);
   buildComposer(); buildFilters();
 }
@@ -2548,13 +3149,19 @@ function buildComposer(){
   });
   $('circle-ta').placeholder = C.tag === 'reflection' ? 'Your reflection on this month’s question…' : (C.tag === 'gathering' ? 'Share the call link or a note about the next gathering…' : 'What’s on your mind? Anything is welcome here…');
 }
+function openComposer(tag){
+  if (tag) { C.tag = tag; C.gid = null; }
+  $('cc-open').style.display = 'none'; $('cc-body').style.display = 'block';
+  buildComposer(); $('circle-ta').focus();
+}
+function closeComposer(){
+  $('cc-body').style.display = 'none'; $('cc-open').style.display = 'flex';
+}
 function buildFilters(){
   var f = $('cf-filter'); f.innerHTML = '';
-  [['all', 'Everything'], ['reflection', 'Monthly reflection'], ['open', 'Open conversation'], ['gathering', 'Gatherings']].forEach(function(o){
-    var b = el('button', 'chip' + (C.filter === o[0] ? ' on' : ''), o[1]);
-    b.onclick = function(){ C.filter = o[0]; buildFilters(); renderGathering(); };
-    f.appendChild(b);
-  });
+  var b = el('button', 'cf-link', C.filter === 'gathering' ? '← Back to the conversation' : '◎ Gatherings →');
+  b.onclick = function(){ C.filter = C.filter === 'gathering' ? 'all' : 'gathering'; buildFilters(); renderGathering(); };
+  f.appendChild(b);
 }
 async function pickCirclePhoto(input){
   var f = input.files && input.files[0]; if (!f) return;
@@ -2566,16 +3173,17 @@ async function pickCirclePhoto(input){
 }
 function circleBusy(){
   var a = document.activeElement;
-  if (a && ($('screen-circle').contains(a) || $('screen-creative').contains(a)) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
-  return [].some.call(document.querySelectorAll('#chat-feed textarea, #cw-wall textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
+  if (a && ($('screen-circle').contains(a) || $('screen-creative').contains(a) || $('screen-shelf').contains(a)) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
+  return [].some.call(document.querySelectorAll('#chat-feed textarea, #cw-wall textarea, #shelf-list textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
 }
 async function loadCircle(quiet){
   if (C.loading || (quiet && circleBusy())) return;
+  C.shelf = C.shelf || [];
   C.loading = true;
   try {
-    var r = await Promise.all([api.feed(), api.blocks().catch(function(){ return []; })]);
-    C.posts = r[0] || []; C.blocked = {}; (r[1] || []).forEach(function(b){ C.blocked[b.blocked] = 1; });
-    var ids = C.posts.map(function(p){ return p.id; });
+    var r = await Promise.all([api.feed(), api.blocks().catch(function(){ return []; }), api.shelf().catch(function(){ return []; })]);
+    C.posts = r[0] || []; C.shelf = r[2] || []; C.blocked = {}; (r[1] || []).forEach(function(b){ C.blocked[b.blocked] = 1; });
+    var ids = C.posts.concat(C.shelf).map(function(p){ return p.id; });
     var rr = ids.length ? await Promise.all([api.replies(ids), api.reactions(ids).catch(function(){ return []; })]) : [[], []];
     C.replies = {}; (rr[0] || []).forEach(function(p){ (C.replies[p.parent_id] = C.replies[p.parent_id] || []).push(p); });
     var replyIds = (rr[0] || []).map(function(p){ return p.id; });
@@ -2597,7 +3205,7 @@ function renderFeed(){
       (C.filter === 'gathering' ? 'Monthly call links and gathering details will be shared here. Tap the heart on a gathering post to let Staci know you plan to join live.' : 'Nothing here yet.')));
   }
   posts.forEach(function(p){ feed.appendChild(postCard(p, uid, false)); });
-  renderWall();
+  renderWall(); renderShelf();
 }
 function heartIcon(filled){
   var s = document.createElement('span'); s.className = 'hrt' + (filled ? ' on' : ''); s.setAttribute('aria-hidden', 'true');
@@ -2703,7 +3311,7 @@ async function sendPost(){
     if (C.gid) row.gathering_id = C.gid;
     await api.addPost(row);
     ta.value = ''; C.photo = null; $('cc-prev').innerHTML = ''; $('cc-file').value = '';
-    if (C.tag !== 'gathering') C.tag = 'open'; C.gid = null; buildComposer();
+    if (C.tag !== 'gathering') C.tag = 'open'; C.gid = null; buildComposer(); closeComposer();
     await loadCircle();
   } catch(e) {
     var f = $('chat-feed'), n = el('div', 'feed-empty', 'That didn’t send. Your words are still in the box. Try again in a moment.');
@@ -2778,13 +3386,82 @@ function gatherCard(){
   if (past || live) {
     var row = el('div', 'g-acts');
     var share = el('button', 'pill-btn outline', 'Share what stayed with you');
-    share.onclick = function(){ C.tag = 'open'; C.gid = g.id; C.filter = 'all'; buildComposer(); buildFilters(); renderGathering(); $('circle-ta').focus(); };
+    share.onclick = function(){ C.filter = 'all'; buildFilters(); renderGathering(); openComposer('open'); C.gid = g.id; };
     row.appendChild(share);
     c.appendChild(row);
   }
   if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? C.rsvpList.length + ' joining: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No one has said yet.'));
   return c;
 }
+/* ── THE SHELF · favourite books, podcasts and music ── */
+var SKINDS = [['book', 'Books'], ['podcast', 'Podcasts'], ['music', 'Music'], ['other', 'Other favourites']];
+var SH = {kind:'book'};
+function buildShelfForm(){
+  var t = $('sh-kinds'); if (!t) return; t.innerHTML = '';
+  SKINDS.forEach(function(k){
+    var b = el('button', 'je-chip' + (SH.kind === k[0] ? ' on' : ''), k[1] === 'Other favourites' ? 'Something else' : k[1].replace(/s$/, '')); b.type = 'button';
+    b.setAttribute('aria-pressed', SH.kind === k[0] ? 'true' : 'false');
+    b.onclick = function(){ SH.kind = k[0]; buildShelfForm(); };
+    t.appendChild(b);
+  });
+  $('sh-title').placeholder = {book:'Title and author', podcast:'Podcast or episode', music:'Song, album or playlist', other:'What is it?'}[SH.kind];
+}
+function toggleShelfForm(open){
+  $('sh-form').style.display = open ? 'block' : 'none'; $('sh-add').style.display = open ? 'none' : 'flex';
+  if (open) { buildShelfForm(); $('sh-title').focus(); }
+}
+function safeLink(u){ u = (u || '').trim(); if (!u) return ''; if (!/^https?:\/\//i.test(u)) u = 'https://' + u; return /^https?:\/\/[^\s]+\.[^\s]+/i.test(u) ? u : ''; }
+async function sendShelf(){
+  var msg = $('sh-msg'); msg.textContent = '';
+  var title = $('sh-title').value.trim(); if (!title) { $('sh-title').focus(); return; }
+  var link = $('sh-link').value.trim(); if (link && !safeLink(link)) { msg.textContent = 'That link doesn’t look quite right. You can leave it empty.'; return; }
+  var btn = $('sh-send'); btn.disabled = true; btn.textContent = 'Adding…';
+  try {
+    await api.addPost({month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: $('sh-why').value.trim() || '', user_id: S.session.user.id,
+      tag: 'shelf', shelf_kind: SH.kind, title: title.slice(0, 160), link: safeLink(link) || null});
+    $('sh-title').value = ''; $('sh-link').value = ''; $('sh-why').value = ''; toggleShelfForm(false);
+    await loadCircle();
+  } catch(e) { msg.textContent = 'That didn’t add. Try again in a moment.'; }
+  finally { btn.disabled = false; btn.textContent = 'Add to the Shelf'; }
+}
+function shelfCard(p, uid){
+  var mine = p.user_id === uid;
+  var c = el('article', 'shelf-item' + (p.hidden ? ' msg-hidden' : ''));
+  var t, link = safeLink(p.link);
+  if (link) { t = el('a', 'sh-t', p.title); t.href = link; t.target = '_blank'; t.rel = 'noopener nofollow'; t.appendChild(el('span', 'sh-ext', ' ↗')); }
+  else t = el('div', 'sh-t', p.title);
+  c.appendChild(t);
+  if (p.body) c.appendChild(el('div', 'sh-why', p.body));
+  var foot = el('div', 'sh-foot');
+  foot.appendChild(el('span', 'sh-by', (p.is_host ? 'Staci’s pick' : 'Shared by ' + (p.name || 'a member')) + ' · ' + new Date(p.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric'}) + (p.hidden ? ' · hidden' : '')));
+  var acts = el('span', 'sh-acts');
+  var rs = C.reacts[p.id] || [], heard = rs.some(function(x){ return x.user_id === uid; });
+  if (!mine) {
+    var h = withHeart(el('button', 'cp-hear' + (heard ? ' on' : '')), heard); h.setAttribute('aria-pressed', heard ? 'true' : 'false'); h.setAttribute('aria-label', heard ? 'Remove heart' : 'Heart this pick');
+    h.onclick = async function(){ h.disabled = true; try { if (heard) await api.unreact(p.id); else await api.react(p.id, (S.me.name || 'A member').slice(0, 40)); await loadCircle(); } catch(e) { h.disabled = false; } };
+    acts.appendChild(h);
+  }
+  var more = el('button', 'cp-btn', '⋯'); more.setAttribute('aria-label', 'More options');
+  more.onclick = function(){ C.menu = C.menu === p.id ? null : p.id; renderShelf(); };
+  acts.appendChild(more); foot.appendChild(acts); c.appendChild(foot);
+  if (mine && rs.length) c.appendChild(withHeart(el('div', 'cp-heard', ' ' + rs.map(function(x){ return x.name || 'a member'; }).join(', ')), true));
+  if (C.menu === p.id) c.appendChild(postMenu(p, mine));
+  return c;
+}
+function renderShelf(){
+  var items = (C.shelf || []).filter(function(p){ return !C.blocked[p.user_id]; });
+  var row = $('shelf-row-n'); if (row) row.textContent = items.length ? items.length + (items.length === 1 ? ' favourite' : ' favourites') : 'Books, podcasts and music we love';
+  var w = $('shelf-list'); if (!w || !S.session) return; w.innerHTML = '';
+  if (!items.length) { w.appendChild(el('div', 'feed-empty', 'The Shelf is empty for now. What’s a book, podcast or song that has stayed with you?')); return; }
+  var uid = S.session.user.id;
+  SKINDS.forEach(function(k){
+    var list = items.filter(function(p){ return (p.shelf_kind || 'other') === k[0]; });
+    if (!list.length) return;
+    w.appendChild(el('div', 'eye sh-eye', k[1]));
+    list.forEach(function(p){ w.appendChild(shelfCard(p, uid)); });
+  });
+}
+
 /* ── CREATIVE FLOW · share your creative work ── */
 async function pickWallPhoto(input){
   var f = input.files && input.files[0]; if (!f) return;
@@ -2841,14 +3518,15 @@ function goScreen(id){
   if (id === 'design') id = 'lbd';
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   var sc = $('screen-' + id); if (sc) sc.classList.add('active');
-  var navFor = {explore:'rhythm', practice:'rhythm', rootrise:'rhythm', lbd:'rhythm', creative:'rhythm', library:'rhythm', studio:'you'}[id] || id;
+  var navFor = {explore:'rhythm', practice:'rhythm', rootrise:'rhythm', lbd:'rhythm', creative:'rhythm', library:'rhythm', studio:'you', shelf:'circle'}[id] || id;
   document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.toggle('active', b.id === 'bn-' + navFor); });
   $('content-area').scrollTop = 0;
   clearInterval(circleTimer);
-  if (id === 'creative') loadCircle();
+  if (id === 'creative' || id === 'shelf') loadCircle();
   if (id === 'circle') { loadCircle(); circleTimer = setInterval(function(){ loadCircle(true); }, 20000); }
   if (id === 'studio') studioOpen();
-  if (id === 'journal') loadJournal();
+  if (id === 'journal') { loadJournal(); if (X.view === 'exhibit') loadExhibit(); }
+  if (id === 'you') loadFamily();
 }
 
 /* ── SHARE CARD ── */
@@ -3022,6 +3700,13 @@ function studioMonthForm(p){
   var fEv = fld(p, 'Events', M.events.map(function(e){ return [e.date, e.name, e.time, e.url].join(' | '); }).join('\n'), {area:true, rows:4, hint:'One per line: date | name | time & place | link (optional)'});
   var fEN = fld(p, 'Note under events', M.eventsNote, {area:true, rows:2}), fEU = fld(p, '“See all events” link', M.eventsUrl, {type:'url'});
 
+  sec(p, 'Little Roots');
+  var LRm = M.littleRoots;
+  var fLT = fld(p, 'Little Roots · title', LRm.title, {placeholder:'Letting the leaves go'});
+  var fLB = fld(p, 'Little Roots · a movement or ritual to share', LRm.body, {area:true, rows:4, hint:'Shows on Root & Rise. Leave a blank line between paragraphs. Add kids’ breath and meditation recordings under Recordings, type “Little Roots”.'});
+  var fLC = fld(p, 'Creative Flow · with your little ones', LRm.create, {area:true, rows:2, hint:'One or two sentences: a kid-sized version of this month’s art-journal page.'});
+  var fLN = fld(p, 'Little Roots · classes note', LRm.note, {area:true, rows:2}), fLU = fld(p, 'Little Roots · classes link', LRm.url, {type:'url'});
+
   sec(p, 'Circle & words');
   var fCQ = fld(p, 'Circle question', M.circlePrompt, {area:true, rows:2});
   var fQ = fld(p, 'Daily quotes', (m.content.quotes || []).join('\n'), {area:true, rows:10, hint:'One per line. They rotate by date and appear on the home screen, arrival screen, and share card.'});
@@ -3036,7 +3721,8 @@ function studioMonthForm(p){
       creative: {title: fCT.value.trim(), sub: fCS.value.trim(), steps: pipes(fCSt.value, 2), pull: fCP.value.trim(), gathering: {eyebrow: fGE.value.trim(), title: fGT.value.trim(), body: fGB.value.trim()}},
       events: pipes(fEv.value, 4).map(function(x){ return {date:x[0], name:x[1], time:x[2], url:x[3]}; }),
       eventsNote: fEN.value.trim(), eventsUrl: fEU.value.trim(), circlePrompt: fCQ.value.trim(), quotes: linesOf(fQ.value),
-      lensTopic: M.lensTopic, letter: fLet.value.trim()
+      lensTopic: M.lensTopic, letter: fLet.value.trim(),
+      littleRoots: {title: fLT.value.trim(), body: fLB.value.trim(), create: fLC.value.trim(), note: fLN.value.trim(), url: fLU.value.trim()}
     };
     await api.saveMonth(m.key, pub.checked, content);
     await reloadContent(); studioFillMonthSelect();
@@ -3142,6 +3828,40 @@ async function studioMembers(p){
     };
     var ca = el('div', 'it-a'); ca.appendChild(cw);
     var dz = el('button', 'pill-btn small-btn outline', mb.design ? 'Design ✓' : 'Design'); ca.appendChild(dz); it.appendChild(ca);
+    var fz = el('button', 'pill-btn small-btn outline', 'Family'); ca.appendChild(fz);
+    fz.onclick = async function(){
+      var open = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-family');
+      if (open) { it.nextSibling.remove(); return; }
+      var box = el('div', 'st-design st-family'); box.appendChild(el('div', 'loading', 'Loading…')); it.parentNode.insertBefore(box, it.nextSibling);
+      var fam;
+      try { fam = await api.familyOf(mb.email); } catch(e) { box.innerHTML = ''; box.appendChild(el('div', 'hint', 'Couldn’t load her family list.')); return; }
+      box.innerHTML = '';
+      if (!fam.length) { box.appendChild(el('div', 'hint', (mb.name || 'She') + ' hasn’t added anyone to her family yet. Once she adds a child or partner under You → My family, they’ll appear here so you can add their full chart.')); return; }
+      box.appendChild(el('div', 'hint', 'Add a full chart to unlock “Where your designs meet” for ' + (mb.name || 'her') + '. Same numbers as a member’s design: 13 in each column, top to bottom.'));
+      fam.forEach(function(fm){
+        var row = el('div', 'item'), rb = el('div', 'it-b');
+        rb.appendChild(el('div', 'it-t', fm.name)); rb.appendChild(el('div', 'it-s', fm.relation + (fm.type ? ' · ' + [fm.type, fm.profile, fm.authority].filter(Boolean).join(' ') : '')));
+        row.appendChild(rb);
+        var db = el('button', 'pill-btn small-btn outline', fm.design ? 'Chart ✓' : 'Add chart'); var ra = el('div', 'it-a'); ra.appendChild(db); row.appendChild(ra); box.appendChild(row);
+        db.onclick = function(){
+          var isOpen = row.nextSibling && row.nextSibling.classList && row.nextSibling.classList.contains('st-fd');
+          if (isOpen) { row.nextSibling.remove(); return; }
+          var ff = el('div', 'st-fd'), ds = fm.design || {};
+          var fp = fld(ff, 'Conscious · personality (black / right column)', ds.p || '', {area:true, rows:2});
+          var fd2 = fld(ff, 'Unconscious · design (red / left column)', ds.d || '', {area:true, rows:2});
+          var fc = fld(ff, 'Incarnation cross', ds.cross || '');
+          var pv = el('div', 'hint'); ff.appendChild(pv);
+          function preview(){ var D = computeDesign({p: fp.value, d: fd2.value}); var np = parseActs(fp.value).length, nd = parseActs(fd2.value).length; if (!D || np !== 13 || nd !== 13) { pv.textContent = 'Needs 13 numbers in each box (now ' + np + ' and ' + nd + ').'; return null; } pv.textContent = 'Reads as: ' + Object.keys(D.gates).length + ' gates · ' + D.channels.length + ' channels.'; return D; }
+          fp.oninput = fd2.oninput = preview; preview();
+          saveRow(ff, 'Save ' + fm.name + '’s chart', async function(){
+            if (!preview()) throw {userMsg:'Check both boxes have 13 numbers.'};
+            var design = {p: fp.value.trim().replace(/\s+/g, ' '), d: fd2.value.trim().replace(/\s+/g, ' '), cross: fc.value.trim()};
+            await api.setFamilyDesign(fm.id, design); fm.design = design; db.textContent = 'Chart ✓';
+          });
+          row.parentNode.insertBefore(ff, row.nextSibling);
+        };
+      });
+    };
     dz.onclick = function(){
       var open = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-design');
       if (open) { it.nextSibling.remove(); return; }

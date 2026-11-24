@@ -728,6 +728,136 @@ button{font-family:'Poppins',sans-serif;}
 .pill-btn.dark .hrt{color:#e9d3c3;}
 
 
+/* ── Journal shelves + THE LITTLE EXHIBIT ── */
+.j-shelf{display:flex;gap:6px;margin:18px 24px 4px;padding:4px;background:#ebe6df;border-radius:40px;}
+.j-shelf button{flex:1;border:none;background:none;border-radius:40px;padding:11px 8px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6a;cursor:pointer;min-height:42px;}
+.j-shelf button.on{background:#fff;color:#3a3d38;box-shadow:0 1px 3px rgba(58,61,56,.12);}
+#x-body{padding:0 0 8px;}
+.x-artists{display:flex;gap:8px;overflow-x:auto;padding:16px 24px 2px;scrollbar-width:none;}
+.x-artists::-webkit-scrollbar{display:none;}
+.x-artist{flex:none;border:1px solid #d4cfc8;background:#fff;border-radius:30px;padding:9px 16px;font-family:'Poppins',sans-serif;font-size:13px;color:#3a3d38;cursor:pointer;min-height:40px;}
+.x-artist.on{background:#3a3d38;border-color:#3a3d38;color:#f6f4f0;}
+.x-artist.add{color:#a1765a;border-style:dashed;}
+.x-hall,.x-welcome{margin:14px 16px 0;background:#efe9e1;border-radius:4px;padding:34px 22px 26px;text-align:center;position:relative;box-shadow:inset 0 -18px 0 #e6dfd5;}
+.x-eye{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#a1765a;}
+.x-name{font-family:'Abril Fatface',serif;font-weight:400;font-size:40px;line-height:1.1;color:#3a3d38;margin:10px 0 0;}
+.x-wt{font-family:'Abril Fatface',serif;font-weight:400;font-size:28px;line-height:1.2;color:#3a3d38;margin:12px 0 0;}
+.x-rule{width:44px;height:1px;background:#a1765a;margin:16px auto;}
+.x-show{font-family:'Poppins',sans-serif;font-weight:300;font-style:italic;font-size:13.5px;color:#6f6f6a;}
+.x-wp{font-family:'Poppins',sans-serif;font-weight:300;font-size:14px;line-height:1.7;color:#55574f;margin:0 auto 20px;max-width:330px;}
+.x-hang{margin-top:18px;}
+.x-empty{margin:22px 28px;font-family:'Poppins',sans-serif;font-weight:300;font-style:italic;font-size:14px;line-height:1.7;color:#6f6f6a;text-align:center;}
+.x-coll{margin:36px 24px 0;font-family:'Abril Fatface',serif;font-size:24px;color:#3a3d38;border-top:1px solid #d4cfc8;padding-top:22px;}
+.x-season{margin:22px 0 0;}
+.x-sh{margin:0 24px 14px;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a1765a;}
+.x-wall{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;padding:6px 24px 4px;align-items:start;}
+.x-piece{display:flex;flex-direction:column;align-items:stretch;gap:10px;border:none;background:none;padding:0;cursor:pointer;text-align:left;}
+.x-frame{display:block;background:#fff;border:5px solid #3a3d38;padding:9px;box-shadow:0 10px 18px -10px rgba(58,61,56,.55),0 2px 4px rgba(58,61,56,.12);}
+.x-frame img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#f1eee9;}
+.x-wall .x-piece:nth-child(3n+2) .x-frame img{aspect-ratio:1/1;}
+.x-wall .x-piece:nth-child(4n+3) .x-frame img{aspect-ratio:5/4;}
+.x-plac{display:block;background:#fff;border:1px solid #e3ded6;padding:8px 10px;align-self:flex-start;max-width:100%;}
+.x-pt{display:block;font-family:'Abril Fatface',serif;font-size:14px;line-height:1.25;color:#3a3d38;}
+.x-pm{display:block;font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a84;margin-top:3px;}
+.x-foot{margin:30px 0 0;padding:0 0 10px;}
+.x-foot .cp-btn{margin:10px 24px 0;}
+.x-private{margin:14px 24px 0;font-family:'Poppins',sans-serif;font-weight:300;font-size:12.5px;line-height:1.6;color:#8a8a84;}
+.x-editor{margin:18px 16px 0;background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:18px;text-align:left;}
+.x-welcome .x-editor{margin:22px 0 0;}
+.x-fld{display:block;margin:0 0 14px;}
+.x-fl{display:block;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6f6f6a;margin:0 0 7px;}
+.x-fld input,.x-fld textarea{width:100%;box-sizing:border-box;border:1px solid #d4cfc8;border-radius:10px;padding:12px 13px;font-family:'Poppins',sans-serif;font-weight:300;font-size:15px;color:#3a3d38;background:#fbfaf8;}
+.x-fld textarea{min-height:84px;resize:vertical;}
+.x-fh{display:block;font-family:'Poppins',sans-serif;font-weight:300;font-size:12px;color:#8a8a84;margin-top:6px;}
+.x-meds{margin:0 0 16px;}
+.x-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1.5px dashed #c9bfb3;border-radius:12px;padding:18px;margin:0 0 16px;cursor:pointer;background:#fbfaf8;min-height:90px;}
+.x-dprev img{display:block;max-width:100%;max-height:240px;border:4px solid #3a3d38;padding:6px;background:#fff;}
+.x-dl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#a1765a;}
+.x-view{position:fixed;inset:0;z-index:600;background:rgba(239,233,225,.98);display:none;overflow-y:auto;padding:56px 22px 40px;}
+.x-view.open{display:block;}
+.xv-box{max-width:520px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+.xv-close{position:fixed;top:14px;right:16px;width:44px;height:44px;border-radius:50%;border:none;background:#3a3d38;color:#f6f4f0;font-size:24px;line-height:1;cursor:pointer;}
+.xv-frame{background:#fff;border:7px solid #3a3d38;padding:16px;box-shadow:0 22px 40px -18px rgba(58,61,56,.6);max-width:100%;}
+.xv-frame img{display:block;max-width:100%;max-height:58vh;}
+.xv-plac{align-self:stretch;background:#fff;border:1px solid #e3ded6;margin-top:28px;padding:16px 18px;}
+.xv-t{font-family:'Abril Fatface',serif;font-size:22px;line-height:1.2;color:#3a3d38;}
+.xv-a{font-family:'Poppins',sans-serif;font-size:14px;color:#3a3d38;margin-top:6px;}
+.xv-m{font-family:'Poppins',sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a8a84;margin-top:4px;}
+.xv-wl{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a1765a;margin-top:16px;padding-top:14px;border-top:1px solid #ece7e0;}
+.xv-w{font-family:'Poppins',sans-serif;font-weight:300;font-style:italic;font-size:15px;line-height:1.65;color:#3a3d38;margin-top:6px;}
+.xv-edit{margin-top:18px;}
+@media print{
+  #print-area .pr-piece{page-break-before:always;break-before:page;page-break-inside:avoid;break-inside:avoid;display:flex;flex-direction:column;align-items:center;padding-top:4mm;}
+  #print-area .pr-frame{border:4mm solid #3a3d38;padding:5mm;background:#fff;max-width:100%;}
+  #print-area .pr-art{display:block;max-width:100%;max-height:88mm;}
+  #print-area .pr-plac{margin-top:7mm;border:0.3mm solid #d4cfc8;padding:5mm 6mm;min-width:70mm;max-width:110mm;}
+  #print-area .pr-pt{font-family:'Abril Fatface',serif;font-size:16pt;}
+  #print-area .pr-pa{font-size:10pt;margin-top:1.5mm;}
+  #print-area .pr-pm{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#8a8a84;margin-top:1mm;}
+  #print-area .pr-pw{font-style:italic;font-size:10pt;line-height:1.55;margin-top:4mm;}
+}
+
+/* Circle · gentler composer, quiet gatherings link, the Shelf */
+.cc-open{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:14px 16px;font-family:'Poppins',sans-serif;font-weight:300;font-size:14.5px;color:#8a8a8a;text-align:left;cursor:pointer;}
+.cc-open .cc-av{width:30px;height:30px;border-radius:50%;background:#eef1ec;color:#758578;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.cc-cancel{background:none;border:none;padding:0 0 0 6px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;color:#758578;text-decoration:underline;cursor:pointer;}
+#cf-filter{display:flex;justify-content:flex-end;padding-top:4px;padding-bottom:4px;overflow:visible;}
+.cf-link{background:none;border:none;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#758578;padding:8px 0;cursor:pointer;}
+.shelf-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:calc(100% - 40px);margin:18px 20px 6px;background:#f3ebe4;border:1px solid #e4d5c9;border-radius:14px;padding:15px 18px;text-align:left;cursor:pointer;color:#a1765a;font-size:16px;}
+.shelf-row .sr-eye{display:block;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a1765a;margin-bottom:3px;}
+.shelf-row .sr-n{display:block;font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;color:#5a5a5a;}
+.cc-open-sh{margin:4px 0 16px;}
+.sh-form{background:#fff;border:1px solid #d4cfc8;border-radius:14px;padding:16px;margin-bottom:18px;}
+.sh-form .je-chips{margin-bottom:12px;}
+.sh-in{display:block;width:100%;min-height:0;height:46px;margin-bottom:10px;}
+.sh-eye{margin:22px 0 10px;color:#a1765a !important;opacity:1 !important;}
+.sh-eye::after{background:#e4d5c9 !important;}
+.shelf-item{background:#fff;border:1px solid #e8e4df;border-left:3px solid #a1765a;border-radius:12px;padding:14px 16px;margin-bottom:10px;}
+.sh-t{display:block;font-family:'Abril Fatface',serif;font-size:17px;line-height:1.3;color:#3a3d38;text-decoration:none;}
+a.sh-t:hover{text-decoration:underline;}
+.sh-ext{font-family:'Poppins',sans-serif;font-size:13px;color:#a1765a;}
+.sh-why{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.6;color:#5a5a5a;margin-top:6px;}
+.sh-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;}
+.sh-by{font-family:'Poppins',sans-serif;font-size:11.5px;color:#8a8a8a;}
+.sh-acts{display:inline-flex;align-items:center;gap:14px;}
+
+/* Little Roots */
+.lr-intro{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.65;color:#5a5a5a;margin:0 0 14px;}
+.lr-h{color:#a1765a !important;}
+.lr-card{background:#f6ece4;border:1px solid #e9d6c8;border-radius:14px;padding:16px 18px;margin-bottom:6px;}
+.lr-card .note-line{margin-top:10px;}
+.lr-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.lr-acts .pill-btn{background:var(--terra);}
+.lr-acts .pill-btn.outline{background:transparent;color:var(--terra);border:1px solid var(--terra);}
+.cf-little{margin-top:16px;background:#f6ece4;border-left:3px solid #a1765a;border-radius:4px 12px 12px 4px;padding:13px 16px;}
+.cl-eye{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#a1765a;margin-bottom:5px;}
+.cl-body{font-family:'Poppins',sans-serif;font-weight:300;font-size:14px;line-height:1.6;color:#3a3d38;}
+.lr-card p.cc-body{margin:6px 0 10px;}
+
+/* My family */
+.fam-wrap{padding:0 24px;}
+.fam-intro,.fam-note{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.65;color:#5a5a5a;margin:0 0 14px;}
+.fam-note{font-size:12px;color:#8a8a84;margin-top:12px;}
+.fam-wrap .dd{margin-left:0;margin-right:0;}
+.fam-add{margin-top:6px;}
+.fam-editor{margin:10px 0;}
+.fam-h{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#758578;margin:4px 0 8px;}
+.fam-sel{width:100%;border:1px solid #d4cfc8;border-radius:10px;padding:11px 12px;font-family:'Poppins',sans-serif;font-size:15px;background:#fbfaf8;color:#3a3d38;}
+.fam-rel{margin:0 0 14px;}
+.meet{margin-top:18px;padding-top:14px;border-top:1px solid #ece7e0;}
+.meet-g{border-top:1px solid #ece7e0;}
+.meet-g:last-of-type{border-bottom:1px solid #ece7e0;}
+.meet-s{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;cursor:pointer;list-style:none;}
+.meet-s::-webkit-details-marker{display:none;}
+.meet-t{font-family:'Abril Fatface',serif;font-size:16px;color:#3a3d38;}
+.meet-n{flex:none;min-width:24px;height:24px;border-radius:12px;background:#eef1ec;color:#758578;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;}
+.meet-g[open] .meet-n{background:#758578;color:#fff;}
+.meet-b{padding:0 0 10px;}
+.meet-i{font-size:13px !important;color:#6f6f6a !important;margin:0 0 6px !important;}
+.dd .meet-s{display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:space-between !important;text-align:left !important;padding:12px 0 !important;}
+.dd .meet-s::after,.dd .meet-s::before{content:none !important;display:none !important;}
+.dd .meet-s .meet-t{flex:1;text-align:left;}
+
 .demo-lock{display:inline-flex;align-items:center;gap:7px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#758578;border:1px solid #d4cfc8;border-radius:30px;padding:9px 16px;background:#f6f4f0;white-space:nowrap;}
 .demo-lock .dl-i{color:#a1765a;font-size:12px;letter-spacing:0;}
 .demo-lockcard{margin-top:18px;border:1px dashed #c9c2b8;border-radius:14px;padding:16px 18px;background:rgba(246,244,240,.6);}
@@ -735,6 +865,8 @@ button{font-family:'Poppins',sans-serif;}
 .dlc-body{font-family:'Poppins',sans-serif;font-weight:300;font-size:13.5px;line-height:1.65;color:#5a5a5a;font-style:normal;}
 #circle-ta:disabled,#cw-ta:disabled{opacity:.6;}
 #circle-send:disabled,#cw-send:disabled{opacity:.45;cursor:default;}
+
+.demo-off{opacity:.65;cursor:default !important;}
 </style>
 </head>
 <body>
@@ -854,6 +986,7 @@ button{font-family:'Poppins',sans-serif;}
 
 <!-- APP -->
 <div id="print-area" aria-hidden="true"></div>
+<div id="x-view" class="x-view"></div>
 <div id="app">
   <div class="topbar">
     <div class="topbar-l">
@@ -993,9 +1126,11 @@ button{font-family:'Poppins',sans-serif;}
       <div class="ptabs" role="tablist" aria-label="Practice type">
         <button class="ptab active" role="tab" data-tab="pt-breathe">༄ Breathe</button>
         <button class="ptab" role="tab" data-tab="pt-meditate">𑁍 Meditate</button>
+        <button class="ptab" role="tab" data-tab="pt-little">❀ Little Roots</button>
       </div>
       <div class="psec active" id="pt-breathe"></div>
       <div class="psec" id="pt-meditate"></div>
+      <div class="psec" id="pt-little"></div>
       <div class="spacer"></div>
     </div>
 
@@ -1051,7 +1186,9 @@ button{font-family:'Poppins',sans-serif;}
         <div class="eye">This month's art-journal page</div>
         <div id="cf-steps"></div>
         <div class="pull" id="cf-pull"></div>
+        <div class="cf-little" id="cf-little" style="display:none"></div>
         <button class="text-link" style="margin:16px 0 0;width:100%" onclick="journalNew({kind:'creative', prompt: document.getElementById('cf-title').textContent})"><span>✷ Keep your page in your Journal</span><span aria-hidden="true">→</span></button>
+        <button class="text-link" style="margin:0;width:100%" onclick="openLittleExhibit()"><span>Hang your little one’s art in The Little Exhibit</span><span aria-hidden="true">→</span></button>
       </div>
       <div class="pad" id="cw-wrap">
         <div class="eye">✷ Share your creative work</div>
@@ -1086,6 +1223,30 @@ button{font-family:'Poppins',sans-serif;}
       <div class="spacer"></div>
     </div>
 
+    <!-- THE SHELF -->
+    <div class="screen" id="screen-shelf">
+      <section class="w-hero" style="--wc:#a1765a">
+        <span class="w-wm" aria-hidden="true">✦</span>
+        <button class="w-back" onclick="goScreen('circle')">← Circle</button>
+        <div class="w-eye">✦ The Shelf</div>
+        <h1 class="w-title">What’s stayed with us.</h1>
+        <p class="w-sub">Books, podcasts and music the Circle loves. Add one whenever something moves you.</p>
+      </section>
+      <div class="pad">
+        <button class="pill-btn outline cc-open-sh" id="sh-add" onclick="toggleShelfForm(true)">＋ Add a favourite</button>
+        <div class="sh-form" id="sh-form" style="display:none">
+          <div class="je-chips" id="sh-kinds" role="group" aria-label="What are you adding?"></div>
+          <input class="compose-ta sh-in" id="sh-title" maxlength="160" aria-label="Title" placeholder="Title and author">
+          <input class="compose-ta sh-in" id="sh-link" maxlength="500" aria-label="Link (optional)" placeholder="Link (optional)" inputmode="url">
+          <textarea class="compose-ta" id="sh-why" maxlength="400" aria-label="Why it mattered (optional)" placeholder="A line on why it stayed with you (optional)"></textarea>
+          <div class="compose-foot"><button class="pill-btn outline" onclick="toggleShelfForm(false)">Cancel</button><button class="pill-btn dark" id="sh-send" onclick="sendShelf()">Add to the Shelf</button></div>
+          <div class="je-msg" id="sh-msg" role="status"></div>
+        </div>
+        <div id="shelf-list"></div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
     <!-- CIRCLE -->
     <div class="screen" id="screen-circle">
       <div class="circle-header">
@@ -1095,6 +1256,8 @@ button{font-family:'Poppins',sans-serif;}
       </div>
       <div id="gather-wrap"></div>
       <div class="circle-compose">
+        <button class="cc-open" id="cc-open" onclick="openComposer()"><span class="cc-av" aria-hidden="true">＋</span><span>Share something with the Circle…</span></button>
+        <div id="cc-body" style="display:none">
         <div class="je-chips cc-tags" id="cc-tags" role="group" aria-label="What are you sharing?"></div>
         <textarea class="compose-ta" id="circle-ta" maxlength="1500" aria-label="Share with the Circle" placeholder="Share what's true for you right now…"></textarea>
         <div class="je-prev" id="cc-prev"></div>
@@ -1102,10 +1265,12 @@ button{font-family:'Poppins',sans-serif;}
           <label class="je-photo-btn">Add a photo<input type="file" accept="image/*" id="cc-file" class="sr-only" onchange="pickCirclePhoto(this)"></label>
           <button class="pill-btn dark" id="circle-send" onclick="sendPost()">Share</button>
         </div>
-        <div class="compose-note">Only members see the Circle. Your Journal is never shared here.</div>
+        <div class="compose-note">Only members see the Circle. Your Journal is never shared here. <button class="cc-cancel" onclick="closeComposer()">Close</button></div>
+        </div>
       </div>
       <div class="chips" id="cf-filter" aria-label="Show"></div>
       <div class="chat-feed" id="chat-feed"><div class="feed-empty">Gathering the Circle…</div></div>
+      <button class="shelf-row" onclick="goScreen('shelf')"><span><span class="sr-eye">✦ The Shelf</span><span class="sr-n" id="shelf-row-n">Books, podcasts and music we love</span></span><span aria-hidden="true">→</span></button>
       <details class="care">
         <summary>How we hold this space</summary>
         <ul>
@@ -1128,6 +1293,11 @@ button{font-family:'Poppins',sans-serif;}
         <h1 class="w-title">A Moment to Remember.</h1>
         <p class="w-sub">Reflections, photos and the moments you want to keep. No streaks, nothing to keep up with.</p>
       </section>
+      <div class="j-shelf" id="j-shelf" role="tablist" aria-label="Journal shelves">
+        <button class="on" data-v="journal" role="tab" aria-selected="true" onclick="journalShelf('journal')">My Journal</button>
+        <button data-v="exhibit" role="tab" aria-selected="false" onclick="journalShelf('exhibit')">The Little Exhibit</button>
+      </div>
+      <div id="j-mine">
       <div class="j-new" id="j-new"><button class="pill-btn dark" onclick="journalNew()">+ A moment to remember</button></div>
       <div class="j-editor" id="j-editor" style="display:none"></div>
       <div id="j-list"></div>
@@ -1146,6 +1316,8 @@ button{font-family:'Poppins',sans-serif;}
         </div>
       </div>
       <div class="spacer"></div>
+      </div>
+      <div id="x-wrap" style="display:none"><div id="x-body"></div><div class="spacer"></div></div>
     </div>
 
     <!-- YOU -->
@@ -1178,6 +1350,8 @@ button{font-family:'Poppins',sans-serif;}
         <div class="sec-lbl"><span>✦ Your full design</span></div>
         <div class="dd-list" id="fd-list"></div>
       </div>
+      <div class="sec-lbl"><span>✦ My family</span></div>
+      <div id="fam-wrap" class="fam-wrap"></div>
       <p class="dd-foot">Human Design is a lens, not a rulebook. Keep what fits; leave what doesn't.</p>
       <button class="text-link" style="margin-top:14px" onclick="openWorlds()"><span>◎ The five worlds</span><span aria-hidden="true">→</span></button>
       <div class="pad">
@@ -1256,7 +1430,7 @@ button{font-family:'Poppins',sans-serif;}
 /* Flourish & Flow · website preview data. Sample content only. Never connects to the real app or database. */
 window.supabase={createClient:function(){return {}}};
 (function(){
-var SEED={"months": [{"key": "2026-06", "published": true, "content": {"name": "June", "theme": "The Bloom", "accent": "#c4956a"}}, {"key": "2026-07", "published": true, "content": {"name": "July", "theme": "The Expansion", "accent": "#d4a843"}}, {"key": "2026-08", "published": true, "content": {"name": "August", "theme": "The Abundance", "accent": "#c87941"}}, {"key": "2026-09", "published": true, "content": {"name": "September", "theme": "The Shift", "accent": "#b07d5a"}}, {"key": "2026-10", "published": true, "content": {"name": "October", "theme": "The Harvest", "accent": "#996b4a", "intention": "What grew this year — including what surprised you.", "rhythmLine": "A softer way through the month: noticing what actually grew, and letting it count.", "breath": {"name": "Alternate Nostril Breath", "line": "Imagine one side holding what you’ve been tending, and the other holding permission to rest.", "counts": [["4", "Inhale left"], ["2", "Pause"], ["4", "Exhale right"]]}, "moon": [{"type": "New Moon", "date": "Saturday, October 10", "note": "Even in harvest season, something small can be seeded. What would you like to plant before the year closes?"}, {"type": "Full Moon · Hunter’s Moon", "date": "Sunday, October 25 · late evening", "note": "Look at what’s ripe. What are you ready to gather in, and what are you ready to set down — with thanks?"}], "mudra": {"name": "Prithvi Mudra", "body": "Touch the tip of your ring finger to the tip of your thumb, other fingers soft. Rest your hands on your knees. Hold it through the meditation, or anytime you want to feel a little more rooted."}, "creative": {"title": "A little evidence that October was here.", "sub": "Grab your art journal. Fifteen quiet minutes is plenty.", "steps": [["Gather", "A few leaves in full color, grasses, seed pods — small pieces of the season that catch your eye. Things that are ripe, or already beginning to let go."], ["Make", "One page from what you gathered. Arrange, tape, layer, paint, or write around the pieces. Let it become whatever it becomes."], ["Notice", "What caught your eye, and what did you walk past?"], ["Leave a few words", "One sentence about what October feels like right now."]], "pull": "You don’t have to make it beautiful. Just keep a little evidence that October was here.", "gathering": {"eyebrow": "Next seasonal gathering", "title": "Winter Solstice", "body": "Our seasonal Creative Flow gatherings follow the solstices and equinoxes. Details for December are coming soon — members are always welcome."}}, "events": [{"date": "Oct 17", "name": "Farmers Market Yoga", "time": "Saturday · 9:30–10:30am · free", "url": ""}], "eventsNote": "Root & Rise lives in person — in fields, barns, and gathering spaces. More fall classes and gatherings are posted on the events page.", "eventsUrl": "https://www.threebarnacres.org/calendar", "circlePrompt": "What grew in you this year that you didn’t plan for?", "quotes": ["The harvest is rarely exactly what you planted. That’s the gift.", "Not everything that grew this year was on the plan. Let it count anyway.", "You don’t have to make it beautiful. Just keep a little evidence that October was here.", "Let yourself be moved by the beauty of things ending well.", "What grew in you this year might be quieter than what you have to show for it.", "Gather what’s ripe. Leave what isn’t ready yet.", "You were made to flourish — in your own rhythm, by your own design.", "Even in harvest season, something new can be seeded.", "Satisfaction doesn’t shout. It settles.", "The trees aren’t losing anything. They’re making room.", "Count the unexpected. Especially the unexpected.", "Not to become someone new. To remember who you already are beneath the noise.", "Rest is part of the harvest, not a reward for finishing it.", "There is more room than you think.", "Look at what actually grew. It deserves your kindness, even the parts you didn’t choose.", "Come as you are. That is the whole invitation."], "lensTopic": "Your Signature"}}, {"key": "2026-11", "published": true, "content": {"intention": "What are you ready to set down, with thanks?", "rhythmLine": "A quieter invitation this month: loosening your grip, making room for what matters, and allowing yourself to set down what no longer needs to be carried.", "moon": [{"type": "New Moon", "date": "Monday, November 9", "note": "A dark, quiet sky. Before you plant anything new, what is ready to be cleared away?"}, {"type": "Full Moon · Beaver Moon", "date": "Tuesday, November 24 · morning", "note": "The last full moon before winter settles in. What are you ready to release, with thanks, so you can rest?"}], "mudra": {"name": "Apana Mudra", "body": "Touch the tips of your middle and ring fingers to the tip of your thumb, and let your index and little fingers stay long and soft. Rest your hands on your thighs, palms up. Apana is linked with the body’s downward, releasing energy, its natural way of letting go. Hold it through your breath practice, or anytime you want to soften and release."}, "creative": {"title": "The shape of letting go.", "sub": "Your seasonal page for November. A short walk if you can, then fifteen quiet minutes.", "steps": [["Notice", "Step outside, even briefly. What has the season let go of? Bare branches, fallen leaves, the last seed heads, the earlier dark."], ["Gather", "One or two things that have fallen or finished: a leaf, a pressed stem, a feather, or a photo of an empty branch."], ["Make", "Give them a page. Press, tape, trace or sketch the bare shapes. Leave more white space than usual and let the page breathe."], ["Reflect", "Beside it, write what you’re setting down this month, and how November feels in your body."]], "pull": "Leave some of the page empty. That’s part of it.", "gathering": {"eyebrow": "Next seasonal gathering", "title": "Winter Solstice", "body": "Our seasonal Creative Flow gatherings follow the solstices and equinoxes. Details for December are coming soon, and members are always welcome."}}, "circlePrompt": "What are you ready to set down this season, and what are you keeping?", "eventsUrl": "https://www.stacilamp.com/root-rise", "eventsNote": "Root & Rise lives in person, in fields, barns and gathering spaces. More classes and gatherings are posted on the events page.", "name": "November", "theme": "The Release", "accent": "#7a7060", "lensTopic": "Conditioning", "letter": "October invited us to notice what we've gathered. The growth, the lessons, the unexpected beauty along the way.\n\nNow, as the days grow shorter and the trees begin to stand bare, November invites us into something different.\n\nRelease.\n\nAnd maybe release doesn't always mean walking away from something. Sometimes it's letting go of an expectation, an old story, or the idea that we have to carry everything we've collected along the way.\n\nThere can be gratitude in letting go, too.\n\nWe can appreciate what something has taught us without needing to carry it into the next season.\n\nThis month, I invite you to notice what feels heavy, what still feels meaningful, and where a little more space might be welcome.\n\nNot everything needs to be released. And nothing needs to happen all at once.\n\nWhat are you ready to set down, with thanks?", "breath": {"name": "Releasing Breath", "line": "Breathe in gently for four, then allow your exhale to be a little longer. With each breath, notice what it might feel like to soften your grip, even just a little.", "counts": [["4", "Inhale"], ["12", "Exhale"]]}, "philosophy": {"title": "Aparigraha · non-grasping", "body": "Aparigraha is one of the yamas, the gentle guidelines for living that open the path of yoga in the Yoga Sutras. It’s often translated as non-grasping: taking only what we need, and holding even that lightly.\n\nIt isn’t about giving everything away or pretending we don’t care. It’s about loosening the grip. On things, on plans, on the version of ourselves we thought we had to be, on how we hoped this year would go. I’m practicing this one right alongside you.\n\nNovember shows us how. The trees aren’t losing anything. They’re making room. This month, notice where you’re holding on a little too tightly, in your hands, your jaw, your days, and come back to the exhale. Open palms. Longer breath out. Let it be lighter.\n\nOn the mat: at the end of practice, rest your hands palms-up on your knees and say quietly to yourself, “I can hold this lightly.”"}, "quotes": ["You don’t have to carry everything into winter.", "Letting go isn’t losing. It’s making room.", "The trees don’t apologize for what they let fall.", "Rest isn’t the opposite of growth. It’s part of it.", "What would it feel like to put this down, just for today?", "Not everything that ended was a failure. Some things were simply finished.", "Let your exhale be longer than your inhale. Your body knows how to release.", "You can love something and still let it go.", "Softening is a kind of strength.", "Leave a little space empty. Something good needs somewhere to land.", "The ground holds what falls. You can be held, too.", "You were never meant to hold it all at once.", "Release the version of you that had to prove something.", "Bare branches aren’t empty. They’re resting.", "Some days the most honest thing you can do is less.", "Let it be lighter than you thought it had to be.", "Gratitude and release can live in the same breath.", "What you set down now, you won’t carry into the new year.", "Not to become someone new. To remember who you already are beneath the noise.", "There’s no right way to let go. Only your way, in your time.", "The quiet season has its own kind of beauty.", "You can close a chapter without rereading it.", "Unclench your jaw. Drop your shoulders. Begin there.", "What no longer fits can be thanked and returned.", "Letting go is rarely one moment. It’s a practice you come back to.", "Make room for stillness. It has something to tell you.", "You’re allowed to change your mind, your pace, your plans.", "The leaves don’t hold on to prove they were here.", "Come as you are. Leave what you’re ready to leave.", "Lighter isn’t less. Lighter is free."], "events": []}}], "recs": [{"id": 1, "month_key": "2026-11", "kind": "breath", "title": "Releasing Breath", "description": "Breathe in gently for four, then let your exhale grow a little longer.", "minutes": "8 min", "url": null, "sort": 0, "published": true}, {"id": 2, "month_key": "2026-11", "kind": "meditation", "title": "The Release Meditation", "description": "A quiet practice for noticing what you’re holding, and setting a little of it down.", "minutes": "12 min", "url": null, "sort": 1, "published": true}, {"id": 3, "month_key": "2026-11", "kind": "lbd", "title": "Living by Design · Conditioning", "description": "What you’ve picked up along the way, and what was never yours to carry.", "minutes": "~20 min", "url": null, "sort": 2, "published": true}, {"id": 4, "month_key": "2026-10", "kind": "breath", "title": "Alternate Nostril Breath", "description": "Imagine one side holding what you’ve been tending, and the other holding permission to rest.", "minutes": "8 min", "url": null, "sort": 0, "published": true}, {"id": 5, "month_key": "2026-10", "kind": "meditation", "title": "The Harvest Meditation", "description": "Fields, trees, and roots. A quiet look at what this year has grown in you.", "minutes": "14 min", "url": null, "sort": 1, "published": true}, {"id": 6, "month_key": "2026-10", "kind": "lbd", "title": "Living by Design · Your Incarnation Cross", "description": "What pattern does your life keep repeating, in different rooms, with different people?", "minutes": "~20 min", "url": null, "sort": 2, "published": true}, {"id": 7, "month_key": "2026-09", "kind": "breath", "title": "Humming Breath", "description": "The Shift", "minutes": "5 min", "url": null, "sort": 0, "published": true}, {"id": 8, "month_key": "2026-09", "kind": "meditation", "title": "The Shift Meditation", "description": null, "minutes": "7 min", "url": null, "sort": 1, "published": true}, {"id": 9, "month_key": "2026-08", "kind": "breath", "title": "Gratitude Breath", "description": "The Abundance · 6-2-6", "minutes": "8 min", "url": null, "sort": 0, "published": true}, {"id": 10, "month_key": "2026-08", "kind": "meditation", "title": "The Abundance Meditation", "description": null, "minutes": "9 min", "url": null, "sort": 1, "published": true}, {"id": 11, "month_key": "2026-07", "kind": "breath", "title": "Wide-Body Breath", "description": "The Expansion · 6-3-6", "minutes": "7 min", "url": null, "sort": 0, "published": true}, {"id": 12, "month_key": "2026-07", "kind": "meditation", "title": "The Expansion Meditation", "description": null, "minutes": "9 min", "url": null, "sort": 1, "published": true}], "lens": [{"month_key": "2026-10", "type": "Generator", "title": "The quiet yes after a full day", "body": "You know the feeling at the end of a day when you’re tired in a good way — used up by things that actually mattered to you. Nothing to prove, nothing nagging. In Human Design, that feeling has a name for Generators: satisfaction. It’s your signature, the sign your energy went toward what lit you up.\n\nIts opposite is frustration — that stuck, grinding feeling of pushing on something your body never said yes to. Frustration isn’t failure. It’s information. It usually means something got started from “should” instead of from a real gut response.\n\nHarvest season is a good time to look back honestly. Where did satisfaction actually show up this year? Not where it was supposed to — where it did.", "invitation": "Tonight, name one thing from today that left you satisfied, even a small one. Then one thing that left you frustrated, without judging it. Just notice which way your body leaned.", "reflection": "What am I still doing out of habit that my gut stopped saying yes to?"}, {"month_key": "2026-10", "type": "Manifesting Generator", "title": "Satisfaction, even when you skip steps", "body": "There’s a particular kind of tired that feels good — you moved fast, followed what was alive, maybe changed direction twice, and still landed somewhere that felt right. For Manifesting Generators, that feeling is satisfaction. It’s your signature, the felt sign your energy went where it wanted to go.\n\nWhen it doesn’t, it tends to show up as frustration — and sometimes a flash of anger when you’ve been slowed down, second-guessed, or pushed to finish something your body already knew was done. Neither is a flaw. Both are a compass.\n\nYou’re built to try things, drop what isn’t yours, and keep what is. As you look at what grew this year, let the abandoned things count too. Some of them were how you found the path.", "invitation": "Pick one thing you started this year and let go of. Instead of calling it unfinished, ask what it taught you about what you actually want.", "reflection": "Where did I feel most like myself this year — and how fast was I moving when I did?"}, {"month_key": "2026-10", "type": "Projector", "title": "Being truly seen is the harvest", "body": "Think of a time someone genuinely asked for your perspective — and then really took it in. The warmth of that. Recognized, not tolerated. For Projectors, that feeling is called success. It isn’t about achievement on paper. It’s the felt sense of your guidance landing with someone who wanted it.\n\nThe not-self theme is bitterness: the tired, sour feeling that comes from giving and giving where you weren’t asked, or weren’t seen. If you’ve felt that this year, it doesn’t mean you’re bitter by nature. It means your gifts were spent in rooms that hadn’t invited them.\n\nHarvest season is a lovely time to notice who actually recognized you this year. Those are your fields. Tend them.", "invitation": "Write down the names of two or three people who truly saw you this year. If it feels right, let one of them know.", "reflection": "Where am I still offering what no one asked for — and what would happen if I rested there instead?"}, {"month_key": "2026-10", "type": "Manifestor", "title": "Peace is what’s left after you move", "body": "There’s a stillness that comes after you’ve acted on an urge — you said the thing, made the move, started it — and then the room goes quiet and you can finally breathe. For Manifestors, that stillness is called peace. It’s your signature, the sign you followed your own impulse and let people know along the way.\n\nThe not-self theme is anger: the heat that rises when you feel controlled, interrupted, or made to ask permission for something that was always yours to start. Anger isn’t wrong. It’s a signal that something tried to contain you.\n\nAs you look back over this year, notice the moments of peace. They often came right after you trusted yourself enough to begin.", "invitation": "Before you start something this week, try informing the people it touches — not asking, just letting them know. Then notice what it does to the resistance around you, and inside you.", "reflection": "Where am I still asking permission for something that’s mine to start?"}, {"month_key": "2026-10", "type": "Reflector", "title": "Let yourself be surprised", "body": "Remember a moment this year when something delighted you out of nowhere — a conversation, a place, a version of yourself you didn’t expect. That lift of wonder. For Reflectors, that feeling is surprise. It’s your signature, the sign you’re in the right place, with the right people, taking your time.\n\nThe not-self theme is disappointment: the flat, heavy feeling of being somewhere that doesn’t reflect anything good back to you. If you’ve felt that, it’s rarely about you. It’s usually about the room.\n\nYou’re built to take in the world and mirror it back, which makes your surroundings everything. This month, notice which places and people left you surprised, and which left you disappointed. That’s your map.", "invitation": "Spend a little time this week somewhere that has delighted you before. Don’t plan what should happen there. Just notice how you feel.", "reflection": "Which room in my life lets me feel most like myself?"}, {"month_key": "2026-10", "type": "_none", "title": "The feeling that tells you you’re on track", "body": "Every design has a feeling that shows up when life is fitting you well — a quiet signal that you’re living in your own rhythm. In Human Design it’s called your signature: satisfaction, success, peace, or surprise, depending on your Type.\n\nThere’s an opposite signal too, called the not-self theme — frustration, bitterness, anger, or disappointment. Not a verdict. Just a nudge that something isn’t yours.\n\nAdd your Type from the You tab and this page will speak to your design specifically.", "invitation": "This week, notice the moments you feel quietly right. Write one down.", "reflection": "When did I last feel like my life fit me?"}, {"month_key": "2026-11", "type": "Generator", "title": "Was that yes really yours?", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor Generators, the deepest conditioning is often the pressure to start things: to push, plan and initiate instead of waiting for something to respond to. It can look like a full calendar of yeses your gut never actually gave.\n\nNovember is a good month to loosen your grip on those. Release doesn’t have to be dramatic. Sometimes it’s simply noticing which commitments feel heavy, and letting your body show you which ones were never a real yes.", "invitation": "This week, before you agree to anything, pause long enough to hear your gut: an “uh-huh” or an “unh-unh.” If it isn’t clear, it’s okay to say, “Let me get back to you.”", "reflection": "Which of my yeses this year came from my body, and which came from “should”?"}, {"month_key": "2026-11", "type": "Manifesting Generator", "title": "You don’t have to finish everything", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor Manifesting Generators, conditioning often sounds like: slow down, pick one thing, finish what you started. You may have learned to apologize for your speed, your pivots, the steps you skip. Your energy may naturally move quickly, explore different directions, and recognize when something no longer feels aligned.\n\nRelease, for you, might mean letting go of the guilt rather than the momentum. Let some unfinished things be finished, simply because your energy has moved on.", "invitation": "Make a short list of things you feel you’re “supposed” to finish. Read each one out loud and notice your gut’s response. Give yourself permission to release at least one.", "reflection": "What would I stop carrying if I trusted that my pivots are part of the path?"}, {"month_key": "2026-11", "type": "Projector", "title": "You were never meant to keep up", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor Projectors, one of the heaviest kinds of conditioning is the pressure to work like everyone else: to match the stamina of the people around you and prove your worth through effort. With an open Sacral, you can borrow that energy for a while, and then crash.\n\nRest isn’t a reward you earn. It’s part of how your design works. This month, release the idea that you have to keep up. Your perspective and the way you see the world hold value beyond how much you accomplish.", "invitation": "Choose one evening this week to stop before you’re tired. Lie down a little before bed and let the borrowed energy drain away.", "reflection": "Where am I still trying to prove myself through effort?"}, {"month_key": "2026-11", "type": "Manifestor", "title": "Releasing the need for permission", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor many Manifestors, conditioning came early: be agreeable, ask first, don’t make waves. Over time that can teach you to make yourself smaller, or to wait for approval that never needed to be given.\n\nYou’re here to initiate. Informing the people around you isn’t asking permission. It’s a way of moving with less resistance. This month, notice where you’ve been holding back an impulse to keep the peace, and what it might feel like to let that old pattern go.", "invitation": "Pick one thing you’ve been waiting on permission for. Let the people it affects know you’re beginning, and then begin.", "reflection": "Whose approval am I still waiting for, and what if I released the wait?"}, {"month_key": "2026-11", "type": "Reflector", "title": "What’s yours, and what’s the room’s?", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, Reflectors have all nine centers undefined, making their experience especially sensitive to the people and environments around them. This can offer a unique perspective on the world.\n\nIt also means it can be hard to tell what’s yours and what you picked up today from someone else. November is a lovely month to practice the gentle sorting: noticing how you feel in different places and with different people, and releasing what isn’t you.\n\nTime alone helps. So does a little space between you and others before big decisions.", "invitation": "At the end of each day this week, spend a few minutes alone somewhere quiet. Ask yourself: what did I take on today that I can set down?", "reflection": "When I’m alone and rested, who am I?"}, {"month_key": "2026-11", "type": "_none", "title": "Not everything you carry is yours", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nThe open, white places in a chart are where we take in the world most deeply. They’re also where we hold on to things that were never ours: other people’s moods, pressures and expectations.\n\nNovember is about release. Not forcing anything, just noticing what you’ve picked up along the way and choosing what to set down.", "invitation": "Each evening this week, ask yourself: what did I carry today that wasn’t mine? Write one thing down, then let it go with a long exhale.", "reflection": "What would feel lighter if I stopped carrying it for someone else?"}], "members": [{"email": "preview@flourishandflow.app", "name": "Friend", "type": "Manifesting Generator", "profile": "1/3", "authority": "Sacral", "role": "member", "design": {"p": "38.1 39.1 34.3 20.3 33.2 58.4 58.2 58.5 44.3 30.3 61.1 54.6 14.3", "d": "48.3 21.3 34.5 20.5 8.3 28.4 64.6 28.4 32.2 49.6 54.4 54.4 43.6", "cross": "Right Angle Cross of Tension 4 (38/39 | 48/21)"}, "created_at": "2026-10-01T10:00:00Z", "chart_path": "preview/chart.jpg"}]};
+var SEED={"months": [{"key": "2026-06", "published": true, "content": {"name": "June", "theme": "The Bloom", "accent": "#c4956a"}}, {"key": "2026-07", "published": true, "content": {"name": "July", "theme": "The Expansion", "accent": "#d4a843"}}, {"key": "2026-08", "published": true, "content": {"name": "August", "theme": "The Abundance", "accent": "#c87941"}}, {"key": "2026-09", "published": true, "content": {"name": "September", "theme": "The Shift", "accent": "#b07d5a"}}, {"key": "2026-10", "published": true, "content": {"name": "October", "theme": "The Harvest", "accent": "#996b4a", "intention": "What grew this year — including what surprised you.", "rhythmLine": "A softer way through the month: noticing what actually grew, and letting it count.", "breath": {"name": "Alternate Nostril Breath", "line": "Imagine one side holding what you’ve been tending, and the other holding permission to rest.", "counts": [["4", "Inhale left"], ["2", "Pause"], ["4", "Exhale right"]]}, "moon": [{"type": "New Moon", "date": "Saturday, October 10", "note": "Even in harvest season, something small can be seeded. What would you like to plant before the year closes?"}, {"type": "Full Moon · Hunter’s Moon", "date": "Sunday, October 25 · late evening", "note": "Look at what’s ripe. What are you ready to gather in, and what are you ready to set down — with thanks?"}], "mudra": {"name": "Prithvi Mudra", "body": "Touch the tip of your ring finger to the tip of your thumb, other fingers soft. Rest your hands on your knees. Hold it through the meditation, or anytime you want to feel a little more rooted."}, "creative": {"title": "A little evidence that October was here.", "sub": "Grab your art journal. Fifteen quiet minutes is plenty.", "steps": [["Gather", "A few leaves in full color, grasses, seed pods — small pieces of the season that catch your eye. Things that are ripe, or already beginning to let go."], ["Make", "One page from what you gathered. Arrange, tape, layer, paint, or write around the pieces. Let it become whatever it becomes."], ["Notice", "What caught your eye, and what did you walk past?"], ["Leave a few words", "One sentence about what October feels like right now."]], "pull": "You don’t have to make it beautiful. Just keep a little evidence that October was here.", "gathering": {"eyebrow": "Next seasonal gathering", "title": "Winter Solstice", "body": "Our seasonal Creative Flow gatherings follow the solstices and equinoxes. Details for December are coming soon — members are always welcome."}}, "events": [{"date": "Oct 17", "name": "Farmers Market Yoga", "time": "Saturday · 9:30–10:30am · free", "url": ""}], "eventsNote": "Root & Rise lives in person — in fields, barns, and gathering spaces. More fall classes and gatherings are posted on the events page.", "eventsUrl": "https://www.threebarnacres.org/calendar", "circlePrompt": "What grew in you this year that you didn’t plan for?", "quotes": ["The harvest is rarely exactly what you planted. That’s the gift.", "Not everything that grew this year was on the plan. Let it count anyway.", "You don’t have to make it beautiful. Just keep a little evidence that October was here.", "Let yourself be moved by the beauty of things ending well.", "What grew in you this year might be quieter than what you have to show for it.", "Gather what’s ripe. Leave what isn’t ready yet.", "You were made to flourish — in your own rhythm, by your own design.", "Even in harvest season, something new can be seeded.", "Satisfaction doesn’t shout. It settles.", "The trees aren’t losing anything. They’re making room.", "Count the unexpected. Especially the unexpected.", "Not to become someone new. To remember who you already are beneath the noise.", "Rest is part of the harvest, not a reward for finishing it.", "There is more room than you think.", "Look at what actually grew. It deserves your kindness, even the parts you didn’t choose.", "Come as you are. That is the whole invitation."], "lensTopic": "Your Signature"}}, {"key": "2026-11", "published": true, "content": {"intention": "What are you ready to set down, with thanks?", "rhythmLine": "A quieter invitation this month: loosening your grip, making room for what matters, and allowing yourself to set down what no longer needs to be carried.", "moon": [{"type": "New Moon", "date": "Monday, November 9", "note": "A dark, quiet sky. Before you plant anything new, what is ready to be cleared away?"}, {"type": "Full Moon · Beaver Moon", "date": "Tuesday, November 24 · morning", "note": "The last full moon before winter settles in. What are you ready to release, with thanks, so you can rest?"}], "mudra": {"name": "Apana Mudra", "body": "Touch the tips of your middle and ring fingers to the tip of your thumb, and let your index and little fingers stay long and soft. Rest your hands on your thighs, palms up. Apana is linked with the body’s downward, releasing energy, its natural way of letting go. Hold it through your breath practice, or anytime you want to soften and release."}, "creative": {"title": "The shape of letting go.", "sub": "Your seasonal page for November. A short walk if you can, then fifteen quiet minutes.", "steps": [["Notice", "Step outside, even briefly. What has the season let go of? Bare branches, fallen leaves, the last seed heads, the earlier dark."], ["Gather", "One or two things that have fallen or finished: a leaf, a pressed stem, a feather, or a photo of an empty branch."], ["Make", "Give them a page. Press, tape, trace or sketch the bare shapes. Leave more white space than usual and let the page breathe."], ["Reflect", "Beside it, write what you’re setting down this month, and how November feels in your body."]], "pull": "Leave some of the page empty. That’s part of it.", "gathering": {"eyebrow": "Next seasonal gathering", "title": "Winter Solstice", "body": "Our seasonal Creative Flow gatherings follow the solstices and equinoxes. Details for December are coming soon, and members are always welcome."}}, "circlePrompt": "What are you ready to set down this season, and what are you keeping?", "eventsUrl": "https://www.stacilamp.com/root-rise", "eventsNote": "Root & Rise lives in person, in fields, barns and gathering spaces. More classes and gatherings are posted on the events page.", "name": "November", "theme": "The Release", "accent": "#7a7060", "lensTopic": "Conditioning", "letter": "October invited us to notice what we've gathered. The growth, the lessons, the unexpected beauty along the way.\n\nNow, as the days grow shorter and the trees begin to stand bare, November invites us into something different.\n\nRelease.\n\nAnd maybe release doesn't always mean walking away from something. Sometimes it's letting go of an expectation, an old story, or the idea that we have to carry everything we've collected along the way.\n\nThere can be gratitude in letting go, too.\n\nWe can appreciate what something has taught us without needing to carry it into the next season.\n\nThis month, I invite you to notice what feels heavy, what still feels meaningful, and where a little more space might be welcome.\n\nNot everything needs to be released. And nothing needs to happen all at once.\n\nWhat are you ready to set down, with thanks?", "breath": {"name": "Releasing Breath", "line": "Breathe in gently for four, then allow your exhale to be a little longer. With each breath, notice what it might feel like to soften your grip, even just a little.", "counts": [["4", "Inhale"], ["12", "Exhale"]]}, "philosophy": {"title": "Aparigraha · non-grasping", "body": "Aparigraha is one of the yamas, the gentle guidelines for living that open the path of yoga in the Yoga Sutras. It’s often translated as non-grasping: taking only what we need, and holding even that lightly.\n\nIt isn’t about giving everything away or pretending we don’t care. It’s about loosening the grip. On things, on plans, on the version of ourselves we thought we had to be, on how we hoped this year would go. I’m practicing this one right alongside you.\n\nNovember shows us how. The trees aren’t losing anything. They’re making room. This month, notice where you’re holding on a little too tightly, in your hands, your jaw, your days, and come back to the exhale. Open palms. Longer breath out. Let it be lighter.\n\nOn the mat: at the end of practice, rest your hands palms-up on your knees and say quietly to yourself, “I can hold this lightly.”"}, "quotes": ["You don’t have to carry everything into winter.", "Letting go isn’t losing. It’s making room.", "The trees don’t apologize for what they let fall.", "Rest isn’t the opposite of growth. It’s part of it.", "What would it feel like to put this down, just for today?", "Not everything that ended was a failure. Some things were simply finished.", "Let your exhale be longer than your inhale. Your body knows how to release.", "You can love something and still let it go.", "Softening is a kind of strength.", "Leave a little space empty. Something good needs somewhere to land.", "The ground holds what falls. You can be held, too.", "You were never meant to hold it all at once.", "Release the version of you that had to prove something.", "Bare branches aren’t empty. They’re resting.", "Some days the most honest thing you can do is less.", "Let it be lighter than you thought it had to be.", "Gratitude and release can live in the same breath.", "What you set down now, you won’t carry into the new year.", "Not to become someone new. To remember who you already are beneath the noise.", "There’s no right way to let go. Only your way, in your time.", "The quiet season has its own kind of beauty.", "You can close a chapter without rereading it.", "Unclench your jaw. Drop your shoulders. Begin there.", "What no longer fits can be thanked and returned.", "Letting go is rarely one moment. It’s a practice you come back to.", "Make room for stillness. It has something to tell you.", "You’re allowed to change your mind, your pace, your plans.", "The leaves don’t hold on to prove they were here.", "Come as you are. Leave what you’re ready to leave.", "Lighter isn’t less. Lighter is free."], "events": [], "littleRoots": {"title": "Letting the leaves go", "body": "Stand tall like a tree. Breathe in and reach your branches high. Breathe out and let your hands float down like falling leaves.\n\nDo it three times together, slower each time. Then ask: what would you like to let fall today?", "create": "Gather a few fallen leaves together and make a leaf friend: glue them on paper and give it a face and a name.", "note": "Little Roots meets in person at Good Roots Farm.", "url": ""}}}], "recs": [{"id": 1, "month_key": "2026-11", "kind": "breath", "title": "Releasing Breath", "description": "Breathe in gently for four, then let your exhale grow a little longer.", "minutes": "8 min", "url": null, "sort": 0, "published": true}, {"id": 2, "month_key": "2026-11", "kind": "meditation", "title": "The Release Meditation", "description": "A quiet practice for noticing what you’re holding, and setting a little of it down.", "minutes": "12 min", "url": null, "sort": 1, "published": true}, {"id": 3, "month_key": "2026-11", "kind": "lbd", "title": "Living by Design · Conditioning", "description": "What you’ve picked up along the way, and what was never yours to carry.", "minutes": "~20 min", "url": null, "sort": 2, "published": true}, {"id": 4, "month_key": "2026-10", "kind": "breath", "title": "Alternate Nostril Breath", "description": "Imagine one side holding what you’ve been tending, and the other holding permission to rest.", "minutes": "8 min", "url": null, "sort": 0, "published": true}, {"id": 5, "month_key": "2026-10", "kind": "meditation", "title": "The Harvest Meditation", "description": "Fields, trees, and roots. A quiet look at what this year has grown in you.", "minutes": "14 min", "url": null, "sort": 1, "published": true}, {"id": 6, "month_key": "2026-10", "kind": "lbd", "title": "Living by Design · Your Incarnation Cross", "description": "What pattern does your life keep repeating, in different rooms, with different people?", "minutes": "~20 min", "url": null, "sort": 2, "published": true}, {"id": 7, "month_key": "2026-09", "kind": "breath", "title": "Humming Breath", "description": "The Shift", "minutes": "5 min", "url": null, "sort": 0, "published": true}, {"id": 8, "month_key": "2026-09", "kind": "meditation", "title": "The Shift Meditation", "description": null, "minutes": "7 min", "url": null, "sort": 1, "published": true}, {"id": 9, "month_key": "2026-08", "kind": "breath", "title": "Gratitude Breath", "description": "The Abundance · 6-2-6", "minutes": "8 min", "url": null, "sort": 0, "published": true}, {"id": 10, "month_key": "2026-08", "kind": "meditation", "title": "The Abundance Meditation", "description": null, "minutes": "9 min", "url": null, "sort": 1, "published": true}, {"id": 11, "month_key": "2026-07", "kind": "breath", "title": "Wide-Body Breath", "description": "The Expansion · 6-3-6", "minutes": "7 min", "url": null, "sort": 0, "published": true}, {"id": 12, "month_key": "2026-07", "kind": "meditation", "title": "The Expansion Meditation", "description": null, "minutes": "9 min", "url": null, "sort": 1, "published": true}, {"id": 99, "month_key": "2026-11", "kind": "little", "title": "Little Leaf Breath", "description": "Breathe in like a growing tree, out like a falling leaf.", "minutes": "4 min", "url": null, "sort": 0, "published": true}], "lens": [{"month_key": "2026-10", "type": "Generator", "title": "The quiet yes after a full day", "body": "You know the feeling at the end of a day when you’re tired in a good way — used up by things that actually mattered to you. Nothing to prove, nothing nagging. In Human Design, that feeling has a name for Generators: satisfaction. It’s your signature, the sign your energy went toward what lit you up.\n\nIts opposite is frustration — that stuck, grinding feeling of pushing on something your body never said yes to. Frustration isn’t failure. It’s information. It usually means something got started from “should” instead of from a real gut response.\n\nHarvest season is a good time to look back honestly. Where did satisfaction actually show up this year? Not where it was supposed to — where it did.", "invitation": "Tonight, name one thing from today that left you satisfied, even a small one. Then one thing that left you frustrated, without judging it. Just notice which way your body leaned.", "reflection": "What am I still doing out of habit that my gut stopped saying yes to?"}, {"month_key": "2026-10", "type": "Manifesting Generator", "title": "Satisfaction, even when you skip steps", "body": "There’s a particular kind of tired that feels good — you moved fast, followed what was alive, maybe changed direction twice, and still landed somewhere that felt right. For Manifesting Generators, that feeling is satisfaction. It’s your signature, the felt sign your energy went where it wanted to go.\n\nWhen it doesn’t, it tends to show up as frustration — and sometimes a flash of anger when you’ve been slowed down, second-guessed, or pushed to finish something your body already knew was done. Neither is a flaw. Both are a compass.\n\nYou’re built to try things, drop what isn’t yours, and keep what is. As you look at what grew this year, let the abandoned things count too. Some of them were how you found the path.", "invitation": "Pick one thing you started this year and let go of. Instead of calling it unfinished, ask what it taught you about what you actually want.", "reflection": "Where did I feel most like myself this year — and how fast was I moving when I did?"}, {"month_key": "2026-10", "type": "Projector", "title": "Being truly seen is the harvest", "body": "Think of a time someone genuinely asked for your perspective — and then really took it in. The warmth of that. Recognized, not tolerated. For Projectors, that feeling is called success. It isn’t about achievement on paper. It’s the felt sense of your guidance landing with someone who wanted it.\n\nThe not-self theme is bitterness: the tired, sour feeling that comes from giving and giving where you weren’t asked, or weren’t seen. If you’ve felt that this year, it doesn’t mean you’re bitter by nature. It means your gifts were spent in rooms that hadn’t invited them.\n\nHarvest season is a lovely time to notice who actually recognized you this year. Those are your fields. Tend them.", "invitation": "Write down the names of two or three people who truly saw you this year. If it feels right, let one of them know.", "reflection": "Where am I still offering what no one asked for — and what would happen if I rested there instead?"}, {"month_key": "2026-10", "type": "Manifestor", "title": "Peace is what’s left after you move", "body": "There’s a stillness that comes after you’ve acted on an urge — you said the thing, made the move, started it — and then the room goes quiet and you can finally breathe. For Manifestors, that stillness is called peace. It’s your signature, the sign you followed your own impulse and let people know along the way.\n\nThe not-self theme is anger: the heat that rises when you feel controlled, interrupted, or made to ask permission for something that was always yours to start. Anger isn’t wrong. It’s a signal that something tried to contain you.\n\nAs you look back over this year, notice the moments of peace. They often came right after you trusted yourself enough to begin.", "invitation": "Before you start something this week, try informing the people it touches — not asking, just letting them know. Then notice what it does to the resistance around you, and inside you.", "reflection": "Where am I still asking permission for something that’s mine to start?"}, {"month_key": "2026-10", "type": "Reflector", "title": "Let yourself be surprised", "body": "Remember a moment this year when something delighted you out of nowhere — a conversation, a place, a version of yourself you didn’t expect. That lift of wonder. For Reflectors, that feeling is surprise. It’s your signature, the sign you’re in the right place, with the right people, taking your time.\n\nThe not-self theme is disappointment: the flat, heavy feeling of being somewhere that doesn’t reflect anything good back to you. If you’ve felt that, it’s rarely about you. It’s usually about the room.\n\nYou’re built to take in the world and mirror it back, which makes your surroundings everything. This month, notice which places and people left you surprised, and which left you disappointed. That’s your map.", "invitation": "Spend a little time this week somewhere that has delighted you before. Don’t plan what should happen there. Just notice how you feel.", "reflection": "Which room in my life lets me feel most like myself?"}, {"month_key": "2026-10", "type": "_none", "title": "The feeling that tells you you’re on track", "body": "Every design has a feeling that shows up when life is fitting you well — a quiet signal that you’re living in your own rhythm. In Human Design it’s called your signature: satisfaction, success, peace, or surprise, depending on your Type.\n\nThere’s an opposite signal too, called the not-self theme — frustration, bitterness, anger, or disappointment. Not a verdict. Just a nudge that something isn’t yours.\n\nAdd your Type from the You tab and this page will speak to your design specifically.", "invitation": "This week, notice the moments you feel quietly right. Write one down.", "reflection": "When did I last feel like my life fit me?"}, {"month_key": "2026-11", "type": "Generator", "title": "Was that yes really yours?", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor Generators, the deepest conditioning is often the pressure to start things: to push, plan and initiate instead of waiting for something to respond to. It can look like a full calendar of yeses your gut never actually gave.\n\nNovember is a good month to loosen your grip on those. Release doesn’t have to be dramatic. Sometimes it’s simply noticing which commitments feel heavy, and letting your body show you which ones were never a real yes.", "invitation": "This week, before you agree to anything, pause long enough to hear your gut: an “uh-huh” or an “unh-unh.” If it isn’t clear, it’s okay to say, “Let me get back to you.”", "reflection": "Which of my yeses this year came from my body, and which came from “should”?"}, {"month_key": "2026-11", "type": "Manifesting Generator", "title": "You don’t have to finish everything", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor Manifesting Generators, conditioning often sounds like: slow down, pick one thing, finish what you started. You may have learned to apologize for your speed, your pivots, the steps you skip. Your energy may naturally move quickly, explore different directions, and recognize when something no longer feels aligned.\n\nRelease, for you, might mean letting go of the guilt rather than the momentum. Let some unfinished things be finished, simply because your energy has moved on.", "invitation": "Make a short list of things you feel you’re “supposed” to finish. Read each one out loud and notice your gut’s response. Give yourself permission to release at least one.", "reflection": "What would I stop carrying if I trusted that my pivots are part of the path?"}, {"month_key": "2026-11", "type": "Projector", "title": "You were never meant to keep up", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor Projectors, one of the heaviest kinds of conditioning is the pressure to work like everyone else: to match the stamina of the people around you and prove your worth through effort. With an open Sacral, you can borrow that energy for a while, and then crash.\n\nRest isn’t a reward you earn. It’s part of how your design works. This month, release the idea that you have to keep up. Your perspective and the way you see the world hold value beyond how much you accomplish.", "invitation": "Choose one evening this week to stop before you’re tired. Lie down a little before bed and let the borrowed energy drain away.", "reflection": "Where am I still trying to prove myself through effort?"}, {"month_key": "2026-11", "type": "Manifestor", "title": "Releasing the need for permission", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nFor many Manifestors, conditioning came early: be agreeable, ask first, don’t make waves. Over time that can teach you to make yourself smaller, or to wait for approval that never needed to be given.\n\nYou’re here to initiate. Informing the people around you isn’t asking permission. It’s a way of moving with less resistance. This month, notice where you’ve been holding back an impulse to keep the peace, and what it might feel like to let that old pattern go.", "invitation": "Pick one thing you’ve been waiting on permission for. Let the people it affects know you’re beginning, and then begin.", "reflection": "Whose approval am I still waiting for, and what if I released the wait?"}, {"month_key": "2026-11", "type": "Reflector", "title": "What’s yours, and what’s the room’s?", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, Reflectors have all nine centers undefined, making their experience especially sensitive to the people and environments around them. This can offer a unique perspective on the world.\n\nIt also means it can be hard to tell what’s yours and what you picked up today from someone else. November is a lovely month to practice the gentle sorting: noticing how you feel in different places and with different people, and releasing what isn’t you.\n\nTime alone helps. So does a little space between you and others before big decisions.", "invitation": "At the end of each day this week, spend a few minutes alone somewhere quiet. Ask yourself: what did I take on today that I can set down?", "reflection": "When I’m alone and rested, who am I?"}, {"month_key": "2026-11", "type": "_none", "title": "Not everything you carry is yours", "body": "Conditioning is the quiet pull of everything around you: family patterns, expectations, the pace of the people you love. In Human Design, it moves mostly through your open centers, the places where you take in the world. None of it is wrong. But not all of it is yours.\n\nThe open, white places in a chart are where we take in the world most deeply. They’re also where we hold on to things that were never ours: other people’s moods, pressures and expectations.\n\nNovember is about release. Not forcing anything, just noticing what you’ve picked up along the way and choosing what to set down.", "invitation": "Each evening this week, ask yourself: what did I carry today that wasn’t mine? Write one thing down, then let it go with a long exhale.", "reflection": "What would feel lighter if I stopped carrying it for someone else?"}], "members": [{"email": "preview@flourishandflow.app", "name": "Friend", "type": "Manifesting Generator", "profile": "1/3", "authority": "Sacral", "role": "member", "design": {"p": "38.1 39.1 34.3 20.3 33.2 58.4 58.2 58.5 44.3 30.3 61.1 54.6 14.3", "d": "48.3 21.3 34.5 20.5 8.3 28.4 64.6 28.4 32.2 49.6 54.4 54.4 43.6", "cross": "Right Angle Cross of Tension 4 (38/39 | 48/21)"}, "created_at": "2026-10-01T10:00:00Z", "chart_path": "preview/chart.jpg"}]};
 function load(){var s=JSON.parse(JSON.stringify(SEED));s.posts=[];s.notes=[];s.visits=[];s.nextId=100;return s;}
 var db=load();function save(){}
 var SESS={user:{id:'preview-member',email:'preview@flourishandflow.app'}};function sess(){return SESS;}
@@ -1328,6 +1502,7 @@ window.API_OVERRIDE={
  setDesign:async function(e,d){if(!admin())throw{message:'rls'};db.members.forEach(function(m){if(m.email===e)m.design=d});save();},
  setChart:async function(e,p){if(!admin())throw{message:'rls'};db.members.forEach(function(m){if(m.email===e)m.chart_path=p});save();}
 };})();
+
 </script>
 <script>
 /* ════════════════════════════════════════════════════════════
@@ -1335,7 +1510,7 @@ window.API_OVERRIDE={
    ════════════════════════════════════════════════════════════ */
 var SUPABASE_URL = '';
 var SUPABASE_KEY = ''; // publishable key: safe in the browser
-var FEEDBACK_EMAIL = 'staci-lamp@outlook.com';
+var FEEDBACK_EMAIL = 'hello@stacilamp.com';
 var BOOKING_URL = 'https://calendar.app.google/wk1J132xUtwcjtGq6';
 
 var DESIGN_FACTS = {
@@ -1351,6 +1526,7 @@ var KINDS = {
   meditation:{label:'Guided meditation',sym:'𑁍', col:'var(--deep)'},
   lbd:       {label:'Living by Design', sym:'✦', col:'var(--deep)'},
   movement:  {label:'Root & Rise',      sym:'✺', col:'var(--terra)'},
+  little:    {label:'Little Roots',     sym:'❀', col:'var(--terra)'},
   other:     {label:'Extra',            sym:'◇', col:'var(--sage)'}
 };
 var SESSIONS = [
@@ -1383,7 +1559,8 @@ var api = window.API_OVERRIDE || {
   logVisit: async function(uid, day){ ok(await sb.from('visits').upsert({user_id: uid, day: day}, {onConflict:'user_id,day', ignoreDuplicates:true})); },
   setMood: async function(uid, day, mood){ ok(await sb.from('visits').upsert({user_id: uid, day: day, mood: mood}, {onConflict:'user_id,day'})); },
   myVisits: async function(uid, from){ return ok(await sb.from('visits').select('day,mood').eq('user_id', uid).gte('day', from)); },
-  feed: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,tag,photo_path,gathering_id,month').is('parent_id', null).order('created_at', {ascending:false}).limit(80)); },
+  feed: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,tag,photo_path,gathering_id,month').is('parent_id', null).neq('tag', 'shelf').order('created_at', {ascending:false}).limit(80)); },
+  shelf: async function(){ return ok(await sb.from('circle_posts').select('id,created_at,name,body,is_host,hidden,user_id,tag,shelf_kind,title,link').eq('tag', 'shelf').is('parent_id', null).order('created_at', {ascending:false}).limit(300)); },
   replies: async function(ids){ return ok(await sb.from('circle_posts').select('id,created_at,name,design,body,is_host,hidden,user_id,parent_id').in('parent_id', ids).order('created_at').limit(500)); },
   reactions: async function(ids){ return ok(await sb.from('circle_reactions').select('post_id,user_id,name').in('post_id', ids)); },
   react: async function(id, name){ ok(await sb.from('circle_reactions').insert({post_id: id, name: name})); },
@@ -1432,7 +1609,18 @@ var api = window.API_OVERRIDE || {
   chartUpload: async function(path, file){ ok(await sb.storage.from('charts').upload(path, file, {upsert: true, contentType: file.type || 'image/png'})); },
   setChart: async function(email, path){ ok(await sb.from('members').update({chart_path: path}).eq('email', email)); },
   setDesign: async function(email, design){ ok(await sb.from('members').update({design: design}).eq('email', email)); },
-  notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); }
+  notes: async function(){ return ok(await sb.from('beta_feedback').select('*').order('created_at', {ascending:false}).limit(300)); },
+  /* Family and the Little Exhibit: private to each member (enforced by the database) */
+  family: async function(){ return ok(await sb.from('family_members').select('*').eq('user_id', S.session.user.id).order('created_at')); },
+  addFamily: async function(row){ ok(await sb.from('family_members').insert(row)); },
+  updateFamily: async function(id, row){ ok(await sb.from('family_members').update(row).eq('id', id)); },
+  familyOf: async function(email){ return ok(await sb.from('family_members').select('id,name,relation,type,profile,authority,design').eq('parent_email', email).order('created_at')); },
+  setFamilyDesign: async function(id, design){ ok(await sb.from('family_members').update({design: design}).eq('id', id)); },
+  deleteFamily: async function(id){ ok(await sb.from('family_members').delete().eq('id', id)); },
+  pieces: async function(){ return ok(await sb.from('exhibit_pieces').select('*').order('made_on', {ascending:false}).limit(2000)); },
+  addPiece: async function(row){ ok(await sb.from('exhibit_pieces').insert(row)); },
+  updatePiece: async function(id, row){ ok(await sb.from('exhibit_pieces').update(row).eq('id', id)); },
+  deletePiece: async function(id){ ok(await sb.from('exhibit_pieces').delete().eq('id', id)); }
 };
 
 /* ════════════════════════════════════════════════════════════
@@ -1485,7 +1673,9 @@ function normalize(c, key){
     philosophy: {title: (c.philosophy && c.philosophy.title) || '', body: (c.philosophy && c.philosophy.body) || ''},
     creative: c.creative || {}, events: c.events || [], eventsNote: c.eventsNote || '', eventsUrl: c.eventsUrl || '',
     circlePrompt: c.circlePrompt || '', quotes: (c.quotes && c.quotes.length) ? c.quotes : ['You were made to flourish — in your own rhythm, by your own design.'],
-    lensTopic: c.lensTopic || '', letter: c.letter || ''
+    lensTopic: c.lensTopic || '', letter: c.letter || '',
+    littleRoots: {title: (c.littleRoots && c.littleRoots.title) || '', body: (c.littleRoots && c.littleRoots.body) || '', create: (c.littleRoots && c.littleRoots.create) || '',
+                  note: (c.littleRoots && c.littleRoots.note) || '', url: (c.littleRoots && c.littleRoots.url) || ''}
   };
   var cr = n.creative;
   n.creative = {title: cr.title || '', sub: cr.sub || '', steps: cr.steps || [], pull: cr.pull || '',
@@ -1859,6 +2049,13 @@ function buildPractice(){
   mRecs.forEach(function(r){ me.appendChild(recCard(r, 'New this month · ' + M.name)); });
   if (!mRecs.length) me.appendChild(emptyCard('This month’s meditation is on its way.'));
   var em = earlierList('meditation'); if (em) me.appendChild(em);
+
+  var li = $('pt-little'); li.innerHTML = '';
+  li.appendChild(el('p', 'lr-intro', 'Little Roots Rhythms: short breath and quiet practices to share with your little ones. Sit together, follow along, and let it be playful.'));
+  var lRecs = recsFor(key, 'little');
+  lRecs.forEach(function(r){ li.appendChild(recCard(r, 'Little Roots · ' + M.name)); });
+  if (!lRecs.length) li.appendChild(emptyCard('This month’s Little Roots practice is on its way.'));
+  var el2 = earlierList('little'); if (el2) li.appendChild(el2);
   document.querySelectorAll('#screen-practice .ptab').forEach(function(t){ t.onclick = function(){ switchPTab(t.dataset.tab); }; });
 }
 function breathCounts(){
@@ -1885,6 +2082,19 @@ function buildRootRise(){
     var pc = el('div', 'rr-phil'); if (M.philosophy.title) pc.appendChild(el('div', 'cc-title', M.philosophy.title));
     M.philosophy.body.split(/\n\s*\n/).filter(Boolean).forEach(function(p){ pc.appendChild(el('p', 'cc-body', p.trim())); });
     g.appendChild(pc);
+  }
+  var LR = M.littleRoots, lrRecs = recsFor(key, 'little');
+  if (LR.title || LR.body || LR.note || lrRecs.length) {
+    g.appendChild(el('div', 'er-h lr-h', '❀ Little Roots · for your little ones'));
+    var lc = el('div', 'lr-card');
+    if (LR.title) lc.appendChild(el('div', 'cc-title', LR.title));
+    LR.body.split(/\n\s*\n/).filter(Boolean).forEach(function(p){ lc.appendChild(el('p', 'cc-body', p.trim())); });
+    if (LR.note) lc.appendChild(el('div', 'note-line', LR.note));
+    var lacts = el('div', 'lr-acts');
+    if (lrRecs.length) { var lp = el('button', 'pill-btn', '❀ Little Roots practices'); lp.onclick = function(){ goScreen('practice'); switchPTab('pt-little'); }; lacts.appendChild(lp); }
+    if (LR.url) { var lu = el('a', 'pill-btn outline', 'Little Roots classes'); lu.href = LR.url; lu.target = '_blank'; lu.rel = 'noopener'; lacts.appendChild(lu); }
+    if (lacts.children.length) lc.appendChild(lacts);
+    g.appendChild(lc);
   }
   g.appendChild(el('div', 'er-h', '✺ Classes & events'));
 
@@ -1967,6 +2177,8 @@ function buildCreate(){
   c.steps.forEach(function(st){ var r = el('div', 'step'); r.appendChild(el('div', 'step-k', st[0])); r.appendChild(el('div', 'step-t', st[1] || '')); s.appendChild(r); });
   $('cf-pull').style.display = c.pull ? 'block' : 'none';
   $('cf-pull').textContent = '“' + c.pull + '”';
+  var cl = $('cf-little'), lrc = S.M.littleRoots.create; cl.innerHTML = ''; cl.style.display = lrc ? 'block' : 'none';
+  if (lrc) { cl.appendChild(el('div', 'cl-eye', '❀ With your little ones')); cl.appendChild(el('div', 'cl-body', lrc)); }
   $('cf-gather-wrap').style.display = c.gathering.title ? 'block' : 'none';
   var g = $('cf-gather'); g.innerHTML = '';
   var h = el('div', 'cc-head'); h.style.borderLeftColor = 'var(--ochre)';
@@ -1978,7 +2190,7 @@ function buildCreate(){
 var libFilter = 'all';
 function buildLibrary(){
   var chips = $('lib-chips'); chips.innerHTML = '';
-  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Root & Rise'],['guide','Guides']].forEach(function(c){
+  [['all','Everything'],['breath','Breathe'],['meditation','Meditate'],['lbd','Living by Design'],['movement','Root & Rise'],['little','Little Roots'],['guide','Guides']].forEach(function(c){
     var b = el('button', 'chip' + (libFilter === c[0] ? ' on' : ''), c[1]);
     b.onclick = function(){ libFilter = c[0]; buildLibrary(); };
     chips.appendChild(b);
@@ -2040,6 +2252,7 @@ function renderDesign(){
   $('hdi-profile').textContent = S.me.profile || '—'; $('hdi-auth').textContent = S.me.authority || '—';
   $('hdi-sig').textContent = f ? f.sig : '—'; $('hdi-ns').textContent = f ? f.ns : '—';
   buildDesignDeep(); buildChart(); buildFullDesign();
+  if (FM.list) renderFamily();
 }
 
 /* ── YOUR DESIGN, IN MORE DEPTH ── */
@@ -2248,6 +2461,397 @@ function shrinkImage(file){
     img.src = u;
   });
 }
+/* ── THE LITTLE EXHIBIT · a private gallery for the art that comes home ── */
+var XMEDIA = ['Crayon', 'Marker', 'Pencil', 'Paint', 'Watercolor', 'Collage', 'Clay', 'Chalk', 'Mixed media', 'Something else'];
+var X = {fam:null, pieces:null, artist:null, view:'journal', blob:null};
+function journalShelf(which){
+  X.view = which;
+  document.querySelectorAll('#j-shelf button').forEach(function(b){ var on = b.dataset.v === which; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+  $('j-mine').style.display = which === 'journal' ? 'block' : 'none';
+  $('x-wrap').style.display = which === 'exhibit' ? 'block' : 'none';
+  if (which === 'exhibit') loadExhibit();
+}
+function openLittleExhibit(){ goScreen('journal'); journalShelf('exhibit'); }
+function seasonOf(day){
+  var y = +day.slice(0, 4), m = +day.slice(5, 7);
+  if (m === 12) return {key: (y + 1) + '-1', label: 'Winter ' + y + '–' + String(y + 1).slice(2)};
+  if (m <= 2) return {key: y + '-1', label: 'Winter ' + (y - 1) + '–' + String(y).slice(2)};
+  if (m <= 5) return {key: y + '-2', label: 'Spring ' + y};
+  if (m <= 8) return {key: y + '-3', label: 'Summer ' + y};
+  return {key: y + '-4', label: 'Autumn ' + y};
+}
+function ageAt(birth, day){
+  if (!birth) return null;
+  var by = +birth.slice(0, 4), bm = +birth.slice(5, 7), y = +day.slice(0, 4), m = +day.slice(5, 7);
+  var a = y - by - (m < bm ? 1 : 0);
+  return a >= 0 && a < 120 ? a : null;
+}
+async function loadExhibit(){
+  var w = $('x-body');
+  if (!X.fam) { w.innerHTML = ''; w.appendChild(el('div', 'loading', 'Opening the gallery…')); }
+  try {
+    var r = await Promise.all([api.family(), api.pieces()]);
+    X.fam = (r[0] || []).filter(function(f){ return f.relation === 'child'; }); X.pieces = r[1] || [];
+    if (!X.artist || !X.fam.some(function(f){ return f.id === X.artist; })) X.artist = X.fam.length ? X.fam[0].id : null;
+    renderExhibit();
+  } catch(e) { w.innerHTML = ''; w.appendChild(el('div', 'feed-empty', 'The gallery couldn’t open just now. Check your connection and try again in a moment.')); }
+}
+function renderExhibit(){
+  var w = $('x-body'); w.innerHTML = '';
+  if (!X.fam.length) { w.appendChild(exhibitWelcome()); return; }
+  var tabs = el('div', 'x-artists');
+  X.fam.forEach(function(f){
+    var b = el('button', 'x-artist' + (f.id === X.artist ? ' on' : ''), f.name); b.type = 'button';
+    b.onclick = function(){ X.artist = f.id; renderExhibit(); }; tabs.appendChild(b);
+  });
+  var add = el('button', 'x-artist add', '＋ Artist'); add.type = 'button'; add.onclick = function(){ openArtistForm(null); }; tabs.appendChild(add);
+  w.appendChild(tabs);
+  var f = X.fam.filter(function(x){ return x.id === X.artist; })[0];
+  var mine = X.pieces.filter(function(p){ return p.child_id === f.id; }).sort(function(a, b){ return a.made_on < b.made_on ? 1 : a.made_on > b.made_on ? -1 : (a.created_at < b.created_at ? 1 : -1); });
+  var hall = el('section', 'x-hall');
+  hall.appendChild(el('div', 'x-eye', 'The Little Exhibit'));
+  hall.appendChild(el('h2', 'x-name', f.name));
+  hall.appendChild(el('div', 'x-rule'));
+  hall.appendChild(el('div', 'x-show', mine.length ? (mine.length === 1 ? '1 piece in the collection' : mine.length + ' pieces in the collection') : 'The walls are ready'));
+  var hang = el('button', 'pill-btn dark x-hang', '＋ Hang a new piece'); hang.onclick = function(){ openPieceForm(null); }; hall.appendChild(hang);
+  w.appendChild(hall);
+  var ed = el('div', 'x-editor'); ed.id = 'x-editor'; ed.style.display = 'none'; w.appendChild(ed);
+  if (!mine.length) {
+    w.appendChild(el('div', 'x-empty', 'Their first piece is waiting on the fridge, in a backpack, or on the kitchen table. Snap a photo and hang it here.'));
+  } else {
+    var cur = seasonOf(todayKey()), seasons = {}, order = [];
+    mine.forEach(function(p){ var s = seasonOf(p.made_on); if (!seasons[s.key]) { seasons[s.key] = {s:s, list:[]}; order.push(s.key); } seasons[s.key].list.push(p); });
+    order.sort().reverse();
+    var collShown = false;
+    order.forEach(function(k){
+      var g = seasons[k];
+      if (k !== cur.key && !collShown) { w.appendChild(el('div', 'x-coll', 'The Collection')); collShown = true; }
+      var sec = el('section', 'x-season');
+      sec.appendChild(el('div', 'x-sh', (k === cur.key ? 'Now showing · ' : '') + g.s.label));
+      var wall = el('div', 'x-wall');
+      g.list.forEach(function(p){ wall.appendChild(frameCard(p, f)); });
+      sec.appendChild(wall); w.appendChild(sec);
+    });
+  }
+  var foot = el('div', 'x-foot');
+  if (mine.length) { var cat = el('button', 'text-link x-cat', null); cat.appendChild(el('span', null, 'Save ' + f.name + '’s catalogue as a PDF')); cat.appendChild(el('span', null, '↓')); cat.onclick = function(){ exhibitCatalogue(f, mine); }; foot.appendChild(cat); }
+  var ea = el('button', 'cp-btn', 'Edit ' + f.name + '’s details'); ea.onclick = function(){ openArtistForm(f); }; foot.appendChild(ea);
+  foot.appendChild(el('p', 'x-private', 'The Little Exhibit is private to you. Only you can see these pieces, and they are never shared to the Circle.'));
+  w.appendChild(foot);
+}
+function exhibitWelcome(){
+  var c = el('section', 'x-welcome');
+  c.appendChild(el('div', 'x-eye', 'The Little Exhibit'));
+  c.appendChild(el('h2', 'x-wt', 'A gallery for the art that comes home.'));
+  c.appendChild(el('div', 'x-rule'));
+  c.appendChild(el('p', 'x-wp', 'Every drawing, painting and clay creature gets a frame, a title, and a few words in the artist’s own voice. The date is kept for you, and over the seasons it becomes a little gallery of who they were.'));
+  var b = el('button', 'pill-btn dark', '＋ Add your first artist'); b.id = 'x-first'; b.onclick = function(){ openArtistForm(null); }; c.appendChild(b);
+  var ed = el('div', 'x-editor'); ed.id = 'x-editor'; ed.style.display = 'none'; c.appendChild(ed);
+  return c;
+}
+function frameCard(p, f){
+  var c = el('button', 'x-piece'); c.type = 'button'; c.setAttribute('aria-label', (p.title || 'Untitled') + ', open');
+  var fr = el('span', 'x-frame'), im = el('img'); im.alt = p.title || 'A piece of art'; im.loading = 'lazy'; fr.appendChild(im); c.appendChild(fr);
+  photoSrc(p.photo_path).then(function(u){ if (u) im.src = u; });
+  var pl = el('span', 'x-plac');
+  pl.appendChild(el('span', 'x-pt', p.title || 'Untitled'));
+  pl.appendChild(el('span', 'x-pm', [p.medium, fmtDay(p.made_on, {month:'short', year:'numeric'})].filter(Boolean).join(' · ')));
+  c.appendChild(pl);
+  c.onclick = function(){ openPiece(p, f); };
+  return c;
+}
+function openPiece(p, f){
+  var o = $('x-view'); o.innerHTML = ''; o.classList.add('open');
+  var box = el('div', 'xv-box'); box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', p.title || 'Untitled');
+  var close = el('button', 'xv-close', '×'); close.setAttribute('aria-label', 'Close'); close.onclick = closePiece; box.appendChild(close);
+  var fr = el('div', 'xv-frame'), im = el('img'); im.alt = p.title || 'A piece of art'; fr.appendChild(im); box.appendChild(fr);
+  photoSrc(p.photo_path).then(function(u){ if (u) im.src = u; });
+  var pl = el('div', 'xv-plac');
+  pl.appendChild(el('div', 'xv-t', p.title || 'Untitled'));
+  var age = ageAt(f.birth_month, p.made_on);
+  pl.appendChild(el('div', 'xv-a', f.name + (age != null ? ', age ' + age : '')));
+  pl.appendChild(el('div', 'xv-m', [p.medium, fmtDay(p.made_on, {month:'long', day:'numeric', year:'numeric'})].filter(Boolean).join(' · ')));
+  if (p.words) { pl.appendChild(el('div', 'xv-wl', 'In the artist’s words')); pl.appendChild(el('div', 'xv-w', '“' + p.words + '”')); }
+  box.appendChild(pl);
+  var ed = el('button', 'cp-btn xv-edit', 'Edit this piece'); ed.onclick = function(){ closePiece(); openPieceForm(p); }; box.appendChild(ed);
+  o.appendChild(box);
+  o.onclick = function(e){ if (e.target === o) closePiece(); };
+  setTimeout(function(){ close.focus(); }, 50);
+}
+function closePiece(){ var o = $('x-view'); o.classList.remove('open'); o.innerHTML = ''; }
+function fldIn(parent, label, value, o){
+  o = o || {};
+  var w = el('label', 'x-fld'); w.appendChild(el('span', 'x-fl', label));
+  var i = el(o.area ? 'textarea' : 'input'); if (!o.area) i.type = o.type || 'text'; i.value = value || ''; if (o.placeholder) i.placeholder = o.placeholder; if (o.max) i.maxLength = o.max;
+  w.appendChild(i); if (o.hint) w.appendChild(el('span', 'x-fh', o.hint)); parent.appendChild(w); return i;
+}
+function openArtistForm(f){
+  var ed = $('x-editor'); ed.innerHTML = ''; ed.style.display = 'block';
+  ed.appendChild(el('h3', 'je-h', f ? 'About ' + f.name : 'A new artist'));
+  var n = fldIn(ed, 'Their name', f ? f.name : '', {placeholder:'First name or nickname', max:40}); n.id = 'x-aname';
+  var bm = fldIn(ed, 'Birth month (optional)', f && f.birth_month ? f.birth_month : '', {type:'month', hint:'Only used to show their age on each placard. You can leave it empty.'}); bm.id = 'x-abirth';
+  var msg = el('div', 'je-msg');
+  var acts = el('div', 'je-acts');
+  var save = el('button', 'pill-btn dark', f ? 'Save' : 'Open their exhibit'); save.id = 'x-asave'; acts.appendChild(save);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; }; acts.appendChild(cancel);
+  if (f) {
+    var del = el('button', 'pill-btn small-btn danger', 'Remove artist');
+    armButton(del, 'Tap again: removes their whole exhibit', async function(){
+      try { var ps = X.pieces.filter(function(p){ return p.child_id === f.id; }); await api.deleteFamily(f.id); ps.forEach(function(p){ if (p.photo_path) api.photoDelete(p.photo_path).catch(function(){}); }); X.artist = null; await loadExhibit(); }
+      catch(e) { msg.textContent = 'That didn’t remove. Try again in a moment.'; }
+    });
+    acts.appendChild(del);
+  }
+  ed.appendChild(acts); ed.appendChild(msg);
+  save.onclick = async function(){
+    var name = n.value.trim(); if (!name) { n.focus(); return; }
+    save.disabled = true;
+    try {
+      var row = {name: name.slice(0, 40), birth_month: bm.value || null, relation: 'child'};
+      if (f) await api.updateFamily(f.id, row); else { row.id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); await api.addFamily(row); X.artist = row.id; }
+      await loadExhibit();
+    } catch(e) { msg.textContent = 'That didn’t save. Try again in a moment.'; save.disabled = false; }
+  };
+  setTimeout(function(){ n.focus(); }, 60);
+}
+function openPieceForm(p){
+  var f = X.fam.filter(function(x){ return x.id === X.artist; })[0];
+  var ed = $('x-editor'); ed.innerHTML = ''; ed.style.display = 'block'; X.blob = null;
+  ed.appendChild(el('h3', 'je-h', p ? 'About this piece' : 'Hang a new piece'));
+  var pick = el('label', 'x-drop'); var pin = el('input'); pin.type = 'file'; pin.accept = 'image/*'; pin.className = 'sr-only'; pin.id = 'x-file';
+  var pv = el('span', 'x-dprev'); pick.appendChild(pv);
+  var plab = el('span', 'x-dl', p ? 'Change the photo' : '＋ Add a photo of the piece'); pick.appendChild(plab); pick.appendChild(pin);
+  ed.appendChild(pick);
+  if (p && p.photo_path) photoSrc(p.photo_path).then(function(u){ if (u) { pv.innerHTML = ''; var im = el('img'); im.src = u; im.alt = ''; pv.appendChild(im); } });
+  var msg = el('div', 'je-msg');
+  pin.onchange = async function(){
+    var file = pin.files && pin.files[0]; if (!file) return;
+    msg.textContent = 'Preparing the photo…';
+    try { X.blob = await shrinkImage(file); pv.innerHTML = ''; var im = el('img'); im.src = URL.createObjectURL(X.blob); im.alt = ''; pv.appendChild(im); plab.textContent = 'Change the photo'; msg.textContent = ''; }
+    catch(e) { msg.textContent = 'That photo couldn’t be opened. Try another.'; }
+  };
+  var t = fldIn(ed, 'Title', p ? p.title : '', {placeholder:'What do they call it?', max:80}); t.id = 'x-title';
+  ed.appendChild(el('span', 'x-fl', 'Medium'));
+  var med = p ? p.medium : null, chips = el('div', 'je-chips x-meds');
+  XMEDIA.forEach(function(m){
+    var b = el('button', 'je-chip' + (m === med ? ' on' : ''), m); b.type = 'button';
+    b.onclick = function(){ med = med === m ? null : m; chips.querySelectorAll('.je-chip').forEach(function(x){ x.classList.toggle('on', x.textContent === med); }); };
+    chips.appendChild(b);
+  });
+  ed.appendChild(chips);
+  var d = fldIn(ed, 'Made on', p ? p.made_on : todayKey(), {type:'date'}); d.max = todayKey(); d.id = 'x-date';
+  var wd = fldIn(ed, 'In the artist’s words (optional)', p ? p.words : '', {area:true, max:400, placeholder:'What would ' + f.name + ' say about it? Their words, or yours.'}); wd.id = 'x-words';
+  var acts = el('div', 'je-acts');
+  var save = el('button', 'pill-btn dark', p ? 'Save' : 'Hang it'); save.id = 'x-save'; acts.appendChild(save);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; }; acts.appendChild(cancel);
+  if (p) {
+    var del = el('button', 'pill-btn small-btn danger', 'Take it down');
+    armButton(del, 'Tap again to remove', async function(){
+      try { await api.deletePiece(p.id); if (p.photo_path) api.photoDelete(p.photo_path).catch(function(){}); await loadExhibit(); }
+      catch(e) { msg.textContent = 'That didn’t remove. Try again in a moment.'; }
+    });
+    acts.appendChild(del);
+  }
+  ed.appendChild(acts); ed.appendChild(msg);
+  save.onclick = async function(){
+    if (!X.blob && !(p && p.photo_path)) { msg.textContent = 'Add a photo of the piece first.'; return; }
+    save.disabled = true; msg.textContent = 'Hanging it…';
+    try {
+      var id = p ? p.id : (window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
+      var path = p ? p.photo_path : null, old = null;
+      if (X.blob) { old = path; path = S.session.user.id + '/exhibit/' + id + '-' + Date.now() + '.jpg'; await api.photoUpload(path, X.blob); }
+      var row = {child_id: f.id, title: t.value.trim().slice(0, 80) || null, medium: med, made_on: d.value || todayKey(), words: wd.value.trim().slice(0, 400) || null, photo_path: path};
+      if (p) await api.updatePiece(p.id, row); else { row.id = id; await api.addPiece(row); }
+      if (old && old !== path) api.photoDelete(old).catch(function(){});
+      X.blob = null; await loadExhibit();
+    } catch(e) { msg.textContent = 'That didn’t save. Try again in a moment.'; save.disabled = false; }
+  };
+  setTimeout(function(){ ed.scrollIntoView({block:'start'}); }, 60);
+}
+async function exhibitCatalogue(f, list){
+  var pa = $('print-area'); pa.innerHTML = '';
+  var items = list.slice().reverse();
+  var cover = el('section', 'pr-cover');
+  cover.appendChild(el('div', 'pr-brand', 'The Little Exhibit'));
+  cover.appendChild(el('div', 'pr-rule'));
+  cover.appendChild(el('h1', 'pr-title', f.name));
+  var a = items[0].made_on, b = items[items.length - 1].made_on;
+  cover.appendChild(el('div', 'pr-range', fmtDay(a, {month:'long', year:'numeric'}) + (a.slice(0, 7) !== b.slice(0, 7) ? ' – ' + fmtDay(b, {month:'long', year:'numeric'}) : '')));
+  cover.appendChild(el('div', 'pr-quote', 'A collection of ' + items.length + (items.length === 1 ? ' piece' : ' pieces') + ', kept with love.'));
+  pa.appendChild(cover);
+  var loads = [];
+  items.forEach(function(p){
+    var s = el('section', 'pr-piece');
+    var img = el('img', 'pr-art'); img.alt = ''; var fr = el('div', 'pr-frame'); fr.appendChild(img); s.appendChild(fr);
+    var pl = el('div', 'pr-plac');
+    pl.appendChild(el('div', 'pr-pt', p.title || 'Untitled'));
+    var age = ageAt(f.birth_month, p.made_on);
+    pl.appendChild(el('div', 'pr-pa', f.name + (age != null ? ', age ' + age : '')));
+    pl.appendChild(el('div', 'pr-pm', [p.medium, fmtDay(p.made_on, {month:'long', day:'numeric', year:'numeric'})].filter(Boolean).join(' · ')));
+    if (p.words) pl.appendChild(el('div', 'pr-pw', '“' + p.words + '”'));
+    s.appendChild(pl); pa.appendChild(s);
+    loads.push(photoSrc(p.photo_path).then(function(u){ if (!u) { fr.remove(); return; } return new Promise(function(res){ img.onload = res; img.onerror = function(){ fr.remove(); res(); }; img.src = u; setTimeout(res, 8000); }); }));
+  });
+  await Promise.all(loads);
+  document.body.classList.add('printing');
+  var done = function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint', done); };
+  window.addEventListener('afterprint', done);
+  setTimeout(function(){ window.print(); setTimeout(done, 1500); }, 150);
+}
+
+/* ── MY FAMILY · their designs beside yours ── */
+var FAM_TYPE = {
+  'Generator': 'Lights up when life gives them something to respond to. Offer choices rather than instructions, and listen for their gut’s “uh-huh” or “unh-unh.” Satisfaction looks like a good kind of tired; frustration is a sign they’ve been pushed into something their body never chose.',
+  'Manifesting Generator': 'Quick, curious and often doing three things at once. Like a Generator, they light up when something gives them something to respond to, and they may skip steps or change course mid-way. That’s often how they find their path. Frustration, or a flash of anger, usually means they’ve been slowed down or made to finish something their body already knew was done.',
+  'Projector': 'Sees people and situations deeply, and blooms when they feel truly seen. Their energy comes in waves, so rest is part of how they’re built rather than something to earn. Invite their ideas; bitterness can show up when they feel unrecognized or worn out.',
+  'Manifestor': 'An initiator who often knows what they want to do before anyone else. They tend to feel calmer when they have room to begin things and are gently asked to let you know first. Peace is their signal; anger can show up when they feel controlled or interrupted.',
+  'Reflector': 'Deeply sensitive to the people and places around them, almost like a mirror. Where they are matters a great deal, and big decisions go better with plenty of time. Delight and surprise are good signs; disappointment usually says more about the surroundings than about them.'
+};
+var FAM_AUTH = {
+  'Sacral': 'Their truth lives in their gut. Simple yes-or-no questions help them hear it.',
+  'Emotional': 'Their clarity comes in waves. It helps to let them sleep on big choices.',
+  'Splenic': 'Their knowing is quick and quiet, a first instinct worth trusting.',
+  'Ego': 'Their truth sounds like “I want” and “I will.” Listen for what they truly want.',
+  'Self-Projected': 'They find clarity by talking things through and hearing their own voice.',
+  'Mental / Environmental': 'The right place and a trusted sounding board help them find clarity.',
+  'Lunar': 'Big decisions unfold over a full moon cycle, so give them time.'
+};
+var FAM_LINES = {
+  '1': 'feels secure once they understand how something works',
+  '2': 'has natural gifts and needs real time to themselves',
+  '3': 'learns by doing, bumping into what doesn’t work and finding what does',
+  '4': 'grows through friendships and the people close to them',
+  '5': 'is often looked to for practical help and solutions',
+  '6': 'grows in seasons, watching and learning before stepping into their own way'
+};
+var FAM_REL = [['child', 'Child'], ['partner', 'Partner'], ['other', 'Someone else']];
+var FM = {list:null, edit:null};
+async function loadFamily(){
+  var w = $('fam-wrap'); if (!w) return;
+  try { FM.list = await api.family(); } catch(e) { FM.list = FM.list || []; }
+  renderFamily();
+}
+function renderFamily(){
+  var w = $('fam-wrap'); w.innerHTML = '';
+  var list = FM.list || [];
+  if (!list.length) w.appendChild(el('p', 'fam-intro', 'Add a child, partner or someone you love to see their design beside yours, gently. It’s a lens for understanding each other, never a label.'));
+  list.forEach(function(f){ w.appendChild(familyCard(f)); });
+  var ed = el('div', 'x-editor fam-editor'); ed.id = 'fam-editor'; ed.style.display = 'none'; w.appendChild(ed);
+  var add = el('button', 'pill-btn outline fam-add', '＋ Add a child or family member'); add.id = 'fam-add'; add.onclick = function(){ familyForm(null); }; w.appendChild(add);
+  w.appendChild(el('p', 'fam-note', 'Private to you. Children you add here also get their own Little Exhibit in your Journal.'));
+}
+function familyCard(f){
+  var d = el('details', 'dd fam-card'); var s = el('summary');
+  var rel = (FAM_REL.filter(function(r){ return r[0] === f.relation; })[0] || ['', ''])[1];
+  s.appendChild(el('span', 'dd-k', f.name + (rel ? ' · ' + rel.toLowerCase() : '')));
+  s.appendChild(el('span', 'dd-t', f.type ? [f.type, f.profile, f.authority].filter(Boolean).join(' · ') : 'Add their design'));
+  d.appendChild(s);
+  var b = el('div', 'dd-b');
+  if (f.type) {
+    b.appendChild(el('div', 'fam-h', 'What might help ' + f.name + ' feel understood'));
+    b.appendChild(el('p', null, FAM_TYPE[f.type] || ''));
+    if (f.authority && FAM_AUTH[f.authority]) b.appendChild(ddItem(f.authority + ' authority', FAM_AUTH[f.authority]));
+    if (f.profile) { var pl = f.profile.split('/'); var a = LINES[pl[0]], c = LINES[pl[1]]; if (a && c && FAM_LINES[pl[0]] && FAM_LINES[pl[1]]) b.appendChild(ddItem(f.profile + ' · ' + a[0] + ' / ' + c[0], 'A ' + f.profile + ' ' + FAM_LINES[pl[0]] + ', and ' + FAM_LINES[pl[1]] + '.')); }
+  } else {
+    b.appendChild(el('p', null, 'Add ' + f.name + '’s type, profile and authority from their chart to see their design here.'));
+  }
+  b.appendChild(meetSection(f));
+  var e = el('button', 'cp-btn', 'Edit ' + f.name); e.onclick = function(ev){ ev.preventDefault(); familyForm(f); }; b.appendChild(e);
+  d.appendChild(b);
+  return d;
+}
+function designMeet(A, B){
+  var ga = A.gates, gb = B.gates, out = {complete:[], share:[], steadyA:[], steadyB:[], toneA:[], toneB:[]};
+  CHANNELS.forEach(function(c){
+    var a1 = !!ga[c[0]], a2 = !!ga[c[1]], b1 = !!gb[c[0]], b2 = !!gb[c[1]];
+    var aF = a1 && a2, bF = b1 && b2;
+    if (aF && bF) out.share.push(c);
+    else if (aF && !b1 && !b2) out.steadyA.push(c);
+    else if (bF && !a1 && !a2) out.steadyB.push(c);
+    else if (aF) out.toneA.push(c);
+    else if (bF) out.toneB.push(c);
+    else if ((a1 && b2 && !a2 && !b1) || (a2 && b1 && !a1 && !b2)) out.complete.push(c);
+  });
+  out.centersA = CENTERS.filter(function(c){ return A.defined[c.k] && !B.defined[c.k]; });
+  out.centersB = CENTERS.filter(function(c){ return B.defined[c.k] && !A.defined[c.k]; });
+  return out;
+}
+function meetSection(f){
+  var box = el('div', 'meet');
+  box.appendChild(el('div', 'fam-h', 'Where your designs meet'));
+  var A = computeDesign(S.me.design), B = computeDesign(f.design);
+  if (!A || !B) {
+    box.appendChild(el('p', null, 'This appears once both full charts are in the app. Staci can add them as part of a Parenting by Design or Family by Design session.'));
+    var go = el('button', 'cp-btn', 'See By Design sessions'); go.onclick = function(ev){ ev.preventDefault(); var s = $('sessions'); if (s) s.scrollIntoView({behavior:'smooth', block:'start'}); }; box.appendChild(go);
+    return box;
+  }
+  var m = designMeet(A, B), n = f.name, any = false;
+  box.appendChild(el('p', 'meet-i', 'Tap a theme to open it. Read it as a gentle lens on how you meet, not a verdict on either of you.'));
+  function group(title, intro, items){ if (!items.length) return; any = true; var g = el('details', 'meet-g'); var sm = el('summary', 'meet-s'); sm.appendChild(el('span', 'meet-t', title)); sm.appendChild(el('span', 'meet-n', String(items.length))); g.appendChild(sm); var inner = el('div', 'meet-b'); if (intro) inner.appendChild(el('p', 'meet-i', intro)); items.forEach(function(x){ inner.appendChild(x); }); g.appendChild(inner); box.appendChild(g); }
+  function ch(c, extra){ return ddItem('The Channel of ' + c[2] + ' · ' + c[0] + '–' + c[1], c[3] + (extra ? '  ' + extra : '')); }
+  group('Where you complete each other', 'You each hold one half of these channels, so together you make something neither of you has alone. This is often where you feel most drawn together, and sometimes where you rub.', m.complete.map(function(c){ return ch(c); }));
+  group('Where you share the same energy', 'You both carry these fully: places of easy understanding.', m.share.map(function(c){ return ch(c); }));
+  group('Where one of you is steady', null,
+    m.steadyA.map(function(c){ return ch(c, 'You carry this fully, and ' + n + ' experiences it through you. Share it gently, without expecting them to carry it the same way.'); })
+    .concat(m.steadyB.map(function(c){ return ch(c, n + ' carries this fully, and you experience it through them. You may feel this energy strongly when you’re together.'); })));
+  group('Where one of you sets the tone', null,
+    m.toneA.map(function(c){ return ch(c, 'You carry the whole channel and ' + n + ' holds one side of it, so your way can set the tone here. Make room for their side.'); })
+    .concat(m.toneB.map(function(c){ return ch(c, n + ' carries the whole channel and you hold one side, so their way can set the tone. Your side still matters.'); })));
+  var cs = [];
+  m.centersA.forEach(function(c){ cs.push(ddItem('Your ' + c.n + ' · their open ' + c.n, n + ' takes in your steady ' + c.n + ' energy and may feel it amplified. Some of what they feel here may be yours, not theirs.')); });
+  m.centersB.forEach(function(c){ cs.push(ddItem('Their ' + c.n + ' · your open ' + c.n, n + '’s ' + c.n + ' is consistent, so you may feel it strongly around them. That’s a feeling to notice, not a job to fix.')); });
+  group('Where you take each other in', 'Where one of you is defined and the other is open, energy flows one way and is often felt more strongly.', cs);
+  if (!any) box.appendChild(el('p', null, 'Your designs give each other a lot of space: few shared channels and few pulls. Connection here comes from choosing each other, again and again.'));
+  return box;
+}
+function familyForm(f){
+  var ed = $('fam-editor'); ed.innerHTML = ''; ed.style.display = 'block'; $('fam-add').style.display = 'none';
+  ed.appendChild(el('h3', 'je-h', f ? 'About ' + f.name : 'Add someone you love'));
+  var n = fldIn(ed, 'Their name', f ? f.name : '', {placeholder:'First name or nickname', max:40}); n.id = 'fam-name';
+  ed.appendChild(el('span', 'x-fl', 'They are your'));
+  var rel = f ? f.relation : 'child', chips = el('div', 'je-chips fam-rel');
+  var bmWrap = el('div');
+  FAM_REL.forEach(function(r){
+    var b = el('button', 'je-chip' + (r[0] === rel ? ' on' : ''), r[1]); b.type = 'button';
+    b.onclick = function(){ rel = r[0]; chips.querySelectorAll('.je-chip').forEach(function(x){ x.classList.toggle('on', x.textContent === r[1]); }); bmWrap.style.display = rel === 'child' ? 'block' : 'none'; };
+    chips.appendChild(b);
+  });
+  ed.appendChild(chips);
+  var bm = fldIn(bmWrap, 'Birth month (optional)', f && f.birth_month ? f.birth_month : '', {type:'month', hint:'Only used to show their age in The Little Exhibit.'});
+  bmWrap.style.display = rel === 'child' ? 'block' : 'none'; ed.appendChild(bmWrap);
+  function sel(label, opts, val, id){
+    var w = el('label', 'x-fld'); w.appendChild(el('span', 'x-fl', label));
+    var s = el('select', 'fam-sel'); s.id = id; [''].concat(opts).forEach(function(o){ var op = el('option', null, o || '—'); op.value = o; if (o === (val || '')) op.selected = true; s.appendChild(op); });
+    w.appendChild(s); ed.appendChild(w); return s;
+  }
+  var tp = sel('Type', ['Manifesting Generator', 'Generator', 'Projector', 'Manifestor', 'Reflector'], f && f.type, 'fam-type');
+  var pr = sel('Profile', ['1/3','1/4','2/4','2/5','3/5','3/6','4/6','4/1','5/1','5/2','6/2','6/3'], f && f.profile, 'fam-profile');
+  var au = sel('Authority', ['Sacral','Emotional','Splenic','Ego','Self-Projected','Mental / Environmental','Lunar'], f && f.authority, 'fam-auth');
+  ed.appendChild(el('p', 'x-fh', 'You’ll find these on their bodygraph chart. Not sure? Leave them for now.'));
+  var msg = el('div', 'je-msg');
+  var acts = el('div', 'je-acts');
+  var save = el('button', 'pill-btn dark', 'Save'); save.id = 'fam-save'; acts.appendChild(save);
+  var cancel = el('button', 'je-cancel', 'Cancel'); cancel.onclick = function(){ ed.style.display = 'none'; ed.innerHTML = ''; $('fam-add').style.display = ''; }; acts.appendChild(cancel);
+  if (f) {
+    var del = el('button', 'pill-btn small-btn danger', 'Remove');
+    armButton(del, f.relation === 'child' ? 'Tap again: also removes their Little Exhibit' : 'Tap again to remove', async function(){
+      try { await api.deleteFamily(f.id); X.fam = null; await loadFamily(); } catch(e) { msg.textContent = 'That didn’t remove. Try again in a moment.'; }
+    });
+    acts.appendChild(del);
+  }
+  ed.appendChild(acts); ed.appendChild(msg);
+  save.onclick = async function(){
+    var name = n.value.trim(); if (!name) { n.focus(); return; }
+    save.disabled = true;
+    try {
+      var row = {name: name.slice(0, 40), relation: rel, birth_month: rel === 'child' ? (bm.value || null) : null, type: tp.value || null, profile: pr.value || null, authority: au.value || null};
+      if (f) await api.updateFamily(f.id, row); else { row.id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); await api.addFamily(row); }
+      X.fam = null; await loadFamily();
+    } catch(e) { msg.textContent = 'That didn’t save. Try again in a moment.'; save.disabled = false; }
+  };
+  setTimeout(function(){ n.focus(); }, 60);
+}
+
 function toggleExport(){ var x = $('j-export'); x.style.display = x.style.display === 'none' ? 'block' : 'none'; }
 async function exportJournalPdf(){
   var from = $('jx-from').value, to = $('jx-to').value, btn = $('jx-go');
@@ -2619,7 +3223,7 @@ function buildCircleHeader(){
   q.appendChild(el('div', 'ch-q-eye', 'This month’s reflection'));
   q.appendChild(el('div', null, S.M.circlePrompt ? '“' + S.M.circlePrompt + '”' : 'What’s alive for you this month?'));
   var ans = el('button', 'text-link ch-q-go', null); ans.appendChild(el('span', null, 'Answer it')); ans.appendChild(el('span', null, '→'));
-  ans.onclick = function(){ C.tag = 'reflection'; C.gid = null; buildComposer(); $('circle-ta').focus(); };
+  ans.onclick = function(){ openComposer('reflection'); };
   q.appendChild(ans);
   buildComposer(); buildFilters();
 }
@@ -2633,13 +3237,19 @@ function buildComposer(){
   });
   $('circle-ta').placeholder = C.tag === 'reflection' ? 'Your reflection on this month’s question…' : (C.tag === 'gathering' ? 'Share the call link or a note about the next gathering…' : 'What’s on your mind? Anything is welcome here…');
 }
+function openComposer(tag){
+  if (tag) { C.tag = tag; C.gid = null; }
+  $('cc-open').style.display = 'none'; $('cc-body').style.display = 'block';
+  buildComposer(); $('circle-ta').focus();
+}
+function closeComposer(){
+  $('cc-body').style.display = 'none'; $('cc-open').style.display = 'flex';
+}
 function buildFilters(){
   var f = $('cf-filter'); f.innerHTML = '';
-  [['all', 'Everything'], ['reflection', 'Monthly reflection'], ['open', 'Open conversation'], ['gathering', 'Gatherings']].forEach(function(o){
-    var b = el('button', 'chip' + (C.filter === o[0] ? ' on' : ''), o[1]);
-    b.onclick = function(){ C.filter = o[0]; buildFilters(); renderGathering(); };
-    f.appendChild(b);
-  });
+  var b = el('button', 'cf-link', C.filter === 'gathering' ? '← Back to the conversation' : '◎ Gatherings →');
+  b.onclick = function(){ C.filter = C.filter === 'gathering' ? 'all' : 'gathering'; buildFilters(); renderGathering(); };
+  f.appendChild(b);
 }
 async function pickCirclePhoto(input){
   var f = input.files && input.files[0]; if (!f) return;
@@ -2651,16 +3261,17 @@ async function pickCirclePhoto(input){
 }
 function circleBusy(){
   var a = document.activeElement;
-  if (a && ($('screen-circle').contains(a) || $('screen-creative').contains(a)) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
-  return [].some.call(document.querySelectorAll('#chat-feed textarea, #cw-wall textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
+  if (a && ($('screen-circle').contains(a) || $('screen-creative').contains(a) || $('screen-shelf').contains(a)) && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT')) return true;
+  return [].some.call(document.querySelectorAll('#chat-feed textarea, #cw-wall textarea, #shelf-list textarea'), function(t){ return t.value.trim(); }) || !!C.menu;
 }
 async function loadCircle(quiet){
   if (C.loading || (quiet && circleBusy())) return;
+  C.shelf = C.shelf || [];
   C.loading = true;
   try {
-    var r = await Promise.all([api.feed(), api.blocks().catch(function(){ return []; })]);
-    C.posts = r[0] || []; C.blocked = {}; (r[1] || []).forEach(function(b){ C.blocked[b.blocked] = 1; });
-    var ids = C.posts.map(function(p){ return p.id; });
+    var r = await Promise.all([api.feed(), api.blocks().catch(function(){ return []; }), api.shelf().catch(function(){ return []; })]);
+    C.posts = r[0] || []; C.shelf = r[2] || []; C.blocked = {}; (r[1] || []).forEach(function(b){ C.blocked[b.blocked] = 1; });
+    var ids = C.posts.concat(C.shelf).map(function(p){ return p.id; });
     var rr = ids.length ? await Promise.all([api.replies(ids), api.reactions(ids).catch(function(){ return []; })]) : [[], []];
     C.replies = {}; (rr[0] || []).forEach(function(p){ (C.replies[p.parent_id] = C.replies[p.parent_id] || []).push(p); });
     var replyIds = (rr[0] || []).map(function(p){ return p.id; });
@@ -2682,7 +3293,7 @@ function renderFeed(){
       (C.filter === 'gathering' ? 'Monthly call links and gathering details will be shared here. Tap the heart on a gathering post to let Staci know you plan to join live.' : 'Nothing here yet.')));
   }
   posts.forEach(function(p){ feed.appendChild(postCard(p, uid, false)); });
-  renderWall();
+  renderWall(); renderShelf();
 }
 function heartIcon(filled){
   var s = document.createElement('span'); s.className = 'hrt' + (filled ? ' on' : ''); s.setAttribute('aria-hidden', 'true');
@@ -2788,7 +3399,7 @@ async function sendPost(){
     if (C.gid) row.gathering_id = C.gid;
     await api.addPost(row);
     ta.value = ''; C.photo = null; $('cc-prev').innerHTML = ''; $('cc-file').value = '';
-    if (C.tag !== 'gathering') C.tag = 'open'; C.gid = null; buildComposer();
+    if (C.tag !== 'gathering') C.tag = 'open'; C.gid = null; buildComposer(); closeComposer();
     await loadCircle();
   } catch(e) {
     var f = $('chat-feed'), n = el('div', 'feed-empty', 'That didn’t send. Your words are still in the box. Try again in a moment.');
@@ -2863,13 +3474,82 @@ function gatherCard(){
   if (past || live) {
     var row = el('div', 'g-acts');
     var share = el('button', 'pill-btn outline', 'Share what stayed with you');
-    share.onclick = function(){ C.tag = 'open'; C.gid = g.id; C.filter = 'all'; buildComposer(); buildFilters(); renderGathering(); $('circle-ta').focus(); };
+    share.onclick = function(){ C.filter = 'all'; buildFilters(); renderGathering(); openComposer('open'); C.gid = g.id; };
     row.appendChild(share);
     c.appendChild(row);
   }
   if (isAdmin() && C.rsvpList) c.appendChild(el('div', 'g-admin', C.rsvpList.length ? C.rsvpList.length + ' joining: ' + C.rsvpList.map(function(x){ return x.name || 'a member'; }).join(', ') : 'No one has said yet.'));
   return c;
 }
+/* ── THE SHELF · favourite books, podcasts and music ── */
+var SKINDS = [['book', 'Books'], ['podcast', 'Podcasts'], ['music', 'Music'], ['other', 'Other favourites']];
+var SH = {kind:'book'};
+function buildShelfForm(){
+  var t = $('sh-kinds'); if (!t) return; t.innerHTML = '';
+  SKINDS.forEach(function(k){
+    var b = el('button', 'je-chip' + (SH.kind === k[0] ? ' on' : ''), k[1] === 'Other favourites' ? 'Something else' : k[1].replace(/s$/, '')); b.type = 'button';
+    b.setAttribute('aria-pressed', SH.kind === k[0] ? 'true' : 'false');
+    b.onclick = function(){ SH.kind = k[0]; buildShelfForm(); };
+    t.appendChild(b);
+  });
+  $('sh-title').placeholder = {book:'Title and author', podcast:'Podcast or episode', music:'Song, album or playlist', other:'What is it?'}[SH.kind];
+}
+function toggleShelfForm(open){
+  $('sh-form').style.display = open ? 'block' : 'none'; $('sh-add').style.display = open ? 'none' : 'flex';
+  if (open) { buildShelfForm(); $('sh-title').focus(); }
+}
+function safeLink(u){ u = (u || '').trim(); if (!u) return ''; if (!/^https?:\/\//i.test(u)) u = 'https://' + u; return /^https?:\/\/[^\s]+\.[^\s]+/i.test(u) ? u : ''; }
+async function sendShelf(){
+  var msg = $('sh-msg'); msg.textContent = '';
+  var title = $('sh-title').value.trim(); if (!title) { $('sh-title').focus(); return; }
+  var link = $('sh-link').value.trim(); if (link && !safeLink(link)) { msg.textContent = 'That link doesn’t look quite right. You can leave it empty.'; return; }
+  var btn = $('sh-send'); btn.disabled = true; btn.textContent = 'Adding…';
+  try {
+    await api.addPost({month: S.cur ? S.cur.key : monthKeyOf(), name: (S.me.name || 'Friend').slice(0, 40), design: shortDesign(), body: $('sh-why').value.trim() || '', user_id: S.session.user.id,
+      tag: 'shelf', shelf_kind: SH.kind, title: title.slice(0, 160), link: safeLink(link) || null});
+    $('sh-title').value = ''; $('sh-link').value = ''; $('sh-why').value = ''; toggleShelfForm(false);
+    await loadCircle();
+  } catch(e) { msg.textContent = 'That didn’t add. Try again in a moment.'; }
+  finally { btn.disabled = false; btn.textContent = 'Add to the Shelf'; }
+}
+function shelfCard(p, uid){
+  var mine = p.user_id === uid;
+  var c = el('article', 'shelf-item' + (p.hidden ? ' msg-hidden' : ''));
+  var t, link = safeLink(p.link);
+  if (link) { t = el('a', 'sh-t', p.title); t.href = link; t.target = '_blank'; t.rel = 'noopener nofollow'; t.appendChild(el('span', 'sh-ext', ' ↗')); }
+  else t = el('div', 'sh-t', p.title);
+  c.appendChild(t);
+  if (p.body) c.appendChild(el('div', 'sh-why', p.body));
+  var foot = el('div', 'sh-foot');
+  foot.appendChild(el('span', 'sh-by', (p.is_host ? 'Staci’s pick' : 'Shared by ' + (p.name || 'a member')) + ' · ' + new Date(p.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric'}) + (p.hidden ? ' · hidden' : '')));
+  var acts = el('span', 'sh-acts');
+  var rs = C.reacts[p.id] || [], heard = rs.some(function(x){ return x.user_id === uid; });
+  if (!mine) {
+    var h = withHeart(el('button', 'cp-hear' + (heard ? ' on' : '')), heard); h.setAttribute('aria-pressed', heard ? 'true' : 'false'); h.setAttribute('aria-label', heard ? 'Remove heart' : 'Heart this pick');
+    h.onclick = async function(){ h.disabled = true; try { if (heard) await api.unreact(p.id); else await api.react(p.id, (S.me.name || 'A member').slice(0, 40)); await loadCircle(); } catch(e) { h.disabled = false; } };
+    acts.appendChild(h);
+  }
+  var more = el('button', 'cp-btn', '⋯'); more.setAttribute('aria-label', 'More options');
+  more.onclick = function(){ C.menu = C.menu === p.id ? null : p.id; renderShelf(); };
+  acts.appendChild(more); foot.appendChild(acts); c.appendChild(foot);
+  if (mine && rs.length) c.appendChild(withHeart(el('div', 'cp-heard', ' ' + rs.map(function(x){ return x.name || 'a member'; }).join(', ')), true));
+  if (C.menu === p.id) c.appendChild(postMenu(p, mine));
+  return c;
+}
+function renderShelf(){
+  var items = (C.shelf || []).filter(function(p){ return !C.blocked[p.user_id]; });
+  var row = $('shelf-row-n'); if (row) row.textContent = items.length ? items.length + (items.length === 1 ? ' favourite' : ' favourites') : 'Books, podcasts and music we love';
+  var w = $('shelf-list'); if (!w || !S.session) return; w.innerHTML = '';
+  if (!items.length) { w.appendChild(el('div', 'feed-empty', 'The Shelf is empty for now. What’s a book, podcast or song that has stayed with you?')); return; }
+  var uid = S.session.user.id;
+  SKINDS.forEach(function(k){
+    var list = items.filter(function(p){ return (p.shelf_kind || 'other') === k[0]; });
+    if (!list.length) return;
+    w.appendChild(el('div', 'eye sh-eye', k[1]));
+    list.forEach(function(p){ w.appendChild(shelfCard(p, uid)); });
+  });
+}
+
 /* ── CREATIVE FLOW · share your creative work ── */
 async function pickWallPhoto(input){
   var f = input.files && input.files[0]; if (!f) return;
@@ -2926,14 +3606,15 @@ function goScreen(id){
   if (id === 'design') id = 'lbd';
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   var sc = $('screen-' + id); if (sc) sc.classList.add('active');
-  var navFor = {explore:'rhythm', practice:'rhythm', rootrise:'rhythm', lbd:'rhythm', creative:'rhythm', library:'rhythm', studio:'you'}[id] || id;
+  var navFor = {explore:'rhythm', practice:'rhythm', rootrise:'rhythm', lbd:'rhythm', creative:'rhythm', library:'rhythm', studio:'you', shelf:'circle'}[id] || id;
   document.querySelectorAll('.bnav-item').forEach(function(b){ b.classList.toggle('active', b.id === 'bn-' + navFor); });
   $('content-area').scrollTop = 0;
   clearInterval(circleTimer);
-  if (id === 'creative') loadCircle();
+  if (id === 'creative' || id === 'shelf') loadCircle();
   if (id === 'circle') { loadCircle(); circleTimer = setInterval(function(){ loadCircle(true); }, 20000); }
   if (id === 'studio') studioOpen();
-  if (id === 'journal') loadJournal();
+  if (id === 'journal') { loadJournal(); if (X.view === 'exhibit') loadExhibit(); }
+  if (id === 'you') loadFamily();
 }
 
 /* ── SHARE CARD ── */
@@ -3107,6 +3788,13 @@ function studioMonthForm(p){
   var fEv = fld(p, 'Events', M.events.map(function(e){ return [e.date, e.name, e.time, e.url].join(' | '); }).join('\n'), {area:true, rows:4, hint:'One per line: date | name | time & place | link (optional)'});
   var fEN = fld(p, 'Note under events', M.eventsNote, {area:true, rows:2}), fEU = fld(p, '“See all events” link', M.eventsUrl, {type:'url'});
 
+  sec(p, 'Little Roots');
+  var LRm = M.littleRoots;
+  var fLT = fld(p, 'Little Roots · title', LRm.title, {placeholder:'Letting the leaves go'});
+  var fLB = fld(p, 'Little Roots · a movement or ritual to share', LRm.body, {area:true, rows:4, hint:'Shows on Root & Rise. Leave a blank line between paragraphs. Add kids’ breath and meditation recordings under Recordings, type “Little Roots”.'});
+  var fLC = fld(p, 'Creative Flow · with your little ones', LRm.create, {area:true, rows:2, hint:'One or two sentences: a kid-sized version of this month’s art-journal page.'});
+  var fLN = fld(p, 'Little Roots · classes note', LRm.note, {area:true, rows:2}), fLU = fld(p, 'Little Roots · classes link', LRm.url, {type:'url'});
+
   sec(p, 'Circle & words');
   var fCQ = fld(p, 'Circle question', M.circlePrompt, {area:true, rows:2});
   var fQ = fld(p, 'Daily quotes', (m.content.quotes || []).join('\n'), {area:true, rows:10, hint:'One per line. They rotate by date and appear on the home screen, arrival screen, and share card.'});
@@ -3121,7 +3809,8 @@ function studioMonthForm(p){
       creative: {title: fCT.value.trim(), sub: fCS.value.trim(), steps: pipes(fCSt.value, 2), pull: fCP.value.trim(), gathering: {eyebrow: fGE.value.trim(), title: fGT.value.trim(), body: fGB.value.trim()}},
       events: pipes(fEv.value, 4).map(function(x){ return {date:x[0], name:x[1], time:x[2], url:x[3]}; }),
       eventsNote: fEN.value.trim(), eventsUrl: fEU.value.trim(), circlePrompt: fCQ.value.trim(), quotes: linesOf(fQ.value),
-      lensTopic: M.lensTopic, letter: fLet.value.trim()
+      lensTopic: M.lensTopic, letter: fLet.value.trim(),
+      littleRoots: {title: fLT.value.trim(), body: fLB.value.trim(), create: fLC.value.trim(), note: fLN.value.trim(), url: fLU.value.trim()}
     };
     await api.saveMonth(m.key, pub.checked, content);
     await reloadContent(); studioFillMonthSelect();
@@ -3227,6 +3916,40 @@ async function studioMembers(p){
     };
     var ca = el('div', 'it-a'); ca.appendChild(cw);
     var dz = el('button', 'pill-btn small-btn outline', mb.design ? 'Design ✓' : 'Design'); ca.appendChild(dz); it.appendChild(ca);
+    var fz = el('button', 'pill-btn small-btn outline', 'Family'); ca.appendChild(fz);
+    fz.onclick = async function(){
+      var open = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-family');
+      if (open) { it.nextSibling.remove(); return; }
+      var box = el('div', 'st-design st-family'); box.appendChild(el('div', 'loading', 'Loading…')); it.parentNode.insertBefore(box, it.nextSibling);
+      var fam;
+      try { fam = await api.familyOf(mb.email); } catch(e) { box.innerHTML = ''; box.appendChild(el('div', 'hint', 'Couldn’t load her family list.')); return; }
+      box.innerHTML = '';
+      if (!fam.length) { box.appendChild(el('div', 'hint', (mb.name || 'She') + ' hasn’t added anyone to her family yet. Once she adds a child or partner under You → My family, they’ll appear here so you can add their full chart.')); return; }
+      box.appendChild(el('div', 'hint', 'Add a full chart to unlock “Where your designs meet” for ' + (mb.name || 'her') + '. Same numbers as a member’s design: 13 in each column, top to bottom.'));
+      fam.forEach(function(fm){
+        var row = el('div', 'item'), rb = el('div', 'it-b');
+        rb.appendChild(el('div', 'it-t', fm.name)); rb.appendChild(el('div', 'it-s', fm.relation + (fm.type ? ' · ' + [fm.type, fm.profile, fm.authority].filter(Boolean).join(' ') : '')));
+        row.appendChild(rb);
+        var db = el('button', 'pill-btn small-btn outline', fm.design ? 'Chart ✓' : 'Add chart'); var ra = el('div', 'it-a'); ra.appendChild(db); row.appendChild(ra); box.appendChild(row);
+        db.onclick = function(){
+          var isOpen = row.nextSibling && row.nextSibling.classList && row.nextSibling.classList.contains('st-fd');
+          if (isOpen) { row.nextSibling.remove(); return; }
+          var ff = el('div', 'st-fd'), ds = fm.design || {};
+          var fp = fld(ff, 'Conscious · personality (black / right column)', ds.p || '', {area:true, rows:2});
+          var fd2 = fld(ff, 'Unconscious · design (red / left column)', ds.d || '', {area:true, rows:2});
+          var fc = fld(ff, 'Incarnation cross', ds.cross || '');
+          var pv = el('div', 'hint'); ff.appendChild(pv);
+          function preview(){ var D = computeDesign({p: fp.value, d: fd2.value}); var np = parseActs(fp.value).length, nd = parseActs(fd2.value).length; if (!D || np !== 13 || nd !== 13) { pv.textContent = 'Needs 13 numbers in each box (now ' + np + ' and ' + nd + ').'; return null; } pv.textContent = 'Reads as: ' + Object.keys(D.gates).length + ' gates · ' + D.channels.length + ' channels.'; return D; }
+          fp.oninput = fd2.oninput = preview; preview();
+          saveRow(ff, 'Save ' + fm.name + '’s chart', async function(){
+            if (!preview()) throw {userMsg:'Check both boxes have 13 numbers.'};
+            var design = {p: fp.value.trim().replace(/\s+/g, ' '), d: fd2.value.trim().replace(/\s+/g, ' '), cross: fc.value.trim()};
+            await api.setFamilyDesign(fm.id, design); fm.design = design; db.textContent = 'Chart ✓';
+          });
+          row.parentNode.insertBefore(ff, row.nextSibling);
+        };
+      });
+    };
     dz.onclick = function(){
       var open = it.nextSibling && it.nextSibling.classList && it.nextSibling.classList.contains('st-design');
       if (open) { it.nextSibling.remove(); return; }
@@ -3338,6 +4061,7 @@ async function studioNotes(p){
   window.renderFeed = function(){
     var f = $('chat-feed'); if (f) { f.innerHTML = ''; f.appendChild(el('div', 'feed-empty', QUIET)); }
     var w = $('cw-wall'); if (w) { w.innerHTML = ''; w.appendChild(el('div', 'feed-empty', 'Members share photos of their creative pages here.')); }
+    renderShelf();
   };
   var bc = window.buildComposer;
   window.buildComposer = function(){
@@ -3345,17 +4069,57 @@ async function studioNotes(p){
     var ta = $('circle-ta'); ta.disabled = true; ta.placeholder = 'Members share here…';
     $('circle-send').disabled = true; $('cc-file').disabled = true;
   };
+
+  /* New in 2027: a small sample of The Little Exhibit and My family, read-only. */
+  var ART = {"demo/1": "data:image/jpeg;base64,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ABqvRRdhdlj7dd/8/c//AH9b/Gj7dd/8/c//AH9b/Gq9FF2F2WPt13/z9z/9/W/xo+3Xf/P3P/39b/Gq9FF2F2WPt13/AM/c/wD39b/Gj7dd/wDP3P8A9/W/xqvRRdhdlj7dd/8AP3P/AN/W/wAaPt13/wA/c/8A39b/ABqvRRdhdlj7dd/8/c//AH9b/Gj7dd/8/c//AH9b/Gq9FF2F2WPt13/z9z/9/W/xo+3Xf/P3P/39b/Gq9FF2F2WPt13/AM/c/wD39b/Gj7dd/wDP3P8A9/W/xqvRRdhdlj7dd/8AP3P/AN/W/wAaptbwsxZolLE5JI6mpKKLscZyjs7EX2W3/wCeKflR9lt/+eKflUtFBXtqv8z+8i+y2/8AzxT8qPstv/zxT8qlooD21X+Z/eRfZbf/AJ4p+VH2W3/54p+VS0UB7ar/ADP7yL7Lb/8APFPyo+y2/wDzxT8qlooD21X+Z/eRfZbf/nin5UfZbf8A54p+VS0UB7ar/M/vC3/0Vi9sTCxGCYztJH4VY+3Xf/P3P/39b/Gq9FF2S5yk7tlj7dd/8/c//f1v8aPt13/z9z/9/W/xqvRRdiuyx9uu/wDn7n/7+t/jR9uu/wDn7n/7+t/jVeii7C7LH267/wCfuf8A7+t/jR9uu/8An7n/AO/rf41Xoouwuyx9uu/+fuf/AL+t/jR9uu/+fuf/AL+t/jVeii7C7LH267/5+5/+/rf40fbrv/n7n/7+t/jVeii7C7LH267/AOfuf/v63+NH267/AOfuf/v63+NV6KLsLsKKKKQgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z", "demo/2": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAIwAjADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2+iiipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRTJZY4Y2kldURRksxwBXPah4qijJSxj80/8APR+F/AdTQRKcY7nSUx5Y4wTI6KB1LMBiuHa81nVTiNp3U8YiG1f0/rT4/DOpzENII0z1LyZP6ZoM/at/Cjsfttp/z9Qf9/B/jUquj4KMrZ5GDmuO/wCESvf+e1v+bf4VC/hzVIMtGit2zHJg4/SgPaTW8TuaK4WPVdY01tszS4/uzqSD+J/xrb0/xRbTkJdr9nf+9nKn8e1BUa0Xo9DfopFYMAVIIPQjvS0GoUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABVPU9Rh062M0xyTwiDqxqS/vIrG1e4mPyr0Hqewri4I7vxFqeZWIUfeYDiNfQUGVSdtFuJLNqHiG7CKpIHRBwiD3NdFpnhu0tdr3IFxL/ALQ+UH2H+NadlZwWUAhtkCL1PqT6mrFIUaSWstWIqqqhVAVRwABgCloopmwUUUUANkjSVCkqK6nqrDIrA1PwxBMGksD5Mn9w/dP+FdDRQTKClucJYaje6HcNBMjGMH5oW/mD/kV2lndw3lus9u+5G/MH0NRanptvqMOydfmH3HHVTXIW1xdeH9SaKQEpnDr2dfUUjG7pOz2O7oqO3mjuIUmibcjjKmpKZ0BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRVLWLv7Fps84+8Fwn+8eBQJuyuct4jvX1LU1tYPmSNtiAfxMeCf6V1OkafHp1msKYLnmRv7zVzfg6z868kunGVhGFJ/vH/63867GkY0le831CiiimbhRRRQAUUUUAFFFFABWT4h0sahaFo1H2iIZQ+vqK1qKCZJNWZyPhDUDHM1jIflfLR57N3FddXDeILdtN1nz4BtDkSpjsc8/r/Ou0tZ1ubaKdPuyKGFIzpNq8X0JaKKKZsFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVzXjWbEFtAD95i5H0//AF10tcf42c/bbdOwiJH1J/8ArCkZVnaDNnwtb+Ro8TY5lJc/0/QCtequloE021VRgCJf5VaplwVopBRRRQUFFFFABRRRQAUUUUAFFFFAHPeM7cPYwzgHMb4P0P8A9cCp/CMxl0kITkxOV/Dr/WpfE6BtEuCw+7tI+uRWf4Jdjb3afwh1I+pH/wBakYbVfU6WiiimbhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFch42Qi8t34w0RUfgf8A69dfXOeNIN1pBOB9xypOOx//AFUjKsrwZs6S4k0y0cAgGJev0q1WN4UuPO0lE/ihYoefxH862aZcHeKYUUUUFBRRRQAUUUUAFFFFABRRRQBleKHCaJPnPzFVH5iqHglCLa6fjDOB+Q/+vS+NLjbawW46u+489h/+urXhSDydIRiMGVi/4dB/KkYb1fQ2aKKKZuFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVV1O1F7YTW56uvB9+o/WrVFAmrqxxfhO8NrqDW0pKrN8uD2cf5IrtK43xTYNaXovYMhJWySB9x//r10GhamupWYYkCZOJF9/X6GkY0nyvkZpUUVU1LUbbTYPNuZMZ+6o+8x9AKG0ldnQk5OyLdQXF5a2ozcXEUX++4FcRf+I9R1OTyLRWiRuAkWS7fU/wCFLa+FNSufnnKQZ6mRtzfkKw9s27QVzsWDUFerKx1J8RaQCQb1OPRWP9Kmt9X064IEN7CxPQFsH8jWAvgobRuvzuxziLj+dVrnwZdICbe5il9A4Kn+tHPWW8R+ywr0U2dsDkZBzRXnSyax4flG7zIl/ut80bf0rqNE8SQaiRDOBBcnouflf6f4VUayk7PRmdXCTguaLuvI3aKKxPE2q/Yrb7PC3+kSjt/Cvc1sccpKKuzn9XmbV9cEUJJXcIo/p3P8zXcQxLDDHEgwqKFH0Fcz4Q00jN/KpHVYgR+Z/p+ddTSM6Sesn1CiiimbBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAEV1bxXVu8Ey7kcYIriZYbvw7qSyL8y/wt/DIvofeu7qC9tIb23aC4XcjfmD6igzqQ5tVuZx8RWX9mveBuV48onDFuw/+vXJ28N94m1J3dwABlmP3Y19BVHU4kgv5YIZPNSNtofGM10fhzWrOxtltJojFzkyjkMfU+lcz/ezt0R6EZrCUVKXxy/A6LTNLtdNh8u2TBP3nPLN9TV2ore4huUDwSpIp7qc1LXQkkrI5HJyd27hRRRTENkjSVCkqK6HqrDINcX4i8OfY1e8sM+SvLR55T3Ht/Kuvury2tE3XMyRj/aPP5VzeqeKdytFp6YB4Mrj+Q/xrOpTU1qXTxTw7un8iLS/FhSwaO7QyXKDEbf3/AK/Sq+l6dca5evc3JPlbsyP/AHv9kf54rDubWe28uSWJ0WTlCwxu9a9I0eaCfTLeS1UJEUGFH8J7j86ijN6xlui8XQjPlrQ+F9PMtRosaKiKFVRgAdAKdRRW5iFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABUF9OLaynnP8AyzjZvyFT1l+JyRoN4QSPkA4+oqZO0Wyqa5ppHK+DrUXWrmWUbhEhc55yTx/U10eoeGrO6JeDNvIf7g+U/h/hWb4BUbb1sDOUGfzrrayw6/dnRmFp1mn0OHn8PanZvvtx5mOQ0LYP5daaNQ120++1yAnXzI8j8SRXdUVsed7G3wuxwv8AwkWrf89B/wB+h/hSG61274BuyDz8iFRj8BXd0UB7KXWRxNt4Z1C4bdcFYQepdtzH8BXQaf4fsrLDlfOlH8UnOPoOla1FMqNKMTC8Y2on0ZpMfNAwcfTof51U8CXBezuLcn/VuGH0P/1xW5rKhtJvAwBHkP1+lcr4DJ+3XS5ODEDj8a55aVk+56dP3sJJPoztqKKK6DhCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKCcday7vU8Epb493P9KznUjBXZUYOTsjSd0QZdgo9ScVXbULVf+WufoCazI7S6um3tnB/ic1aTSB/HMfwWsfa1ZfDE05KcfiZZXULVv8Alpj6g1DrCLeaPdxxlXzESMHuOR/KmNpC/wAMx/Faqy2NzbncoLAd0NJ1KqXvR0HGMLpxepjeBLjZe3EBOPMjDAe4P/167avNYpH0bWUlAJWN84/vIf8A61ekRSLLGskZDI4DKR3BqsNK8LG+Ph+8U1sx1FFFdJwhRRRQAUUUUAZfia4+z6JdMDguuwfjx/jWJ4Ch5u5yP7qA/qf6VH441ASTx2EZ4j+eT6noPy/nW/4asTYaTFG4xI/7xx6E9vyxXP8AFW9Du/h4Sz3k/wADUoooroOEKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiobybyLd374wPrSbSV2CV3ZGfql2WYwRHgcMR39qlsLAIBJOMv1Cn+Gq+lQebOZX5Cevc1s1y0oe0ftJfI2qS5FyRCiiiusxCiiigDn/FGiC+tzcWy/6TGM4H8Y9PrWR4W10WTfYr59sBPyM38B9D7fyrt65TxVoayyfa7UBZH4dezH1+tc1WPJ+8id2HqxnH2NTbo+x1YOQCDkGivPNM12/0g+RIvmRA/wCqk4I+h7V01p4r0ycASu8Deki8fmKuFeEjOrg6sNldeRu0VTXVdOZQwvrfBGeZQKr3PiHSrfO67V2H8MY3fyrRyiupgqc27JM1Kx9f1uLS4GRGVrth8idce5rD1PxhLICmnReUD/y0k5b8B0qvo/h661OX7Tfl44WO4l/vyf4fWsZVub3ae5108KoLnraLt3DwxpUmp3pvbvc0KPuJb/lo3p/jXeUyCKOCJYoUCRoMKo6AU+tKdNQVjnr1nWlfp0CiiitDEKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACs3WnwkaepJrSrK1sHMJ7YP9KwxD/ds0pfGi1pabLNTjliSat1X08g2UWP7uKsVdNWgiZ/EwooorQkKKKKACq2oJvs5BjJAyPwqzUN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", "demo/3": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAGxAjADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiiiqJCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKdGu5sdqAG0VLJGAuVqKgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigB8ab++BQ6bD6iljk28EcVKyhhzSGVqKVhgkUlMQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUU6PG8ZoAbRVl8bDnpVahAwooooAKKKKACiiigAooooAKKKKAClVipyKSigCUs0gwBUZBBwRipYWAXHemzMCRjtQBHRRRQAUUUUAFFFFABRRRQAqjcwFStENvHWogcHIp7SkjGMUO4EdFFFABRRRQAUUUUAFFFFABUglIGMVHRQApOTk0lFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABTkALgHpTaKACiiigAooooAKKKKAFJJ6k0lFFABRRRQAUUUUAFFFFABRRRQBPGo2g4BzUcoCtgUiuy9DSEknJoASiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACikZlXlmA+pqI3UI/jz9BWc6tOHxSSGoyeyJqKhF1Cf4/wAxUqur/dYH6GiFanP4ZJjcJLdC0UUVoSFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRVkKNuABiq7ABiB0ouFhKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAHKpboKQgqcEVLEwC4JwaZO69c8Acmk3bcLEbMFUsxAA7mqU14zHEXA9T1qK4nMzeijoKhrwMZmUptxpOy79zupYdJXluKSWOWJJ96SporWaVNyJlexz1qJgVJDDBHUGvNlCaSlJbnSpJ6ISlBIOQcfSkoqL2GWobxlwJPmHr3q8jq6hlOQax6lgmaF8jlT1FephMxnTajUd1+RzVcOpax3NSikRg6hlOQaWvoU01dHA9AooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBwZgMAnFNoooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAopR15qzgYxjihsLFWnrGzDIFNOMnHSp1ddoycUMEVyMcGqd/L0iB92q85DMSOlY8rb5Wb1NebmlZwpcq3Z0YaHNO/YZRRRXzh6Bs2lzCbdfnVSq4IJxisy8kWW4d0+7/OoaK7K+MnWpqm1sZQoqEnIKKKK4zUKKKKALdhLhjGTweR9avVjo21ww6g5rYByAR0NfQ5VWc6bg+n5HBioWlddQooor1DmCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKXccYycUlFABRRRQAjnCMR2BrHrYYblI9RisevDzi/ND5nbhNmFFFFeMdYUUUUAFFFFABRRRQAVrQHMKE/3RWTWvENsSD0UV6+UX55ehyYvZDqKKK944gooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopQCTgUAJRSspXqKSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKADpTY5FkQOhyDSFfOkEQ+71f6en4/wAs0+dPKkEgGEfh/Y9j/T8qACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKy7lPLmYdicitSq97F5ibl+8v6iuDMaDq0brdam+Hnyz16mdRRRXzJ6IUUUUAFFFFABRRRQA+FPMlVffmtaqtjDsXzGHLdPpVqvpMtoOlS5nuzzsRPmlZdAooor0TAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKkhIDc1HRQBPMw2471BRRQgCiiigAooooAKKKKACiiigAooooAKKKKACiiigApsjhFLEE9gB3PYU6kgXzZt5+5Hwvu3c/h0/OgCe2iMUfzYLscsfenyIJEKMMqwwRTqKkoopuVmic5ZO/qOxp9Pu4yQJUGXTsP4h3FRqQyhlOQRkGqJFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAKV1bEEyRDjuKp1s1BNapJkj5W9RXj4zLeZudL7jrpYiytIzaKne1lTou4eoqEqw6qR9RXjTo1IO0otHWpxlsxKKuW1i06b2baD0460xrKZZCuBj+9nitFhK7ipKO5PtYXtcrVatbYuQ8g+XsPWp4bRIzlvmb9KsV6mEyyzU633f5nNVxN1aAUUUV7JyBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRQSACScAck0AMkLErGhw78A+g7n/PtVyNFjRUQYUDAFQWiEgzOMM/QHsvarNJjQUUUUhhVJl8mYp/A5JT2Pcf1/OrtRzxCWMrnB6g+h7GmhNEFFNjYsvzDDA4Yehp1MQUVYEa7cYqBhhiKLgJRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUASxyALg0x23Nmm0UWC4UUUUAFFFFABRRRQAUUUUAFFPEbEZFNIwcGgBKKKKACiiigApyLuYCm0oJByKAJnjXaSOCKgp7SMwxwKZQgYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABTQvnSiP+Bfmf39B/X/8AXRI2xcgZYnCj1NWLeLyo9pOWPLH1NDBEtFFFSUFFFFABRRRQBUuV8uQTD7p4k/of8/0oq0wDAhhkHgiqSAxsYWOSv3T6r2/wqkSyYSMBjNMoooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAJ1kXaMnFROdzE02iiwXCiiigAooooAKKKKACiiigAooooAKKeY2AzimUAFFFFABRRRQAUUUUAFFFFABRRRQAUUVLHGCMmgCKinyJtPHQ0ygAooooAKKKY+XYRISGfqR/CO5oAfbL5shlP3VyE9z3P9Kt0iKqKFUYAGAB2pakpBRRRQAUUUUAFFFFABUF1EXQOgzInKj19R+P+FT0UAU0YOoZTkEZFLSSJ5M2B/q5Dkezd/z/AMaWqJCiiigAooooAkSPcMk4FNdSpxT45NowaZI285oAbRRRQAUUU9IywznAoAZRSspU4NJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUqnDA+lJRQBYMi4zmq9FFFgCnIm84ptPjfYfagBZI9oyDxUdSSSbhgDio6EAUUUUAFFFFABRRRQAU9JCvHUUyigBzMWOTTaKKACiiigBGYIpZjgAZJqS1jKqZJBh36j0HYVEi+dMF/gjOW9z2H9fyq7SY0FFFFIYUUUUAFFFFABRRRQAUUUUAMmjEsZRsjPQjsexqG1+fcJAN6HDD39as1WuQYnFwnYYceo9fw/lmmhMfMoAyOKipWYt1NJTQgooooAKKKKACiiigAqWOQBcN2qKigB7ku3ANMqeHG33pk2Nwx170AR0UUUAFFFFABRRRQAUUUUAFFOjALjNTuBsOaLhYrUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFNkYqBtGXY4Uepp1Lar5jGc9Okf07n8f5UATQRiKMIOcdT6nuakooqSgooooAKKKKACiiigAooooAKKKKACkIyMGlooAoqvkuYT0Ayh9V9Pw/wAKfUtzEZEyn+sU5X6+n41CjB1DDPPY9RVIkWiiigAooooAKKKKACnpGWGc4FMqWOQBcN2oYIjYFTg0lOkbc2e1NoAKKKKACiiigAooooAKKKKAClLE8Ek0lFABRRRQAUUUUAFFFFABRRRQAUUVJCoJJPagCOipplAGehqGgAooooAKKKKADr0pzKy9RSxkB8mpZGGw8jmi4FeiiigAooooAKKKKACiiigAooooAKKKKACiikdgiFm6AUANYGVxCP4uXPov/wBfpV0AAYHQVFaxFELP/rH5b29vwqakxpBRRRSGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFU5l8qbcPuSHn2b/AOv/AJ61cpkqLJGyP91hg0ITK9FMjLfMj/fQ4b39D+NPqhBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSqpY4FJT422tz0NADKUEg5BpKKAFZi3U0lFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSRL502T9yI/m3/1v5/SkkJGFT77nC/41ahjEUaovQdz396GwQ+iiipKCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooArXaEYnXqvDAd1/wDrdaaCCMg5Bq3VHb5Mpi/gPMf07j8P5U0Sx9FFFMAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKOnWimFfOkEI+71c+3p+P8s0ASWibyZ2/iGEHov/ANf/AAq1SAYFLUlIKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKiuIvNjwDhlOVPoalooApRvvQHGD0I9D3FOouF8qXzB9x8BvY9j/AE/KiqJCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKUDJxTzEQ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UUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/9k="};
+  var DEMO_FAM = [{id:'demo-wren', relation:'child', name:'Wren', birth_month:'2019-05', type:'Manifesting Generator', profile:'1/3', authority:'Sacral',
+    design:{p:'29.1 30.1 8.3 14.3 1.2 2.4 5.1 20.6 46.2 13.1 33.4 7.2 10.5', d:'8.1 14.2 2.3 1.5 29.4 5.6 15.2 31.1 25.3 51.1 44.2 26.4 57.6'}, created_at:'2026-11-01T10:00:00Z'}];
+  var DEMO_PIECES = [
+    {id:'p1', child_id:'demo-wren', title:'Our House in the Sun', medium:'Crayon', made_on:'2026-11-18', words:'The sun is happy because we are all home.', photo_path:'demo/1', created_at:'2026-11-18T10:00:00Z'},
+    {id:'p2', child_id:'demo-wren', title:'Bubbles Everywhere', medium:'Watercolor', made_on:'2026-10-30', words:'These are all the bubbles from my birthday.', photo_path:'demo/2', created_at:'2026-10-30T10:00:00Z'},
+    {id:'p3', child_id:'demo-wren', title:'Snow Mountain', medium:'Paint', made_on:'2026-02-14', words:null, photo_path:'demo/3', created_at:'2026-02-14T10:00:00Z'}];
+  api.family = async function(){ return DEMO_FAM; };
+  api.pieces = async function(){ return DEMO_PIECES; };
+  api.shelf = async function(){ return []; };
+  var _ps = window.photoSrc;
+  window.photoSrc = function(p){ return p && ART[p] ? Promise.resolve(ART[p]) : _ps(p); };
+  function memberNote(btn, text){ btn.disabled = true; btn.textContent = text; btn.classList.add('demo-off'); }
+  window.openPieceForm = function(){}; window.openArtistForm = function(){}; window.familyForm = function(){};
+  var _re = window.renderExhibit;
+  window.renderExhibit = function(){
+    _re();
+    var h = document.querySelector('.x-hang'); if (h) memberNote(h, '✦ Members hang their art here');
+    document.querySelectorAll('.x-artist.add, .x-foot .cp-btn, .xv-edit').forEach(function(b){ b.style.display = 'none'; });
+    var pv = document.querySelector('.x-private'); if (pv) pv.textContent = 'A sample exhibit. In the app, each child’s gallery is private to their parent.';
+  };
+  var _op = window.openPiece;
+  window.openPiece = function(p, f){ _op(p, f); var e = document.querySelector('.xv-edit'); if (e) e.style.display = 'none'; };
+  var _rf = window.renderFamily;
+  window.renderFamily = function(){
+    _rf();
+    var a = $('fam-add'); if (a) memberNote(a, '✦ Members add their family here');
+    document.querySelectorAll('.fam-card > .dd-b > .cp-btn').forEach(function(b){ b.style.display = 'none'; });
+    var n = document.querySelector('.fam-note'); if (n) n.textContent = 'A sample family card. In the app, your family is private to you.';
+  };
+  window.renderShelf = function(){
+    var sl = $('shelf-list'); if (sl) { sl.innerHTML = ''; sl.appendChild(el('div', 'feed-empty', 'Members gather the books, podcasts and music that have stayed with them here.')); }
+    var sn = $('shelf-row-n'); if (sn) sn.textContent = 'Books, podcasts and music we love';
+  };
+  window.toggleShelfForm = function(){}; window.sendShelf = function(){}; window.openComposer = function(){};
   window.sendPost = function(){};
   window.sendWall = function(){ $('cw-msg').textContent = 'Members share their pages here.'; };
   window.pickWallPhoto = function(i){ i.value = ''; $('cw-msg').textContent = 'Members share their pages here.'; };
   window.sendFeedback = function(){};
   window.doSignout = function(){};
   document.addEventListener('DOMContentLoaded', function(){
+    var sa = $('sh-add'); if (sa) memberNote(sa, '✦ Members add favourites here');
+    var co = $('cc-open'); if (co) { co.disabled = true; co.lastChild.textContent = 'Members share here…'; }
     ['cw-ta', 'cw-send', 'cw-file'].forEach(function(id){ var x = $(id); if (x) x.disabled = true; });
     var fb = $('fb-text'); if (fb) { var box = fb.closest('.pad'); if (box) box.style.display = 'none'; }
     var so = document.querySelector('.signout-btn'); if (so) so.style.display = 'none';
   });
 })();
+
 
 </script>
 </body>
